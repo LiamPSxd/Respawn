@@ -12,4 +12,4 @@ Méndez Trujillo Breayan
 
 Pérez Sulvarán Liam Ibrahim
 
-Vázquez Lozano Brandon
+Vásquez Lozano Brandon
