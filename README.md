@@ -10,6 +10,6 @@ Huerta Mendoza Ameyalli
 
 Méndez Trujillo Breayan
 
-Pérez Sulvarán Liam Ibrahim
+Pérez Sulvarán Liam Ibrahim- ICONIX MASTER
 
 Vásquez Lozano Brandon
