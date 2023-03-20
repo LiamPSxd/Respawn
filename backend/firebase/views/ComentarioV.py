@@ -54,7 +54,7 @@ class ComentarioV(View):
             )
 
             if c.titulo != "":
-                db.getDB().reference(documento).child(c.id).push({"id": f"{c.id}", "titulo": f"{c.titulo}", "contenido": f"{c.contenido}"})
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "titulo": f"{c.titulo}", "contenido": f"{c.contenido}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

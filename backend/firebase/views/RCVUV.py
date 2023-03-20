@@ -57,7 +57,7 @@ class RCVUV(View):
             )
 
             if rcvu.idReserva > -1:
-                db.getDB().reference(documento).child(f"{rcvu.idReserva}{rcvu.idCupon}{rcvu.idVideojuego}{rcvu.correoUsuario}").push({"idReserva": f"{rcvu.idReserva}", "idCupon": f"{rcvu.idCupon}", "idVideojuego": F"{rcvu.idVideojuego}", "correoUsuario": f"{rcvu.correoUsuario}"})
+                db.getDB().reference(documento).child(f"{rcvu.idReserva}{rcvu.idCupon}{rcvu.idVideojuego}{rcvu.correoUsuario}").set({"idReserva": f"{rcvu.idReserva}", "idCupon": f"{rcvu.idCupon}", "idVideojuego": F"{rcvu.idVideojuego}", "correoUsuario": f"{rcvu.correoUsuario}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

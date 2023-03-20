@@ -5,9 +5,9 @@ import { useNavigate } from "react-router-dom";
 const DivisaItem = ({divisa, getAllDivisas}) => {
     const history = useNavigate();
 
-    const handleUpdate = async (divisa) => {
-        await DivisaServer.updateDivisa(divisa);
-        // getAllDivisas();
+    const handleDelete = async (idDivisa) => {
+        await DivisaServer.deleteDivisa(idDivisa);
+        getAllDivisas();
     };
 
     return(
@@ -17,7 +17,8 @@ const DivisaItem = ({divisa, getAllDivisas}) => {
                 <h5 className="card-text">{divisa.simbolo}{divisa.valor}</h5>
                 <h5 className="card-text">{divisa.pais}</h5>
                 <button onClick={() => history(`/monedaPeso/divisa`)} className="btn btn-primary my-2">Añadir</button>
-                <button onClick={() => history(`/monedaPeso/divisa/${divisa.id}`) && handleUpdate(divisa)} className="btn btn-succes my-2">Actualizar</button>
+                <button onClick={() => history(`/monedaPeso/divisa/${divisa.id}`)} className="btn btn-success my-2">Actualizar</button>
+                <button onClick={() => handleDelete(divisa.id)} className="btn btn-danger">Eliminar</button>
             </div>
         </div>
     );

@@ -66,7 +66,7 @@ class ReservaV(View):
             )
 
             if r.fecha != "":
-                db.getDB().reference(documento).child(r.id).push({"id": f"{r.id}", "fecha": f"{r.fecha}", "hora": f"{r.hora}", "iva": f"{r.iva}", "descuento": f"{r.descuento}", "monto": f"{r.monto}", "metodo": f"{r.metodo}", "descripcion": f"{r.descripcion}"})
+                db.getDB().reference(documento).child(str(r.id)).set({"id": f"{r.id}", "fecha": f"{r.fecha}", "hora": f"{r.hora}", "iva": f"{r.iva}", "descuento": f"{r.descuento}", "monto": f"{r.monto}", "metodo": f"{r.metodo}", "descripcion": f"{r.descripcion}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

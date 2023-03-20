@@ -51,7 +51,7 @@ class FiltroCatalogoV(View):
             )
 
             if fc.idFiltro > -1:
-                db.getDB().reference(documento).child(f"{fc.idFiltro}{fc.idCatalogo}").push({"idFiltro": f"{fc.idFiltro}", "idCatalogo": f"{fc.idCatalogo}"})
+                db.getDB().reference(documento).child(f"{fc.idFiltro}{fc.idCatalogo}").set({"idFiltro": f"{fc.idFiltro}", "idCatalogo": f"{fc.idCatalogo}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

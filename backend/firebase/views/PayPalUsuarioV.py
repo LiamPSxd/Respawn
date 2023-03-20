@@ -51,7 +51,7 @@ class PayPalUsuarioV(View):
             )
 
             if pu.idPayPal > -1:
-                db.getDB().reference(documento).child(f"{pu.idPayPal}{pu.correoUsuario}").push({"idPayPal": f"{pu.idPayPal}", "correoUsuario": f"{pu.correoUsuario}"})
+                db.getDB().reference(documento).child(f"{pu.idPayPal}{pu.correoUsuario}").set({"idPayPal": f"{pu.idPayPal}", "correoUsuario": f"{pu.correoUsuario}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

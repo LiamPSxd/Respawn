@@ -51,7 +51,7 @@ class VideojuegoOfertaV(View):
             )
 
             if vo.idVideojuego > -1:
-                db.getDB().reference(documento).child(f"{vo.idVideojuego}{vo.idOferta}").push({"idVideojuego": f"{vo.idVideojuego}", "idOferta": f"{vo.idOferta}"})
+                db.getDB().reference(documento).child(f"{vo.idVideojuego}{vo.idOferta}").set({"idVideojuego": f"{vo.idVideojuego}", "idOferta": f"{vo.idOferta}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

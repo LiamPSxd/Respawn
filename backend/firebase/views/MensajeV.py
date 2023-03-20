@@ -54,7 +54,7 @@ class MensajeV(View):
             )
 
             if m.titulo != "":
-                db.getDB().reference(documento).push({"titulo": f"{m.titulo}", "descripcion": f"{m.descripcion}", "tipo": f"{m.tipo}"})
+                db.getDB().reference(documento).set({"titulo": f"{m.titulo}", "descripcion": f"{m.descripcion}", "tipo": f"{m.tipo}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

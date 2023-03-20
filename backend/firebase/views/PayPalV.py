@@ -60,7 +60,7 @@ class PayPalV(View):
             )
 
             if p.correo != "":
-                db.getDB().reference(documento).child(p.id).push({"id": f"{p.id}", "saldo": f"{p.saldo}", "correo": f"{p.correo}", "contrasenia": f"{p.contrasenia}", "titular": f"{p.titular}"})
+                db.getDB().reference(documento).child(str(p.id)).set({"id": f"{p.id}", "saldo": f"{p.saldo}", "correo": f"{p.correo}", "contrasenia": f"{p.contrasenia}", "titular": f"{p.titular}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

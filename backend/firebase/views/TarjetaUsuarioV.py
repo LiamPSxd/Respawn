@@ -51,7 +51,7 @@ class TarjetaUsuarioV(View):
             )
 
             if tu.idTarjeta > -1:
-                db.getDB().reference(documento).child(f"{tu.idTarjeta}{tu.correoUsuario}").push({"idTarjeta": f"{tu.idTarjeta}", "correoUsuario": f"{tu.correoUsuario}"})
+                db.getDB().reference(documento).child(f"{tu.idTarjeta}{tu.correoUsuario}").set({"idTarjeta": f"{tu.idTarjeta}", "correoUsuario": f"{tu.correoUsuario}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

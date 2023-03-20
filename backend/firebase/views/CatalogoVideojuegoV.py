@@ -51,7 +51,7 @@ class CatalogoVideojuegoV(View):
             )
 
             if cv.idCatalogo > -1:
-                db.getDB().reference(documento).child(f"{cv.idCatalogo}{cv.idVideojuego}").push({"idCatalogo": f"{cv.idCatalogo}", "idVideojuego": f"{cv.idVideojuego}"})
+                db.getDB().reference(documento).child(f"{cv.idCatalogo}{cv.idVideojuego}").set({"idCatalogo": f"{cv.idCatalogo}", "idVideojuego": f"{cv.idVideojuego}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

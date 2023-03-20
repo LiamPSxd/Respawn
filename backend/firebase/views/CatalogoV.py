@@ -51,7 +51,7 @@ class CatalogoV(View):
             )
 
             if c.nombre != "":
-                db.getDB().reference(documento).child(c.id).push({"id": f"{c.id}", "nombre": f"{c.nombre}"})
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "nombre": f"{c.nombre}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

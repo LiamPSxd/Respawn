@@ -57,7 +57,7 @@ class CCVUV(View):
             )
 
             if ccvu.idCompra > -1:
-                db.getDB().reference(documento).child(f"{ccvu.idCompra}{ccvu.idCupon}{ccvu.idVideojuego}{ccvu.correoUsuario}").push({"idCompra": f"{ccvu.idCompra}", "idCupon": f"{ccvu.idCupon}", "idVideojuego": F"{ccvu.idVideojuego}", "correoUsuario": f"{ccvu.correoUsuario}"})
+                db.getDB().reference(documento).child(f"{ccvu.idCompra}{ccvu.idCupon}{ccvu.idVideojuego}{ccvu.correoUsuario}").set({"idCompra": f"{ccvu.idCompra}", "idCupon": f"{ccvu.idCupon}", "idVideojuego": F"{ccvu.idVideojuego}", "correoUsuario": f"{ccvu.correoUsuario}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

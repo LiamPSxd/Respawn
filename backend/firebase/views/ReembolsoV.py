@@ -48,7 +48,7 @@ class ReembolsoV(View):
             )
 
             if r.id != -1:
-                db.getDB().reference(documento).child(r.id).push({"id": f"{r.id}"})
+                db.getDB().reference(documento).child(str(r.id)).set({"id": f"{r.id}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

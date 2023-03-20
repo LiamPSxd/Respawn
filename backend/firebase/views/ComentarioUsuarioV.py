@@ -51,7 +51,7 @@ class ComentarioUsuarioV(View):
             )
 
             if cu.idComentario > -1:
-                db.getDB().reference(documento).child(f"{cu.idComentario}{cu.correoUsuario}").push({"idComentario": f"{cu.idComentario}", "correoUsuario": f"{cu.correoUsuario}"})
+                db.getDB().reference(documento).child(f"{cu.idComentario}{cu.correoUsuario}").set({"idComentario": f"{cu.idComentario}", "correoUsuario": f"{cu.correoUsuario}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

@@ -57,7 +57,7 @@ class OfertaV(View):
             )
 
             if o.nombre != "":
-                db.getDB().reference(documento).child(o.id).push({"id": f"{o.id}", "nombre": f"{o.nombre}", "descuento": f"{o.descuento}", "tiempo": f"{o.tiempo}"})
+                db.getDB().reference(documento).child(str(o.id)).set({"id": f"{o.id}", "nombre": f"{o.nombre}", "descuento": f"{o.descuento}", "tiempo": f"{o.tiempo}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

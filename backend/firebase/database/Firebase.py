@@ -76,3 +76,26 @@ class Firebase:
                     diccionario.update({i: lista[i]})
 
         return diccionario
+
+    def getDocumentoOrderByKey(self, entidad):
+        if self.conexionDB:
+            doc = self.db.reference(entidad).order_by_key().get()
+
+            if isinstance(doc, dict):
+                return doc
+            else:
+                return self.convertirDiccionario(doc)
+
+    def getUltimateKey(self, documento):
+        keys = list()
+        keyMax = 0
+
+        for key, value in self.getDocumentoOrderByKey(documento).items():
+            if key is not None:
+                keys.append(int(key))
+
+        for i in keys:
+            if i > keyMax:
+                keyMax = i
+
+        return key + 1

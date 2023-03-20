@@ -52,7 +52,7 @@ class DivisaV(View):
         if db.conexionDB and request.method == "POST":
             jb = json.loads(request.body)
             d = Divisa(
-                jb["id"],
+                db.getUltimateKey(documento),
                 jb["nombre"],
                 jb["pais"],
                 jb["valor"],
@@ -60,7 +60,7 @@ class DivisaV(View):
             )
 
             if d.nombre != "":
-                db.getDB().reference(documento).child(d.id).push({"id": f"{d.id}", "nombre": f"{d.nombre}", "pais": f"{d.pais}", "valor": f"{d.valor}", "simbolo": f"{d.simbolo}"})
+                db.getDB().reference(documento).child(str(d.id)).set({"id": f"{d.id}", "nombre": f"{d.nombre}", "pais": f"{d.pais}", "valor": f"{d.valor}", "simbolo": f"{d.simbolo}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
@@ -97,7 +97,7 @@ class DivisaV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == id:
+                if value != None and str(value["id"]) == str(id):
                     deletekey = str(key)
                     break
 

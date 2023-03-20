@@ -51,7 +51,7 @@ class FiltroV(View):
             )
 
             if f.nombre != "":
-                db.getDB().reference(documento).child(f.id).push({"id": f"{f.id}", "nombre": f"{f.nombre}"})
+                db.getDB().reference(documento).child(str(f.id)).set({"id": f"{f.id}", "nombre": f"{f.nombre}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

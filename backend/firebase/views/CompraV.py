@@ -66,7 +66,7 @@ class CompraV(View):
             )
 
             if c.fecha != "":
-                db.getDB().reference(documento).child(c.id).push({"id": f"{c.id}", "fecha": f"{c.fecha}", "hora": f"{c.hora}", "iva": f"{c.iva}", "descuento": f"{c.descuento}", "monto": f"{c.monto}", "metodo": f"{c.metodo}", "descripcion": f"{c.descripcion}"})
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "fecha": f"{c.fecha}", "hora": f"{c.hora}", "iva": f"{c.iva}", "descuento": f"{c.descuento}", "monto": f"{c.monto}", "metodo": f"{c.metodo}", "descripcion": f"{c.descripcion}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

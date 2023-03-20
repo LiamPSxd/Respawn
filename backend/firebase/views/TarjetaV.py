@@ -66,7 +66,7 @@ class TarjetaV(View):
             )
 
             if t.tipo != "":
-                db.getDB().reference(documento).child(t.id).push({"id": f"{t.id}", "saldo": f"{t.saldo}", "tipo": f"{t.tipo}", "pan": f"{t.pan}", "fechaCaducidad": f"{t.fechaCaducidad}", "cvv": f"{t.cvv}", "titular": f"{t.titular}"})
+                db.getDB().reference(documento).child(str(t.id)).set({"id": f"{t.id}", "saldo": f"{t.saldo}", "tipo": f"{t.tipo}", "pan": f"{t.pan}", "fechaCaducidad": f"{t.fechaCaducidad}", "cvv": f"{t.cvv}", "titular": f"{t.titular}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

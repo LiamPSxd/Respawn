@@ -57,7 +57,7 @@ class UsuarioV(View):
             )
 
             if u.nombre != "":
-                db.getDB().reference(documento).child(u.nombre).push({"nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}"})
+                db.getDB().reference(documento).child(str(u.nombre)).set({"nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

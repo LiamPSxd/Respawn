@@ -51,7 +51,7 @@ class ReembolsoCompraV(View):
             )
 
             if rc.idReembolso > -1:
-                db.getDB().reference(documento).child(f"{rc.idReembolso}{rc.idCompra}").push({"idReembolso": f"{rc.idReembolso}", "idCompra": f"{rc.idCompra}"})
+                db.getDB().reference(documento).child(f"{rc.idReembolso}{rc.idCompra}").set({"idReembolso": f"{rc.idReembolso}", "idCompra": f"{rc.idCompra}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

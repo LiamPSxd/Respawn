@@ -54,7 +54,7 @@ class WVUV(View):
             )
 
             if wvu.idWishList > -1:
-                db.getDB().reference(documento).child(f"{wvu.idWishList}{wvu.idVideojuego}{wvu.correoUsuario}").push({"idWishList": f"{wvu.idWishList}", "idVideojuego": F"{wvu.idVideojuego}", "correoUsuario": f"{wvu.correoUsuario}"})
+                db.getDB().reference(documento).child(f"{wvu.idWishList}{wvu.idVideojuego}{wvu.correoUsuario}").set({"idWishList": f"{wvu.idWishList}", "idVideojuego": F"{wvu.idVideojuego}", "correoUsuario": f"{wvu.correoUsuario}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)

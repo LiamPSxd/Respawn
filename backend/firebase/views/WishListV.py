@@ -48,7 +48,7 @@ class WishListV(View):
             )
 
             if w.id > -1:
-                db.getDB().reference(documento).child(c.id).push({"id": f"{w.id}"})
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{w.id}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
