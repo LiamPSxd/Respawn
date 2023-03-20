@@ -76,8 +76,8 @@ class RCVUV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idReserva"] == rcvu.idReserva and value["idCupon"] == rcvu.idCupon and value["idVideojuego"] == rcvu.idVideojuego and value["correoUsuario"] == rcvu.correoUsuario:
-                    updatekey = key
+                if value != None and str(value["idReserva"]) == rcvu.idReserva and str(value["idCupon"]) == rcvu.idCupon and str(value["idVideojuego"]) == rcvu.idVideojuego and str(value["correoUsuario"]) == rcvu.correoUsuario:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -93,8 +93,8 @@ class RCVUV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idReserva"] == idReserva and value["idCupon"] == idCupon and value["idVideojuego"] == idVideojuego and value["correoUsuario"] == correoUsuario:
-                    deletekey = key
+                if value != None and str(value["idReserva"]) == idReserva and str(value["idCupon"]) == idCupon and str(value["idVideojuego"]) == idVideojuego and str(value["correoUsuario"]) == correoUsuario:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

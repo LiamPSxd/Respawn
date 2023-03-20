@@ -72,8 +72,8 @@ class WVUV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idWishList"] == wvu.idWishList and value["idVideojuego"] == wvu.idVideojuego and value["correoUsuario"] == wvu.correoUsuario:
-                    updatekey = key
+                if value != None and str(value["idWishList"]) == wvu.idWishList and str(value["idVideojuego"]) == wvu.idVideojuego and str(value["correoUsuario"]) == wvu.correoUsuario:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -89,8 +89,8 @@ class WVUV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idWishList"] == idWishList and value["idVideojuego"] == idVideojuego and value["correoUsuario"] == correoUsuario:
-                    deletekey = key
+                if value != None and str(value["idWishList"]) == idWishList and str(value["idVideojuego"]) == idVideojuego and str(value["correoUsuario"]) == correoUsuario:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

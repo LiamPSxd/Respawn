@@ -96,8 +96,8 @@ class VideojuegoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == v.id:
-                    updatekey = key
+                if value != None and str(value["id"]) == v.id:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -113,8 +113,8 @@ class VideojuegoV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == id:
-                    deletekey = key
+                if value != None and str(value["id"]) == id:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

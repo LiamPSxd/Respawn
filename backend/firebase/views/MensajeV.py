@@ -79,8 +79,8 @@ class MensajeV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["tipo"] == m.tipo:
-                    updatekey = key
+                if value != None and str(value["tipo"]) == m.tipo:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -96,8 +96,8 @@ class MensajeV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["titulo"] == titulo:
-                    deletekey = key
+                if value != None and str(value["titulo"]) == titulo:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

@@ -6,7 +6,7 @@ class Firebase:
         self.db = db
         self.conexionDB()
         self._mensajeExitoso = {"message": "Exitoso"}
-        self._mensajeFallido = {"message": "Hubo un problema"}
+        self._mensajeFallido = {"message": "Ocurrio un problema. No hay dato(s)"}
         self._mensajePerdida = {"message": "Sin Conexion a la Base de Datos"}
 
     @property
@@ -70,8 +70,9 @@ class Firebase:
     def convertirDiccionario(self, lista):
         diccionario = dict()
 
-        for i in range(len(lista)):
-            if lista[i] != None:
-                diccionario.update({i: lista[i]})
+        if lista is not None:
+            for i in range(len(lista)):
+                if lista[i] != None:
+                    diccionario.update({i: lista[i]})
 
         return diccionario

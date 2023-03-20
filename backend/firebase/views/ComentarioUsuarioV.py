@@ -68,8 +68,8 @@ class ComentarioUsuarioV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idComentario"] == cu.idComentario and value["correoUsuario"] == cu.correoUsuario:
-                    updatekey = key
+                if value != None and str(value["idComentario"]) == cu.idComentario and str(value["correoUsuario"]) == cu.correoUsuario:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -85,8 +85,8 @@ class ComentarioUsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idComentario"] == idComentario and value["correoUsuario"] == correoUsuario:
-                    deletekey = key
+                if value != None and str(value["idComentario"]) == idComentario and str(value["correoUsuario"]) == correoUsuario:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

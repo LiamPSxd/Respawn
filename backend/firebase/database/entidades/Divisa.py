@@ -32,7 +32,7 @@ class Divisa:
     
     @property
     def valor(self):
-        self._valor = valor
+        return self._valor
     
     @valor.setter
     def valor(self, valor):

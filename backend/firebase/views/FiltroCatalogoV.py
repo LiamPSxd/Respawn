@@ -68,8 +68,8 @@ class FiltroCatalogoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idFiltro"] == fc.idFiltro and value["idCatalogo"] == fc.idCatalogo:
-                    updatekey = key
+                if value != None and str(value["idFiltro"]) == fc.idFiltro and str(value["idCatalogo"]) == fc.idCatalogo:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -85,8 +85,8 @@ class FiltroCatalogoV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idFiltro"] == idFiltro and value["idCatalogo"] == idCatalogo:
-                    deletekey = key
+                if value != None and str(value["idFiltro"]) == idFiltro and str(value["idCatalogo"]) == idCatalogo:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

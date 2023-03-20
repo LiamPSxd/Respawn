@@ -68,8 +68,8 @@ class ReembolsoCompraV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idReembolso"] == rc.idReembolso and value["idCompra"] == rc.idCompra:
-                    updatekey = key
+                if value != None and str(value["idReembolso"]) == rc.idReembolso and str(value["idCompra"]) == rc.idCompra:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -85,8 +85,8 @@ class ReembolsoCompraV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idReembolso"] == idReembolso and value["idCompra"] == idCompra:
-                    deletekey = key
+                if value != None and str(value["idReembolso"]) == idReembolso and str(value["idCompra"]) == idCompra:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

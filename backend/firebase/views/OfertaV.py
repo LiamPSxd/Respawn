@@ -76,8 +76,8 @@ class OfertaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == o.id:
-                    updatekey = key
+                if value != None and str(value["id"]) == o.id:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -93,8 +93,8 @@ class OfertaV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == id:
-                    deletekey = key
+                if value != None and str(value["id"]) == id:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

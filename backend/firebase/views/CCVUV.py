@@ -76,8 +76,8 @@ class CCVUV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idCompra"] == ccvu.idCompra and value["idCupon"] == ccvu.idCupon and value["idVideojuego"] == ccvu.idVideojuego and value["correoUsuario"] == ccvu.correoUsuario:
-                    updatekey = key
+                if value != None and str(value["idCompra"]) == ccvu.idCompra and str(value["idCupon"]) == ccvu.idCupon and str(value["idVideojuego"]) == ccvu.idVideojuego and str(value["correoUsuario"]) == ccvu.correoUsuario:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -93,8 +93,8 @@ class CCVUV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idCompra"] == idCompra and value["idCupon"] == idCupon and value["idVideojuego"] == idVideojuego and value["correoUsuario"] == correoUsuario:
-                    deletekey = key
+                if value != None and str(value["idCompra"]) == idCompra and str(value["idCupon"]) == idCupon and str(value["idVideojuego"]) == idVideojuego and str(value["correoUsuario"]) == correoUsuario:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

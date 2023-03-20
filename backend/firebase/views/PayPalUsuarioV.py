@@ -68,8 +68,8 @@ class PayPalUsuarioV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idPayPal"] == pu.idPayPal and value["correoUsuario"] == pu.correoUsuario:
-                    updatekey = key
+                if value != None and str(value["idPayPal"]) == pu.idPayPal and str(value["correoUsuario"]) == pu.correoUsuario:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -85,8 +85,8 @@ class PayPalUsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idPayPal"] == idPayPal and value["correoUsuario"] == correoUsuario:
-                    deletekey = key
+                if value != None and str(value["idPayPal"]) == idPayPal and str(value["correoUsuario"]) == correoUsuario:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

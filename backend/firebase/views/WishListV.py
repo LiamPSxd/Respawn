@@ -64,8 +64,8 @@ class WishListV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == w.id:
-                    updatekey = key
+                if value != None and str(value["id"]) == w.id:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -81,8 +81,8 @@ class WishListV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == id:
-                    deletekey = key
+                if value != None and str(value["id"]) == id:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

@@ -76,8 +76,8 @@ class UsuarioV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["correo"] == u.correo:
-                    updatekey = key
+                if value != None and str(value["correo"]) == u.correo:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -93,8 +93,8 @@ class UsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["nombre"] == nombre:
-                    deletekey = key
+                if value != None and str(value["nombre"]) == nombre:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":

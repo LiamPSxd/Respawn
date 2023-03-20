@@ -68,8 +68,8 @@ class TarjetaUsuarioV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idTarjeta"] == tu.idTarjeta and value["correoUsuario"] == tu.correoUsuario:
-                    updatekey = key
+                if value != None and str(value["idTarjeta"]) == tu.idTarjeta and str(value["correoUsuario"]) == tu.correoUsuario:
+                    updatekey = str(key)
                     break
 
             if updatekey != "":
@@ -85,8 +85,8 @@ class TarjetaUsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idTarjeta"] == idTarjeta and value["correoUsuario"] == correoUsuario:
-                    deletekey = key
+                if value != None and str(value["idTarjeta"]) == idTarjeta and str(value["correoUsuario"]) == correoUsuario:
+                    deletekey = str(key)
                     break
 
             if deletekey != "":
