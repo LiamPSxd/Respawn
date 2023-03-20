@@ -44,7 +44,7 @@ class WishListV(View):
         if db.conexionDB and request.method == "POST":
             jb = json.loads(request.body)
             w = WishList(
-                jb["id"]
+                db.getUltimateKey(documento)
             )
 
             if w.id > -1:
@@ -81,7 +81,7 @@ class WishListV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == id:
+                if value != None and value["id"] == str(id):
                     deletekey = str(key)
                     break
 

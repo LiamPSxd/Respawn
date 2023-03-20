@@ -85,7 +85,7 @@ class ComentarioUsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idComentario"]) == idComentario and str(value["correoUsuario"]) == correoUsuario:
+                if value != None and value["idComentario"] == str(idComentario) and value["correoUsuario"] == str(correoUsuario):
                     deletekey = str(key)
                     break
 

@@ -44,7 +44,7 @@ class ReembolsoV(View):
         if db.conexionDB and request.method == "POST":
             jb = json.loads(request.body)
             r = Reembolso(
-                jb["id"]
+                db.getUltimateKey(documento)
             )
 
             if r.id != -1:
@@ -81,7 +81,7 @@ class ReembolsoV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == id:
+                if value != None and value["id"] == str(id):
                     deletekey = str(key)
                     break
 

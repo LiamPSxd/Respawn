@@ -85,7 +85,7 @@ class FiltroCatalogoV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idFiltro"]) == idFiltro and str(value["idCatalogo"]) == idCatalogo:
+                if value != None and value["idFiltro"] == str(idFiltro) and value["idCatalogo"] == str(idCatalogo):
                     deletekey = str(key)
                     break
 

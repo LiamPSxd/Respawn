@@ -85,7 +85,7 @@ class TarjetaUsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idTarjeta"]) == idTarjeta and str(value["correoUsuario"]) == correoUsuario:
+                if value != None and value["idTarjeta"] == str(idTarjeta) and value["correoUsuario"] == str(correoUsuario):
                     deletekey = str(key)
                     break
 

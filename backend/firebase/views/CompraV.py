@@ -58,7 +58,7 @@ class CompraV(View):
         if db.conexionDB and request.method == "POST":
             jb = json.loads(request.body)
             c = Compra(
-                jb["id"],
+                db.getUltimateKey(documento),
                 jb["fecha"],
                 jb["hora"],
                 jb["metodo"],
@@ -103,7 +103,7 @@ class CompraV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == id:
+                if value != None and value["id"] == str(id):
                     deletekey = str(key)
                     break
 

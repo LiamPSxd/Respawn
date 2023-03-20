@@ -52,7 +52,7 @@ class PayPalV(View):
         if db.conexionDB and request.method == "POST":
             jb = json.loads(request.body)
             p = PayPal(
-                jb["id"],
+                db.getUltimateKey(documento),
                 jb["saldo"],
                 jb["correo"],
                 jb["contrasenia"],
@@ -97,7 +97,7 @@ class PayPalV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == id:
+                if value != None and value["id"] == str(id):
                     deletekey = str(key)
                     break
 

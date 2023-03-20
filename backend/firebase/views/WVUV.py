@@ -89,7 +89,7 @@ class WVUV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idWishList"]) == idWishList and str(value["idVideojuego"]) == idVideojuego and str(value["correoUsuario"]) == correoUsuario:
+                if value != None and value["idWishList"] == str(idWishList) and value["idVideojuego"] == str(idVideojuego) and value["correoUsuario"] == str(correoUsuario):
                     deletekey = str(key)
                     break
 

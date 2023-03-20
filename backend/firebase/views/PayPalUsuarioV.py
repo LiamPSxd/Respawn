@@ -85,7 +85,7 @@ class PayPalUsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idPayPal"]) == idPayPal and str(value["correoUsuario"]) == correoUsuario:
+                if value != None and value["idPayPal"] == str(idPayPal) and value["correoUsuario"] == str(correoUsuario):
                     deletekey = str(key)
                     break
 

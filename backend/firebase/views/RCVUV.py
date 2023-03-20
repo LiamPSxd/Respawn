@@ -93,7 +93,7 @@ class RCVUV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idReserva"]) == idReserva and str(value["idCupon"]) == idCupon and str(value["idVideojuego"]) == idVideojuego and str(value["correoUsuario"]) == correoUsuario:
+                if value != None and value["idReserva"] == str(idReserva) and value["idCupon"] == str(idCupon) and value["idVideojuego"] == str(idVideojuego) and value["correoUsuario"] == str(correoUsuario):
                     deletekey = str(key)
                     break
 

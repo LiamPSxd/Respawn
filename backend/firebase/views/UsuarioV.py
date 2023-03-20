@@ -93,7 +93,7 @@ class UsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["nombre"]) == nombre:
+                if value != None and value["nombre"] == str(nombre):
                     deletekey = str(key)
                     break
 

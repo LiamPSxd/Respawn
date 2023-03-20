@@ -60,7 +60,7 @@ class VideojuegoV(View):
         if db.conexionDB and request.method == "POST":
             jb = json.loads(request.body)
             v = Videojuego(
-                jb["id"],
+                db.getUltimateKey(documento),
                 jb["nombre"],
                 jb["descripcion"],
                 jb["caratula"],
@@ -113,7 +113,7 @@ class VideojuegoV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == id:
+                if value != None and value["id"] == str(id):
                     deletekey = str(key)
                     break
 

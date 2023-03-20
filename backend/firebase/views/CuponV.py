@@ -48,7 +48,7 @@ class CuponV(View):
         if db.conexionDB and request.method == "POST":
             jb = json.loads(request.body)
             c = Cupon(
-                jb["id"],
+                db.getUltimateKey(documento),
                 jb["nombre"],
                 jb["descripcion"]
             )
@@ -89,7 +89,7 @@ class CuponV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == id:
+                if value != None and value["id"] == str(id):
                     deletekey = str(key)
                     break
 

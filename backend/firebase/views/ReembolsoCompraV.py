@@ -85,7 +85,7 @@ class ReembolsoCompraV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idReembolso"]) == idReembolso and str(value["idCompra"]) == idCompra:
+                if value != None and value["idReembolso"] == str(idReembolso) and value["idCompra"] == str(idCompra):
                     deletekey = str(key)
                     break
 

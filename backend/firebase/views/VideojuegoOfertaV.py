@@ -85,7 +85,7 @@ class VideojuegoOfertaV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idVideojuego"]) == idVideojuego and str(value["idOferta"]) == idOferta:
+                if value != None and value["idVideojuego"] == str(idVideojuego) and value["idOferta"] == str(idOferta):
                     deletekey = str(key)
                     break
 

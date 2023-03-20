@@ -96,7 +96,7 @@ class MensajeV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["titulo"]) == titulo:
+                if value != None and value["titulo"] == str(titulo):
                     deletekey = str(key)
                     break
 
