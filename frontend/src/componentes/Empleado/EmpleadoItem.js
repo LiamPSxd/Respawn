@@ -1,6 +1,5 @@
 import React from 'react';
 import * as EmpleadoServer from './EmpleadoServer';
-import * as EmpleadoLista from './EmpleadoLista';
 import { useNavigate } from 'react-router-dom';
 
 const EmpleadoItem = ({empleado, listaEmpleados}) => {

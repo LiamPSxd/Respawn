@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import * as EmpleadoServer from "./EmpleadoServer";
+import * as EmpleadoServer from "../Empleado/EmpleadoServer";
 
 const Catalogo = () => {
   const history = useNavigate();
