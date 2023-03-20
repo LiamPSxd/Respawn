@@ -53,6 +53,10 @@ export default function App() {
               <MDBNavbarLink href='#'>Nintendo</MDBNavbarLink>
             </MDBNavbarItem>
 
+            <MDBNavbarItem>
+              <MDBNavbarLink href='/monedaPeso'>Moneda/Peso</MDBNavbarLink>
+            </MDBNavbarItem>
+
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>

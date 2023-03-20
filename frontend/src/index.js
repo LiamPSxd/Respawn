@@ -1,13 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 //Componentes
 import Navbar from './componentes/NavBar/Navbar';
 import Navbar2 from './componentes/NavBar/Navbar2';
-import EmpleadoLista from './componentes/Empleado/EmpleadoLista';
-import Catalogo from './componentes/Empleado/Catalogo';
+// import EmpleadoLista from './componentes/Empleado/EmpleadoLista';
+import Catalogo from './componentes/Catalogo/Catalogo';
+
+import DivisaLista from './componentes/Divisa/DivisaLista';
+import DivisaForm from './componentes/Divisa/DivisaForm';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import './index.css';
@@ -21,9 +24,13 @@ root.render(
     
     {/* NavBar secundaria */}
     <Navbar2 />
+    
     <div className="container my-4">
       <Routes>
-        <Route exact path="/" element={<EmpleadoLista />} />
+        <Route exact path="/monedaPeso" element={<DivisaLista />} />
+        <Route exact path="/monedaPeso/divisa/" element={<DivisaForm />} />
+        <Route exact path="/monedaPeso/divisa/:id" element={<DivisaForm />} />
+        
         <Route path="/catalogo" element={<Catalogo />} />
         {/* <Route path="/updateEmpleado/:id" element={<EmpleadoForm />} /> */}
       </Routes>
