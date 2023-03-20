@@ -1,4 +1,29 @@
 from django.contrib import admin
-from .models import Mensaje
+from .models import MensajeM, DivisaM, OfertaM, FiltroM, CatalogoM, VideojuegoM, CompraM, ReembolsoM, ReservaM, TarjetaM, UsuarioM, ComentarioM, PayPalM, CuponM, WishListM, CatalogoVideojuegoM, CCVUM, ComentarioUsuarioM, FiltroCatalogoM, PayPalUsuarioM, RCVUM, ReembolsoCompraM, TarjetaUsuarioM, VideojuegoOfertaM, WVUM
 
-admin.site.register(Mensaje)
+admin.site.register(MensajeM)
+admin.site.register(DivisaM)
+admin.site.register(OfertaM)
+admin.site.register(FiltroM)
+admin.site.register(CatalogoM)
+admin.site.register(VideojuegoM)
+admin.site.register(CompraM)
+admin.site.register(ReembolsoM)
+admin.site.register(ReservaM)
+admin.site.register(TarjetaM)
+admin.site.register(UsuarioM)
+admin.site.register(ComentarioM)
+admin.site.register(PayPalM)
+admin.site.register(CuponM)
+admin.site.register(WishListM)
+
+admin.site.register(CatalogoVideojuegoM)
+admin.site.register(CCVUM)
+admin.site.register(ComentarioUsuarioM)
+admin.site.register(FiltroCatalogoM)
+admin.site.register(PayPalUsuarioM)
+admin.site.register(RCVUM)
+admin.site.register(ReembolsoCompraM)
+admin.site.register(TarjetaUsuarioM)
+admin.site.register(VideojuegoOfertaM)
+admin.site.register(WVUM)
