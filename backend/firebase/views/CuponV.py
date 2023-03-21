@@ -26,8 +26,7 @@ class CuponV(View):
                         cupones.append({
                             "id": value["id"],
                             "nombre": value["nombre"],
-                            "descripcion": value["descripcion"],
-                            "cantidad": value["cantidad"]
+                            "descripcion": value["descripcion"]
                         })
             elif id == -1:
                 for key, value in db.getDocumento(documento).items():
@@ -35,8 +34,7 @@ class CuponV(View):
                         cupones.append({
                             "id": value["id"],
                             "nombre": value["nombre"],
-                            "descripcion": value["descripcion"],
-                            "cantidad": value["cantidad"]
+                            "descripcion": value["descripcion"]
                         })
 
             if len(cupones) > 0:
@@ -52,12 +50,11 @@ class CuponV(View):
             c = Cupon(
                 db.getUltimateKey(documento),
                 jb["nombre"],
-                jb["descripcion"],
-                jb["cantidad"]
+                jb["descripcion"]
             )
 
             if c.nombre != "":
-                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "nombre": f"{c.nombre}", "descripcion": f"{c.descripcion}", "cantidad": f"{c.cantidad}"})
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "nombre": f"{c.nombre}", "descripcion": f"{c.descripcion}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
@@ -81,7 +78,7 @@ class CuponV(View):
                     break
 
             if updatekey != "":
-                db.getDB().reference(documento).child(updatekey).update({"id": f"{c.id}", "nombre": f"{c.nombre}", "descripcion": f"{c.descripcion}", "cantidad": f"{c.cantidad}"})
+                db.getDB().reference(documento).child(updatekey).update({"id": f"{c.id}", "nombre": f"{c.nombre}", "descripcion": f"{c.descripcion}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    
