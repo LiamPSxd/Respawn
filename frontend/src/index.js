@@ -8,7 +8,7 @@ import Navbar from './componentes/NavBar/Navbar';
 import Navbar2 from './componentes/NavBar/Navbar2';
 // import EmpleadoLista from './componentes/Empleado/EmpleadoLista';
 import Catalogo from './componentes/Catalogo/Catalogo';
-
+import Timer from './componentes/Ofertas/App';
 import DivisaLista from './componentes/Divisa/DivisaLista';
 import DivisaForm from './componentes/Divisa/DivisaForm';
 
@@ -30,6 +30,7 @@ root.render(
         <Route exact path="/monedaPeso" element={<DivisaLista />} />
         <Route exact path="/monedaPeso/divisa/" element={<DivisaForm />} />
         <Route exact path="/monedaPeso/divisa/:id" element={<DivisaForm />} />
+        <Route exact path="/ofertas" element={<Timer />} />
         
         <Route path="/catalogo" element={<Catalogo />} />
         {/* <Route path="/updateEmpleado/:id" element={<EmpleadoForm />} /> */}
