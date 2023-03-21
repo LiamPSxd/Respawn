@@ -57,7 +57,7 @@ class CuponV(View):
             )
 
             if c.nombre != "":
-                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "nombre": f"{c.nombre}", "descripcion": f"{c.descripcion}"}, "cantidad": f"{c.cantidad}")
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "nombre": f"{c.nombre}", "descripcion": f"{c.descripcion}", "cantidad": f"{c.cantidad}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
