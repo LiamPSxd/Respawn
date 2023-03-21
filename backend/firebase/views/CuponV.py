@@ -67,8 +67,7 @@ class CuponV(View):
             c = Cupon(
                 jb["id"],
                 jb["nombre"],
-                jb["descripcion"],
-                jb["cantidad"]
+                jb["descripcion"]
             )
             updatekey = ""
 
