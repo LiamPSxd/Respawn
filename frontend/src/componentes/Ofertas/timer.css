@@ -26,3 +26,13 @@
         margin-left: 38%; 
         font-family: "Oswald";
     }
+
+    .card-title{
+       text-align: center;
+    }
+    .card-body{
+       margin-top: 10px;
+    }
+    .card{
+        width: 18rem;
+    }
