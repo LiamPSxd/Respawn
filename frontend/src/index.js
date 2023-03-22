@@ -11,9 +11,11 @@ import Catalogo from './componentes/Catalogo/Catalogo';
 import Timer from './componentes/Ofertas/App';
 import DivisaLista from './componentes/Divisa/DivisaLista';
 import DivisaForm from './componentes/Divisa/DivisaForm';
+import Cupones from './componentes/Cupones/Cupones';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import './index.css';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -25,17 +27,17 @@ root.render(
     {/* NavBar secundaria */}
     <Navbar2 />
     
-    <div className="container my-4">
+    {/* <div className="container my-4"> */}
       <Routes>
         <Route exact path="/monedaPeso" element={<DivisaLista />} />
         <Route exact path="/monedaPeso/divisa/" element={<DivisaForm />} />
         <Route exact path="/monedaPeso/divisa/:id" element={<DivisaForm />} />
         <Route exact path="/ofertas" element={<Timer />} />
-        
+        <Route exact path="/cupones" element={<Cupones/>}/>
         <Route path="/catalogo" element={<Catalogo />} />
         {/* <Route path="/updateEmpleado/:id" element={<EmpleadoForm />} /> */}
       </Routes>
-    </div>
+    {/* </div> */}
   </BrowserRouter>
 );
 
