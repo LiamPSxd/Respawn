@@ -23,10 +23,10 @@ const Cupones=()=>{
     //     listaCupones();
     // },[]);
 
-    let cupon1=[haloImage, "Cupón Bienvenida", "Obten un 15% de descuento en tu primera compra",0]
-    let cupon2=[kratosImage, "Cupón De Envío Gratis", "Tu próximo envío a domicilio de un juego en formato físico es gratis",1]
-    let cupon3=[marioImage, "Cupón 2x1", "En la compra de dos juegos menores a $100 mxn paga solo uno",2]
-    let cupon4=[teamImage, "Cupón De Descuento", "Obtén un 5% de descuento en compras mayores a $1,500 mxn",3]
+    let cupon1=[haloImage, "Cupón Bienvenida", "Obten un 15% de descuento en tu primera compra",1]
+    let cupon2=[kratosImage, "Cupón De Envío Gratis", "Tu próximo envío a domicilio de un juego en formato físico es gratis",4]
+    let cupon3=[marioImage, "Cupón 2x1", "En la compra de dos juegos menores a $100 mxn paga solo uno",3]
+    let cupon4=[teamImage, "Cupón De Descuento", "Obtén un 5% de descuento en compras mayores a $1,500 mxn","ilimitado"]
     let cupones = [cupon1, cupon2, cupon3, cupon4]
     return(
         <>
@@ -40,6 +40,7 @@ const Cupones=()=>{
                     <div className="card-body" id={style.cuerpoTarjeta}>
                         <h5>{cupon[1]}</h5>
                         <p>{cupon[2]}</p>
+                        <p>usos: {cupon[3]}</p>
                     </div>
                 </div>
             ))}
