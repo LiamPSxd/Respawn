@@ -1,0 +1,15 @@
+#banner{
+    background-color: aqua;
+    height: 250px;
+}
+
+#categoria{
+    background-color: blueviolet;
+    float:left;
+}
+
+#video{
+    background-color: chocolate;
+    float: left;
+    width: 1000px;
+}
