@@ -19,7 +19,7 @@ class OfertaV(View):
     def get(self, request, id = -1):
         if db.conexionDB and request.method == "GET":
             ofertas = list()
-
+            
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None and value["id"] == id:
