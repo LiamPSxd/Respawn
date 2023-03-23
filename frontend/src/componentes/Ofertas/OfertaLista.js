@@ -15,12 +15,10 @@ const OfertaLista = () => {
             console.log(error);
         }
     };
-
     useEffect(() => {
         listaOfertas();
         // eslint-disable-next-line
     }, []);
-
     return(
         <div className="row">
             {ofertas.map((divisa) => (
@@ -29,5 +27,4 @@ const OfertaLista = () => {
         </div>
     );
 };
-
 export default OfertaLista;
