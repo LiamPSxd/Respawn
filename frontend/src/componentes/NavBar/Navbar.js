@@ -71,7 +71,7 @@ export default function App() {
           
           {/* Botón de perfil de usuario */}
           
-          <MDBNavbarLink href='#' className=''>
+          <MDBNavbarLink href='/' className=''>
                 <img src={IconWishlist} alt="logo" width="40" height="40" />
           </MDBNavbarLink>
 
@@ -85,7 +85,7 @@ export default function App() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Iniciar Sesión</MDBDropdownItem>
-                  <MDBDropdownItem link>Crear cuenta</MDBDropdownItem>
+                  <MDBDropdownItem link href='/registro'>Crear cuenta</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
         </MDBCollapse>

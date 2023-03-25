@@ -3,7 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import * as EmpleadoServer from "../Empleado/EmpleadoServer";
 import './catalogo.css';
 
+// Codigo para la sesion ¿?
+import { useAuth } from "../../context/authContext";
+
 const Catalogo = () => {
+ // Codigo para la sesion ¿?
+ const {user} = useAuth();
+  console.log(user);
+
+ 
   const history = useNavigate();
   const params = useParams();
 
