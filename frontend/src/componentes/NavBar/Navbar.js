@@ -1,43 +1,3 @@
-// import React from 'react'
-// import { Link } from "react-router-dom";
-// import Logo from './logo2.png';
-// const Navbar = () => {
-//   return(
-//     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-//       <div className="container-fluid">
-//         <Link className="navbar-brand" to="empleadoForm">
-//         <img src={Logo} alt="logo" width="60" height="50" />
-//         </Link>
-//         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//           <span className="navbar-toggler-icon"></span>
-//         </button>
-// {/* Elements del menu colapse */}
-//         <div class="collapse navbar-collapse" id="menu">
-//           <ul class="navbar-nav me-auto">
-//             <li class="nav-item">
-//               <a class="nav-link" href="/">Visualizar</a>
-//             </li>
-//             <li className="nav-item">
-//               <Link className="nav-link" to="/empleadoForm">
-//                 Agregar
-//               </Link>
-//             </li>
-//           </ul>
-//         </div>
-//         {/* Boton de menu opciones */}
-//         <Link className="profileOptions" to="/">
-//           Perfil
-//         </Link>
-//         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-//           {/* <span className="navbar-toggler-icon"></span> */}
-//         </button>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
-
 import React, { useState } from 'react';
 import Logo from './logo2.png';
 import IconPerfil from './iconperfil2.svg';
@@ -51,18 +11,25 @@ import {
   MDBNavbarToggler,
   MDBIcon,
   MDBNavbarNav,
-  MDBNavbarItem,
   MDBNavbarLink,
-  MDBBtn,
   MDBDropdown,
   MDBDropdownToggle,
   MDBDropdownMenu,
   MDBDropdownItem,
   MDBCollapse,
 } from 'mdb-react-ui-kit';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
+
+  const [search, setSearch] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    //recuperaBusqueda(search)
+  }
 
   return (
     <MDBNavbar expand='lg' dark bgColor='dark'>
@@ -85,15 +52,26 @@ export default function App() {
           <MDBNavbarNav className='justify-content-center'>
 
             {/* Barra de busqueda react */}
-          <form className='d-flex input-group w-50 mx-4 mb-4 mb-lg-0'>
-            <input type='search' className='form-control' placeholder='Type query' aria-label='Search' />
-            <MDBBtn color='primary'>Search</MDBBtn>
-          </form>
+            <div className="d-flex justify-content-center h-100">
+            <Form onSubmit={handleSubmit}>
+              <div className="searchbar">
+                <input
+                  className="search_input mw-25"
+                  type="search"
+                  name=""
+                  placeholder="Buscar..."
+                  value={search}
+                  onChange={(e) => setSearch(e.target.value)}
+                />
+                <Button type="submit" className="search_icon"><i className="fas fa-search"></i></Button>
+              </div>
+            </Form>
+          </div>
           </MDBNavbarNav>
           
           {/* Botón de perfil de usuario */}
           
-          <MDBNavbarLink href='#' className=''>
+          <MDBNavbarLink href='/' className=''>
                 <img src={IconWishlist} alt="logo" width="40" height="40" />
           </MDBNavbarLink>
 
@@ -107,7 +85,7 @@ export default function App() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Iniciar Sesión</MDBDropdownItem>
-                  <MDBDropdownItem link>Crear cuenta</MDBDropdownItem>
+                  <MDBDropdownItem link href='/registro'>Crear cuenta</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
         </MDBCollapse>

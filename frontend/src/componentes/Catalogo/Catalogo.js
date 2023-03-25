@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as EmpleadoServer from "../Empleado/EmpleadoServer";
+import './catalogo.css';
+
+// Codigo para la sesion ¿?
+import { useAuth } from "../../context/authContext";
 
 const Catalogo = () => {
+ // Codigo para la sesion ¿?
+ const {user} = useAuth();
+  console.log(user);
+
+ 
   const history = useNavigate();
   const params = useParams();
 
@@ -51,34 +60,103 @@ const Catalogo = () => {
   }, []);
 
   return (
-    <div className="col-md-3 mx-auto">
-      <h2 className="mb-3 text-center">Empleado</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label className="form-label">Nombre</label>
-          <input type="text" name="nombre" value={empleado.nombre} onChange={handleInputChange} className="form-control" minLength="2" maxLength="100" autoFocus required />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Dirección</label>
-          <input type="text" name="direccion" value={empleado.direccion} onChange={handleInputChange} className="form-control" minLength="2" maxLength="255" autoFocus required />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Salario</label>
-          <input type="number" name="salario" value={empleado.salario} onChange={handleInputChange} className="form-control" min="1" max="9999999999" required />
-        </div>
-        <div className="d-grid gap-2">
-          {params.id ? (
-            <button type="submit" className="btn btn-block btn-primary">
-              Actualizar
-            </button>
-          ) : (
-            <button type="submit" className="btn btn-block btn-success">
-              Añadir
-            </button>
-          )}
-        </div>
-      </form>
+    <body>
+    <header>
+      <section id="banner">Banner</section>
+    </header>
+    <br></br>
+    <main>
+      <aside id="categoria">
+   <div id="hola">
+    <h4 className="text-black text-lg">Categorias</h4>
+      <input name ="video"type="radio" id="indy" value="indy"/>
+      <label htmlFor="indy">Indies</label>
+    <div>
+      <input
+      name="video"
+        type="radio"
+        id="Adventure"
+        value="Adventure"
+      />
+      <label htmlFor="Adventure">Aventura</label>
+    <div>
+      <input name="video"type="radio" id="MMO" value="MMO"/>
+      <label htmlFor="MMO">MMO</label>
     </div>
+    <div>
+      <input
+      name="video"
+        type="radio"
+        id="Casual Game"
+        value="Casual Game"
+      />
+      <label htmlFor="Casual Game">Casual</label>
+    </div>
+    <div>
+      <input
+      name="video"
+        type="radio"
+        id="Strategy"
+        value="Strategy"
+      />
+      <label htmlFor="Strategy">Estrategia</label>
+    </div>
+    <div>
+      <input
+        name="video"
+        type="radio"
+        id="Simulator"
+        value="Simulator"
+      />
+      <label htmlFor="Simulator">Simulacion</label>
+    </div>
+    <div>
+      <input
+        name="video"
+        type="radio"
+        id="Sports Game"
+        value="Sports Game"
+      />
+      <label htmlFor="Sports Game">Deportes</label>
+    </div>
+    <div>
+      <input
+        name="video"
+        type="radio"
+        id="Action Game"
+        value="Action Game"
+      />
+      <label htmlFor="Action Game">Accion</label>
+    </div>
+  </div>
+  <form className="flex flex-col gap-8">
+      <br></br>
+          <button type="submit" className="btn btn-block btn-primary">
+          Aplicar Filtro
+        </button>
+  </form>
+ </div>
+      </aside>
+    </main>
+    <article id="video">
+    <div className="col-md-4 mb-4">
+            <div className="card card-body">
+                <h2 className="card-title"><strong>Red Dead</strong></h2>
+                <h5 className="card-text"><strong>Plataforma: </strong>Xbox</h5>
+                <h5 className="card-text"><strong>Precio: $</strong>500$</h5>
+                <button  className="btn btn-info my-2">Actualizar</button>
+                <button  className="btn btn-danger">Eliminar</button>
+            </div>
+            <div className="card card-body">
+                <h2 className="card-title"><strong>Red Dead</strong></h2>
+                <h5 className="card-text"><strong>Plataforma: </strong>Xbox</h5>
+                <h5 className="card-text"><strong>Precio: $</strong>500$</h5>
+                <button  className="btn btn-info my-2">Actualizar</button>
+                <button  className="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </article>
+  </body>
   );
 };
 

@@ -5,3 +5,4 @@ class OfertaF(forms.Form):
     _nombre = forms.CharField(max_length = 50, required = True)
     _descuento = forms.FloatField(required = True)
     _tiempo = forms.DateField(required = True)
+    
