@@ -9,9 +9,17 @@ class Usuario:
     def nombre(self):
         return self._nombre
 
+    @nombre.setter
+    def nombre(self, nombre):
+        self._nombre = nombre
+
     @property
     def correo(self):
         return self._correo
+
+    @correo.setter
+    def correo(self, correo):
+        self._correo = correo
 
     @property
     def contrasenia(self):

@@ -64,7 +64,7 @@ class ReembolsoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == r.id:
+                if value != None and str(value["id"]) == r.id and r.id == id:
                     updatekey = str(key)
                     break
 

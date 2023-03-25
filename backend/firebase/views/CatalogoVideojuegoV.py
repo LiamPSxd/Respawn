@@ -50,7 +50,7 @@ class CatalogoVideojuegoV(View):
                 jb["idVideojuego"]
             )
 
-            if cv.idCatalogo > -1:
+            if cv.idCatalogo > -1 and cv.idVideojuego > -1:
                 db.getDB().reference(documento).child(f"{cv.idCatalogo}{cv.idVideojuego}").set({"idCatalogo": f"{cv.idCatalogo}", "idVideojuego": f"{cv.idVideojuego}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
@@ -68,7 +68,7 @@ class CatalogoVideojuegoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idCatalogo"]) == cv.idCatalogo and str(value["idVideojuego"]) == cv.idVideojuego:
+                if value != None and str(value["idCatalogo"]) == cv.idCatalogo and cv.idCatalogo == idCatalogo and str(value["idVideojuego"]) == cv.idVideojuego and cv.idVideojuego == idVideojuego:
                     updatekey = str(key)
                     break
 

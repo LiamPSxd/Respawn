@@ -88,7 +88,7 @@ class TarjetaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == t.id:
+                if value != None and str(value["id"]) == t.id and t.id == id:
                     updatekey = str(key)
                     break
 

@@ -1,11 +1,11 @@
 class Compra:
-    def __init__(self, id = 0, fecha = "", hora = "", metodo = "", descripcion = ""):
+    def __init__(self, id = 0, fecha = "", hora = "", iva = .16, descuento = 0.0, monto = 0.0, metodo = "", descripcion = ""):
         self._id = id
         self._fecha = fecha
         self._hora = hora
-        self._iva = .16
-        self._descuento = 0.0
-        self._monto = 0.0
+        self._iva = iva
+        self._descuento = descuento
+        self._monto = monto
         self._metodo = metodo
         self._descripcion = descripcion
 

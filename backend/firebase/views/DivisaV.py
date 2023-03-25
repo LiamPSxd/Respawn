@@ -80,7 +80,7 @@ class DivisaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == d.id:
+                if value != None and str(value["id"]) == d.id and d.id == id:
                     updatekey = str(key)
                     break
 

@@ -68,7 +68,7 @@ class CatalogoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == c.id:
+                if value != None and str(value["id"]) == c.id and c.id == id:
                     updatekey = str(key)
                     break
 

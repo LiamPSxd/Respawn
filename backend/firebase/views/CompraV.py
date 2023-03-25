@@ -61,6 +61,9 @@ class CompraV(View):
                 db.getUltimateKey(documento),
                 jb["fecha"],
                 jb["hora"],
+                jb["iva"],
+                jb["descuento"],
+                jb["monto"],
                 jb["metodo"],
                 jb["descripcion"]
             )
@@ -80,13 +83,16 @@ class CompraV(View):
                 jb["id"],
                 jb["fecha"],
                 jb["hora"],
+                jb["iva"],
+                jb["descuento"],
+                jb["monto"],
                 jb["metodo"],
                 jb["descripcion"]
             )
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == c.id:
+                if value != None and str(value["id"]) == c.id and c.id == id:
                     updatekey = str(key)
                     break
 

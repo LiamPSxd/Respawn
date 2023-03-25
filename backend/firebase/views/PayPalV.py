@@ -80,7 +80,7 @@ class PayPalV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == p.id:
+                if value != None and str(value["id"]) == p.id and p.id == id:
                     updatekey = str(key)
                     break
 

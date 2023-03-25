@@ -68,7 +68,7 @@ class FiltroV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == f.id:
+                if value != None and str(value["id"]) == f.id and f.id == id:
                     updatekey = str(key)
                     break
 

@@ -96,7 +96,7 @@ class VideojuegoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == v.id:
+                if value != None and str(value["id"]) == v.id and v.id == id:
                     updatekey = str(key)
                     break
 
