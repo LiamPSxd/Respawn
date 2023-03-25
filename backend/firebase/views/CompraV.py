@@ -22,7 +22,7 @@ class CompraV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and value["id"] == str(id):
                         compras.append({
                             "id": value["id"],
                             "fecha": value["fecha"],
@@ -92,7 +92,7 @@ class CompraV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == c.id and c.id == id:
+                if value != None and str(value["id"]) == c.id and c.id == str(id):
                     updatekey = str(key)
                     break
 

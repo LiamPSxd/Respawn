@@ -22,7 +22,7 @@ class CatalogoVideojuegoV(View):
 
             if idC > -1 and idV > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idCatalogo"] == idC and value["idVideojuego"] == idV:
+                    if value != None and value["idCatalogo"] == str(idC) and value["idVideojuego"] == str(idV):
                         cvs.append({
                             "idCatalogo": value["idCatalogo"],
                             "idVideojuego": value["idVideojuego"]
@@ -68,7 +68,7 @@ class CatalogoVideojuegoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idCatalogo"]) == cv.idCatalogo and cv.idCatalogo == idCatalogo and str(value["idVideojuego"]) == cv.idVideojuego and cv.idVideojuego == idVideojuego:
+                if value != None and str(value["idCatalogo"]) == cv.idCatalogo and cv.idCatalogo == str(idCatalogo) and str(value["idVideojuego"]) == cv.idVideojuego and cv.idVideojuego == str(idVideojuego):
                     updatekey = str(key)
                     break
 

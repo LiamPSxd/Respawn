@@ -22,7 +22,7 @@ class WishListVideojuegoV(View):
 
             if idW > -1 and idV > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idWishList"] == idW and value["idVideojuego"] == idV:
+                    if value != None and value["idWishList"] == str(idW) and value["idVideojuego"] == str(idV):
                         wvs.append({
                             "idWishList": value["idWishList"],
                             "idVideojuego": value["idVideojuego"]
@@ -68,7 +68,7 @@ class WishListVideojuegoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idWishList"]) == wv.idWishList and wv.idWishList == idWishList and str(value["idVideojuego"]) == wv.idVideojuego and wv.idVideojuego == idVideojuego:
+                if value != None and str(value["idWishList"]) == wv.idWishList and wv.idWishList == str(idWishList) and str(value["idVideojuego"]) == wv.idVideojuego and wv.idVideojuego == str(idVideojuego):
                     updatekey = str(key)
                     break
 

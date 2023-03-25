@@ -22,7 +22,7 @@ class DivisaVideojuegoV(View):
 
             if idD > -1 and idV > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idDivisa"] == idD and value["idVideojuego"] == idV:
+                    if value != None and value["idDivisa"] == str(idD) and value["idVideojuego"] == str(idV):
                         dvs.append({
                             "idDivisa": value["idDivisa"],
                             "idVideojuego": value["idVideojuego"]
@@ -68,7 +68,7 @@ class DivisaVideojuegoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idDivisa"]) == dv.idDivisa and dv.idDivisa == idDivisa and str(value["idVideojuego"]) == dv.idVideojuego and dv.idVideojuego == idVideojuego:
+                if value != None and str(value["idDivisa"]) == dv.idDivisa and dv.idDivisa == str(idDivisa) and str(value["idVideojuego"]) == dv.idVideojuego and dv.idVideojuego == str(idVideojuego):
                     updatekey = str(key)
                     break
 

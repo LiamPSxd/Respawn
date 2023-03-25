@@ -22,7 +22,7 @@ class VideojuegoOfertaV(View):
 
             if idV > -1 and idO > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idVideojuego"] == idV and value["idOferta"] == idO:
+                    if value != None and value["idVideojuego"] == str(idV) and value["idOferta"] == str(idO):
                         vos.append({
                             "idVideojuego": value["idVideojuego"],
                             "idOferta": value["idOferta"]
@@ -68,7 +68,7 @@ class VideojuegoOfertaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idVideojuego"]) == vo.idVideojuego and vo.idVideojuego == idVideojuego and str(value["idOferta"]) == vo.idOferta and vo.idOferta == idOferta:
+                if value != None and str(value["idVideojuego"]) == vo.idVideojuego and vo.idVideojuego == str(idVideojuego) and str(value["idOferta"]) == vo.idOferta and vo.idOferta == str(idOferta):
                     updatekey = str(key)
                     break
 

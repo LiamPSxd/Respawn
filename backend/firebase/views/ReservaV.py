@@ -22,7 +22,7 @@ class ReservaV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and value["id"] == str(id):
                         reservas.append({
                             "id": value["id"],
                             "fecha": value["fecha"],
@@ -92,7 +92,7 @@ class ReservaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == r.id and r.id == id:
+                if value != None and str(value["id"]) == r.id and r.id == str(id):
                     updatekey = str(key)
                     break
 

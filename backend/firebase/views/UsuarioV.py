@@ -76,7 +76,7 @@ class UsuarioV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["correo"]) == u.correo and u.correo == correo:
+                if value != None and str(value["correo"]) == u.correo and u.correo == str(correo):
                     updatekey = str(key)
                     break
 

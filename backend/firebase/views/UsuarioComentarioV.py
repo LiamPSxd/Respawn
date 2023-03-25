@@ -22,7 +22,7 @@ class UsuarioComentarioV(View):
 
             if cU != "" and idC > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == cU and value["idComentario"] == idC:
+                    if value != None and value["correoUsuario"] == cU and value["idComentario"] == str(idC):
                         ucs.append({
                             "correoUsuario": value["correoUsuario"],
                             "idComentario": value["idComentario"]
@@ -68,7 +68,7 @@ class UsuarioComentarioV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["correoUsuario"]) == uc.correoUsuario and uc.correoUsuario == correoUsuario and str(value["idComentario"]) == uc.idComentario and uc.idComentario == idComentario:
+                if value != None and str(value["correoUsuario"]) == uc.correoUsuario and uc.correoUsuario == str(correoUsuario) and str(value["idComentario"]) == uc.idComentario and uc.idComentario == str(idComentario):
                     updatekey = str(key)
                     break
 

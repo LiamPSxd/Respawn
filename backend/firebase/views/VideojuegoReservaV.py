@@ -22,7 +22,7 @@ class VideojuegoReservaV(View):
 
             if idV > -1 and idR > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idVideojuego"] == idV and value["idReserva"] == idR:
+                    if value != None and value["idVideojuego"] == str(idV) and value["idReserva"] == str(idR):
                         vrs.append({
                             "idVideojuego": value["idVideojuego"],
                             "idReserva": value["idReserva"]
@@ -68,7 +68,7 @@ class VideojuegoReservaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idVideojuego"]) == vr.idVideojuego and vr.idVideojuego == idVideojuego and str(value["idReserva"]) == vr.idReserva and vr.idReserva == idReserva:
+                if value != None and str(value["idVideojuego"]) == vr.idVideojuego and vr.idVideojuego == str(idVideojuego) and str(value["idReserva"]) == vr.idReserva and vr.idReserva == str(idReserva):
                     updatekey = str(key)
                     break
 

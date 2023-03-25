@@ -22,7 +22,7 @@ class UsuarioReembolsoV(View):
 
             if cU != "" and idR > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == cU and value["idReembolso"] == idR:
+                    if value != None and value["correoUsuario"] == cU and value["idReembolso"] == str(idR):
                         urs.append({
                             "correoUsuario": value["correoUsuario"],
                             "idReembolso": value["idReembolso"]
@@ -68,7 +68,7 @@ class UsuarioReembolsoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["correoUsuario"]) == ur.correoUsuario and ur.correoUsuario == correoUsuario and str(value["idReembolso"]) == ur.idReembolso and ur.idReembolso == idReembolso:
+                if value != None and str(value["correoUsuario"]) == ur.correoUsuario and ur.correoUsuario == str(correoUsuario) and str(value["idReembolso"]) == ur.idReembolso and ur.idReembolso == str(idReembolso):
                     updatekey = str(key)
                     break
 

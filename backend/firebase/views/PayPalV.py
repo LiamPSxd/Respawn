@@ -22,7 +22,7 @@ class PayPalV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and value["id"] == str(id):
                         paypals.append({
                             "id": value["id"],
                             "saldo": value["saldo"],
@@ -80,7 +80,7 @@ class PayPalV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == p.id and p.id == id:
+                if value != None and str(value["id"]) == p.id and p.id == str(id):
                     updatekey = str(key)
                     break
 

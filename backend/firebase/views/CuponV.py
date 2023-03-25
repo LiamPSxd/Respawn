@@ -22,7 +22,7 @@ class CuponV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and value["id"] == str(id):
                         cupones.append({
                             "id": value["id"],
                             "nombre": value["nombre"],
@@ -76,7 +76,7 @@ class CuponV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == c.id and c.id == id:
+                if value != None and str(value["id"]) == c.id and c.id == str(id):
                     updatekey = str(key)
                     break
 

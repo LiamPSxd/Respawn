@@ -22,7 +22,7 @@ class UsuarioPayPalV(View):
 
             if cU != "" and idP > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == cU and value["idPayPal"] == idP:
+                    if value != None and value["correoUsuario"] == cU and value["idPayPal"] == str(idP):
                         ups.append({
                             "correoUsuario": value["correoUsuario"],
                             "idPayPal": value["idPayPal"]
@@ -68,7 +68,7 @@ class UsuarioPayPalV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["correoUsuario"]) == up.correoUsuario and up.correoUsuario == correoUsuario and str(value["idPayPal"]) == up.idPayPal and up.idPayPal == idPayPal:
+                if value != None and str(value["correoUsuario"]) == up.correoUsuario and up.correoUsuario == str(correoUsuario) and str(value["idPayPal"]) == up.idPayPal and up.idPayPal == str(idPayPal):
                     updatekey = str(key)
                     break
 

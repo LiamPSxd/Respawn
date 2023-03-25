@@ -22,7 +22,7 @@ class UsuarioTarjetaV(View):
 
             if cU != "" and idT > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == cU and value["idTarjeta"] == idT:
+                    if value != None and value["correoUsuario"] == cU and value["idTarjeta"] == str(idT):
                         uts.append({
                             "correoUsuario": value["correoUsuario"],
                             "idTarjeta": value["idTarjeta"]
@@ -68,7 +68,7 @@ class UsuarioTarjetaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["correoUsuario"]) == ut.correoUsuario and ut.correoUsuario == correoUsuario and str(value["idTarjeta"]) == ut.idTarjeta and ut.idTarjeta == idTarjeta:
+                if value != None and str(value["correoUsuario"]) == ut.correoUsuario and ut.correoUsuario == str(correoUsuario) and str(value["idTarjeta"]) == ut.idTarjeta and ut.idTarjeta == str(idTarjeta):
                     updatekey = str(key)
                     break
 

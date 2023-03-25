@@ -22,7 +22,7 @@ class TarjetaV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and value["id"] == str(id):
                         tarjetas.append({
                             "id": value["id"],
                             "saldo": value["saldo"],
@@ -88,7 +88,7 @@ class TarjetaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == t.id and t.id == id:
+                if value != None and str(value["id"]) == t.id and t.id == str(id):
                     updatekey = str(key)
                     break
 

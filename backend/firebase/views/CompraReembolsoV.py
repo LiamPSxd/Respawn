@@ -22,7 +22,7 @@ class CompraReembolsoV(View):
 
             if idC > -1 and idR > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idCompra"] == idC and value["idReembolso"] == idR:
+                    if value != None and value["idCompra"] == str(idC) and value["idReembolso"] == str(idR):
                         crs.append({
                             "idCompra": value["idCompra"],
                             "idReembolso": value["idReembolso"]
@@ -68,7 +68,7 @@ class CompraReembolsoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idCompra"]) == cr.idCompra and cr.idCompra == idCompra and str(value["idReembolso"]) == cr.idReembolso and cr.idReembolso == idReembolso:
+                if value != None and str(value["idCompra"]) == cr.idCompra and cr.idCompra == str(idCompra) and str(value["idReembolso"]) == cr.idReembolso and cr.idReembolso == str(idReembolso):
                     updatekey = str(key)
                     break
 

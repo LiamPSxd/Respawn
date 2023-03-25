@@ -22,7 +22,7 @@ class DivisaV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and value["id"] == str(id):
                         divisas.append({
                             "id": value["id"],
                             "nombre": value["nombre"],
@@ -80,7 +80,7 @@ class DivisaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == d.id and d.id == id:
+                if value != None and str(value["id"]) == d.id and d.id == str(id):
                     updatekey = str(key)
                     break
 

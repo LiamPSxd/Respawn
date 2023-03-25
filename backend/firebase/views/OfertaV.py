@@ -22,7 +22,7 @@ class OfertaV(View):
             
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and value["id"] == str(id):
                         ofertas.append({
                             "id": value["id"],
                             "nombre": value["nombre"],
@@ -76,7 +76,7 @@ class OfertaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == o.id and o.id == id:
+                if value != None and str(value["id"]) == o.id and o.id == str(id):
                     updatekey = str(key)
                     break
 
