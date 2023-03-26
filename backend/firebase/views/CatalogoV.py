@@ -22,7 +22,7 @@ class CatalogoV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == str(id):
+                    if value != None and str(value["id"]) == str(id):
                         catalogos.append({
                             "id": value["id"],
                             "nombre": value["nombre"]
@@ -85,7 +85,7 @@ class CatalogoV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == str(id):
+                if value != None and str(value["id"]) == str(id):
                     deletekey = str(key)
                     break
 

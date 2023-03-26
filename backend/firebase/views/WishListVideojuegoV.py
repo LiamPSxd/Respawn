@@ -22,7 +22,7 @@ class WishListVideojuegoV(View):
 
             if idW > -1 and idV > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idWishList"] == str(idW) and value["idVideojuego"] == str(idV):
+                    if value != None and str(value["idWishList"]) == str(idW) and str(value["idVideojuego"]) == str(idV):
                         wvs.append({
                             "idWishList": value["idWishList"],
                             "idVideojuego": value["idVideojuego"]
@@ -85,7 +85,7 @@ class WishListVideojuegoV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idWishList"] == str(idWishList) and value["idVideojuego"] == str(idVideojuego):
+                if value != None and str(value["idWishList"]) == str(idWishList) and str(value["idVideojuego"]) == str(idVideojuego):
                     deletekey = str(key)
                     break
 

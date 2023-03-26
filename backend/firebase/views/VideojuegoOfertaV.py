@@ -22,7 +22,7 @@ class VideojuegoOfertaV(View):
 
             if idV > -1 and idO > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idVideojuego"] == str(idV) and value["idOferta"] == str(idO):
+                    if value != None and str(value["idVideojuego"]) == str(idV) and str(value["idOferta"]) == str(idO):
                         vos.append({
                             "idVideojuego": value["idVideojuego"],
                             "idOferta": value["idOferta"]
@@ -85,7 +85,7 @@ class VideojuegoOfertaV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idVideojuego"] == str(idVideojuego) and value["idOferta"] == str(idOferta):
+                if value != None and str(value["idVideojuego"]) == str(idVideojuego) and str(value["idOferta"]) == str(idOferta):
                     deletekey = str(key)
                     break
 

@@ -22,7 +22,7 @@ class VideojuegoV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == str(id):
+                    if value != None and str(value["id"]) == str(id):
                         videojuegos.append({
                             "id": value["id"],
                             "nombre": value["nombre"],
@@ -113,7 +113,7 @@ class VideojuegoV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == str(id):
+                if value != None and str(value["id"]) == str(id):
                     deletekey = str(key)
                     break
 

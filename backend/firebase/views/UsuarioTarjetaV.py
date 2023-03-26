@@ -22,7 +22,7 @@ class UsuarioTarjetaV(View):
 
             if cU != "" and idT > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == cU and value["idTarjeta"] == str(idT):
+                    if value != None and str(value["correoUsuario"]) == cU and str(value["idTarjeta"]) == str(idT):
                         uts.append({
                             "correoUsuario": value["correoUsuario"],
                             "idTarjeta": value["idTarjeta"]
@@ -85,7 +85,7 @@ class UsuarioTarjetaV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["correoUsuario"] == str(correoUsuario) and value["idTarjeta"] == str(idTarjeta):
+                if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idTarjeta"]) == str(idTarjeta):
                     deletekey = str(key)
                     break
 

@@ -22,7 +22,7 @@ class ReservaReembolsoV(View):
 
             if idRe > -1 and idR > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idReserva"] == str(idRe) and value["idReembolso"] == str(idR):
+                    if value != None and str(value["idReserva"]) == str(idRe) and str(value["idReembolso"]) == str(idR):
                         rrs.append({
                             "idReserva": value["idReserva"],
                             "idReembolso": value["idReembolso"]
@@ -85,7 +85,7 @@ class ReservaReembolsoV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idReserva"] == str(idReserva) and value["idReembolso"] == str(idReembolso):
+                if value != None and str(value["idReserva"]) == str(idReserva) and str(value["idReembolso"]) == str(idReembolso):
                     deletekey = str(key)
                     break
 

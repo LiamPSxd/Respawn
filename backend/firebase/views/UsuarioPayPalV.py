@@ -22,7 +22,7 @@ class UsuarioPayPalV(View):
 
             if cU != "" and idP > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == cU and value["idPayPal"] == str(idP):
+                    if value != None and str(value["correoUsuario"]) == str(cU) and str(value["idPayPal"]) == str(idP):
                         ups.append({
                             "correoUsuario": value["correoUsuario"],
                             "idPayPal": value["idPayPal"]
@@ -85,7 +85,7 @@ class UsuarioPayPalV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["correoUsuario"] == str(correoUsuario) and value["idPayPal"] == str(idPayPal):
+                if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idPayPal"]) == str(idPayPal):
                     deletekey = str(key)
                     break
 

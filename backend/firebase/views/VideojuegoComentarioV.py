@@ -22,7 +22,7 @@ class VideojuegoComentarioV(View):
 
             if idV > -1 and idC > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idVideojuego"] == str(idV) and value["idComentario"] == str(idC):
+                    if value != None and str(value["idVideojuego"]) == str(idV) and str(value["idComentario"]) == str(idC):
                         vcs.append({
                             "idVideojuego": value["idVideojuego"],
                             "idComentario": value["idComentario"]
@@ -85,7 +85,7 @@ class VideojuegoComentarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idVideojuego"] == str(idVideojuego) and value["idComentario"] == str(idComentario):
+                if value != None and str(value["idVideojuego"]) == str(idVideojuego) and str(value["idComentario"]) == str(idComentario):
                     deletekey = str(key)
                     break
 

@@ -22,7 +22,7 @@ class UsuarioCompraV(View):
 
             if cU != "" and idC > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == cU and value["idCompra"] == str(idC):
+                    if value != None and str(value["correoUsuario"]) == str(cU) and str(value["idCompra"]) == str(idC):
                         ucs.append({
                             "correoUsuario": value["correoUsuario"],
                             "idCompra": value["idCompra"]
@@ -85,7 +85,7 @@ class UsuarioCompraV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["correoUsuario"] == str(correoUsuario) and value["idCompra"] == str(idCompra):
+                if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idCompra"]) == str(idCompra):
                     deletekey = str(key)
                     break
 

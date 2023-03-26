@@ -22,7 +22,7 @@ class CatalogoFiltroV(View):
 
             if idC > -1 and idF > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idFiltro"] == str(idF) and value["idCatalogo"] == str(idC):
+                    if value != None and str(value["idFiltro"]) == str(idF) and str(value["idCatalogo"]) == str(idC):
                         cfs.append({
                             "idCatalogo": value["idCatalogo"],
                             "idFiltro": value["idFiltro"]
@@ -85,7 +85,7 @@ class CatalogoFiltroV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idCatalogo"] == str(idCatalogo) and value["idFiltro"] == str(idFiltro):
+                if value != None and str(value["idCatalogo"]) == str(idCatalogo) and str(value["idFiltro"]) == str(idFiltro):
                     deletekey = str(key)
                     break
 

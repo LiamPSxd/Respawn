@@ -22,7 +22,7 @@ class UsuarioWishListV(View):
 
             if cU != "" and idW > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["correoUsuario"] == str(cU) and value["idWishList"] == str(idW):
+                    if value != None and str(value["correoUsuario"]) == str(cU) and str(value["idWishList"]) == str(idW):
                         uws.append({
                             "correoUsuario": value["correoUsuario"],
                             "idWishList": value["idWishList"]
@@ -85,7 +85,7 @@ class UsuarioWishListV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["correoUsuario"] == str(correoUsuario) and value["idWishList"] == str(idWishList):
+                if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idWishList"]) == str(idWishList):
                     deletekey = str(key)
                     break
 
