@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
+import { useNavigate } from "react-router-dom";
+import { async } from "@firebase/util";
 
 const Register = () => {
   const [user, setUser] = useState({
@@ -8,18 +10,27 @@ const Register = () => {
     password: "",
   });
 
-  const {signup} = useAuth()
+  const { signup } = useAuth();
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [error,setError]= useState();
 
-  const handleChange = ({target: {name, value}}) => {
-    setUser({...user, [name]:value})
+  const handleChange = ({ target: { name, value } }) => {
+    setUser({ ...user, [name]: value });
   };
-  //-----------------------//
-  const handleSubmit = e =>{
-    e.preventDefault()
-    signup(user.email,user.password)
-  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signup(user.email, user.password);
+      navigate("/catalogo");
+    } catch (error) {
+      setError(error.message)
+    }
+  };
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      <form onSubmit={handleSubmit}>
       <label htmlFor="email">Correo Electrónico </label>
       <input
         type="email"
@@ -38,6 +49,7 @@ const Register = () => {
 
       <button>Crear cuenta</button>
     </form>
+    </div>
   );
 };
 
