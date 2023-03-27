@@ -9,7 +9,6 @@ import {
   MDBNavbar,
   MDBNavbarBrand,
   MDBNavbarToggler,
-  MDBIcon,
   MDBNavbarNav,
   MDBNavbarLink,
   MDBDropdown,
@@ -32,7 +31,7 @@ export default function App() {
   }
 
   return (
-    <MDBNavbar expand='lg' dark bgColor='dark'>
+    <MDBNavbar expand='lg' light style={{backgroundColor:'#242325'}}>
       <MDBContainer fluid className='justify-content-center'>
         {/* BOTON CON ICONO DE INICIO */}
         <MDBNavbarBrand href='/'>
@@ -63,7 +62,7 @@ export default function App() {
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
                 />
-                <Button type="submit" className="search_icon"><i className="fas fa-search"></i></Button>
+                <Button style={{backgroundColor:'#F6F8FF', border:'#F6F8FF'}} type="submit" className="search_icon"><i className="fas fa-search"></i></Button>
               </div>
             </Form>
           </div>
@@ -71,7 +70,7 @@ export default function App() {
           
           {/* Botón de perfil de usuario */}
           
-          <MDBNavbarLink href='/' className=''>
+          <MDBNavbarLink href='#' className=''>
                 <img src={IconWishlist} alt="logo" width="40" height="40" />
           </MDBNavbarLink>
 
@@ -85,7 +84,7 @@ export default function App() {
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
                   <MDBDropdownItem link>Iniciar Sesión</MDBDropdownItem>
-                  <MDBDropdownItem link href='/registro'>Crear cuenta</MDBDropdownItem>
+                  <MDBDropdownItem link>Crear cuenta</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
         </MDBCollapse>
