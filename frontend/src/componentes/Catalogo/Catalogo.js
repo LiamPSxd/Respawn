@@ -4,6 +4,7 @@ import * as EmpleadoServer from "../Empleado/EmpleadoServer";
 import './catalogo.css';
 
 const Catalogo = () => {
+ 
   const history = useNavigate();
   const params = useParams();
 
@@ -44,14 +45,10 @@ const Catalogo = () => {
     }
   };
 
-  useEffect(() => {
-    if (params.id) {
-      getEmpleado(params.id);
-    }
-    // eslint-disable-next-line
-  }, []);
+
 
   return (
+    
     <body>
     <header>
       <section id="banner">Banner</section>

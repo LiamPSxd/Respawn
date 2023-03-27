@@ -22,7 +22,7 @@ class MensajeV(View):
 
             if tipo != "":
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["tipo"] == tipo:
+                    if value != None and str(value["tipo"]) == str(tipo):
                         mensajes.append({
                             "titulo": value["titulo"],
                             "descripcion": value["descripcion"],
@@ -79,7 +79,7 @@ class MensajeV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["tipo"]) == m.tipo:
+                if value != None and str(value["tipo"]) == m.tipo and m.tipo == str(tipo):
                     updatekey = str(key)
                     break
 
@@ -96,7 +96,7 @@ class MensajeV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["titulo"] == str(titulo):
+                if value != None and str(value["titulo"]) == str(titulo):
                     deletekey = str(key)
                     break
 

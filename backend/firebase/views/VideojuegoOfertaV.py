@@ -22,7 +22,7 @@ class VideojuegoOfertaV(View):
 
             if idV > -1 and idO > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["idVideojuego"] == idV and value["idOferta"] == idO:
+                    if value != None and str(value["idVideojuego"]) == str(idV) and str(value["idOferta"]) == str(idO):
                         vos.append({
                             "idVideojuego": value["idVideojuego"],
                             "idOferta": value["idOferta"]
@@ -50,7 +50,7 @@ class VideojuegoOfertaV(View):
                 jb["idOferta"]
             )
 
-            if vo.idVideojuego > -1:
+            if vo.idVideojuego > -1 and vo.idOferta > -1:
                 db.getDB().reference(documento).child(f"{vo.idVideojuego}{vo.idOferta}").set({"idVideojuego": f"{vo.idVideojuego}", "idOferta": f"{vo.idOferta}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
@@ -68,12 +68,12 @@ class VideojuegoOfertaV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["idVideojuego"]) == vo.idVideojuego and str(value["idOferta"]) == vo.idOferta:
+                if value != None and str(value["idVideojuego"]) == vo.idVideojuego and vo.idVideojuego == str(idVideojuego) and str(value["idOferta"]) == vo.idOferta and vo.idOferta == str(idOferta):
                     updatekey = str(key)
                     break
 
             if updatekey != "":
-                db.getDB().reference(documento).child(updatekey).update({"idVideojuego": f"{vo.idVideojuego}", "idCompra": f"{vo.idCompra}"})
+                db.getDB().reference(documento).child(updatekey).update({"idVideojuego": f"{vo.idVideojuego}", "idOferta": f"{vo.idOferta}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    
@@ -85,7 +85,7 @@ class VideojuegoOfertaV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["idVideojuego"] == str(idVideojuego) and value["idOferta"] == str(idOferta):
+                if value != None and str(value["idVideojuego"]) == str(idVideojuego) and str(value["idOferta"]) == str(idOferta):
                     deletekey = str(key)
                     break
 

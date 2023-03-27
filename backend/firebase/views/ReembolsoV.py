@@ -22,7 +22,7 @@ class ReembolsoV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and str(value["id"]) == str(id):
                         reembolsos.append({
                             "id": value["id"]
                         })
@@ -64,7 +64,7 @@ class ReembolsoV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == r.id:
+                if value != None and str(value["id"]) == r.id and r.id == str(id):
                     updatekey = str(key)
                     break
 
@@ -81,7 +81,7 @@ class ReembolsoV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == str(id):
+                if value != None and str(value["id"]) == str(id):
                     deletekey = str(key)
                     break
 

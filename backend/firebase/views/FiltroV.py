@@ -22,7 +22,7 @@ class FiltroV(View):
 
             if id > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["id"] == id:
+                    if value != None and str(value["id"]) == str(id):
                         filtros.append({
                             "id": value["id"],
                             "nombre": value["nombre"]
@@ -68,7 +68,7 @@ class FiltroV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["id"]) == f.id:
+                if value != None and str(value["id"]) == f.id and f.id == str(id):
                     updatekey = str(key)
                     break
 
@@ -85,7 +85,7 @@ class FiltroV(View):
             deletekey = ""
             
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["id"] == str(id):
+                if value != None and str(value["id"]) == str(id):
                     deletekey = str(key)
                     break
 

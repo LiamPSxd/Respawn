@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import App from "./App";
 import * as OfertaServer from "./OfertaServer";
 
+
 const OfertaLista = () => {
+
+
     const [ofertas, setOfertas] = useState([]);
 
     const listaOfertas = async () => {
