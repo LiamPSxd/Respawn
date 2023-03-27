@@ -36,3 +36,16 @@
     .card{
         width: 18rem;
     }
+    .col{
+        margin-left: 10%;
+    }
+
+    #categoria{
+       /* border: 2px solid black;*/
+        background-color: antiquewhite;
+        float:left;
+    }
+
+    .text-black{
+        border: 3px solid black;
+    }

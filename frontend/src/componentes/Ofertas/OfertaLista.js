@@ -15,7 +15,7 @@ const OfertaLista = () => {
 
             setOfertas(data.Ofertas);
         }catch(error){
-            console.log(error);
+            console.log(error); 
         }
     };
     useEffect(() => {
