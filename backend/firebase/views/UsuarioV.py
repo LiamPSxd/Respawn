@@ -22,7 +22,7 @@ class UsuarioV(View):
 
             if nombre != "":
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and value["nombre"] == nombre:
+                    if value != None and str(value["nombre"]) == str(nombre):
                         usuarios.append({
                             "nombre": value["nombre"],
                             "correo": value["correo"],
@@ -76,7 +76,7 @@ class UsuarioV(View):
             updatekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and str(value["correo"]) == u.correo:
+                if value != None and str(value["correo"]) == u.correo and u.correo == str(correo):
                     updatekey = str(key)
                     break
 
@@ -93,7 +93,7 @@ class UsuarioV(View):
             deletekey = ""
 
             for key, value in db.getDocumento(documento).items():
-                if value != None and value["nombre"] == str(nombre):
+                if value != None and str(value["nombre"]) == str(nombre):
                     deletekey = str(key)
                     break
 
