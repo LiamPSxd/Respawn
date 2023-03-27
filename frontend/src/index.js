@@ -10,7 +10,6 @@ import Navbar2 from "./componentes/NavBar/Navbar2";
 import Catalogo from "./componentes/Catalogo/Catalogo";
 import Timer from "./componentes/Ofertas/App";
 import DivisaLista from "./componentes/Divisa/DivisaLista";
-import DivisaForm from "./componentes/Divisa/DivisaForm";
 import Cupones from "./componentes/Cupones/Cupones";
 import Registro from "./componentes/RegistroUser/Register";
 import Login  from "./componentes/Login/Login";
@@ -31,6 +30,7 @@ root.render(
     {/* <div className="container my-4"> */}
 
     <AuthProvider>
+<<<<<<< HEAD
     <Routes>
       <Route exact path="/monedaPeso" element={<DivisaLista />} />
       <Route exact path="/monedaPeso/divisa/" element={<DivisaForm />} />
@@ -44,6 +44,16 @@ root.render(
       <Route path="/home" element={<Home />} />
       {/* <Route path="/updateEmpleado/:id" element={<EmpleadoForm />} /> */}
     </Routes>
+=======
+      <Routes>
+        <Route exact path="/monedaPeso" element={<DivisaLista />} />
+        <Route exact path="/ofertas" element={<Timer />} />
+        <Route exact path="/cupones" element={<Cupones />} />
+        <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/registro" element={<Registro />} />
+      </Routes>
+>>>>>>> d61cf446677f602c7779556e7167e635d3b29184
     </AuthProvider>
     {/* </div> */}
   </BrowserRouter>

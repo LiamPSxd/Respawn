@@ -45,7 +45,7 @@ code {
 
   .searchbar:hover > .search_icon{
   background: white;
-  color: #e74c3c;
+  color: #7d5ba6;
   }
 
   .search_icon{
@@ -56,6 +56,6 @@ code {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color:white;
+  color:#242325;
   text-decoration:none;
   }
