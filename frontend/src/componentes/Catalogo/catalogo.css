@@ -1,15 +1,22 @@
 #banner{
-    background-color: aqua;
+    background-image:url(imagenesCatalogo/resident.jpg);
+    background-size: contain;
     height: 250px;
 }
 
 #categoria{
-    background-color: blueviolet;
     float:left;
+   /* border: 2px solid black*/;
+    background-color: antiquewhite;
+}
+#video{
+    padding: 10;
 }
 
-#video{
-    background-color: chocolate;
-    float: left;
-    width: 1000px;
+.text-black{
+    border: 2px solid black
 }
+.col{
+    margin-left: 10%;
+}
+

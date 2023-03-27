@@ -62,7 +62,7 @@ const Catalogo = () => {
   return (
     <body>
     <header>
-      <section id="banner">Banner</section>
+      <section id="banner"></section>
     </header>
     <br></br>
     <main>
@@ -139,6 +139,7 @@ const Catalogo = () => {
       </aside>
     </main>
     <article id="video">
+      <div className="col">
     <div className="col-md-4 mb-4">
             <div className="card card-body">
                 <h2 className="card-title"><strong>Red Dead</strong></h2>
@@ -147,13 +148,7 @@ const Catalogo = () => {
                 <button  className="btn btn-info my-2">Actualizar</button>
                 <button  className="btn btn-danger">Eliminar</button>
             </div>
-            <div className="card card-body">
-                <h2 className="card-title"><strong>Red Dead</strong></h2>
-                <h5 className="card-text"><strong>Plataforma: </strong>Xbox</h5>
-                <h5 className="card-text"><strong>Precio: $</strong>500$</h5>
-                <button  className="btn btn-info my-2">Actualizar</button>
-                <button  className="btn btn-danger">Eliminar</button>
-            </div>
+        </div>
         </div>
     </article>
   </body>
