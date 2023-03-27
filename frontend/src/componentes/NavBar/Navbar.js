@@ -35,7 +35,7 @@ export default function App() {
     <MDBNavbar expand='lg' dark bgColor='dark'>
       <MDBContainer fluid className='justify-content-center'>
         {/* BOTON CON ICONO DE INICIO */}
-        <MDBNavbarBrand href='/'>
+        <MDBNavbarBrand href='/home'>
         <img src={Logo} alt="logo" width="60" height="50" />
         </MDBNavbarBrand>
 
@@ -84,7 +84,7 @@ export default function App() {
                   <img src={IconPerfil} alt="logo" width="40" height="40" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem link>Iniciar Sesión</MDBDropdownItem>
+                  <MDBDropdownItem link href='/iniciodesesion'>Iniciar Sesión</MDBDropdownItem>
                   <MDBDropdownItem link href='/registro'>Crear cuenta</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>

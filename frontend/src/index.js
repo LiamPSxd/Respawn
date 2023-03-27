@@ -7,13 +7,14 @@ import { AuthProvider } from "./context/authContext";
 //Componentes
 import Navbar from "./componentes/NavBar/Navbar";
 import Navbar2 from "./componentes/NavBar/Navbar2";
-// import EmpleadoLista from './componentes/Empleado/EmpleadoLista';
 import Catalogo from "./componentes/Catalogo/Catalogo";
 import Timer from "./componentes/Ofertas/App";
 import DivisaLista from "./componentes/Divisa/DivisaLista";
 import DivisaForm from "./componentes/Divisa/DivisaForm";
 import Cupones from "./componentes/Cupones/Cupones";
 import Registro from "./componentes/RegistroUser/Register";
+import Login  from "./componentes/Login/Login";
+import Home from "./componentes/Homepage/Home";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -39,6 +40,8 @@ root.render(
       <Route path="/catalogo" element={<Catalogo />} />
       <Route path="/registro" element={<Registro />} />
       <Route path="/registro" element={<Registro />} />
+      <Route path="/iniciodesesion" element={<Login />} />
+      <Route path="/home" element={<Home />} />
       {/* <Route path="/updateEmpleado/:id" element={<EmpleadoForm />} /> */}
     </Routes>
     </AuthProvider>
