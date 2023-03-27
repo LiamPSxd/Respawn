@@ -7,11 +7,9 @@ import { AuthProvider } from "./context/authContext";
 //Componentes
 import Navbar from "./componentes/NavBar/Navbar";
 import Navbar2 from "./componentes/NavBar/Navbar2";
-// import EmpleadoLista from './componentes/Empleado/EmpleadoLista';
 import Catalogo from "./componentes/Catalogo/Catalogo";
 import Timer from "./componentes/Ofertas/App";
 import DivisaLista from "./componentes/Divisa/DivisaLista";
-import DivisaForm from "./componentes/Divisa/DivisaForm";
 import Cupones from "./componentes/Cupones/Cupones";
 import Registro from "./componentes/RegistroUser/Register";
 
@@ -30,17 +28,14 @@ root.render(
     {/* <div className="container my-4"> */}
 
     <AuthProvider>
-    <Routes>
-      <Route exact path="/monedaPeso" element={<DivisaLista />} />
-      <Route exact path="/monedaPeso/divisa/" element={<DivisaForm />} />
-      <Route exact path="/monedaPeso/divisa/:id" element={<DivisaForm />} />
-      <Route exact path="/ofertas" element={<Timer />} />
-      <Route exact path="/cupones" element={<Cupones />} />
-      <Route path="/catalogo" element={<Catalogo />} />
-      <Route path="/registro" element={<Registro />} />
-      <Route path="/registro" element={<Registro />} />
-      {/* <Route path="/updateEmpleado/:id" element={<EmpleadoForm />} /> */}
-    </Routes>
+      <Routes>
+        <Route exact path="/monedaPeso" element={<DivisaLista />} />
+        <Route exact path="/ofertas" element={<Timer />} />
+        <Route exact path="/cupones" element={<Cupones />} />
+        <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/registro" element={<Registro />} />
+        <Route path="/registro" element={<Registro />} />
+      </Routes>
     </AuthProvider>
     {/* </div> */}
   </BrowserRouter>
