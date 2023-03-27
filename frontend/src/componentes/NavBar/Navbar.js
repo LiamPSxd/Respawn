@@ -83,7 +83,7 @@ export default function App() {
                   <img src={IconPerfil} alt="logo" width="40" height="40" />
                 </MDBDropdownToggle>
                 <MDBDropdownMenu>
-                  <MDBDropdownItem link href='/iniciodesesion'>Iniciar Sesión</MDBDropdownItem>
+                  <MDBDropdownItem link href='/login'>Iniciar Sesión</MDBDropdownItem>
                   <MDBDropdownItem link href='/registro'>Crear cuenta</MDBDropdownItem>
                   <MDBDropdownItem link href='/cupones'>Cupones</MDBDropdownItem>
                 </MDBDropdownMenu>
