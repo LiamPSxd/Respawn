@@ -91,6 +91,7 @@ export default function App() {
                   <MDBDropdownItem link>Crear cuenta</MDBDropdownItem>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <MDBDropdownItem link href='/cupones'>Cupones</MDBDropdownItem>
 =======
 >>>>>>> d61cf446677f602c7779556e7167e635d3b29184
@@ -98,6 +99,9 @@ export default function App() {
 =======
 >>>>>>> d61cf446677f602c7779556e7167e635d3b29184
 >>>>>>> 7f3566f6187a9c57b7b7a1bcb9da105caf517a12
+=======
+>>>>>>> d61cf446677f602c7779556e7167e635d3b29184
+>>>>>>> b2ddcde8ba2c26a5b6ce3bd309b3ef54b1ec7561
                 </MDBDropdownMenu>
               </MDBDropdown>
         </MDBCollapse>
