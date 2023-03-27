@@ -1,4 +1,9 @@
 const API_URL = "http://127.0.0.1:8000/firebase/divisas/";
+const API_CURRENCY = "https://api.currencyapi.com/v3/latest?apikey=ADWFsMeOzhBOlQF9CDsHKXVb9rqh7GRlOMW6Nj71&currencies=&base_currency="
+
+export const getAllCurrencies = async (baseCurrency) => {
+    return await fetch(`${API_CURRENCY}${baseCurrency}`);
+}
 
 export const getAllDivisas = async () => {
     return await fetch(API_URL);
@@ -6,22 +11,6 @@ export const getAllDivisas = async () => {
 
 export const getDivisa = async (idDivisa) => {
     return await fetch(`${API_URL}${idDivisa}`);
-};
-
-export const addDivisa = async (divisa) => {
-    return await fetch(API_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "id": String(divisa.id),
-            "nombre": String(divisa.nombre).trim(),
-            "pais": String(divisa.pais).trim(),
-            "valor": String(divisa.valor),
-            "simbolo": String(divisa.simbolo).trim()
-        })
-    });
 };
 
 export const updateDivisa = async (divisa) => {
@@ -35,13 +24,9 @@ export const updateDivisa = async (divisa) => {
             "nombre": String(divisa.nombre).trim(),
             "pais": String(divisa.pais).trim(),
             "valor": String(divisa.valor),
-            "simbolo": String(divisa.simbolo).trim()
+            "simbolo": String(divisa.simbolo).trim(),
+            "seleccionado": Boolean(divisa.seleccionado),
+            "hora": String(divisa.hora)
         })
-    });
-};
-
-export const deleteDivisa = async (idDivisa) => {
-    return await fetch(`${API_URL}${idDivisa}`, {
-        method: "DELETE"
     });
 };
