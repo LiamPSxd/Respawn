@@ -1,24 +1,36 @@
-import React from "react";
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as DivisaServer from "./DivisaServer";
-import { useNavigate } from "react-router-dom";
 
-const DivisaItem = ({divisa, getAllDivisas}) => {
+const DivisaItem = ({divisa, divisas}) => {
     const history = useNavigate();
 
-    const handleDelete = async (idDivisa) => {
-        await DivisaServer.deleteDivisa(idDivisa);
-        getAllDivisas();
+    const handleCambioDivisa = async (div) => {
+        await divisas.forEach(d => {
+            if(d.seleccionado){
+                d.seleccionado = false;
+                div.seleccionado = true
+
+                DivisaServer.updateDivisa(d);
+                DivisaServer.updateDivisa(div);
+            }
+        });
+
+        history('/monedaPeso');
     };
 
     return(
         <div className="col-md-4 mb-4">
             <div className="card card-body">
-                <h2 className="card-title"><strong>{divisa.nombre}</strong></h2>
-                <h5 className="card-text">{divisa.simbolo}{divisa.valor}</h5>
-                <h5 className="card-text">{divisa.pais}</h5>
-                <button onClick={() => history(`/monedaPeso/divisa`)} className="btn btn-primary my-2">Añadir</button>
-                <button onClick={() => history(`/monedaPeso/divisa/${divisa.id}`)} className="btn btn-success my-2">Actualizar</button>
-                <button onClick={() => handleDelete(divisa.id)} className="btn btn-danger">Eliminar</button>
+                <h1 className="card-title"><strong>{divisa.nombre}</strong></h1>
+                <h4 className="card-text">{divisa.pais}</h4>
+                <h4 className="card-text">{divisa.valor} {divisa.simbolo}</h4>
+
+                {divisa.seleccionado === true ? (
+                    <button className="btn btn-success my-2" disabled>Seleccionado</button>
+                ) : (
+                    <button onClick={() => handleCambioDivisa(divisa)} className="btn btn-primary my-2">Seleccionar</button>
+                )}
             </div>
         </div>
     );

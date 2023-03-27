@@ -28,7 +28,9 @@ class DivisaV(View):
                             "nombre": value["nombre"],
                             "pais": value["pais"],
                             "valor": value["valor"],
-                            "simbolo": value["simbolo"]
+                            "simbolo": value["simbolo"],
+                            "seleccionado": value["seleccionado"],
+                            "hora": value["hora"]
                         })
             elif id == -1:
                 for key, value in db.getDocumento(documento).items():
@@ -38,7 +40,9 @@ class DivisaV(View):
                             "nombre": value["nombre"],
                             "pais": value["pais"],
                             "valor": value["valor"],
-                            "simbolo": value["simbolo"]
+                            "simbolo": value["simbolo"],
+                            "seleccionado": value["seleccionado"],
+                            "hora": value["hora"]
                         })
 
             if len(divisas) > 0:
@@ -56,11 +60,13 @@ class DivisaV(View):
                 jb["nombre"],
                 jb["pais"],
                 jb["valor"],
-                jb["simbolo"]
+                jb["simbolo"],
+                jb["seleccionado"],
+                jb["hora"]
             )
 
             if d.nombre != "":
-                db.getDB().reference(documento).child(str(d.id)).set({"id": f"{d.id}", "nombre": f"{d.nombre}", "pais": f"{d.pais}", "valor": f"{d.valor}", "simbolo": f"{d.simbolo}"})
+                db.getDB().reference(documento).child(str(d.id)).set({"id": f"{d.id}", "nombre": f"{d.nombre}", "pais": f"{d.pais}", "valor": f"{d.valor}", "simbolo": f"{d.simbolo}", "seleccionado": f"{d.seleccionado}", "hora": f"{d.hora}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
@@ -75,7 +81,9 @@ class DivisaV(View):
                 jb["nombre"],
                 jb["pais"],
                 jb["valor"],
-                jb["simbolo"]
+                jb["simbolo"],
+                jb["seleccionado"],
+                jb["hora"]
             )
             updatekey = ""
 
@@ -85,7 +93,7 @@ class DivisaV(View):
                     break
 
             if updatekey != "":
-                db.getDB().reference(documento).child(updatekey).update({"id": f"{d.id}", "nombre": f"{d.nombre}", "pais": f"{d.pais}", "valor": f"{d.valor}", "simbolo": f"{d.simbolo}"})
+                db.getDB().reference(documento).child(updatekey).update({"id": f"{d.id}", "nombre": f"{d.nombre}", "pais": f"{d.pais}", "valor": f"{d.valor}", "simbolo": f"{d.simbolo}", "seleccionado": f"{d.seleccionado}", "hora": f"{d.hora}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    
