@@ -36,7 +36,7 @@ root.render(
         <Route exact path="/cupones" element={<Cupones />} />
         <Route path="/catalogo" element={<Catalogo />} />
         <Route path="/registro" element={<Registro />} />
-        <Route path="/registro" element={<Registro />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </AuthProvider>
     {/* </div> */}
