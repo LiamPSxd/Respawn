@@ -30,15 +30,16 @@ root.render(
     {/* <div className="container my-4"> */}
 
   <AuthProvider>
-      <Routes>
-        <Route exact path="/monedaPeso" element={<DivisaLista />} />
-        <Route exact path="/ofertas" element={<Timer />} />
-        <Route exact path="/cupones" element={<Cupones />} />
-        <Route path="/catalogo" element={<Catalogo />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </AuthProvider>
+    <Routes>
+      <Route exact path="/monedaPeso" element={<DivisaLista />} />
+      <Route exact path="/ofertas" element={<Timer />} />
+      <Route exact path="/cupones" element={<Cupones />} />
+      <Route path="/catalogo" element={<Catalogo />} />
+      <Route path="/registro" element={<Registro />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/home" element={<Home />} />
+    </Routes>
+  </AuthProvider>
     {/* </div> */}
   </BrowserRouter>
 );

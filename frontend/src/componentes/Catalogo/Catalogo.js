@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as EmpleadoServer from "../Empleado/EmpleadoServer";
+import VideojuegoItem from "../Videojuego/VideojuegoItem";
+import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import './catalogo.css';
 
 const Catalogo = () => {
@@ -45,10 +47,23 @@ const Catalogo = () => {
     }
   };
 
+  const [videojuegos, setVideojuegos] = useState([]);
 
+  const listaVideojuegos = async () => {
+    try{
+      const data = await (await VideojuegoServer.getAllVideojuegos()).json();
+      setVideojuegos(data.Videojuegos);
+    }catch(error){
+      console.log(error);
+    }
+  };
 
-  return (
-    
+  useEffect(() => {
+    listaVideojuegos();
+    // eslint-disable-next-line
+  }, []);
+
+  return(
     <body>
     <header>
       <section id="banner"></section>
@@ -128,17 +143,11 @@ const Catalogo = () => {
       </aside>
     </main>
     <article id="video">
-      <div className="col">
-    <div className="col-md-4 mb-4">
-            <div className="card card-body">
-                <h2 className="card-title"><strong>Red Dead</strong></h2>
-                <h5 className="card-text"><strong>Plataforma: </strong>Xbox</h5>
-                <h5 className="card-text"><strong>Precio: $</strong>500$</h5>
-                <button  className="btn btn-info my-2">Actualizar</button>
-                <button  className="btn btn-danger">Eliminar</button>
-            </div>
-        </div>
-        </div>
+    <div className="row">
+      {videojuegos.map(videojuego => (
+        <VideojuegoItem key={videojuego.id} videojuego={videojuego} />
+      ))}
+    </div>
     </article>
   </body>
   );

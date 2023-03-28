@@ -88,7 +88,7 @@ const Timer = () => {
                         <h5 className="card-text">Descuento % </h5>
                         <button className="btn btn-info my-2">Comprar</button>
                     </div>
-                </div>                
+                </div>
         </div>
       );
 }

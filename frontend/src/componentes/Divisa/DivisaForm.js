@@ -18,8 +18,7 @@ const DivisaForm = () => {
 
         try{
             if(!params.id){
-                let res = await DivisaServer.addDivisa(divisa);
-                const data = await res.json();
+                const data = await (await DivisaServer.addDivisa(divisa)).json();
 
                 if(data.message === "Exitoso"){
                     setDivisa(initialState);
@@ -34,8 +33,7 @@ const DivisaForm = () => {
 
     const getDivisa = async (idDivisa) => {
         try{
-            const res = await DivisaServer.getDivisa(idDivisa);
-            const data = await res.json();
+            const data = await (await DivisaServer.getDivisa(idDivisa)).json();
             const { id, nombre, pais, valor, simbolo } = data.Divisas[0];
 
             setDivisa({ id, nombre, pais, valor, simbolo });
@@ -45,9 +43,7 @@ const DivisaForm = () => {
     };
 
     useEffect(() => {
-        if(params.id){
-            getDivisa(params.id);
-        }
+        if(params.id) getDivisa(params.id);
         // eslint-disable-next-line
     }, []);
 

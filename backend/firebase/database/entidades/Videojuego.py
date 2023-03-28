@@ -1,11 +1,12 @@
 class Videojuego:
-    def __init__(self, id = 0, nombre = "", descripcion = "", caratula = "", video = "", precio = 0.0, plataforma = "", datosExtra = "", calificacion = 0.0):
+    def __init__(self, id = 0, nombre = "", descripcion = "", caratula = "", video = "", precio = 0.0, genero = "", plataforma = "", datosExtra = "", calificacion = 0.0):
         self._id = id
         self._nombre = nombre
         self._descripcion = descripcion
         self._caratula = caratula
         self._video = video
         self._precio = precio
+        self._genero = genero
         self._plataforma = plataforma
         self._datosExtra = datosExtra
         self._calificacion = calificacion
@@ -59,6 +60,14 @@ class Videojuego:
         self._precio = precio
 
     @property
+    def genero(self):
+        return self._genero
+
+    @genero.setter
+    def genero(self, genero):
+        self._genero = genero
+
+    @property
     def plataforma(self):
         return self._plataforma
     
@@ -83,4 +92,4 @@ class Videojuego:
         self._calificacion = calificacion
 
     def toString(self):
-        return f"Videojuego {self.id}: {self.nombre}, {self.descripcion}, {self.caratula}, {self.video}, {self.precio}, {self.plataforma}, {self.datosExtra}, {self.calificacion}"
+        return f"Videojuego {self.id}: {self.nombre}, {self.descripcion}, {self.caratula}, {self.video}, {self.precio}, {self.genero}, {self.plataforma}, {self.datosExtra}, {self.calificacion}"
