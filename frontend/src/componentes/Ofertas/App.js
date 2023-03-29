@@ -73,7 +73,7 @@ const Timer = () => {
   </div>
   <form className="flex flex-col gap-8">
       <br></br>
-          <button type="submit" className="btn btn-block btn-primary">
+          <button type="submit" id="fil" className="btn btn-block btn-primary">
           Aplicar Filtro
         </button>
   </form>

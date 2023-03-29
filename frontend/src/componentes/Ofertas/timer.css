@@ -44,8 +44,10 @@
        /* border: 2px solid black;*/
         background-color: antiquewhite;
         float:left;
+        margin-top: 1%;
     }
 
     .text-black{
-        border: 3px solid black;
+        border: 2px solid black;
+        background-color: white;
     }
