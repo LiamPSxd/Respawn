@@ -10,7 +10,7 @@ import Navbar2 from "./componentes/NavBar/Navbar2";
 import Catalogo from "./componentes/Catalogo/Catalogo";
 import Timer from "./componentes/Ofertas/App";
 import DivisaLista from "./componentes/Divisa/DivisaLista";
-import Cupones from "./componentes/Cupones/Cupones";
+import Cupon from "./componentes/Cupon/Cupon";
 import Registro from "./componentes/RegistroUser/Register";
 import Login  from "./componentes/Login/Login";
 import Home from "./componentes/Homepage/Home";
@@ -33,7 +33,7 @@ root.render(
     <Routes>
       <Route exact path="/monedaPeso" element={<DivisaLista />} />
       <Route exact path="/ofertas" element={<Timer />} />
-      <Route exact path="/cupones" element={<Cupones />} />
+      <Route exact path="/cupones" element={<Cupon />} />
       <Route path="/catalogo" element={<Catalogo />} />
       <Route path="/registro" element={<Registro />} />
       <Route path="/login" element={<Login />} />
