@@ -24,7 +24,7 @@ export const updateVideojuego = async (videojuego) => {
             "genero": String(videojuego.genero),
             "plataforma": String(videojuego.plataforma),
             "datosExtra": String(videojuego.datosExtra),
-            "calificacion": Float32Array(videojuego.calificacion)
+            "calificacion": String(videojuego.calificacion)
         })
     });
 };

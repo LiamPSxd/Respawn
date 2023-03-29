@@ -43,7 +43,7 @@ const DivisaLista = () => {
     return(
         <div className="row">
             {divisas.map(divisa => (
-                <DivisaItem key={divisa.id} divisa={divisa} divisas={divisas} />
+                <DivisaItem key={divisa.id} divisa={divisa} />
             ))}
         </div>
     );

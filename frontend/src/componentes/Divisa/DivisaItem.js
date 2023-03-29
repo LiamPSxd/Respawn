@@ -1,19 +1,37 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as DivisaServer from "./DivisaServer";
+import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 
-const DivisaItem = ({divisa, divisas}) => {
+const DivisaItem = ({divisa}) => {
     const history = useNavigate();
 
-    const handleCambioDivisa = async (div) => {
-        await divisas.forEach(d => {
-            if(d.seleccionado){
-                d.seleccionado = false;
-                div.seleccionado = true
+    const handleCambioDivisa = async (newDiv) => {
+        const dataDivisas = await (await DivisaServer.getAllDivisas()).json();
+        await dataDivisas.Divisas.forEach(oldDiv => {
+            if(oldDiv.seleccionado){
+                oldDiv.seleccionado = false;
+                newDiv.seleccionado = true;
 
-                DivisaServer.updateDivisa(d);
-                DivisaServer.updateDivisa(div);
+                DivisaServer.updateDivisa(oldDiv);
+                DivisaServer.updateDivisa(newDiv);
             }
+        });
+
+        const dataVideojuegos = await (await VideojuegoServer.getAllVideojuegos()).json();
+        await dataVideojuegos.Videojuegos.forEach(videojuego => {
+            let precio = "";
+            for(let letra of videojuego.precio){
+                if(letra != " ") precio += letra;
+                else if(letra == " ") break;
+            }
+
+            console.log(precio);
+            console.log(newDiv.valor);
+            console.log(parseInt(precio)/parseInt(newDiv.valor));
+
+            videojuego.precio = String(parseFloat(parseFloat(precio) / parseFloat(newDiv.valor))) + ` ${newDiv.simbolo}`;
+            VideojuegoServer.updateVideojuego(videojuego);
         });
 
         history('/monedaPeso');
