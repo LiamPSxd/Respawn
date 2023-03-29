@@ -3,7 +3,7 @@ const API_CURRENCY = "https://api.currencyapi.com/v3/latest?apikey=ADWFsMeOzhBOl
 
 export const getAllCurrencies = async (baseCurrency) => {
     return await fetch(`${API_CURRENCY}${baseCurrency}`);
-}
+};
 
 export const getAllDivisas = async () => {
     return await fetch(API_URL);
