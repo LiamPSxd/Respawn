@@ -19,6 +19,7 @@ import {
 } from 'mdb-react-ui-kit';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { recuperaBusqueda } from '../Catalogo/Catalogo';
 
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
@@ -27,7 +28,7 @@ export default function App() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    //recuperaBusqueda(search)
+    recuperaBusqueda(search)
   }
 
   return (

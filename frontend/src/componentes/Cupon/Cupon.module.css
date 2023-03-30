@@ -1,0 +1,18 @@
+#cabecera{
+    margin-top: 20px;
+    text-align: center;
+}
+#contenedorTarjetas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    text-align: center;
+}
+#tarjeta{
+    margin: 20px;
+    width: 18rem;
+    display: inline-block;
+}
+#imgCard{
+    height: 200px;
+}

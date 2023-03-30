@@ -5,10 +5,44 @@ import VideojuegoItem from "../Videojuego/VideojuegoItem";
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import './catalogo.css';
 
+let search="";
+let [videojuegos, setVideojuegos] = "";
+
+export const recuperaBusqueda=(recuperada)=>{
+  search= recuperada
+  listaVideojuegos()
+}
+
+export let listaVideojuegos = async () => {
+  try{
+    const data = await (await VideojuegoServer.getAllVideojuegos()).json();
+if (search==null){
+  setVideojuegos(data.Videojuegos)
+}else{
+  let arregloBuscado =[]
+  for (let i=0; i<=data.Videojuegos.length;i++){
+      if (data.Videojuegos[i].nombre.toLowerCase().indexOf(search.toLowerCase())!==-1){
+          arregloBuscado.push(data.Videojuegos[i])
+      }
+      if(i==data.Videojuegos.length-1  ){
+          if(arregloBuscado.length ==0){
+              window.alert("No hay resultados para tu búsqueda")
+              arregloBuscado=data.Videojuegos
+          }
+      }
+      setVideojuegos(arregloBuscado)
+  }
+}
+  }catch(error){
+    console.log(error);
+  }
+};
+
 const Catalogo = () => {
  
   const history = useNavigate();
   const params = useParams();
+  [videojuegos,setVideojuegos]=useState([]);
 
   const initialState = {id: 0, nombre: "", direccion: "", salario: 0};
   const [empleado, setEmpleado] = useState(initialState);
@@ -47,16 +81,8 @@ const Catalogo = () => {
     }
   };
 
-  const [videojuegos, setVideojuegos] = useState([]);
+  
 
-  const listaVideojuegos = async () => {
-    try{
-      const data = await (await VideojuegoServer.getAllVideojuegos()).json();
-      setVideojuegos(data.Videojuegos);
-    }catch(error){
-      console.log(error);
-    }
-  };
 
   useEffect(() => {
     listaVideojuegos();
