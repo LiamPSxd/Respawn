@@ -50,6 +50,8 @@ const Login = () => {
       <button>Iniciar Sesion</button>
     </form>
     </div>
+
+    
   );
 };
 
