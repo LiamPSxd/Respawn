@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useAuth } from "../../context/authContext";
 import { useNavigate } from "react-router-dom";
+import './Login.css';
 import { async } from "@firebase/util";
 
 const Login = () => {
@@ -29,29 +30,35 @@ const Login = () => {
     }
   };
   return (
-    <div>
+    <html className="my">
+     <body className="body">
+    <div class="login-box">
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-      <label htmlFor="email">Correo Electrónico </label>
-      <input
-        type="email"
-        name="email"
-        placeholder="youremail@company.ltd"
-        onChange={handleChange}
-      />
-
-      <label htmlFor="password">Contraseña</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        onChange={handleChange}
-      />
-
-      <button>Iniciar Sesion</button>
-    </form>
+        <div className="user-box">
+          <input type="email" name="email" required="" onChange={handleChange}/>
+          <label>Nombre de usuario</label>
+        </div>
+        <div className="user-box">
+          <input type="password" name="password" id="password" required="" onChange={handleChange}/>
+          <label>Contraseña</label>
+        </div>
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Iniciar
+        </a>
+      </form>
     </div>
+<<<<<<< HEAD
 
     
+=======
+    </body>
+    </html>
+>>>>>>> 87f9937bbf8c2ef6cb15367a5ba12fd567250d5f
   );
 };
 
