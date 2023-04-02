@@ -17,6 +17,7 @@ import Home from "./componentes/Homepage/Home";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import VideojuegoForm from "./componentes/Videojuego/VideojuegoForm";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -36,6 +37,7 @@ root.render(
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/videojuego/:id" element={<VideojuegoForm/>} />
       </Routes>
     </AuthProvider>
   </BrowserRouter>

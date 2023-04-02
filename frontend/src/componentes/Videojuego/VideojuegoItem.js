@@ -11,7 +11,7 @@ const VideojuegoItem = ({videojuego}) => {
                 <h1 className="card-title"><strong>{videojuego.nombre}</strong></h1>
                 <h4 className="card-text"><strong>Genero </strong>{videojuego.genero}</h4>
                 <h4 className="card-text"><strong>Precio </strong>{videojuego.precio}</h4>
-                <button className="btn btn-success my-2" onClick={() => history(`/videojuego/${videojuego.id}`)}><strong>Ver más</strong></button>
+                <button className="btn btn-success my-2" onClick={() => history(`/videojuego/${videojuego.id}`)}><strong>Más Detalles</strong></button>
             </div>
         </div>
     );
