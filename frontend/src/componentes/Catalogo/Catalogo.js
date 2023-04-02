@@ -11,35 +11,37 @@ let [videojuegos, setVideojuegos] = "";
 export const recuperaBusqueda=(recuperada)=>{
   search= recuperada
   listaVideojuegos()
-}
+};
 
 export let listaVideojuegos = async () => {
   try{
     const data = await (await VideojuegoServer.getAllVideojuegos()).json();
-if (search==null){
-  setVideojuegos(data.Videojuegos)
-}else{
-  let arregloBuscado =[]
-  for (let i=0; i<=data.Videojuegos.length;i++){
-      if (data.Videojuegos[i].nombre.toLowerCase().indexOf(search.toLowerCase())!==-1){
+
+    if(search==null){
+      setVideojuegos(data.Videojuegos)
+    }else{
+      let arregloBuscado =[]
+      for (let i=0; i<=data.Videojuegos.length;i++){
+        if(data.Videojuegos[i].nombre.toLowerCase().indexOf(search.toLowerCase())!==-1){
           arregloBuscado.push(data.Videojuegos[i])
-      }
-      if(i==data.Videojuegos.length-1  ){
+        }
+        
+        if(i==data.Videojuegos.length-1  ){
           if(arregloBuscado.length ==0){
               window.alert("No hay resultados para tu búsqueda")
               arregloBuscado=data.Videojuegos
           }
+        }
+      
+        setVideojuegos(arregloBuscado)
       }
-      setVideojuegos(arregloBuscado)
-  }
-}
+    }
   }catch(error){
     console.log(error);
   }
 };
 
 const Catalogo = () => {
- 
   const history = useNavigate();
   const params = useParams();
   [videojuegos,setVideojuegos]=useState([]);
@@ -80,9 +82,6 @@ const Catalogo = () => {
       console.log(error);
     }
   };
-
-  
-
 
   useEffect(() => {
     listaVideojuegos();

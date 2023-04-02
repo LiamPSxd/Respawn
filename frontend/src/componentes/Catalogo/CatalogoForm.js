@@ -36,7 +36,6 @@ const DivisaForm = () => {
         try{
             const res = await DivisaServer.getDivisa(idDivisa);
             const data = await res.json();
-            const r = `${data.Divisas}${idDivisa}`;
             const { id, nombre, pais, valor, simbolo } = data.Divisas[0];
 
             setDivisa({ id, nombre, pais, valor, simbolo });

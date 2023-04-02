@@ -1,5 +1,5 @@
 #banner{
-    background-image:url(imagenesCatalogo/resident.jpg);
+    /* background-image:url(imagenesCatalogo/resident.jpg); */
     background-size: contain;
     height: 250px;
 }

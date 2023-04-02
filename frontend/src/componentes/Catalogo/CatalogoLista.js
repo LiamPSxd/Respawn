@@ -2,34 +2,30 @@ import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
 
-const DivisaLista = () => {
-    const [divisas, setDivisas] = useState([]);
+const CatalogoLista = ({idCatalogo}) => {
+    const [catalogos, setCatalogos] = useState([]);
 
-    const listaDivisas = async () => {
+    const listaCatalogos = async () => {
         try{
-            const res = await CatalogoServer.getAllDivisas();
-            const data = await res.json();
-
-            setDivisas(data.Divisas);
+            const data = await (await CatalogoServer.getCatalogo(idCatalogo)).json();
+            setCatalogos(data.Catalogos);
         }catch(error){
             console.log(error);
         }
     };
 
     useEffect(() => {
-        listaDivisas();
+        listaCatalogos();
         // eslint-disable-next-line
     }, []);
 
     return(
         <div className="row">
-            {divisas.map((divisa) => (
-                <CatalogoItem key={divisa.id} divisa={divisa} getAllDivisas={listaDivisas} />
+            {catalogos.map(catalogo => (
+                <CatalogoItem key={catalogo.id} />
             ))}
         </div>
     );
 };
 
-export default DivisaLista;
-
-
+export default CatalogoLista;
