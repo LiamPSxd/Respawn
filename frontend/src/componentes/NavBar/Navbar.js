@@ -99,7 +99,7 @@ export const recuperarBusqueda = (busqueda, data = []) => {
       buscado.push(dato);
   });
 
-  if(buscado.length == 0){
+  if(buscado.length === 0){
     window.alert("No hay resultados para tu búsqueda");
     buscado = data;
   }

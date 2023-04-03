@@ -44,7 +44,8 @@ class Firebase:
                 "storageBucket": "respawn-2f8ea.appspot.com",
                 "messagingSenderId": "959427699506",
                 "appId": "1:959427699506:web:bd8a270a1754c09f30ed2b",
-                "measurementId": "G-047ENKDP0D"
+                "measurementId": "G-047ENKDP0D",
+                "storageBucket": "respawn-2f8ea.appspot.com"
             }
 
             firebase_admin.initialize_app(cred, config)
@@ -54,6 +55,10 @@ class Firebase:
     def getDB(self):
         return self.db
 
+    def getAuth(self):
+        if self.conexionDB:
+            return self.getDB.auth()
+
     def getDocumento(self, entidad):
         if self.conexionDB:
             doc = self.db.reference(entidad).get()
@@ -62,10 +67,6 @@ class Firebase:
                 return doc
             else:
                 return self.convertirDiccionario(doc)
-
-    def getAuth(self):
-        if self.conexionDB:
-            return self.getDB.auth()
 
     def convertirDiccionario(self, lista):
         diccionario = dict()

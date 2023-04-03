@@ -1,5 +1,5 @@
 #banner{
-    /* background-image:url(imagenesCatalogo/resident.jpg); */
+    background-image:url("https://firebasestorage.googleapis.com/v0/b/respawn-2f8ea.appspot.com/o/Catalogo%2Fresident.jpg?alt=media&token=e47c2075-cc50-4578-8ef2-67b269a1d7a7");
     background-size: contain;
     height: 250px;
 }

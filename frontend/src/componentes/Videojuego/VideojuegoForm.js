@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as VideojuegoServer from './VideojuegoServer';
 
-const VideojuegoForm = ({}) => {
+const VideojuegoForm = () => {
     const history = useNavigate();
     const params = useParams();
 
@@ -30,10 +30,7 @@ const VideojuegoForm = ({}) => {
     }, []);
 
     return(
-        // HTML de la pantalla de un Videojuego.
-        
-            <label> Juego {videojuego.nombre}</label>
-        
+        // HTML de la pantalla de un Videojuego
     );
 };
 
