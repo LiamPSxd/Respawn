@@ -27,6 +27,20 @@ class UsuarioReservaV(View):
                             "correoUsuario": value["correoUsuario"],
                             "idReserva": value["idReserva"]
                         })
+            elif correoUsuario != "" and idReserva == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == correoUsuario:
+                        urs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idReserva": value["idReserva"]
+                        })
+            elif correoUsuario == "" and idReserva > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idReserva"]) == str(idReserva):
+                        urs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idReserva": value["idReserva"]
+                        })
             elif correoUsuario == "" and idReserva == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

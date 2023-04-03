@@ -27,6 +27,20 @@ class VideojuegoComentarioV(View):
                             "idVideojuego": value["idVideojuego"],
                             "idComentario": value["idComentario"]
                         })
+            elif idVideojuego > -1 and idComentario == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idVideojuego"]) == str(idVideojuego):
+                        vcs.append({
+                            "idVideojuego": value["idVideojuego"],
+                            "idComentario": value["idComentario"]
+                        })
+            elif idVideojuego == -1 and idComentario > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idComentario"]) == str(idComentario):
+                        vcs.append({
+                            "idVideojuego": value["idVideojuego"],
+                            "idComentario": value["idComentario"]
+                        })
             elif idVideojuego == -1 and idComentario == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

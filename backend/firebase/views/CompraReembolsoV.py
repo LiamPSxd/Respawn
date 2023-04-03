@@ -27,6 +27,20 @@ class CompraReembolsoV(View):
                             "idCompra": value["idCompra"],
                             "idReembolso": value["idReembolso"]
                         })
+            elif idCompra > -1 and idReembolso == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idCompra"]) == str(idCompra):
+                        crs.append({
+                            "idCompra": value["idCompra"],
+                            "idReembolso": value["idReembolso"]
+                        })
+            elif idCompra == -1 and idReembolso > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idReembolso"]) == str(idReembolso):
+                        crs.append({
+                            "idCompra": value["idCompra"],
+                            "idReembolso": value["idReembolso"]
+                        })
             elif idCompra == -1 and idReembolso == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

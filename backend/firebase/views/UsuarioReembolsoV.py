@@ -27,6 +27,20 @@ class UsuarioReembolsoV(View):
                             "correoUsuario": value["correoUsuario"],
                             "idReembolso": value["idReembolso"]
                         })
+            elif correoUsuario != "" and idReembolso == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario):
+                        urs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idReembolso": value["idReembolso"]
+                        })
+            elif correoUsuario == "" and idReembolso > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idReembolso"]) == str(idReembolso):
+                        urs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idReembolso": value["idReembolso"]
+                        })
             elif correoUsuario == "" and idReembolso == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

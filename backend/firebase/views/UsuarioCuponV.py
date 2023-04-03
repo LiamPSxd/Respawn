@@ -28,6 +28,22 @@ class UsuarioCuponV(View):
                             "idCupon": value["idCupon"],
                             "cantidad": value["cantidad"]
                         })
+            elif correoUsuario != "" and idCupon == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario):
+                        ucs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idCupon": value["idCupon"],
+                            "cantidad": value["cantidad"]
+                        })
+            elif correoUsuario == "" and idCupon > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idCupon"]) == str(idCupon):
+                        ucs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idCupon": value["idCupon"],
+                            "cantidad": value["cantidad"]
+                        })
             elif correoUsuario == "" and idCupon == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

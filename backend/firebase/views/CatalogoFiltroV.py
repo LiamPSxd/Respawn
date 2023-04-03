@@ -27,6 +27,20 @@ class CatalogoFiltroV(View):
                             "idCatalogo": value["idCatalogo"],
                             "idFiltro": value["idFiltro"]
                         })
+            elif idCatalogo > -1 and idFiltro == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idCatalogo"]) == str(idCatalogo):
+                        cfs.append({
+                            "idCatalogo": value["idCatalogo"],
+                            "idFiltro": value["idFiltro"]
+                        })
+            if idCatalogo == -1 and idFiltro > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idFiltro"]) == str(idFiltro):
+                        cfs.append({
+                            "idCatalogo": value["idCatalogo"],
+                            "idFiltro": value["idFiltro"]
+                        })
             elif idCatalogo == -1 and idFiltro == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

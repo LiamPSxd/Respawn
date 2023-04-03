@@ -27,6 +27,20 @@ class WishListVideojuegoV(View):
                             "idWishList": value["idWishList"],
                             "idVideojuego": value["idVideojuego"]
                         })
+            elif idWishList > -1 and idVideojuego == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idWishList"]) == str(idWishList):
+                        wvs.append({
+                            "idWishList": value["idWishList"],
+                            "idVideojuego": value["idVideojuego"]
+                        })
+            elif idWishList == -1 and idVideojuego > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idVideojuego"]) == str(idVideojuego):
+                        wvs.append({
+                            "idWishList": value["idWishList"],
+                            "idVideojuego": value["idVideojuego"]
+                        })
             elif idWishList == -1 and idVideojuego == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

@@ -27,6 +27,20 @@ class UsuarioComentarioV(View):
                             "correoUsuario": value["correoUsuario"],
                             "idComentario": value["idComentario"]
                         })
+            elif correoUsuario != "" and idComentario == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario):
+                        ucs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idComentario": value["idComentario"]
+                        })
+            elif correoUsuario == "" and idComentario > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idComentario"]) == str(idComentario):
+                        ucs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idComentario": value["idComentario"]
+                        })
             elif correoUsuario == "" and idComentario == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

@@ -27,6 +27,20 @@ class UsuarioCompraV(View):
                             "correoUsuario": value["correoUsuario"],
                             "idCompra": value["idCompra"]
                         })
+            elif correoUsuario != "" and idCompra == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario):
+                        ucs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idCompra": value["idCompra"]
+                        })
+            elif correoUsuario == "" and idCompra > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idCompra"]) == str(idCompra):
+                        ucs.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idCompra": value["idCompra"]
+                        })
             elif correoUsuario == "" and idCompra == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

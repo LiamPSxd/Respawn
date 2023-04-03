@@ -27,6 +27,20 @@ class UsuarioPayPalV(View):
                             "correoUsuario": value["correoUsuario"],
                             "idPayPal": value["idPayPal"]
                         })
+            elif correoUsuario != "" and idPayPal == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario):
+                        ups.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idPayPal": value["idPayPal"]
+                        })
+            elif correoUsuario == "" and idPayPal > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idPayPal"]) == str(idPayPal):
+                        ups.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idPayPal": value["idPayPal"]
+                        })
             elif correoUsuario == "" and idPayPal == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

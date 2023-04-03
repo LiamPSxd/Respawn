@@ -27,6 +27,20 @@ class UsuarioTarjetaV(View):
                             "correoUsuario": value["correoUsuario"],
                             "idTarjeta": value["idTarjeta"]
                         })
+            elif correoUsuario != "" and idTarjeta == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == correoUsuario:
+                        uts.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idTarjeta": value["idTarjeta"]
+                        })
+            elif correoUsuario == "" and idTarjeta > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idTarjeta"]) == str(idTarjeta):
+                        uts.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idTarjeta": value["idTarjeta"]
+                        })
             elif correoUsuario == "" and idTarjeta == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

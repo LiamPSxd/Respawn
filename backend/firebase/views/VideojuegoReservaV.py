@@ -27,6 +27,20 @@ class VideojuegoReservaV(View):
                             "idVideojuego": value["idVideojuego"],
                             "idReserva": value["idReserva"]
                         })
+            elif idVideojuego > -1 and idReserva == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idVideojuego"]) == str(idVideojuego):
+                        vrs.append({
+                            "idVideojuego": value["idVideojuego"],
+                            "idReserva": value["idReserva"]
+                        })
+            elif idVideojuego == -1 and idReserva > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idReserva"]) == str(idReserva):
+                        vrs.append({
+                            "idVideojuego": value["idVideojuego"],
+                            "idReserva": value["idReserva"]
+                        })
             elif idVideojuego == -1 and idReserva == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

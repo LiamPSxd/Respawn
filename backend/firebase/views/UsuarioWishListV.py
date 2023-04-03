@@ -27,6 +27,20 @@ class UsuarioWishListV(View):
                             "correoUsuario": value["correoUsuario"],
                             "idWishList": value["idWishList"]
                         })
+            elif correoUsuario != "" and idWishList == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario):
+                        uws.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idWishList": value["idWishList"]
+                        })
+            elif correoUsuario == "" and idWishList > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idWishList"]) == str(idWishList):
+                        uws.append({
+                            "correoUsuario": value["correoUsuario"],
+                            "idWishList": value["idWishList"]
+                        })
             elif correoUsuario == "" and idWishList == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

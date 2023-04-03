@@ -27,6 +27,20 @@ class CatalogoVideojuegoV(View):
                             "idCatalogo": value["idCatalogo"],
                             "idVideojuego": value["idVideojuego"]
                         })
+            elif idCatalogo > -1 and idVideojuego == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idCatalogo"]) == str(idCatalogo):
+                        cvs.append({
+                            "idCatalogo": value["idCatalogo"],
+                            "idVideojuego": value["idVideojuego"]
+                        })
+            elif idCatalogo == -1 and idVideojuego > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idVideojuego"]) == str(idVideojuego):
+                        cvs.append({
+                            "idCatalogo": value["idCatalogo"],
+                            "idVideojuego": value["idVideojuego"]
+                        })
             elif idCatalogo == -1 and idVideojuego == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:

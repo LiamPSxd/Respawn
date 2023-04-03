@@ -27,6 +27,20 @@ class ReservaReembolsoV(View):
                             "idReserva": value["idReserva"],
                             "idReembolso": value["idReembolso"]
                         })
+            elif idReserva > -1 and idReembolso == -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idReserva"]) == str(idReserva):
+                        rrs.append({
+                            "idReserva": value["idReserva"],
+                            "idReembolso": value["idReembolso"]
+                        })
+            elif idReserva == -1 and idReembolso > -1:
+                for key, value in db.getDocumento(documento).items():
+                    if value != None and str(value["idReembolso"]) == str(idReembolso):
+                        rrs.append({
+                            "idReserva": value["idReserva"],
+                            "idReembolso": value["idReembolso"]
+                        })
             elif idReserva == -1 and idReembolso == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
