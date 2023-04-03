@@ -16,18 +16,18 @@ class WishListVideojuegoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, idW = -1, idV = -1):
+    def get(self, request, idWishList = -1, idVideojuego = -1):
         if db.conexionDB and request.method == "GET":
             wvs = list()
 
-            if idW > -1 and idV > -1:
+            if idWishList > -1 and idVideojuego > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idWishList"]) == str(idW) and str(value["idVideojuego"]) == str(idV):
+                    if value != None and str(value["idWishList"]) == str(idWishList) and str(value["idVideojuego"]) == str(idVideojuego):
                         wvs.append({
                             "idWishList": value["idWishList"],
                             "idVideojuego": value["idVideojuego"]
                         })
-            elif idW == -1 and idV == -1:
+            elif idWishList == -1 and idVideojuego == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         wvs.append({

@@ -16,18 +16,18 @@ class UsuarioTarjetaV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, cU = "", idT = -1):
+    def get(self, request, correoUsuario = "", idTarjeta = -1):
         if db.conexionDB and request.method == "GET":
             uts = list()
 
-            if cU != "" and idT > -1:
+            if correoUsuario != "" and idTarjeta > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["correoUsuario"]) == cU and str(value["idTarjeta"]) == str(idT):
+                    if value != None and str(value["correoUsuario"]) == correoUsuario and str(value["idTarjeta"]) == str(idTarjeta):
                         uts.append({
                             "correoUsuario": value["correoUsuario"],
                             "idTarjeta": value["idTarjeta"]
                         })
-            elif cU == "" and idT == -1:
+            elif correoUsuario == "" and idTarjeta == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         uts.append({

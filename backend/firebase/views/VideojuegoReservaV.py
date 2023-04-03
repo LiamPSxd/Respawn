@@ -16,18 +16,18 @@ class VideojuegoReservaV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, idV = -1, idR = -1):
+    def get(self, request, idVideojuego = -1, idReserva = -1):
         if db.conexionDB and request.method == "GET":
             vrs = list()
 
-            if idV > -1 and idR > -1:
+            if idVideojuego > -1 and idReserva > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idVideojuego"]) == str(idV) and str(value["idReserva"]) == str(idR):
+                    if value != None and str(value["idVideojuego"]) == str(idVideojuego) and str(value["idReserva"]) == str(idReserva):
                         vrs.append({
                             "idVideojuego": value["idVideojuego"],
                             "idReserva": value["idReserva"]
                         })
-            elif idV == -1 and idR == -1:
+            elif idVideojuego == -1 and idReserva == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         vrs.append({

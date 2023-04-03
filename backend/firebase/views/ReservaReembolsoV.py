@@ -16,18 +16,18 @@ class ReservaReembolsoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, idRe = -1, idR = -1):
+    def get(self, request, idReserva = -1, idReembolso = -1):
         if db.conexionDB and request.method == "GET":
             rrs = list()
 
-            if idRe > -1 and idR > -1:
+            if idReserva > -1 and idReembolso > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idReserva"]) == str(idRe) and str(value["idReembolso"]) == str(idR):
+                    if value != None and str(value["idReserva"]) == str(idReserva) and str(value["idReembolso"]) == str(idReembolso):
                         rrs.append({
                             "idReserva": value["idReserva"],
                             "idReembolso": value["idReembolso"]
                         })
-            elif idRe == -1 and idR == -1:
+            elif idReserva == -1 and idReembolso == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         rrs.append({

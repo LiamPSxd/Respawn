@@ -16,18 +16,18 @@ class DivisaVideojuegoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, idD = -1, idV = -1):
+    def get(self, request, idDivisa = -1, idVideojuego = -1):
         if db.conexionDB and request.method == "GET":
             dvs = list()
 
-            if idD > -1 and idV > -1:
+            if idDivisa > -1 and idVideojuego > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idDivisa"]) == str(idD) and str(value["idVideojuego"]) == str(idV):
+                    if value != None and str(value["idDivisa"]) == str(idDivisa) and str(value["idVideojuego"]) == str(idVideojuego):
                         dvs.append({
                             "idDivisa": value["idDivisa"],
                             "idVideojuego": value["idVideojuego"]
                         })
-            elif idD == -1 and idV == -1:
+            elif idDivisa == -1 and idVideojuego == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         dvs.append({

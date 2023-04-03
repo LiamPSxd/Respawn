@@ -16,18 +16,18 @@ class CatalogoFiltroV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, idC = -1, idF = -1):
+    def get(self, request, idCatalogo = -1, idFiltro = -1):
         if db.conexionDB and request.method == "GET":
             cfs = list()
 
-            if idC > -1 and idF > -1:
+            if idCatalogo > -1 and idFiltro > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idFiltro"]) == str(idF) and str(value["idCatalogo"]) == str(idC):
+                    if value != None and str(value["idCatalogo"]) == str(idCatalogo) and str(value["idFiltro"]) == str(idFiltro):
                         cfs.append({
                             "idCatalogo": value["idCatalogo"],
                             "idFiltro": value["idFiltro"]
                         })
-            elif idC == -1 and idF == -1:
+            elif idCatalogo == -1 and idFiltro == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         cfs.append({

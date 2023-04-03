@@ -16,18 +16,18 @@ class UsuarioWishListV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, cU = "", idW = -1):
+    def get(self, request, correoUsuario = "", idWishList = -1):
         if db.conexionDB and request.method == "GET":
             uws = list()
 
-            if cU != "" and idW > -1:
+            if correoUsuario != "" and idWishList > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["correoUsuario"]) == str(cU) and str(value["idWishList"]) == str(idW):
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idWishList"]) == str(idWishList):
                         uws.append({
                             "correoUsuario": value["correoUsuario"],
                             "idWishList": value["idWishList"]
                         })
-            elif cU == "" and idW == -1:
+            elif correoUsuario == "" and idWishList == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         uws.append({

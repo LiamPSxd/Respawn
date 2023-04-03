@@ -35,7 +35,7 @@ from .views.WishListVideojuegoV import WishListVideojuegoV
 
 urlpatterns = [
     path('catalogoFiltros/', CatalogoFiltroV.as_view(), name = 'allCFs'),
-    path('catalogoFiltros/<int:idCatalogo><int:idFiltro>', CatalogoFiltroV.as_view(), name = 'oneCF'),
+    path('catalogoFiltros/<int:idCatalogo>/<int:idFiltro>', CatalogoFiltroV.as_view(), name = 'oneCF'),
 
     path('catalogos/', CatalogoV.as_view(), name = 'allCatalogos'),
     path('catalogos/<int:id>', CatalogoV.as_view(), name = 'oneCatalogo'),

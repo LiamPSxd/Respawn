@@ -16,18 +16,18 @@ class UsuarioPayPalV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, cU = "", idP = -1):
+    def get(self, request, correoUsuario = "", idPayPal = -1):
         if db.conexionDB and request.method == "GET":
             ups = list()
 
-            if cU != "" and idP > -1:
+            if correoUsuario != "" and idPayPal > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["correoUsuario"]) == str(cU) and str(value["idPayPal"]) == str(idP):
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idPayPal"]) == str(idPayPal):
                         ups.append({
                             "correoUsuario": value["correoUsuario"],
                             "idPayPal": value["idPayPal"]
                         })
-            elif cU == "" and idP == -1:
+            elif correoUsuario == "" and idPayPal == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         ups.append({

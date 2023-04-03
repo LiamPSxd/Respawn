@@ -16,18 +16,18 @@ class CatalogoVideojuegoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, idC = -1, idV = -1):
+    def get(self, request, idCatalogo = -1, idVideojuego = -1):
         if db.conexionDB and request.method == "GET":
             cvs = list()
 
-            if idC > -1 and idV > -1:
+            if idCatalogo > -1 and idVideojuego > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idCatalogo"]) == str(idC) and str(value["idVideojuego"]) == str(idV):
+                    if value != None and str(value["idCatalogo"]) == str(idCatalogo) and str(value["idVideojuego"]) == str(idVideojuego):
                         cvs.append({
                             "idCatalogo": value["idCatalogo"],
                             "idVideojuego": value["idVideojuego"]
                         })
-            elif idC == -1 and idV == -1:
+            elif idCatalogo == -1 and idVideojuego == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         cvs.append({

@@ -16,18 +16,18 @@ class VideojuegoComentarioV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, idV = -1, idC = -1):
+    def get(self, request, idVideojuego = -1, idComentario = -1):
         if db.conexionDB and request.method == "GET":
             vcs = list()
 
-            if idV > -1 and idC > -1:
+            if idVideojuego > -1 and idComentario > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idVideojuego"]) == str(idV) and str(value["idComentario"]) == str(idC):
+                    if value != None and str(value["idVideojuego"]) == str(idVideojuego) and str(value["idComentario"]) == str(idComentario):
                         vcs.append({
                             "idVideojuego": value["idVideojuego"],
                             "idComentario": value["idComentario"]
                         })
-            elif idV == -1 and idC == -1:
+            elif idVideojuego == -1 and idComentario == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         vcs.append({

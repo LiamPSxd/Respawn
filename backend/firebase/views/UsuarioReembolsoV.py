@@ -16,18 +16,18 @@ class UsuarioReembolsoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, cU = "", idR = -1):
+    def get(self, request, correoUsuario = "", idReembolso = -1):
         if db.conexionDB and request.method == "GET":
             urs = list()
 
-            if cU != "" and idR > -1:
+            if correoUsuario != "" and idReembolso > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["correoUsuario"]) == str(cU) and str(value["idReembolso"]) == str(idR):
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idReembolso"]) == str(idReembolso):
                         urs.append({
                             "correoUsuario": value["correoUsuario"],
                             "idReembolso": value["idReembolso"]
                         })
-            elif cU == "" and idR == -1:
+            elif correoUsuario == "" and idReembolso == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         urs.append({

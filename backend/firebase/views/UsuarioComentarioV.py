@@ -16,18 +16,18 @@ class UsuarioComentarioV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, cU = "", idC = -1):
+    def get(self, request, correoUsuario = "", idComentario = -1):
         if db.conexionDB and request.method == "GET":
             ucs = list()
 
-            if cU != "" and idC > -1:
+            if correoUsuario != "" and idComentario > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["correoUsuario"]) == str(cU) and str(value["idComentario"]) == str(idC):
+                    if value != None and str(value["correoUsuario"]) == str(correoUsuario) and str(value["idComentario"]) == str(idComentario):
                         ucs.append({
                             "correoUsuario": value["correoUsuario"],
                             "idComentario": value["idComentario"]
                         })
-            elif cU == "" and idC == -1:
+            elif correoUsuario == "" and idComentario == -1:
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         ucs.append({
