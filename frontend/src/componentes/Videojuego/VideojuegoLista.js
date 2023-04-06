@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import VideojuegoItem from "./VideojuegoItem";
 import * as VideojuegoServer from './VideojuegoServer';
-import { recuperarBusqueda } from "../NavBar/NavBar";
+import { recuperarBusqueda } from "../NavBar/Navbar";
 
 let [videojuegos, setVideojuegos] = [];
 

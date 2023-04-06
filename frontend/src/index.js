@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 
 //Componentes
-import Navbar from "./componentes/NavBar/NavBar";
-import Navbar2 from "./componentes/NavBar/NavBar2";
+import Navbar from "./componentes/NavBar/Navbar";
+import Navbar2 from "./componentes/NavBar/Navbar2";
 import Catalogo from "./componentes/Catalogo/CatalogoLista";
 import Timer from "./componentes/Ofertas/App";
 import Divisa from "./componentes/Divisa/DivisaLista";
