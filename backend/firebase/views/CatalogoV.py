@@ -16,24 +16,35 @@ class CatalogoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id = -1):
+    def get(self, request, id = -1, ids = ""):
         if db.conexionDB and request.method == "GET":
             catalogos = list()
 
-            if id > -1:
+            if id > -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
                         catalogos.append({
                             "id": value["id"],
-                            "nombre": value["nombre"]
+                            "nombre": value["nombre"],
+                            "banner": value["banner"]
                         })
-            elif id == -1:
+            elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         catalogos.append({
                             "id": value["id"],
-                            "nombre": value["nombre"]
+                            "nombre": value["nombre"],
+                            "banner": value["banner"]
                         })
+            elif ids != "":
+                for key, value in db.getDocumento(documento).items():
+                    for id in ids.split(","):
+                        if value != None and str(value["id"]) == str(id):
+                            catalogos.append({
+                                "id": value["id"],
+                                "nombre": value["nombre"],
+                                "banner": value["banner"]
+                            })
 
             if len(catalogos) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": catalogos})
@@ -47,11 +58,12 @@ class CatalogoV(View):
             jb = json.loads(request.body)
             c = Catalogo(
                 db.getUltimateKey(documento),
-                jb["nombre"]
+                jb["nombre"],
+                jb["banner"]
             )
 
             if c.nombre != "":
-                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "nombre": f"{c.nombre}"})
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "nombre": f"{c.nombre}", "banner": f"{c.banner}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
@@ -63,7 +75,8 @@ class CatalogoV(View):
             jb = json.loads(request.body)
             c = Catalogo(
                 jb["id"],
-                jb["nombre"]
+                jb["nombre"],
+                jb["banner"]
             )
             updatekey = ""
 
@@ -73,7 +86,7 @@ class CatalogoV(View):
                     break
 
             if updatekey != "":
-                db.getDB().reference(documento).child(updatekey).update({"id": f"{c.id}", "nombre": f"{c.nombre}"})
+                db.getDB().reference(documento).child(updatekey).update({"id": f"{c.id}", "nombre": f"{c.nombre}", "banner": f"{c.banner}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    

@@ -99,4 +99,4 @@ class Firebase:
             if i > keyMax:
                 keyMax = i
 
-        return key + 1
+        return keyMax + 1

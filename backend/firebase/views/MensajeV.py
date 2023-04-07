@@ -16,11 +16,11 @@ class MensajeV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, tipo = ""):
+    def get(self, request, tipo = "", tipos = ""):
         if db.conexionDB and request.method == "GET":
             mensajes = list()
 
-            if tipo != "":
+            if tipo != "" and tipos == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["tipo"]) == str(tipo):
                         mensajes.append({
@@ -28,7 +28,7 @@ class MensajeV(View):
                             "descripcion": value["descripcion"],
                             "tipo": value["tipo"]
                         })
-            elif tipo == "":
+            elif tipo == "" and tipos == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         mensajes.append({
@@ -36,6 +36,15 @@ class MensajeV(View):
                             "descripcion": value["descripcion"],
                             "tipo": value["tipo"]
                         })
+            elif tipos != "":
+                for key, value in db.getDocumento(documento).items():
+                    for tipo in tipos.split(","):
+                        if value != None and str(value["tipo"]) == str(tipo):
+                            mensajes.append({
+                                "titulo": value["titulo"],
+                                "descripcion": value["descripcion"],
+                                "tipo": value["tipo"]
+                            })
 
             if len(mensajes) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": mensajes})

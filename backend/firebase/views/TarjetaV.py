@@ -16,11 +16,11 @@ class TarjetaV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id = -1):
+    def get(self, request, id = -1, ids = ""):
         if db.conexionDB and request.method == "GET":
             tarjetas = list()
 
-            if id > -1:
+            if id > -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
                         tarjetas.append({
@@ -32,7 +32,7 @@ class TarjetaV(View):
                             "cvv": value["cvv"],
                             "titular": value["titular"]
                         })
-            elif id == -1:
+            elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         tarjetas.append({
@@ -44,6 +44,19 @@ class TarjetaV(View):
                             "cvv": value["cvv"],
                             "titular": value["titular"]
                         })
+            elif ids != "":
+                for key, value in db.getDocumento(documento).items():
+                    for id in ids.split(","):
+                        if value != None and str(value["id"]) == str(id):
+                            tarjetas.append({
+                                "id": value["id"],
+                                "saldo": value["saldo"],
+                                "tipo": value["tipo"],
+                                "pan": value["pan"],
+                                "fechaCaducidad": value["fechaCaducidad"],
+                                "cvv": value["cvv"],
+                                "titular": value["titular"]
+                            })
 
             if len(tarjetas) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": tarjetas})

@@ -16,11 +16,11 @@ class DivisaV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id = -1):
+    def get(self, request, id = -1, ids = ""):
         if db.conexionDB and request.method == "GET":
             divisas = list()
 
-            if id > -1:
+            if id > -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
                         divisas.append({
@@ -32,7 +32,7 @@ class DivisaV(View):
                             "seleccionado": value["seleccionado"],
                             "hora": value["hora"]
                         })
-            elif id == -1:
+            elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         divisas.append({
@@ -44,6 +44,19 @@ class DivisaV(View):
                             "seleccionado": value["seleccionado"],
                             "hora": value["hora"]
                         })
+            elif ids != "":
+                for key, value in db.getDocumento(documento).items():
+                    for id in ids.split(","):
+                        if value != None and str(value["id"]) == str(id):
+                            divisas.append({
+                                "id": value["id"],
+                                "nombre": value["nombre"],
+                                "pais": value["pais"],
+                                "valor": value["valor"],
+                                "simbolo": value["simbolo"],
+                                "seleccionado": value["seleccionado"],
+                                "hora": value["hora"]
+                            })
 
             if len(divisas) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": divisas})

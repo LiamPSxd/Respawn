@@ -41,6 +41,7 @@ urlpatterns = [
 
     path('catalogos/', CatalogoV.as_view(), name = 'allCatalogos'),
     path('catalogos/<int:id>', CatalogoV.as_view(), name = 'oneCatalogo'),
+    path('catalogos/<ids>', CatalogoV.as_view(), name = 'oneCatalogo'),
 
     path('catalogoVideojuegos/', CatalogoVideojuegoV.as_view(), name = 'allCVs'),
     path('catalogoVideojuegos/<int:idCatalogo>', CatalogoVideojuegoV.as_view(), name = 'allCVs'),
@@ -49,6 +50,7 @@ urlpatterns = [
 
     path('comentarios/', ComentarioV.as_view(), name = 'allComentarios'),
     path('comentarios/<int:id>', ComentarioV.as_view(), name = 'oneComentario'),
+    path('comentarios/<ids>', ComentarioV.as_view(), name = 'oneComentario'),
 
     path('compraReembolsos/', CompraReembolsoV.as_view(), name = 'allCRs'),
     path('compraReembolsos/<int:idCompra>', CompraReembolsoV.as_view(), name = 'allCRs'),
@@ -57,12 +59,15 @@ urlpatterns = [
 
     path('compras/', CompraV.as_view(), name = 'allCompras'),
     path('compras/<int:id>', CompraV.as_view(), name = 'oneCompra'),
+    path('compras/<ids>', CompraV.as_view(), name = 'oneCompra'),
 
     path('cupones/', CuponV.as_view(), name = 'allCupones'),
     path('cupones/<int:id>', CuponV.as_view(), name = 'oneCupone'),
+    path('cupones/<ids>', CuponV.as_view(), name = 'oneCupone'),
 
     path('divisas/', DivisaV.as_view(), name = 'allDivisas'),
     path('divisas/<int:id>', DivisaV.as_view(), name = 'oneDivisa'),
+    path('divisas/<ids>', DivisaV.as_view(), name = 'oneDivisa'),
 
     path('divisaVideojuegos/', DivisaVideojuegoV.as_view(), name = 'allDVs'),
     path('divisaVideojuegos/<int:idDivisa>', DivisaVideojuegoV.as_view(), name = 'oneDV'),
@@ -71,18 +76,23 @@ urlpatterns = [
 
     path('filtros/', FiltroV.as_view(), name = 'allFiltros'),
     path('filtros/<int:id>', FiltroV.as_view(), name = 'oneFiltro'),
+    path('filtros/<ids>', FiltroV.as_view(), name = 'oneFiltro'),
 
     path('mensajes/', MensajeV.as_view(), name = 'allMensajes'),
     path('mensajes/<int:tipo>', MensajeV.as_view(), name = 'oneMensaje'),
+    path('mensajes/<tipos>', MensajeV.as_view(), name = 'oneMensaje'),
 
     path('ofertas/', OfertaV.as_view(), name = 'allOfertas'),
     path('ofertas/<int:id>', OfertaV.as_view(), name = 'oneOferta'),
+    path('ofertas/<ids>', OfertaV.as_view(), name = 'oneOferta'),
 
     path('paypals/', PayPalV.as_view(), name = 'allPayPals'),
     path('paypals/<int:id>', PayPalV.as_view(), name = 'onePayPal'),
+    path('paypals/<ids>', PayPalV.as_view(), name = 'onePayPal'),
 
     path('reembolsos/', ReembolsoV.as_view(), name = 'allReembolsos'),
     path('reembolsos/<int:id>', ReembolsoV.as_view(), name = 'oneReembolso'),
+    path('reembolsos/<ids>', ReembolsoV.as_view(), name = 'oneReembolso'),
 
     path('reservaReembolsos/', ReservaReembolsoV.as_view(), name = 'allRRs'),
     path('reservaReembolsos/<int:idReserva>', ReservaReembolsoV.as_view(), name = 'oneRR'),
@@ -91,9 +101,11 @@ urlpatterns = [
 
     path('reservas/', ReservaV.as_view(), name = 'allReservas'),
     path('reservas/<int:id>', ReservaV.as_view(), name = 'oneReserva'),
+    path('reservas/<ids>', ReservaV.as_view(), name = 'oneReserva'),
 
     path('tarjetas/', TarjetaV.as_view(), name = 'allTarjetas'),
     path('tarjetas/<int:id>', TarjetaV.as_view(), name = 'oneTarjeta'),
+    path('tarjetas/<ids>', TarjetaV.as_view(), name = 'oneTarjeta'),
 
     path('usuarioComentarios/', UsuarioComentarioV.as_view(), name = 'allUCs'),
     path('usuarioComentarios/<correoUsuario>', UsuarioComentarioV.as_view(), name = 'oneUC'),
@@ -132,6 +144,7 @@ urlpatterns = [
 
     path('usuarios/', UsuarioV.as_view(), name = 'allUsuarios'),
     path('usuarios/<nombre>', UsuarioV.as_view(), name = 'oneUsuario'),
+    path('usuarios/<nombres>', UsuarioV.as_view(), name = 'oneUsuario'),
 
     path('usuariosWishLists/', UsuarioWishListV.as_view(), name = 'allUWs'),
     path('usuariosWishLists/<correoUsuario>', UsuarioWishListV.as_view(), name = 'oneUW'),
@@ -160,9 +173,11 @@ urlpatterns = [
 
     path('videojuegos/', VideojuegoV.as_view(), name = 'allVideojuegos'),
     path('videojuegos/<int:id>', VideojuegoV.as_view(), name = 'oneVideojuego'),
+    path('videojuegos/<ids>', VideojuegoV.as_view(), name = 'oneVideojuego'),
 
     path('wishlists/', WishListV.as_view(), name = 'allWishLists'),
     path('wishlists/<int:id>', WishListV.as_view(), name = 'oneWishList'),
+    path('wishlists/<ids>', VideojuegoV.as_view(), name = 'oneVideojuego'),
 
     path('wishlistVideojuegos/', WishListVideojuegoV.as_view(), name = 'allWVs'),
     path('wishlistVideojuegos/<int:idWishList>', WishListVideojuegoV.as_view(), name = 'oneWV'),

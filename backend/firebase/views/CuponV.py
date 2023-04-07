@@ -16,11 +16,11 @@ class CuponV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id = -1):
+    def get(self, request, id = -1, ids = ""):
         if db.conexionDB and request.method == "GET":
             cupones = list()
 
-            if id > -1:
+            if id > -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
                         cupones.append({
@@ -29,7 +29,7 @@ class CuponV(View):
                             "descripcion": value["descripcion"],
                             "imagen": value["imagen"]
                         })
-            elif id == -1:
+            elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         cupones.append({
@@ -38,6 +38,16 @@ class CuponV(View):
                             "descripcion": value["descripcion"],
                             "imagen": value["imagen"]
                         })
+            elif ids != "":
+                for key, value in db.getDocumento(documento).items():
+                    for id in ids.split(","):
+                        if value != None and str(value["id"]) == str(id):
+                            cupones.append({
+                                "id": value["id"],
+                                "nombre": value["nombre"],
+                                "descripcion": value["descripcion"],
+                                "imagen": value["imagen"]
+                            })
 
             if len(cupones) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": cupones})

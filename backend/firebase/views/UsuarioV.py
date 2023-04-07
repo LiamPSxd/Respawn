@@ -16,11 +16,11 @@ class UsuarioV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, nombre = ""):
+    def get(self, request, nombre = "", nombres = ""):
         if db.conexionDB and request.method == "GET":
             usuarios = list()
 
-            if nombre != "":
+            if nombre != "" and nombres == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["nombre"]) == str(nombre):
                         usuarios.append({
@@ -29,7 +29,7 @@ class UsuarioV(View):
                             "contrasenia": value["contrasenia"],
                             "domicilio": value["domicilio"]
                         })
-            elif nombre == "":
+            elif nombre == "" and nombres == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         usuarios.append({
@@ -38,6 +38,16 @@ class UsuarioV(View):
                             "contrasenia": value["contrasenia"],
                             "domicilio": value["domicilio"]
                         })
+            elif nombres != "":
+                for key, value in db.getDocumento(documento).items():
+                    for nombre in nombres.split(","):
+                        if value != None and str(value["nombre"]) == str(nombre):
+                            usuarios.append({
+                                "nombre": value["nombre"],
+                                "correo": value["correo"],
+                                "contrasenia": value["contrasenia"],
+                                "domicilio": value["domicilio"]
+                            })
 
             if len(usuarios) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": usuarios})

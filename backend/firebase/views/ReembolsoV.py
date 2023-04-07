@@ -16,22 +16,29 @@ class ReembolsoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id = -1):
+    def get(self, request, id = -1, ids = ""):
         if db.conexionDB and request.method == "GET":
             reembolsos = list()
 
-            if id > -1:
+            if id > -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
                         reembolsos.append({
                             "id": value["id"]
                         })
-            elif id == -1:
+            elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         reembolsos.append({
                             "id": value["id"]
                         })
+            elif ids != "":
+                for key, value in db.getDocumento(documento).items():
+                    for id in ids.split(","):
+                        if value != None and str(value["id"]) == str(id):
+                            reembolsos.append({
+                                "id": value["id"]
+                            })
 
             if len(reembolsos) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": reembolsos})

@@ -16,11 +16,11 @@ class VideojuegoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id = -1):
+    def get(self, request, id = -1, ids = ""):
         if db.conexionDB and request.method == "GET":
             videojuegos = list()
 
-            if id > -1:
+            if id > -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
                         videojuegos.append({
@@ -35,7 +35,7 @@ class VideojuegoV(View):
                             "datosExtra": value["datosExtra"],
                             "calificacion": value["calificacion"]
                         })
-            elif id == -1:
+            elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         videojuegos.append({
@@ -50,6 +50,22 @@ class VideojuegoV(View):
                             "datosExtra": value["datosExtra"],
                             "calificacion": value["calificacion"]
                         })
+            elif ids != "":
+                for key, value in db.getDocumento(documento).items():
+                    for id in ids.split(","):
+                        if value != None and str(value["id"]) == str(id):
+                            videojuegos.append({
+                                "id": value["id"],
+                                "nombre": value["nombre"],
+                                "descripcion": value["descripcion"],
+                                "caratula": value["caratula"],
+                                "video": value["video"],
+                                "precio": value["precio"],
+                                "genero": value["genero"],
+                                "plataforma": value["plataforma"],
+                                "datosExtra": value["datosExtra"],
+                                "calificacion": value["calificacion"]
+                            })
 
             if len(videojuegos) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": videojuegos})
