@@ -1,10 +1,10 @@
 import React from "react";
 import VideojuegoLista from "../Videojuego/VideojuegoLista";
 
-const CatalogoItem = () => {
+const CatalogoItem = ({catalogo}) => {
     return(
         <div className="col-lg-8 row-md-4">
-            <VideojuegoLista />
+            <VideojuegoLista catalogo={catalogo} />
         </div>
     );
 };

@@ -14,6 +14,7 @@ import Cupon from "./componentes/Cupon/Cupon";
 import Registro from "./componentes/RegistroUser/Register";
 import Login  from "./componentes/Login/Login";
 import Home from "./componentes/Homepage/Home";
+import Videojuego from "./componentes/Videojuego/VideojuegoForm";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -33,6 +34,11 @@ root.render(
         <Route exact path="/ofertas" element={<Timer />} />
         <Route exact path="/cupones" element={<Cupon />} />
         <Route exact path="/catalogo" element={<Catalogo idCatalogo={0} />} />
+        <Route exact path="/xbox" element={<Catalogo idCatalogo={1} />} />
+        <Route exact path="/playstation" element={<Catalogo idCatalogo={2} />} />
+        <Route exact path="/nintendo" element={<Catalogo idCatalogo={3} />} />
+        <Route exact path="/pc" element={<Catalogo idCatalogo={4} />} />
+        <Route exact path="/videojuego/:id" element={<Videojuego />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />

@@ -1,52 +1,57 @@
 import React, { useEffect, useState } from "react";
 import DivisaItem from "./DivisaItem";
 import * as DivisaServer from "./DivisaServer";
+import { recuperarBusqueda } from "../NavBar/NavBar";
+
+let [divisas, setDivisas] = [];
 
 const DivisaLista = () => {
-    const [divisas, setDivisas] = useState([]);
-
-    const listaDivisas = async () => {
-        try{
-            const dataDivisas = await (await DivisaServer.getAllDivisas()).json();
-            let data = "";
-
-            await dataDivisas.Divisas.forEach(divisa => {
-                if(divisa.seleccionado) data = divisa
-            });
-
-            // if(data.hora != new Date().getHours()) updateCurrencies(dataDivisas.Divisas, data.simbolo);
-
-            setDivisas(dataDivisas.Divisas);
-        }catch(error){
-            console.log(error);
-        }
-    };
-
-    const updateCurrencies = async (divisas, simbolo) => {
-        const dataCurrencies = await (await DivisaServer.getAllCurrencies(simbolo)).json();
-
-        await divisas.forEach(divisa => {
-            if(divisa.simbolo == dataCurrencies.data[`${divisa.simbolo}`].code){
-                divisa.hora = new Date().getHours();
-                divisa.valor = dataCurrencies.data[`${divisa.simbolo}`].value;
-
-                DivisaServer.updateDivisa(divisa);
-            }
-        });
-    }
+    [divisas, setDivisas] = useState([]);
 
     useEffect(() => {
-        listaDivisas();
+        listaDivisas(null);
         // eslint-disable-next-line
     }, []);
 
     return(
         <div className="row">
             {divisas.map(divisa => (
-                <DivisaItem key={divisa.id} divisa={divisa} />
+                <DivisaItem key={divisa.id} divisa={divisa} listaDivisas={listaDivisas} divisas={divisas} updateCurrencies={updateCurrencies} />
             ))}
         </div>
     );
 };
 
 export default DivisaLista;
+
+export const listaDivisas = async (busqueda) => {
+    try{
+        const data = await (await DivisaServer.getAllDivisas()).json();
+        await data.Divisas.forEach(divisa => {
+            if(divisa.seleccionado === "True")
+                if(String(divisa.hora) !== String(new Date().getDate())) updateCurrencies(data.Divisas, divisa.simbolo);
+        })
+
+        if(busqueda == null) setDivisas(data.Divisas);
+        else setDivisas(recuperarBusqueda(busqueda, data.Divisas));
+    }catch(error){
+        console.log(error);
+    }
+};
+
+const updateCurrencies = async (divisas, simbolo) => {
+    if(simbolo !== "ADA"){
+        const dataCurrencies = await (await DivisaServer.getAllCurrencies(simbolo)).json();
+
+        Object.keys(dataCurrencies.conversion_rates).map(async key => {
+            await divisas.forEach(async divisa => {
+                if(divisa.simbolo === key){
+                    divisa.hora = new Date().getDate();
+                    divisa.valor = dataCurrencies.conversion_rates[key];
+
+                    await DivisaServer.updateDivisa(divisa);
+                }
+            });
+        });
+    }
+};

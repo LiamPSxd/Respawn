@@ -5,7 +5,7 @@ const VideojuegoItem = ({videojuego}) => {
     const history = useNavigate();
 
     return(
-        <div className="col-md-4 mb-4">
+        <div className="col-sm-4">
             <div className="card card-body">
                 <img className="card-img-top" src={videojuego.caratula} alt="caratula" />
                 <h1 className="card-title"><strong>{videojuego.nombre}</strong></h1>

@@ -16,7 +16,7 @@ import {
   MDBCollapse,
 } from 'mdb-react-ui-kit';
 
-export default function App() {
+const NavBar2 = () => {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
@@ -42,24 +42,29 @@ export default function App() {
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Xbox</MDBNavbarLink>
+              <MDBNavbarLink href='/xbox'>Xbox</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>PlayStation</MDBNavbarLink>
+              <MDBNavbarLink href='/playstation'>PlayStation</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='#'>Nintendo</MDBNavbarLink>
+              <MDBNavbarLink href='/nintendo'>Nintendo</MDBNavbarLink>
+            </MDBNavbarItem>
+
+            <MDBNavbarItem>
+              <MDBNavbarLink href='/pc'>PC</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
               <MDBNavbarLink href='/monedaPeso'>Moneda/Peso</MDBNavbarLink>
             </MDBNavbarItem>
-
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
   );
-}
+};
+
+export default NavBar2;

@@ -1,0 +1,23 @@
+#banner{
+    background-size: contain;
+    height: 250px;
+}
+
+#categoria{
+    float:left;
+   /* border: 2px solid black*/;
+    background-color: antiquewhite;
+}
+
+#video{
+    padding: 10;
+}
+
+.text-black{
+    border: 2px solid black
+}
+
+.col{
+    margin-left: 10%;
+}
+

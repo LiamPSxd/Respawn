@@ -4,6 +4,10 @@ export const getAllVideojuegos = async () => {
     return await fetch(API_URL);
 };
 
+export const getVideojuegosByIdVideojuegos = async (idVideojuegos) => {
+    return await fetch(`${API_URL}${idVideojuegos}`);
+};
+
 export const getVideojuego = async (idVideojuego) => {
     return await fetch(`${API_URL}${idVideojuego}`);
 };

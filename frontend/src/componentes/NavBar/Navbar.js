@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Logo from './logo2.png';
-import IconPerfil from './iconperfil2.svg';
-import IconOculto from './menusoculto.png';
-import IconCarrito from './iconocarrito.svg';
-import IconWishlist from './wishlist.svg';
+import Logo from './media/logo2.png';
+import IconPerfil from './media/iconperfil2.svg';
+import IconOculto from './media/menusoculto.png';
+import IconCarrito from './media/iconocarrito.svg';
+import IconWishlist from './media/wishlist.svg';
 import {
   MDBContainer,
   MDBNavbar,
@@ -20,6 +20,8 @@ import {
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { listaVideojuegos } from '../Videojuego/VideojuegoLista';
+import { listaDivisas } from '../Divisa/DivisaLista';
+import { listaCupones } from '../Cupon/Cupon';
 
 const NavBar = () => {
   const [showBasic, setShowBasic] = useState(false);
@@ -27,7 +29,23 @@ const NavBar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    listaVideojuegos(search);
+
+    switch(window.location.pathname){
+      case "/catalogo":
+      case "/xbox":
+      case "/playstation":
+      case "/nintendo":
+      case "/pc":
+        listaVideojuegos(search);
+        break;
+      case "/cupones":
+        listaCupones(search);
+        break;
+      case "/monedaPeso":
+        listaDivisas(search);
+        break;
+      default:
+    }
   }
 
   return(

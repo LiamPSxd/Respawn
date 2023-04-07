@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import * as VideojuegoServer from './VideojuegoServer';
 
@@ -30,7 +30,38 @@ const VideojuegoForm = () => {
     }, []);
 
     return(
-        // HTML de la pantalla de un Videojuego
+        <>
+        <div>
+            <img src={videojuego.caratula} alt="caratula"></img>
+
+            <div>
+                <h2>Datos Extra</h2>
+                <p>{videojuego.datosExtra}</p>
+                <button>Ver más</button>
+            </div>
+        </div>
+
+        <div>
+            <h1>{videojuego.nombre}</h1>
+
+            <div>
+                <h2>Descripción</h2>
+                <p>{videojuego.descripcion}</p>
+            </div>
+
+            <iframe width="560" height="315" src={videojuego.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowfullscreen="true" allowTransparency="true"></iframe>
+        </div>
+
+        <div>
+            <h2>{videojuego.precio}</h2>
+
+            {/* Cupones */}
+
+            <button>Comprar</button>
+            <button>Reservar</button>
+            <button>Calificar</button>
+            <button>Opinar</button>
+        </div></>
     );
 };
 
