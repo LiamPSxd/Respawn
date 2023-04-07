@@ -5,8 +5,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/authContext";
 
 //Componentes
-import Navbar from "./componentes/NavBar/NavBar";
-import Navbar2 from "./componentes/NavBar/NavBar2";
+import NavBar from "./componentes/NavBar/NavBar";
+import NavBar2 from "./componentes/NavBar/NavBar2";
 import Catalogo from "./componentes/Catalogo/CatalogoLista";
 import Timer from "./componentes/Ofertas/App";
 import Divisa from "./componentes/Divisa/DivisaLista";
@@ -23,10 +23,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     {/* NavBar principal */}
-    <Navbar />
+    <NavBar />
 
     {/* NavBar secundaria */}
-    <Navbar2 />
+    <NavBar2 />
 
     <AuthProvider>
       <Routes>
