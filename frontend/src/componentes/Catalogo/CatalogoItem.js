@@ -9,4 +9,5 @@ const CatalogoItem = ({catalogo}) => {
     );
 };
 
+
 export default CatalogoItem;
