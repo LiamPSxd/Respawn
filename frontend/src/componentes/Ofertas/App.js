@@ -79,16 +79,6 @@ const Timer = () => {
   </form>
  </div>
       </aside>
-
-                 <div className="col">
-                    <div className="card card-body">
-                        <h2 className="card-title"><strong>DMC</strong></h2>
-                        <img src="https://static.wikia.nocookie.net/devilmaycry/images/1/14/DmCCover.jpg/revision/latest?cb=20200107040835&path-prefix=es" class='card-img-top' alt='imagen'/>
-                        <h5 className="card-text">Genero: </h5>
-                        <h5 className="card-text">Descuento % </h5>
-                        <button className="btn btn-info my-2">Comprar</button>
-                    </div>
-                </div>
         </div>
       );
 }

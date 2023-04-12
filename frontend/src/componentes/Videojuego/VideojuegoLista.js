@@ -2,17 +2,18 @@ import React, { useEffect, useState } from 'react';
 import VideojuegoItem from './VideojuegoItem';
 import * as VideojuegoServer from './VideojuegoServer';
 import * as CatalogoVideojuegoServer from '../Catalogo/Relacion/CatalogoVideojuegoServer';
+import * as OfertaVideojuegoServer from '../Ofertas/Relacion/OfertaVideojuegoServer';
 import { recuperarBusqueda } from "../NavBar/NavBar";
 
 let [videojuegos, setVideojuegos] = [];
 let idCatalogo = 0;
 
-const VideojuegoLista = ({ catalogo }) => {
+const VideojuegoLista = ({ catalogo,idOferta }) => {
     [videojuegos, setVideojuegos] = useState([]);
     [idCatalogo] = useState(catalogo.id);
 
     useEffect(() => {
-        listaVideojuegos(null);
+        listaVideojuegos(null, idOferta);
         // eslint-disable-next-line
     }, []);
 
@@ -27,9 +28,28 @@ const VideojuegoLista = ({ catalogo }) => {
 
 export default VideojuegoLista;
 
-export const listaVideojuegos = async (busqueda) => {
+export const listaVideojuegos = async (busqueda,idOferta) => {
     try{
-        const data = await getContenido();
+
+        let data = "" ; 
+
+        switch (window.location.pathname){
+            case "/catalogo":
+                data = await getContenido();
+                
+            case "/xbox":
+                data = await getContenido();
+            case "/playstation":
+                data = await getContenido();
+            case "/nintendo":
+                data = await getContenido();
+            case "/pc":
+               data = await getContenido();
+               break;
+            case "/ofertas":  
+            data =  await getOferta(idOferta); 
+            break;
+        }
 
         if(busqueda == null) setVideojuegos(data.Videojuegos);
         else setVideojuegos(recuperarBusqueda(busqueda, data.Videojuegos));
@@ -44,6 +64,18 @@ const getContenido = async () => {
 
     if(dataCatalogoVideojuego != null)
         await dataCatalogoVideojuego.CatalogoVideojuegos.forEach(cv => {
+            idVideojuegos += cv.idVideojuego + ",";
+        });
+
+    return await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();
+};
+
+const getOferta = async (idOferta) => {
+    const dataOfertaVideojuego = await (await OfertaVideojuegoServer.getOfertaVideojuegosByIdOferta(idOferta)).json();
+    let idVideojuegos = "";
+
+    if(dataOfertaVideojuego != null)
+        await dataOfertaVideojuego.OfertaVideojuegos.forEach(cv => {
             idVideojuegos += cv.idVideojuego + ",";
         });
 
