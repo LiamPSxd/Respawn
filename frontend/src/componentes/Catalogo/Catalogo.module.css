@@ -21,3 +21,15 @@
     margin-left: 10%;
 }
 
+#filtro{
+    float: right;
+    height: 5px;
+}
+
+#aplicarf{
+    float: right;
+    height: 35px;
+    width: 120px;
+    position: relative;
+    bottom: 5px;
+}

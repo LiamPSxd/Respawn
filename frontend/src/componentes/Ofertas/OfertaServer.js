@@ -17,7 +17,7 @@ export const addOferta = async (oferta) => {
         body: JSON.stringify({
             "id": String(oferta.id),
             "nombre": String(oferta.nombre),
-            "descuento": int(oferta.descuento),
+            "descuento": Number(oferta.descuento),
             "tiempo": String(oferta.tiempo),
         })
     });
@@ -32,7 +32,7 @@ export const updateOferta = async (oferta) => {
         body: JSON.stringify({
             "id": String(oferta.id),
             "nombre": String(oferta.nombre),
-            "descuento": int(oferta.descuento),
+            "descuento": Number(oferta.descuento),
             "tiempo": String(oferta.tiempo),
         })
     });

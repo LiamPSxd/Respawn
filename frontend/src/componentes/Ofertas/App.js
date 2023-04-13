@@ -1,8 +1,28 @@
 import './timer.css';
 import React  from 'react';
+import { useState, useEffect } from 'react';
 import CountdownTimer from './CoundownTimer'
-const Timer = () => {
+import * as OfertaServer from './OfertaServer'
+import OfertaItem from './OfertaItem'
+const Timer = ({ idOferta }) => {
+  const [ofertas, setOfertas] = useState([]);
+
+  const listaOfertas = async () => {
+      try {
+          const data = await (await OfertaServer.getAllOfertas()).json();
+          setOfertas(data.Ofertas); console.log(data); console.log(ofertas);
+      } catch (error) {
+          console.log(error);
+      }
+  };
+  useEffect(() => {
+    listaOfertas();
+    // eslint-disable-next-line
+}, []);
+
+
     return (
+      <>
         <div className="App">
             <h1 id='h1'>Tiempo restante:</h1> 
          <CountdownTimer
@@ -79,17 +99,17 @@ const Timer = () => {
   </form>
  </div>
       </aside>
-
-                 <div className="col">
-                    <div className="card card-body">
-                        <h2 className="card-title"><strong>DMC</strong></h2>
-                        <img src="https://static.wikia.nocookie.net/devilmaycry/images/1/14/DmCCover.jpg/revision/latest?cb=20200107040835&path-prefix=es" class='card-img-top' alt='imagen'/>
-                        <h5 className="card-text">Genero: </h5>
-                        <h5 className="card-text">Descuento % </h5>
-                        <button className="btn btn-info my-2">Comprar</button>
-                    </div>
-                </div>
         </div>
+
+<div className="row">
+{ofertas.map(oferta => (
+    <OfertaItem key={oferta.id} idOferta={oferta.id} />
+))}
+{/* {catalogos.map(catalogo => {
+document.getElementById("banner-img").style.setProperty("src", catalogo.banner);
+})} */}
+</div>
+</>
       );
 }
 export default Timer;
