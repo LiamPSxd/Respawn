@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:8000/firebase/VideojuegoOfertas/";
+const API_URL = "http://127.0.0.1:8000/firebase/videojuegoOfertas/";
 
 export const getAllOfertaVideojuegos = async () => {
     return await fetch(API_URL);

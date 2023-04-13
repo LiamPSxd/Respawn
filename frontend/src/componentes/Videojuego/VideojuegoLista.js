@@ -10,7 +10,11 @@ let idCatalogo = 0;
 
 const VideojuegoLista = ({ catalogo,idOferta }) => {
     [videojuegos, setVideojuegos] = useState([]);
-    [idCatalogo] = useState(catalogo.id);
+
+    if(catalogo!= null){
+        [idCatalogo] = useState(catalogo.id);
+    }
+    
 
     useEffect(() => {
         listaVideojuegos(null, idOferta);
@@ -35,27 +39,29 @@ export const listaVideojuegos = async (busqueda,idOferta) => {
 
         switch (window.location.pathname){
             case "/catalogo":
-                data = await getContenido();
+               
                 
             case "/xbox":
-                data = await getContenido();
+                
             case "/playstation":
-                data = await getContenido();
+                
             case "/nintendo":
-                data = await getContenido();
+              
             case "/pc":
                data = await getContenido();
                break;
-            case "/ofertas":  
-            data =  await getOferta(idOferta); 
-            break;
+            case "/ofertas":
+                data =  await getOferta(idOferta);
+                break;
         }
-
+        
+        
         if(busqueda == null) setVideojuegos(data.Videojuegos);
         else setVideojuegos(recuperarBusqueda(busqueda, data.Videojuegos));
     }catch(error){
         console.log(error);
     }
+
 };
 
 const getContenido = async () => {
@@ -75,7 +81,7 @@ const getOferta = async (idOferta) => {
     let idVideojuegos = "";
 
     if(dataOfertaVideojuego != null)
-        await dataOfertaVideojuego.OfertaVideojuegos.forEach(cv => {
+        await dataOfertaVideojuego.VideojuegoOfertas.forEach(cv => {
             idVideojuegos += cv.idVideojuego + ",";
         });
 

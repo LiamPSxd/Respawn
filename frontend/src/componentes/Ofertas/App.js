@@ -1,8 +1,28 @@
 import './timer.css';
 import React  from 'react';
+import { useState, useEffect } from 'react';
 import CountdownTimer from './CoundownTimer'
-const Timer = () => {
+import * as OfertaServer from './OfertaServer'
+import OfertaItem from './OfertaItem'
+const Timer = ({ idOferta }) => {
+  const [ofertas, setOfertas] = useState([]);
+
+  const listaOfertas = async () => {
+      try {
+          const data = await (await OfertaServer.getAllOfertas()).json();
+          setOfertas(data.Ofertas); console.log(data); console.log(ofertas);
+      } catch (error) {
+          console.log(error);
+      }
+  };
+  useEffect(() => {
+    listaOfertas();
+    // eslint-disable-next-line
+}, []);
+
+
     return (
+      <>
         <div className="App">
             <h1 id='h1'>Tiempo restante:</h1> 
          <CountdownTimer
@@ -80,6 +100,16 @@ const Timer = () => {
  </div>
       </aside>
         </div>
+
+<div className="row">
+{ofertas.map(oferta => (
+    <OfertaItem key={oferta.id} idOferta={oferta.id} />
+))}
+{/* {catalogos.map(catalogo => {
+document.getElementById("banner-img").style.setProperty("src", catalogo.banner);
+})} */}
+</div>
+</>
       );
 }
 export default Timer;
