@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
 import styles from './Catalogo.module.css';
-
+import Filtro from "../FiltroCategoria/Filtro";
 const CatalogoLista = ({ idCatalogo }) => {
     const [catalogos, setCatalogos] = useState([]);
 
@@ -14,6 +14,7 @@ const CatalogoLista = ({ idCatalogo }) => {
             console.log(error);
         }
     };
+ 
 
     useEffect(() => {
         listaCatalogos();
@@ -45,8 +46,9 @@ const CatalogoLista = ({ idCatalogo }) => {
             </header>
 
             <br></br>
-            <main>
-                <aside id="categoria">
+            <Filtro />
+            {/* <main> */}
+                {/* <aside id="categoria">
                     <div id="hola">
                         <h4 className="text-black text-lg">Categorias</h4>
                         <input name="video" type="radio" id="indy" value="indy" />
@@ -126,7 +128,7 @@ const CatalogoLista = ({ idCatalogo }) => {
                         </div>
                     </div>
                 </aside>
-            </main>
+            </main> */}
 
             <div className="row">
                 {catalogos.map(catalogo => (
