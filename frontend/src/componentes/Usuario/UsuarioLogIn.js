@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as UsuarioServer from "./UsuarioServer";
 import Cookies from "universal-cookie";
-import "./UsuarioLogIn.module.css";
+import styles from "./UsuarioLogIn.module.css";
 
 const UsuarioLogIn = () => {
     const history = useNavigate();
@@ -37,25 +37,31 @@ const UsuarioLogIn = () => {
     };
 
     return(
-        <><div className="body">
-            <div className="login-box">
+        <html className={styles.html}><div className={styles.body}>
+            <div className={styles.loginBox}>
                 <h2>Login</h2>
 
                 <form onSubmit={handleSubmit}>
-                    <div className="user-box">
+                    <div className={styles.userBox}>
                         <label>Correo</label>
                         <input type="email" name="correo" required onChange={handleInputChange} />
                     </div>
 
-                    <div className="user-box">
+                    <div className={styles.userBox}>
                         <label>Contraseña</label>
                         <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} />
                     </div>
+                    {/* <button type="submit" className="btn btn-primary">Iniciar Sesión</button> */}
+                     <a type="submit" onClick >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
-                    <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+                        Iniciar Sesión</a> 
                 </form>
             </div>
-        </div></>
+        </div></html>
     );
 };
 

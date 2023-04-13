@@ -19,97 +19,6 @@ const CatalogoLista = ({ idCatalogo }) => {
         listaCatalogos();
         // eslint-disable-next-line
     }, []);
-
-<<<<<<< HEAD
-    return(
-        <><header>
-            <section id="banner">
-                <img id="banner-img" src="logo2.png" alt=""></img>
-            </section>
-        </header>
-
-        <br></br>
-
-        <main>
-            <aside id="categoria">
-                <div id="hola">
-                    <h4 className="text-black text-lg">Categorias</h4>
-                    <input name ="video"type="radio" id="indy" value="indy"/>
-                    <label htmlFor="indy">Indies</label>
-
-                    <div>
-                        <input
-                            name="video"
-                            type="radio"
-                            id="Adventure"
-                            value="Adventure"
-                        />
-                        <label htmlFor="Adventure">Aventura</label>
-
-                        <div>
-                            <input name="video"type="radio" id="MMO" value="MMO"/>
-                            <label htmlFor="MMO">MMO</label>
-                        </div>
-
-                        <div>
-                            <input
-                                name="video"
-                                type="radio"
-                                id="Casual Game"
-                                value="Casual Game"
-                            />
-                            <label htmlFor="Casual Game">Casual</label>
-                        </div>
-
-                        <div>
-                            <input
-                                name="video"
-                                type="radio"
-                                id="Strategy"
-                                value="Strategy"
-                            />
-                            <label htmlFor="Strategy">Estrategia</label>
-                        </div>
-
-                        <div>
-                            <input
-                                name="video"
-                                type="radio"
-                                id="Simulator"
-                                value="Simulator"
-                            />
-                            <label htmlFor="Simulator">Simulacion</label>
-                        </div>
-
-                        <div>
-                            <input
-                                name="video"
-                                type="radio"
-                                id="Sports Game"
-                                value="Sports Game"
-                            />
-                            <label htmlFor="Sports Game">Deportes</label>
-                        </div>
-
-                        <div>
-                            <input
-                                name="video"
-                                type="radio"
-                                id="Action Game"
-                                value="Action Game"
-                            />
-                            <label htmlFor="Action Game">Accion</label>
-                        </div>
-
-                        <form className="flex flex-col gap-8">
-                            <br></br>
-
-                            <button type="submit" className="btn btn-block btn-primary">
-                                Aplicar Filtro
-                            </button>
-                        </form>
-                    </div>
-=======
     return (
         <>
             <header>
@@ -130,7 +39,6 @@ const CatalogoLista = ({ idCatalogo }) => {
                             Aplicar Filtro
                         </button>
                     </form>
->>>>>>> c6944b267b8133cff944293bb1459a1f671a81d2
                 </div>
                 <div id={styles.espacio}></div>
             </header>
