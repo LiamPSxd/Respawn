@@ -20,7 +20,6 @@ const CatalogoLista = ({ idCatalogo }) => {
         listaCatalogos();
         // eslint-disable-next-line
     }, []);
-
     return (
         <>
             <header>

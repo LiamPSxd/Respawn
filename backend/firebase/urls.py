@@ -1,37 +1,38 @@
 from django.urls import path
-from .views.CatalogoFiltroV import CatalogoFiltroV
-from .views.CatalogoV import CatalogoV
-from .views.CatalogoVideojuegoV import CatalogoVideojuegoV
-from .views.ComentarioV import ComentarioV
-from .views.CompraReembolsoV import CompraReembolsoV
-from .views.CompraV import CompraV
-from .views.CuponV import CuponV
-from .views.DivisaV import DivisaV
-from .views.DivisaVideojuegoV import DivisaVideojuegoV
-from .views.FiltroV import FiltroV
-from .views.MensajeV import MensajeV
-from .views.OfertaV import OfertaV
-from .views.PayPalV import PayPalV
-from .views.ReembolsoV import ReembolsoV
-from .views.ReservaReembolsoV import ReservaReembolsoV
-from .views.ReservaV import ReservaV
-from .views.TarjetaV import TarjetaV
-from .views.UsuarioComentarioV import UsuarioComentarioV
-from .views.UsuarioCompraV import UsuarioCompraV
-from .views.UsuarioCuponV import UsuarioCuponV
-from .views.UsuarioPayPalV import UsuarioPayPalV
-from .views.UsuarioReembolsoV import UsuarioReembolsoV
-from .views.UsuarioReservaV import UsuarioReservaV
-from .views.UsuarioTarjetaV import UsuarioTarjetaV
-from .views.UsuarioV import UsuarioV
-from .views.UsuarioWishListV import UsuarioWishListV
-from .views.VideojuegoComentarioV import VideojuegoComentarioV
-from .views.VideojuegoCompraV import VideojuegoCompraV
-from .views.VideojuegoOfertaV import VideojuegoOfertaV
-from .views.VideojuegoReservaV import VideojuegoReservaV
-from .views.VideojuegoV import VideojuegoV
-from .views.WishListV import WishListV
-from .views.WishListVideojuegoV import WishListVideojuegoV
+
+from .views.entidades.CatalogoV import CatalogoV
+from .views.entidades.ComentarioV import ComentarioV
+from .views.entidades.CompraV import CompraV
+from .views.entidades.CuponV import CuponV
+from .views.entidades.DivisaV import DivisaV
+from .views.entidades.FiltroV import FiltroV
+from .views.entidades.MensajeV import MensajeV
+from .views.entidades.OfertaV import OfertaV
+from .views.entidades.PayPalV import PayPalV
+from .views.entidades.ReembolsoV import ReembolsoV
+from .views.entidades.ReservaV import ReservaV
+from .views.entidades.TarjetaV import TarjetaV
+from .views.entidades.UsuarioV import UsuarioV
+from .views.entidades.VideojuegoV import VideojuegoV
+from .views.entidades.WishListV import WishListV
+from .views.relaciones.CatalogoFiltroV import CatalogoFiltroV
+from .views.relaciones.CatalogoVideojuegoV import CatalogoVideojuegoV
+from .views.relaciones.CompraReembolsoV import CompraReembolsoV
+from .views.relaciones.DivisaVideojuegoV import DivisaVideojuegoV
+from .views.relaciones.ReservaReembolsoV import ReservaReembolsoV
+from .views.relaciones.UsuarioComentarioV import UsuarioComentarioV
+from .views.relaciones.UsuarioCompraV import UsuarioCompraV
+from .views.relaciones.UsuarioCuponV import UsuarioCuponV
+from .views.relaciones.UsuarioPayPalV import UsuarioPayPalV
+from .views.relaciones.UsuarioReembolsoV import UsuarioReembolsoV
+from .views.relaciones.UsuarioReservaV import UsuarioReservaV
+from .views.relaciones.UsuarioTarjetaV import UsuarioTarjetaV
+from .views.relaciones.UsuarioWishListV import UsuarioWishListV
+from .views.relaciones.VideojuegoComentarioV import VideojuegoComentarioV
+from .views.relaciones.VideojuegoCompraV import VideojuegoCompraV
+from .views.relaciones.VideojuegoOfertaV import VideojuegoOfertaV
+from .views.relaciones.VideojuegoReservaV import VideojuegoReservaV
+from .views.relaciones.WishListVideojuegoV import WishListVideojuegoV
 
 urlpatterns = [
     path('catalogoFiltros/', CatalogoFiltroV.as_view(), name = 'allCFs'),
@@ -108,48 +109,49 @@ urlpatterns = [
     path('tarjetas/<ids>', TarjetaV.as_view(), name = 'oneTarjeta'),
 
     path('usuarioComentarios/', UsuarioComentarioV.as_view(), name = 'allUCs'),
-    path('usuarioComentarios/<correoUsuario>', UsuarioComentarioV.as_view(), name = 'oneUC'),
+    path('usuarioComentarios/<int:idUsuario>', UsuarioComentarioV.as_view(), name = 'oneUC'),
     path('usuarioComentarios//<int:idComentario>', UsuarioComentarioV.as_view(), name = 'oneUC'),
-    path('usuarioComentarios/<correoUsuario>/<int:idComentario>', UsuarioComentarioV.as_view(), name = 'oneUC'),
+    path('usuarioComentarios/<int:idUsuario>/<int:idComentario>', UsuarioComentarioV.as_view(), name = 'oneUC'),
 
     path('usuarioCompras/', UsuarioCompraV.as_view(), name = 'allUCs'),
-    path('usuarioCompras/<correoUsuario>', UsuarioCompraV.as_view(), name = 'oneUC'),
+    path('usuarioCompras/<int:idUsuario>', UsuarioCompraV.as_view(), name = 'oneUC'),
     path('usuarioCompras//<int:idCompra>', UsuarioCompraV.as_view(), name = 'oneUC'),
-    path('usuarioCompras/<correoUsuario>/<int:idCompra>', UsuarioCompraV.as_view(), name = 'oneUC'),
+    path('usuarioCompras/<int:idUsuario>/<int:idCompra>', UsuarioCompraV.as_view(), name = 'oneUC'),
 
     path('usuarioCupones/', UsuarioCuponV.as_view(), name = 'allUCs'),
-    path('usuarioCupones/<correoUsuario>', UsuarioCuponV.as_view(), name = 'oneUC'),
+    path('usuarioCupones/<int:idUsuario>', UsuarioCuponV.as_view(), name = 'oneUC'),
     path('usuarioCupones//<int:idCupon>', UsuarioCuponV.as_view(), name = 'oneUC'),
-    path('usuarioCupones/<correoUsuario>/<int:idCupon>', UsuarioCuponV.as_view(), name = 'oneUC'),
+    path('usuarioCupones/<int:idUsuario>/<int:idCupon>', UsuarioCuponV.as_view(), name = 'oneUC'),
 
     path('usuarioPayPals/', UsuarioPayPalV.as_view(), name = 'allUPs'),
-    path('usuarioPayPals/<correoUsuario>', UsuarioPayPalV.as_view(), name = 'oneUP'),
+    path('usuarioPayPals/<int:idUsuario>', UsuarioPayPalV.as_view(), name = 'oneUP'),
     path('usuarioPayPals//<int:idPayPal>', UsuarioPayPalV.as_view(), name = 'oneUP'),
-    path('usuarioPayPals/<correoUsuario>/<int:idPayPal>', UsuarioPayPalV.as_view(), name = 'oneUP'),
+    path('usuarioPayPals/<int:idUsuario>/<int:idPayPal>', UsuarioPayPalV.as_view(), name = 'oneUP'),
 
     path('usuarioReembolsos/', UsuarioReembolsoV.as_view(), name = 'allURs'),
-    path('usuarioReembolsos/<correoUsuario>', UsuarioReembolsoV.as_view(), name = 'oneUR'),
+    path('usuarioReembolsos/<int:idUsuario>', UsuarioReembolsoV.as_view(), name = 'oneUR'),
     path('usuarioReembolsos//<int:idReembolso>', UsuarioReembolsoV.as_view(), name = 'oneUR'),
-    path('usuarioReembolsos/<correoUsuario>/<int:idReembolso>', UsuarioReembolsoV.as_view(), name = 'oneUR'),
+    path('usuarioReembolsos/<int:idUsuario>/<int:idReembolso>', UsuarioReembolsoV.as_view(), name = 'oneUR'),
 
     path('usuarioReservas/', UsuarioReservaV.as_view(), name = 'allURs'),
-    path('usuarioReservas/<correoUsuario>', UsuarioReservaV.as_view(), name = 'oneUR'),
+    path('usuarioReservas/<int:idUsuario>', UsuarioReservaV.as_view(), name = 'oneUR'),
     path('usuarioReservas//<int:idReserva>', UsuarioReservaV.as_view(), name = 'oneUR'),
-    path('usuarioReservas/<correoUsuario>/<int:idReserva>', UsuarioReservaV.as_view(), name = 'oneUR'),
+    path('usuarioReservas/<int:idUsuario>/<int:idReserva>', UsuarioReservaV.as_view(), name = 'oneUR'),
 
     path('usuarioTarjetas/', UsuarioTarjetaV.as_view(), name = 'allUTs'),
-    path('usuarioTarjetas/<correoUsuario>', UsuarioTarjetaV.as_view(), name = 'oneUT'),
+    path('usuarioTarjetas/<int:idUsuario>', UsuarioTarjetaV.as_view(), name = 'oneUT'),
     path('usuarioTarjetas//<int:idTarjeta>', UsuarioTarjetaV.as_view(), name = 'oneUT'),
-    path('usuarioTarjetas/<correoUsuario>/<int:idTarjeta>', UsuarioTarjetaV.as_view(), name = 'oneUT'),
+    path('usuarioTarjetas/<int:idUsuario>/<int:idTarjeta>', UsuarioTarjetaV.as_view(), name = 'oneUT'),
 
     path('usuarios/', UsuarioV.as_view(), name = 'allUsuarios'),
-    path('usuarios/<nombre>', UsuarioV.as_view(), name = 'oneUsuario'),
-    path('usuarios/<nombres>', UsuarioV.as_view(), name = 'oneUsuario'),
+    path('usuarios/<int:id>', UsuarioV.as_view(), name = 'oneUsuario'),
+    path('usuarios/<ids>', UsuarioV.as_view(), name = 'oneUsuario'),
+    path('usuarios//<correo>', UsuarioV.as_view(), name = 'oneUsuario'),
 
     path('usuariosWishLists/', UsuarioWishListV.as_view(), name = 'allUWs'),
-    path('usuariosWishLists/<correoUsuario>', UsuarioWishListV.as_view(), name = 'oneUW'),
+    path('usuariosWishLists/<int:idUsuario>', UsuarioWishListV.as_view(), name = 'oneUW'),
     path('usuariosWishLists//<int:idWishList>', UsuarioWishListV.as_view(), name = 'oneUW'),
-    path('usuariosWishLists/<correoUsuario>/<int:idWishList>', UsuarioWishListV.as_view(), name = 'oneUW'),
+    path('usuariosWishLists/<int:idUsuario>/<int:idWishList>', UsuarioWishListV.as_view(), name = 'oneUW'),
 
     path('videojuegoComentarios/', VideojuegoComentarioV.as_view(), name = 'allVCs'),
     path('videojuegoComentarios/<int:idVideojuego>', VideojuegoComentarioV.as_view(), name = 'oneVC'),
