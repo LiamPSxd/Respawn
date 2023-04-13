@@ -2,17 +2,17 @@ from firebase.database.entidades.Usuario import Usuario
 from firebase.database.entidades.Tarjeta import Tarjeta
 
 class UsuarioTarjeta:
-    def __init__(self, correoUsuario = Usuario.correo, idTarjeta = Tarjeta.id):
-        self._correoUsuario = correoUsuario
+    def __init__(self, idUsuario = Usuario.id, idTarjeta = Tarjeta.id):
+        self.idUsuario = idUsuario
         self._idTarjeta = idTarjeta
 
     @property
-    def correoUsuario(self):
-        return self._correoUsuario
+    def idUsuario(self):
+        return self.idUsuario
 
-    @correoUsuario.setter
-    def correoUsuario(self, correoUsuario):
-        self._correoUsuario = correoUsuario
+    @idUsuario.setter
+    def idUsuario(self, idUsuario):
+        self.idUsuario = idUsuario
 
     @property
     def idTarjeta(self):
@@ -23,4 +23,4 @@ class UsuarioTarjeta:
         self._idTarjeta = idTarjeta
 
     def toString(self):
-        return f"Usuario {self.correoUsuario} - Tarjeta {self.idTarjeta}"
+        return f"Usuario {self.idUsuario} - Tarjeta {self.idTarjeta}"

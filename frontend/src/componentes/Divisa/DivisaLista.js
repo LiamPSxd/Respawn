@@ -28,8 +28,8 @@ export const listaDivisas = async (busqueda) => {
     try{
         const data = await (await DivisaServer.getAllDivisas()).json();
         await data.Divisas.forEach(divisa => {
-            if(divisa.seleccionado === "True")
-                if(String(divisa.hora) !== String(new Date().getDate())) updateCurrencies(data.Divisas, divisa.simbolo);
+            if(String(divisa.seleccionado) == "True")
+                if(String(divisa.hora) != String(new Date().getDate())) updateCurrencies(data.Divisas, divisa.simbolo);
         })
 
         if(busqueda == null) setDivisas(data.Divisas);
@@ -40,7 +40,7 @@ export const listaDivisas = async (busqueda) => {
 };
 
 const updateCurrencies = async (divisas, simbolo) => {
-    if(simbolo !== "ADA"){
+    if(String(simbolo) != "ADA"){
         const dataCurrencies = await (await DivisaServer.getAllCurrencies(simbolo)).json();
 
         Object.keys(dataCurrencies.conversion_rates).map(async key => {

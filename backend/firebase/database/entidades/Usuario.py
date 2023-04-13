@@ -1,9 +1,18 @@
 class Usuario:
-    def __init__(self, nombre = "", correo = "", contrasenia = "", domicilio = ""):
+    def __init__(self, id = 0, nombre = "", correo = "", contrasenia = "", domicilio = ""):
+        self._id = id
         self._nombre = nombre
         self._correo = correo
         self._contrasenia = contrasenia
         self._domicilio = domicilio
+
+    @property
+    def id(self):
+        return self._id
+
+    @id.setter
+    def id(self, id):
+        self._id = id
 
     @property
     def nombre(self):
@@ -38,4 +47,4 @@ class Usuario:
         self._domicilio = domicilio
 
     def toString(self):
-        return f"Usuario {self.nombre}: {self.correo}, {self.contrasenia}, {self.domicilio}"
+        return f"Usuario {self.id}: {self.nombre}, {self.correo}, {self.contrasenia}, {self.domicilio}"

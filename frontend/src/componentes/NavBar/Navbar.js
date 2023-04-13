@@ -96,8 +96,8 @@ const NavBar = () => {
             </MDBDropdownToggle>
             
             <MDBDropdownMenu>
-              <MDBDropdownItem link href='/login'>Iniciar Sesión</MDBDropdownItem>
-              <MDBDropdownItem link href='/registro'>Crear cuenta</MDBDropdownItem>
+              <MDBDropdownItem link href='/logIn'>Iniciar Sesión</MDBDropdownItem>
+              <MDBDropdownItem link href='/signUp'>Crear cuenta</MDBDropdownItem>
               <MDBDropdownItem link href='/cupones'>Cupones</MDBDropdownItem>
             </MDBDropdownMenu>
           </MDBDropdown>

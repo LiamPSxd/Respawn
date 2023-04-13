@@ -22,7 +22,7 @@ const CatalogoLista = ({idCatalogo}) => {
     return(
         <><header>
             <section id="banner">
-                <img id="banner-img" src="logo2-png" alt=""></img>
+                <img id="banner-img" src="logo2.png" alt=""></img>
             </section>
         </header>
 
