@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import {  useParams } from "react-router-dom";
 import * as VideojuegoServer from './VideojuegoServer';
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
+import ModalCalificacion from "../Modal/ModalCalificacion";
 
 const VideojuegoForm = () => {
     const params = useParams();
@@ -168,6 +169,7 @@ const VideojuegoForm = () => {
                         <div class="description description-tabs" style={{
                             padding: "30px 0 5px !important"
                         }}>
+                            <ModalCalificacion/>
                             <ul id="myTab" class="nav nav-pills">
                                 <li className="active"><a href="#more-information" data-toggle="tab" class="no-margin">Product
                                     Description </a></li>

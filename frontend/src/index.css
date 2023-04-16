@@ -60,3 +60,23 @@ code {
   text-decoration:none;
   }
 
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  .iconStar {
+    color: orange;
+    font-size: 60px;
+    margin: auto 16px auto 16px;
+  }
+  
+  .iconStar:hover,
+  .iconStar:hover ~ .iconStar {
+    color: orange;
+    
+  }
+  
+  input[type="radio"]:checked ~ .iconStar {
+    color: orange;
+  }
