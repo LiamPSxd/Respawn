@@ -51,14 +51,14 @@ const UsuarioLogIn = () => {
                         <label>Contraseña</label>
                         <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} />
                     </div>
-                    {/* <button type="submit" className="btn btn-primary">Iniciar Sesión</button> */}
-                     <a type="submit" onClick >
+                    <button type="submit" className="btn btn-primary">Iniciar Sesión</button> 
+                    {/*  <a type="submit" onClick >
                     <span></span>
                     <span></span>
                     <span></span>
                     <span></span>
 
-                        Iniciar Sesión</a> 
+                        Iniciar Sesión</a> */}
                 </form>
             </div>
         </div></html>

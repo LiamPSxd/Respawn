@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import * as VideojuegoServer from './VideojuegoServer';
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 
 const VideojuegoForm = () => {
-    const history = useNavigate();
     const params = useParams();
 
     const initialState = { id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: 0.0, genero: "", plataforma: "", datosExtra: "", calificacion: 0.0, capturas: [] };
     const [videojuego, setVideojuego] = useState(initialState);
 
-    const handleInputChange = (e) => {
-        setVideojuego({ ...videojuego, [e.target.name]: e.target.value });
-    };
+    // const handleInputChange = (e) => {
+    //     setVideojuego({ ...videojuego, [e.target.name]: e.target.value });
+    // };
 
     const getVideojuego = async (idVideojuego) => {
         try {
