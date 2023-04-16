@@ -21,7 +21,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { listaVideojuegos } from '../Videojuego/VideojuegoLista';
 import { listaDivisas } from '../Divisa/DivisaLista';
-import { listaCupones } from '../Cupon/Cupon';
+import { listaCupones } from '../Cupon/CuponLista';
 
 const NavBar = () => {
   const [showBasic, setShowBasic] = useState(false);

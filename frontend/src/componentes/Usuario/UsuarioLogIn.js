@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as UsuarioServer from "./UsuarioServer";
 import Cookies from "universal-cookie";
-import styles from "./UsuarioLogIn.module.css";
+import styles from "./Usuario.module.css";
 
 const UsuarioLogIn = () => {
     const history = useNavigate();

@@ -100,10 +100,6 @@ class Firebase:
     def logIn(self, correo):
         return auth.get_user_by_email(email = correo)
 
-    def updateUser(self, usuario):
-        if self.conexionDB:
-            auth.update_user
-
     def getDocumento(self, entidad):
         if self.conexionDB:
             doc = self.db.reference(entidad).get()

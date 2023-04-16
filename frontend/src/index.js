@@ -9,7 +9,7 @@ import NavBar2 from "./componentes/NavBar/NavBar2";
 import Catalogo from "./componentes/Catalogo/CatalogoLista";
 import Timer from "./componentes/Ofertas/App";
 import Divisa from "./componentes/Divisa/DivisaLista";
-import Cupon from "./componentes/Cupon/Cupon";
+import Cupon from "./componentes/Cupon/CuponLista";
 import SignUp from "./componentes/Usuario/UsuarioSignUp";
 import LogIn  from "./componentes/Usuario/UsuarioLogIn";
 import Home from "./componentes/Usuario/UsuarioHome";

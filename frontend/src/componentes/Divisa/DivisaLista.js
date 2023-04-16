@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DivisaItem from "./DivisaItem";
 import * as DivisaServer from "./DivisaServer";
 import { recuperarBusqueda } from "../NavBar/NavBar";
+import style from "./Divisa.module.css";
 
 let [divisas, setDivisas] = [];
 
@@ -14,11 +15,11 @@ const DivisaLista = () => {
     }, []);
 
     return(
-        <div className="row">
+        <><div id={style.contenedorTarjetas}>
             {divisas.map(divisa => (
                 <DivisaItem key={divisa.id} divisa={divisa} listaDivisas={listaDivisas} divisas={divisas} updateCurrencies={updateCurrencies} />
             ))}
-        </div>
+        </div></>
     );
 };
 
@@ -28,8 +29,8 @@ export const listaDivisas = async (busqueda) => {
     try{
         const data = await (await DivisaServer.getAllDivisas()).json();
         await data.Divisas.forEach(divisa => {
-            if(String(divisa.seleccionado) == "True")
-                if(String(divisa.hora) != String(new Date().getDate())) updateCurrencies(data.Divisas, divisa.simbolo);
+            if(String(divisa.seleccionado) === "True")
+                if(String(divisa.hora) !== String(new Date().getDate())) updateCurrencies(data.Divisas, divisa.simbolo);
         })
 
         if(busqueda == null) setDivisas(data.Divisas);
@@ -40,7 +41,7 @@ export const listaDivisas = async (busqueda) => {
 };
 
 const updateCurrencies = async (divisas, simbolo) => {
-    if(String(simbolo) != "ADA"){
+    if(String(simbolo) !== "ADA"){
         const dataCurrencies = await (await DivisaServer.getAllCurrencies(simbolo)).json();
 
         Object.keys(dataCurrencies.conversion_rates).map(async key => {

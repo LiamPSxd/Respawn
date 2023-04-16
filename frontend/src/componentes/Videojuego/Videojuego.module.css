@@ -1,0 +1,28 @@
+#contenedorTarjetas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 5px;
+    padding-top: 10px;
+}
+
+#tarjeta{
+    margin: 10px;
+    width: 18rem;
+    display: inline-block;
+}
+
+#imgCard{
+    height: 360px;
+}
+
+#contenidoTarjeta{
+    text-align: start;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+#titulo{
+    font-weight: bold;
+}
