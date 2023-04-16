@@ -40,6 +40,7 @@ export const listaVideojuegos = async (busqueda,idOferta) => {
 
         switch (window.location.pathname){
             case "/catalogo":
+<<<<<<< HEAD
                 data = await getContenido();
                break;
             case "/xbox":
@@ -51,6 +52,11 @@ export const listaVideojuegos = async (busqueda,idOferta) => {
             case "/nintendo":
                 data = await getContenido();
                break;
+=======
+            case "/xbox":     
+            case "/playstation":
+            case "/nintendo":
+>>>>>>> 65b33631235d7588de430f10bcf5f767fb45b7f1
             case "/pc":
                data = await getContenido();
                break;
