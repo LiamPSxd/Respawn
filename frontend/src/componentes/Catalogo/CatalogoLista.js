@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
 
-import style from './Catalogo.module.css';
 import styles from './Catalogo.module.css';
 import Filtro from "../Filtro/Filtro";
 import FiltroV from "../FiltroVariado/FiltroV";
