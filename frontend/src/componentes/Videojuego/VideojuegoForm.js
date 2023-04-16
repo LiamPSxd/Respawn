@@ -69,7 +69,7 @@ const VideojuegoForm = () => {
                                     <MDBCarouselItem
 
                                     className='w-100 d-block'
-                                        itemId={3}
+                                        itemId={2}
                                         src={videojuego.capturas[0]}
                                         alt='...'
                                     
@@ -78,7 +78,20 @@ const VideojuegoForm = () => {
                                     <MDBCarouselItem
                                         className='w-100 d-block'
                                         itemId={3}
+                                        src={videojuego.capturas[1]}
+                                        alt='...'
+                                    />
+                                       <MDBCarouselItem
+                                        className='w-100 d-block'
+                                        itemId={4}
                                         src={videojuego.capturas[2]}
+                                        alt='...'
+                                    />
+
+                                    <MDBCarouselItem
+                                        className='w-100 d-block'
+                                        itemId={5}
+                                        src={videojuego.capturas[3]}
                                         alt='...'
                                     />
 
