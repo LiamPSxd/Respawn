@@ -3,6 +3,8 @@ import {  useParams } from "react-router-dom";
 import * as VideojuegoServer from './VideojuegoServer';
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 import ModalCalificacion from "../Modal/ModalCalificacion";
+import Comentario from "../Comentario/comentario";
+import Safe from 'react-safe';
 
 const VideojuegoForm = () => {
     const params = useParams();
@@ -170,6 +172,9 @@ const VideojuegoForm = () => {
                             padding: "30px 0 5px !important"
                         }}>
                             <ModalCalificacion/>
+                            <div id="disqus_thread"></div>
+                            <Comentario />
+        
                             <ul id="myTab" class="nav nav-pills">
                                 <li className="active"><a href="#more-information" data-toggle="tab" class="no-margin">Product
                                     Description </a></li>
@@ -227,6 +232,7 @@ const VideojuegoForm = () => {
                                         </div>
                                     </form>
                                     <div class="chat-body no-padding profile-message">
+                                        
                                         <ul>
                                             <li class="message">
                                                 <img src="https://bootdey.com/img/Content/avatar/avatar1.png"
