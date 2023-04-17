@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import VideojuegoItem from './VideojuegoItem';
+import VideojuegoOfertaItem from './VideojuegoOfertaItem';
 import style from "./Videojuego.module.css";
 import * as VideojuegoServer from './VideojuegoServer';
 import * as CatalogoVideojuegoServer from '../Catalogo/Relacion/CatalogoVideojuegoServer';
@@ -23,15 +24,19 @@ const VideojuegoLista = ({ catalogo,idOferta }) => {
     }, []);
 
     return(
-        <><div id={style.contenedorTarjetas}>
+        <> 
+        <div id={style.contenedorTarjetas}>
             {videojuegos.map(videojuego => (
                 <VideojuegoItem key={videojuego.id} videojuego={videojuego} listaVideojuegos={listaVideojuegos} />
             ))}
-        </div></>
+        </div>
+        </>
+    
     );
 };
 
 export default VideojuegoLista;
+
 
 export const listaVideojuegos = async (busqueda,idOferta) => {
     try{

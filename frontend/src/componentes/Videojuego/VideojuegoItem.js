@@ -22,7 +22,7 @@ const VideojuegoItem = ({videojuego}) => {
     //         default:
     //             doc.style.setProperty("font-size", "45.624");
     //     }
-    // };
+    // }; 
 
     return(
         <><div id={style.tarjeta} className="card">
