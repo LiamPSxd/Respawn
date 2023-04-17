@@ -20,12 +20,7 @@ const VideojuegoForm = () => {
         try {
             const data = await (await VideojuegoServer.getVideojuego(idVideojuego)).json();
             const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
-            console.log(capturas);
-            console.log(capturas)
-            // const x= [capturas.split(",")]
-            // console.log(x)
             setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
-            console.log(videojuego)
 
         } catch (error) {
             console.log(error);
@@ -44,29 +39,11 @@ const VideojuegoForm = () => {
 
     return (
         <>
-            <div class="product-content product-wrap clearfix product-deatil" style={{
-                borderBottom: "1px solid #dfe5e9",
-                paddingBottom: "30vh",
-                paddingLeft: "5%",
-                paddingTop: "1%",
-                paddingRight: "5%",
-                position: "relative",
-                width: "100%",
-                height: "30%",
-                align:"center"
-            }}>
+            <div class="product-content product-wrap clearfix product-deatil" id="product-content">
                 <div class="row">
-                    <div class="col-md-5 col-sm-12 col-xs-12" style={{alignItems:"center"}}>
-                        <div class="product-image">
-                            <div
-                                style={{
-                                    marginTop: "10%",
-                                    marginLeft: "auto",
-                                    marginRight: "auto",
-                                    width: "100%",
-                                    height: "50%",
-
-                                }}>
+                    <div class="col-md-5 col-sm-12 col-xs-12">
+                        <div class="product-image" id="product-image">
+                            <div>
 
                                 <MDBCarousel showControls showIndicators fade >
 

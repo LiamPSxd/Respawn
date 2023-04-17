@@ -36,7 +36,8 @@ const ModalCalificacion = ()=>{
           <h5>Indica la cantidad de estrellas que se merece</h5>
             <div>
               {
-                [... new Array(5)].map((star, index) => {
+                /*eslint rest-spread-spacing: ["error", "never"]*/
+                [...new Array(5)].map((star,index)=>{
                   return index < score ? <Icon.StarFill key={index} className='iconStar' onClick={() => indexStart(index)} /> : <Icon.Star key={index} className='iconStar' onClick={() => indexStart(index)} />
                 })
               }
