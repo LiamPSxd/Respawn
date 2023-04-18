@@ -55,9 +55,8 @@ const VideojuegoForm = () => {
         <div>
             <h2>{videojuego.precio}</h2>
 
-            {/* Cupones */}
 
-            <button>Comprar</button>
+            <button onClick={() => history(`/pago/videojuego/${videojuego.id}`)}>Comprar</button>
             <button>Reservar</button>
             <button>Calificar</button>
             <button>Opinar</button>

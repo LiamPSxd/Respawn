@@ -15,6 +15,9 @@ import Registro from "./componentes/RegistroUser/Register";
 import Login  from "./componentes/Login/Login";
 import Home from "./componentes/Homepage/Home";
 import Videojuego from "./componentes/Videojuego/VideojuegoForm";
+import Pago from "./componentes/Pago/Pago";
+import TarjetaForm from "./componentes/Tarjeta/TarjetaForm";
+import PayPalForm from "./componentes/PayPal/PayPalForm";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -39,6 +42,9 @@ root.render(
         <Route exact path="/nintendo" element={<Catalogo idCatalogo={3} />} />
         <Route exact path="/pc" element={<Catalogo idCatalogo={4} />} />
         <Route exact path="/videojuego/:id" element={<Videojuego />} />
+        <Route exact path="/pago/videojuego/:id" element={<Pago />} />
+        <Route exact path="/pago/videojuego/tarjeta" element={<TarjetaForm />} />
+        <Route exact path="/pago/videojuego/paypal" element={<PayPalForm />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/home" element={<Home />} />
