@@ -6,8 +6,8 @@ class Firebase:
         self.db = db
         self.conexionDB()
         self._mensajeExitoso = {"message": "Exitoso"}
-        self._mensajeFallido = {"message": "Ocurrio un problema. No hay dato(s)"}
-        self._mensajePerdida = {"message": "Sin Conexion a la Base de Datos"}
+        self._mensajeFallido = {"message": "Fallido. Posiblemente no hay dato(s)"}
+        self._mensajePerdida = {"message": "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde"}
 
     @property
     def mensajeExitoso(self):
