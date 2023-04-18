@@ -2,17 +2,17 @@ from firebase.database.entidades.Usuario import Usuario
 from firebase.database.entidades.WishList import WishList
 
 class UsuarioWishList:
-    def __init__(self, correoUsuario = Usuario.correo, idWishList = WishList.id):
-        self._correoUsuario = correoUsuario
+    def __init__(self, idUsuario = Usuario.id, idWishList = WishList.id):
+        self.idUsuario = idUsuario
         self._idWishList = idWishList
 
     @property
-    def correoUsuario(self):
-        return self._correoUsuario
+    def idUsuario(self):
+        return self.idUsuario
 
-    @correoUsuario.setter
-    def correoUsuario(self, correoUsuario):
-        self._correoUsuario = correoUsuario
+    @idUsuario.setter
+    def idUsuario(self, idUsuario):
+        self.idUsuario = idUsuario
 
     @property
     def idWishList(self):
@@ -23,4 +23,4 @@ class UsuarioWishList:
         self._idWishList = idWishList
 
     def toString(self):
-        return f"Usuario {self.correoUsuario} - WishList {self.idWishList}"
+        return f"Usuario {self.idUsuario} - WishList {self.idWishList}"

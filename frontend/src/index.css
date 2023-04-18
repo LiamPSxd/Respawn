@@ -60,3 +60,41 @@ code {
   text-decoration:none;
   }
 
+  
+  
+  
+  .iconStar {
+    color: orange;
+    font-size: 60px;
+    margin: auto 16px auto 16px;
+  }
+  
+  .iconStar:hover,
+  .iconStar:hover ~ .iconStar {
+    color: orange;
+    
+  }
+  
+  input[type="radio"]:checked ~ .iconStar {
+    color: orange;
+  }
+
+  #product-content{
+      border-bottom: 1px solid #dfe5e9;
+      padding-bottom: 30vh;
+      padding-left: 5%;
+      padding-top: 1%;
+      padding-right: 5%;
+      position: relative;
+      width: 100%;
+      height: 30%;
+      align-self:center;
+  }
+
+  #product-image{
+      margin-top: 5%;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      height: 50%;
+  }

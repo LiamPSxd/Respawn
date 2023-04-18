@@ -1,5 +1,5 @@
-import firebase_admin
-from firebase_admin import credentials, db
+import firebase_admin, calendar, time
+from firebase_admin import credentials, db, auth
 
 class Firebase:
     def __init__(self):
@@ -57,7 +57,48 @@ class Firebase:
 
     def getAuth(self):
         if self.conexionDB:
-            return self.getDB.auth()
+            return auth
+
+    def user(self, usuario, estado = -1):
+        if self.conexionDB:
+            match estado:
+                case -1:
+                    return self.signUp(usuario)
+                case 0:
+                    return True if str(self.logIn(usuario.correo).uid) == str(usuario.id) else False
+                case 1:
+                    auth.update_user(
+                        uid = str(usuario.id),
+                        display_name = usuario.nombre,
+                        email = usuario.correo,
+                        email_verified = False,
+                        phone_number = None,
+                        photo_url = None,
+                        password = usuario.contrasenia,
+                        disabled = False,
+                        custom_claims = None,
+                        valid_since = calendar.timegm(time.gmtime())
+                    )
+                case 2:
+                    auth.delete_user(uid = str(usuario.id))
+                    return True if self.logIn(usuario.correo) == None else False
+
+    def signUp(self, usuario):
+        auth.create_user(
+            uid = str(usuario.id),
+            display_name = usuario.nombre,
+            email = usuario.correo,
+            email_verified = False,
+            phone_number = None,
+            photo_url = None,
+            password = usuario.contrasenia,
+            disabled = False
+        )
+
+        return True if str(self.logIn(usuario.correo).uid) == str(usuario.id) else False
+
+    def logIn(self, correo):
+        return auth.get_user_by_email(email = correo)
 
     def getDocumento(self, entidad):
         if self.conexionDB:
