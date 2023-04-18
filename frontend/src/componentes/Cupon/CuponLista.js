@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import style from "./Cupon.module.css"
 import * as CuponServer from "./CuponServer";
-import { recuperarBusqueda } from "../NavBar/NavBar";
+import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 import CuponItem from "./CuponItem";
 
 let [cupones, setCupones] = [];
