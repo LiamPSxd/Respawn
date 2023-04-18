@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DivisaItem from "./DivisaItem";
 import * as DivisaServer from "./DivisaServer";
-import { recuperarBusqueda } from "../NavBar/NavBar";
+import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 import style from "./Divisa.module.css";
 
 let [divisas, setDivisas] = [];

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
-import style from './Catalogo.module.css';
+import styles from './Catalogo.module.css';
 import Filtro from "../Filtro/Filtro";
-
+import FiltroV from "../FiltroVariado/FiltroV";
 const CatalogoLista = ({ idCatalogo }) => {
     const [catalogos, setCatalogos] = useState([]);
 
@@ -21,29 +21,30 @@ const CatalogoLista = ({ idCatalogo }) => {
         // eslint-disable-next-line
     }, []);
 
-    return(
-        <><header>
-            <section id="banner">
-                <img id="banner-img" src="logo2-png" alt=""></img>
-            </section>
-
-            <div id={style.filtro}>
-                <form id="fitro">
-                    <select defaultValue={'Default'}>
-                        <option value={"Default"} disabled>Selecciona un filtro:</option>
-                        <option >Videojuegos ordenados alfabeticamente Ascendente(A-Z)</option>
-                        <option>Videojuegos ordenados alfabeticamente Descente(Z-A)</option>
-                        <option>Precio:Mayor a Menor</option>
-                        <option>Precio:Menor a Mayor</option>
-                        <option>Calificacion</option>
-                    </select>
-                    <button type="submit" className="mx-2 btn btn-block btn-primary" id={style.aplicarf}>
-                        Aplicar Filtro
-                    </button>
-                </form>
-            </div>
-        </header>
-
+    return (
+        <>
+            <header>
+                <section id="banner">
+                    <img id="banner-img" src="logo2-png" alt=""></img>
+                </section>
+                <FiltroV />
+                {/* <div id={styles.filtro}>
+                    <form id="fitro">
+                        <select defaultValue={'Default'}>
+                            <option value={"Default"} disabled>Selecciona un filtro:</option>
+                            <option >Videojuegos ordenados alfabeticamente Ascendente(A-Z)</option>
+                            <option>Videojuegos ordenados alfabeticamente Descente(Z-A)</option>
+                            <option>Precio:Mayor a Menor</option>
+                            <option>Precio:Menor a Mayor</option>
+                            <option>Calificacion</option>
+                        </select>
+                        <button type="submit" className="mx-2 btn btn-block btn-primary" id={styles.aplicarf}>
+                            Aplicar Filtro
+                        </button>
+                    </form>
+                </div> */}
+                <div id={styles.espacio}></div>
+            </header>
         <br></br>
         <Filtro />
         {/* <main> */}

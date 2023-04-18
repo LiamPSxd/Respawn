@@ -4,8 +4,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Componentes
-import NavBar from "./componentes/NavBar/NavBar";
-import NavBar2 from "./componentes/NavBar/NavBar2";
+import NavBar from "./componentes/NavBar/MDBNavBar";
+import NavBar2 from "./componentes/NavBar/MDBNavBar2";
 import Catalogo from "./componentes/Catalogo/CatalogoLista";
 import Timer from "./componentes/Ofertas/App";
 import Divisa from "./componentes/Divisa/DivisaLista";

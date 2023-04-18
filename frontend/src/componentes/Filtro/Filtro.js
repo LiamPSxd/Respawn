@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import * as FiltroServer from "./FiltroServer";
+import React from "react";
+
 
 const Filtro = ({ idFiltro }) => {
     return (
@@ -7,17 +7,17 @@ const Filtro = ({ idFiltro }) => {
             <aside id="categoria">
                 <div id="hola">
                     <h4 className="text-black text-lg">Categorias</h4>
-                    <input name="video" type="radio" id="indy" value="indy" />
-                    <label htmlFor="indy">Indies</label>
+                    <input name="video" type="radio" id="Shooter" value="Shooter" />
+                    <label htmlFor="Shooter">Shooter</label>
     
                     <div>
                         <input
                             name="video"
                             type="radio"
-                            id="Adventure"
-                            value="Adventure"
+                            id="Misterio"
+                            value="Misterio"
                         />
-                        <label htmlFor="Adventure">Aventura</label>
+                        <label htmlFor="Misterio">Misterio</label>
     
                         <div>
                             <input name="video" type="radio" id="MMO" value="MMO" />
