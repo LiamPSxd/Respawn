@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import * as DivisaServer from "./DivisaServer";
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import style from "./Divisa.module.css";
-import Mensaje from '../Mensaje/Mensaje';
+// import Mensaje from '../Mensaje/Mensaje';
 
 const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
-    const [titulo, setTitulo] = useState(null);
-    const [contenido, setContenido] = useState(null);
+    // const [titulo, setTitulo] = useState(null);
+    // const [contenido, setContenido] = useState(null);
 
     const handleCambioDivisa = async (newDiv) => {
         await divisas.forEach(async oldDiv => {
@@ -38,11 +38,13 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
         const data = (await (await VideojuegoServer.getVideojuego(0)).json()).Videojuegos[0];
 
         if(data.precio.split(" ")[1] == simbolo){
-            setTitulo("Éxito");
-            setContenido("Modena aplicada con éxito");
+            // setTitulo("Éxito");
+            // setContenido("Modena aplicada con éxito");
+            console.log("Modena aplicada con éxito");
         }else{
-            setTitulo("No se aplicó la divisa en el sistema");
-            setContenido("Moneda no aplicada correctamente. Por favor, intente más tarde");
+            // setTitulo("No se aplicó la divisa en el sistema");
+            // setContenido("Moneda no aplicada correctamente. Por favor, intente más tarde");
+            console.log("Moneda no aplicada correctamente. Por favor, intente más tarde");
         }
     };
 

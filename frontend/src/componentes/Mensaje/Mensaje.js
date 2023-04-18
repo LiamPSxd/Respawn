@@ -7,8 +7,6 @@ const Mensaje = ({ titulo, contenido, estado}) => {
 
     const handleClose = () => setShow(false);
 
-    console.log(`${titulo}, ${contenido}, ${estado}`);
-
     return(
         <><Modal show={show}>
             <Modal.Header closeButton>
