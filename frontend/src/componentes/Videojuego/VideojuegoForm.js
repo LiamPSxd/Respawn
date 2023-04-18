@@ -170,7 +170,7 @@ const VideojuegoForm = () => {
             }}>
                 {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
                 <div id="disqus_thread"></div>
-                <Comentario />
+                    <Comentario />
                 {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
             </div>
         </>

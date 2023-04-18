@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { recuperarBusqueda } from "../NavBar/NavBar";
+import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 import * as VideojuegoServer from '../Videojuego/VideojuegoServer';
 import * as CuponServer from '../Cupon/CuponServer';
 import style from './Pago.module.css'

@@ -53,7 +53,7 @@ const NavBar2 = () => {
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/monedaPeso'>Moneda/Peso</MDBNavbarLink>
+              <MDBNavbarLink href='/monedaPeso' style={{align: "right"}}>Moneda/Peso</MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>

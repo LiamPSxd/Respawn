@@ -14,7 +14,6 @@ const VideojuegoOfertaItem = ({videojuego}) => {
     const getOferta = async (idOferta) =>{
         try {
             const data = await (await OfertaServer.getOferta(idOferta)).json();
-            console.log(data);
             const { id, nombre, descuento, tiempo } = data.Ofertas[0];
             setOfertas({ id, nombre, descuento, tiempo });
 
@@ -23,11 +22,7 @@ const VideojuegoOfertaItem = ({videojuego}) => {
         }
     };
     useEffect(() => {
-        getOferta(0);
-        console.log(oferta.descuento);
-
-       
-         
+        getOferta(0);         
     }, []);
     /*fin de la llamada */
     const str = videojuego.precio.replaceAll("\D+","");
