@@ -170,11 +170,23 @@ const VideojuegoForm = () => {
             }}>
                 {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
 
+<<<<<<< HEAD
+        <div>
+            <h2>{videojuego.precio}</h2>
+
+
+            <button onClick={() => history(`/pago/videojuego/${videojuego.id}`)}>Comprar</button>
+            <button>Reservar</button>
+            <button>Calificar</button>
+            <button>Opinar</button>
+        </div></>
+=======
                 <div id="disqus_thread"></div>
                 <Comentario />
                 {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
             </div>
         </>
+>>>>>>> 154709bdba7e4378296d81095addb3bb80d815c3
     );
 };
 
