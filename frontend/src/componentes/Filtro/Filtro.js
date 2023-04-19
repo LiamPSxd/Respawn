@@ -1,4 +1,5 @@
 import React from "react";
+import './Filtro.css';
 
 
 const Filtro = ({ idFiltro }) => {
@@ -9,7 +10,7 @@ const Filtro = ({ idFiltro }) => {
         <main>
             <aside id="categoria">
                 <div id="hola">
-                    <h4 className="text-black text-lg">Categorias</h4>
+                    <h4 className="text"><u>Categorias</u></h4>
                     <form >
                         <input name="video" type="radio" id="Shooter" value="Shooter" />
                         <label htmlFor="Shooter">Shooter</label>
@@ -80,7 +81,7 @@ const Filtro = ({ idFiltro }) => {
 
                             <br></br>
 
-                            <button type="submit" className="btn btn-block btn-primary">
+                            <button type="submit" className="hi">
                                 Aplicar Filtro
                             </button>
                         </div>
