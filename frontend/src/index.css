@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -58,11 +59,6 @@ code {
   border-radius: 50%;
   color:#242325;
   text-decoration:none;
-  }
-
-  
-  input[type="radio"] {
-    display: none;
   }
   
   .iconStar {

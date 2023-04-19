@@ -10,7 +10,7 @@ const Timer = ({ idOferta }) => {
   const listaOfertas = async () => {
       try {
           const data = await (await OfertaServer.getAllOfertas()).json();
-          setOfertas(data.Ofertas); console.log(data); console.log(ofertas);
+          setOfertas(data.Ofertas); 
       } catch (error) {
           console.log(error);
       }
@@ -105,9 +105,7 @@ const Timer = ({ idOferta }) => {
 {ofertas.map(oferta => (
     <OfertaItem key={oferta.id} idOferta={oferta.id} />
 ))}
-{/* {catalogos.map(catalogo => {
-document.getElementById("banner-img").style.setProperty("src", catalogo.banner);
-})} */}
+
 </div>
 </>
       );

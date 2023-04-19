@@ -14,7 +14,6 @@ const VideojuegoOfertaItem = ({videojuego}) => {
     const getOferta = async (idOferta) =>{
         try {
             const data = await (await OfertaServer.getOferta(idOferta)).json();
-            console.log(data);
             const { id, nombre, descuento, tiempo } = data.Ofertas[0];
             setOfertas({ id, nombre, descuento, tiempo });
 
@@ -24,15 +23,16 @@ const VideojuegoOfertaItem = ({videojuego}) => {
     };
     useEffect(() => {
         getOferta(0);
-        console.log(oferta.descuento);
 
        
          
     }, []);
     /*fin de la llamada */
-    const str = videojuego.precio.replaceAll("\D+","");
-    const ahora = parseInt (str);
-    const  preDescuento = ahora - (ahora*oferta.descuento);
+
+    // const str = videojuego.precio.replaceAll("\D+","");
+    // const ahora = parseInt (str);
+    // const  preDescuento =0;
+    //  ahora - (ahora*oferta.descuento);
     // if(videojuego.id == oferta.id){
     //     preDescuento = ahora - (ahora*oferta.descuento);
     //  } else{
@@ -52,9 +52,7 @@ const VideojuegoOfertaItem = ({videojuego}) => {
 
                 <div id={style.contenidoTarjeta}>
                     <h4 className="card-text" ><strong>Genero </strong>{videojuego.genero}</h4>
-                    <h4 className="card-text"><strike>Antes {videojuego.precio}</strike></h4>
                     <h4 className="card-text"><strong>Descuento de:</strong>{oferta.descuento}0%</h4>
-                    <h4 className="card-text"><strong>Ahora: </strong>{preDescuento} MXN </h4>
                 </div>
 
                 <button className="btn btn-success my-2" onClick={() => history(`/videojuego/${videojuego.id}`)}><strong>Más Detalles</strong></button>

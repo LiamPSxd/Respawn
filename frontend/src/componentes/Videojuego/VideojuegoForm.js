@@ -4,7 +4,6 @@ import * as VideojuegoServer from './VideojuegoServer';
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 import ModalCalificacion from "../Modal/ModalCalificacion";
 import Comentario from "../Comentario/comentario";
-import { AlignCenter } from "react-bootstrap-icons";
 
 const VideojuegoForm = () => {
     const params = useParams();
