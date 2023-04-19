@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import * as FiltroVServer from './FiltroVServer'
 import './FiltroV.css';
 const FiltroV = ({ idFiltroV }) => {
+    function ShowSelected()
+{
+/* Para obtener el valor */
+var cod = document.getElementById("nombre").value;
+alert(cod);
+console.log(cod);
+ 
+}
     const [filtros, setFiltros] = useState([]);
     const listaFiltros = async () => {
         try {
@@ -18,13 +26,14 @@ const FiltroV = ({ idFiltroV }) => {
     return (
     <div id="filtro">
         <form id="fitro">
-            <select defaultValue={'Default'}>
+            <select id="nombre" name="nombre" defaultValue={'Default'} onChange={ShowSelected}>
                 <option value={"Default"} disabled>Selecciona un filtro:</option>
                 <option >Videojuegos ordenados alfabeticamente Ascendente(A-Z)</option>
                 <option>Videojuegos ordenados alfabeticamente Descente(Z-A)</option>
                 <option>Precio:Mayor a Menor</option>
                 <option>Precio:Menor a Mayor</option>
                 <option>Calificacion</option>
+                <option>Juegos Gratis</option>
             </select>
             <button type="submit" className="mx-2 btn btn-block btn-primary" id="aplicarf">
                 Aplicar Filtro
