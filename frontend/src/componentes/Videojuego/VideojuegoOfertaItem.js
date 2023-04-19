@@ -23,9 +23,6 @@ const VideojuegoOfertaItem = ({videojuego}) => {
     };
     useEffect(() => {
         getOferta(0);
-
-       
-         
     }, []);
     /*fin de la llamada */
 

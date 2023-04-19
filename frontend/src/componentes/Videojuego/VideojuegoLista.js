@@ -5,7 +5,7 @@ import style from "./Videojuego.module.css";
 import * as VideojuegoServer from './VideojuegoServer';
 import * as CatalogoVideojuegoServer from '../Catalogo/Relacion/CatalogoVideojuegoServer';
 import * as OfertaVideojuegoServer from '../Ofertas/Relacion/OfertaVideojuegoServer';
-import { recuperarBusqueda } from "../NavBar/NavBar";
+import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 
 let [videojuegos, setVideojuegos] = [];
 let idCatalogo = 0;

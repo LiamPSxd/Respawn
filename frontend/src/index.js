@@ -4,8 +4,8 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 //Componentes
-import NavBar from "./componentes/NavBar/NavBar";
-import NavBar2 from "./componentes/NavBar/NavBar2";
+import NavBar from "./componentes/NavBar/MDBNavBar";
+import NavBar2 from "./componentes/NavBar/MDBNavBar2";
 import Catalogo from "./componentes/Catalogo/CatalogoLista";
 import Timer from "./componentes/Ofertas/App";
 import Divisa from "./componentes/Divisa/DivisaLista";
@@ -14,6 +14,9 @@ import SignUp from "./componentes/Usuario/UsuarioSignUp";
 import LogIn  from "./componentes/Usuario/UsuarioLogIn";
 import Home from "./componentes/Usuario/UsuarioHome";
 import Videojuego from "./componentes/Videojuego/VideojuegoForm";
+import Pago from "./componentes/Pago/Pago";
+import TarjetaForm from "./componentes/Tarjeta/TarjetaForm";
+import PayPalForm from "./componentes/PayPal/PayPalForm";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
@@ -41,6 +44,7 @@ root.render(
       <Route exact path="/logIn" element={<LogIn />} />
       <Route exact path="/home" element={<Home />} />
     </Routes>
+
   </BrowserRouter>
 );
 
