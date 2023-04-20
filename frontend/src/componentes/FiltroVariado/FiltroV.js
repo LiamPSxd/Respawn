@@ -35,9 +35,6 @@ console.log(cod);
                 <option>Calificacion</option>
                 <option>Juegos Gratis</option>
             </select>
-            <button type="submit" className="mx-2 btn btn-block btn-primary" id="aplicarf">
-                Aplicar Filtro
-            </button>
         </form>
     </div>
 

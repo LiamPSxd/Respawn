@@ -45,26 +45,27 @@ const Pago = () =>{
             var idP = document.getElementById('pTotal');
             var idB = document.getElementById('btnDeshacer');
             var container = document.getElementById(style.containerCupon);
+            var cupon;
            switch (idCupon) {
             case 0:
                 if(videojuego.precio.split(" ")[0]>1000){ 
-                    var cupon = document.getElementById("idCupon0");
+                     cupon = document.getElementById("idCupon0");
                     cupon.setAttribute("class","list-group-item d-flex justify-content-between align-items-start list-group-item-action");
-                    var cupon = document.getElementById("idCupon3");
+                     cupon = document.getElementById("idCupon3");
                     cupon.setAttribute("class","list-group-item d-flex justify-content-between align-items-start list-group-item-action");
                 }else{
-                    var cupon = document.getElementById("idCupon0");
+                     cupon = document.getElementById("idCupon0");
                     cupon.setAttribute("class","list-group-item d-flex justify-content-between align-items-start list-group-item-action");
                 }
-                var cantidad = document.getElementById("cantidadCupon0");
+                 cantidad = document.getElementById("cantidadCupon0");
                 cantidad.innerHTML = `Disponibles ${arrayCantidad[0]}`
                 break;
             case 3:
-                var cupon = document.getElementById("idCupon0");
+                 cupon = document.getElementById("idCupon0");
                 cupon.setAttribute("class","list-group-item d-flex justify-content-between align-items-start list-group-item-action");
-                var cupon = document.getElementById("idCupon3");
+                 cupon = document.getElementById("idCupon3");
                 cupon.setAttribute("class","list-group-item d-flex justify-content-between align-items-start list-group-item-action");
-                var cantidad = document.getElementById("cantidadCupon3");
+                 cantidad = document.getElementById("cantidadCupon3");
                 cantidad.innerHTML = `Disponibles ${arrayCantidad[0]}`
                 break
             default:

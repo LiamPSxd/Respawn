@@ -3,17 +3,15 @@
     background: linear-gradient(#141e30, #243b55);
    color: white;
    margin-left: 1%;
+   padding: 1%;
 }
 
 .text{
     color: white;
+    
 }
 .hi{
     background: linear-gradient(#243b55, #141e30);
     color: white;   
     width: 100%;
-}
-#hola{
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .8), 0 12px 40px 0 rgba(0, 0, 0, .8);
-   
 }

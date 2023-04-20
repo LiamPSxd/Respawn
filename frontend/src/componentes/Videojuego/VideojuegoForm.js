@@ -4,7 +4,6 @@ import * as VideojuegoServer from './VideojuegoServer';
 import { MDBCarousel, MDBCarouselItem } from "mdb-react-ui-kit";
 import ModalCalificacion from "../Modal/ModalCalificacion";
 import Comentario from "../Comentario/comentario";
-import { AlignCenter } from "react-bootstrap-icons";
 
 const VideojuegoForm = () => {
     const params = useParams();
@@ -94,7 +93,7 @@ const VideojuegoForm = () => {
                             <small style={{ fontSize: "12px" }}>*includes tax</small>
                         </h3>
                         <div class="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                            <a href="" class="btn btn-success btn-lg">Add to cart (${videojuego.precio})</a>
+                            <a href="carrito" class="btn btn-success btn-lg">Add to cart (${videojuego.precio})</a>
                         </div>
                         <div id="contenedor_botones">
                             <div class="btn-group pull-right">

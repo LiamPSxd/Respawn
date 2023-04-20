@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import VideojuegoItem from './VideojuegoItem';
-import VideojuegoOfertaItem from './VideojuegoOfertaItem';
 import style from "./Videojuego.module.css";
 import * as VideojuegoServer from './VideojuegoServer';
 import * as CatalogoVideojuegoServer from '../Catalogo/Relacion/CatalogoVideojuegoServer';

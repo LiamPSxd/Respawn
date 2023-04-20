@@ -5,7 +5,6 @@ import CountdownTimer from './CoundownTimer'
 import * as OfertaServer from './OfertaServer'
 import OfertaItem from './OfertaItem'
 import Filtro from "../Filtro/Filtro";
-import FiltroV from "../FiltroVariado/FiltroV";
 const Timer = ({ idOferta }) => {
   const [ofertas, setOfertas] = useState([]);
 
