@@ -12,7 +12,7 @@ const Filtro = ({ idFiltro }) => {
                 <div id="hola">
                     <h4 className="text"><u>Categorias</u></h4>
                     <form >
-                        <input name="video" type="radio" id="Shooter" value="Shooter" />
+                        {/* <input name="video" type="radio" id="Shooter" value="Shooter" />
                         <label htmlFor="Shooter">Shooter</label>
 
                         <div>
@@ -69,22 +69,69 @@ const Filtro = ({ idFiltro }) => {
                                 <label htmlFor="Sports Game">Deportes</label>
                             </div>
 
-                            <div>
+                            <div >
                                 <input
+                                className="rad-input"
                                     name="video"
                                     type="radio"
                                     id="Action Game"
                                     value="Action Game"
                                 />
-                                <label htmlFor="Action Game">Accion</label>
+                                <label  htmlFor="Action Game">Accion</label>
                             </div>
 
-                            <br></br>
+                            <br></br> */}
+
+<div>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad" id="Action Game" value="Action Game"/>
+    <div class="rad-design"></div>
+    <div class="rad-text">Accion</div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad" id="Sports Game" value="Sports Game"/>
+    <div class="rad-design"></div>
+    <div class="rad-text">Deportes</div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad" id="Simulator" value="Simulator"/>
+    <div class="rad-design"></div>
+    <div class="rad-text">Simulacion</div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad" id="Strategy" value="Strategy"/>
+    <div class="rad-design"></div>
+    <div class="rad-text">Estrategia</div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad" id="Misterio" value="Misterio"/>
+    <div class="rad-design"></div>
+    <div class="rad-text">Misterio</div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad" id="Casual Game" value="Casual Game"/>
+    <div class="rad-design"></div>
+    <div class="rad-text">Casual</div>
+  </label>
+
+  <label class="rad-label">
+    <input type="radio" class="rad-input" name="rad" id="Shooter" value="Shooter"/>
+    <div class="rad-design"></div>
+    <div class="rad-text">Shooter</div>
+  </label>
+
+</div>
 
                             <button type="submit" className="hi">
                                 Aplicar Filtro
                             </button>
-                        </div>
+                        {/* </div> */}
                     </form>
                 </div>
             </aside>

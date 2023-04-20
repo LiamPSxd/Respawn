@@ -24,9 +24,9 @@ console.log(cod);
       // eslint-disable-next-line
   }, []);
     return (
-    <div id="filtro">
+    <div id="filtro" class="select">
         <form id="fitro">
-            <select id="nombre" name="nombre" defaultValue={'Default'} onChange={ShowSelected}>
+            <select id="nombre" name="nombre"  defaultValue={'Default'} onChange={ShowSelected}>
                 <option value={"Default"} disabled>Selecciona un filtro:</option>
                 <option >Videojuegos ordenados alfabeticamente Ascendente(A-Z)</option>
                 <option>Videojuegos ordenados alfabeticamente Descente(Z-A)</option>
