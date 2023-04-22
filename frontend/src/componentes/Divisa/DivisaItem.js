@@ -40,11 +40,7 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
     const verificarCambio = async (simbolo) => {
         const data = (await (await VideojuegoServer.getVideojuego(0)).json()).Videojuegos[0];
 
-<<<<<<< HEAD
         if(data.precio.simbolo === simbolo){
-=======
-        if(data.precio.split(" ")[1] === simbolo){
->>>>>>> eb41fe6a0322ed593144afb2121f059eaa12fcd3
             // setTitulo("Éxito");
             // setContenido("Modena aplicada con éxito");
             console.log("Modena aplicada con éxito");
