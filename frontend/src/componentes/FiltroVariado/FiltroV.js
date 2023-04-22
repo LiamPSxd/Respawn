@@ -14,7 +14,8 @@ console.log(cod);
     const listaFiltros = async () => {
         try {
             const data = await (await FiltroVServer.getAllFiltros()).json();
-            setFiltros(data.Filtros); console.log(data); console.log(filtros);
+            setFiltros(data.Filtros); 
+            console.log(filtros);
         } catch (error) {
             console.log(error);
         }
@@ -24,7 +25,7 @@ console.log(cod);
       // eslint-disable-next-line
   }, []);
     return (
-    <div id="filtro" class="select">
+    <div id="filtro" className="select">
         <form id="fitro">
             <select id="nombre" name="nombre"  defaultValue={'Default'} onChange={ShowSelected}>
                 <option value={"Default"} disabled>Selecciona un filtro:</option>
