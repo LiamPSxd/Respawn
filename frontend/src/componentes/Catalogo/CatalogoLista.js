@@ -3,14 +3,15 @@ import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
 import Filtro from "../Filtro/Filtro";
 import FiltroV from "../FiltroVariado/FiltroV";
+
 const CatalogoLista = ({ idCatalogo }) => {
     const [catalogos, setCatalogos] = useState([]);
 
     const listaCatalogos = async () => {
-        try {
+        try{
             const data = await (await CatalogoServer.getCatalogo(idCatalogo)).json();
             setCatalogos(data.Catalogos);
-        } catch (error) {
+        }catch(error){
             console.log(error);
         }
     };
@@ -20,23 +21,24 @@ const CatalogoLista = ({ idCatalogo }) => {
         // eslint-disable-next-line
     }, []);
 
-    return (
-        <>
-            <header>
-                <section id="banner">
-                    <img id="banner-img" src="logo2-png" alt=""></img>
-                </section>
-                <FiltroV />
-            </header>
+    return(
+        <><header>
+            <section id="banner">
+                <img id="banner-img" src="logo2-png" alt=""></img>
+            </section>
+
+            <FiltroV />
+        </header>
+        
         <br></br>
         <br></br>
+        
         <Filtro />
        
         <div className="row">
             {catalogos.map(catalogo => (
                 <CatalogoItem key={catalogo.id} catalogo={catalogo} />
             ))}
-          
         </div></>
     );
 };

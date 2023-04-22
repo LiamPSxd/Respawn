@@ -89,11 +89,11 @@ const VideojuegoForm = () => {
                         </h2>
                         <hr/>
                         <h3 id="price_container">
-                            ${videojuego.precio}
+                            ${videojuego.precio.valor}
                             <small style={{ fontSize: "12px" }}>*includes tax</small>
                         </h3>
                         <div class="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                            <a href="carrito" class="btn btn-success btn-lg">Add to cart (${videojuego.precio})</a>
+                            <a href="carrito" class="btn btn-success btn-lg">Add to cart (${videojuego.precio.valor})</a>
                         </div>
                         <div id="contenedor_botones">
                             <div class="btn-group pull-right">
