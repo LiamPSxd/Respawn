@@ -14,9 +14,13 @@ import SignUp from "./componentes/Usuario/UsuarioSignUp";
 import LogIn  from "./componentes/Usuario/UsuarioLogIn";
 import Home from "./componentes/Usuario/UsuarioHome";
 import Videojuego from "./componentes/Videojuego/VideojuegoForm";
+<<<<<<< HEAD
 import Pago from "./componentes/Pago/PagoForm";
 import TarjetaForm from "./componentes/Tarjeta/TarjetaForm";
 import PayPalForm from "./componentes/PayPal/PayPalForm";
+=======
+
+>>>>>>> 39fbf82f9aa16302a66c44ee306531a7ee6b378c
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";

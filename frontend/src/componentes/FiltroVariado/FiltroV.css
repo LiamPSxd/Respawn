@@ -1,12 +1,52 @@
-#filtro{
-    float: right;
-    height: 5px;
-}
-
-#aplicarf{
-    float: right;
-    height: 35px;
-    width: 120px;
+:root {
+    --background-gradient: linear-gradient(30deg, #F8C630 30%, #F8C630);
+    --gray: #3f3d41;
+    --darkgray: #242325;
+  }
+  
+  select {
+    /* Reset Select */
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 0 1em;
+    color: #fff;
+    background-color: var(--darkgray);
+    background-image: none;
+    cursor: pointer;
+    height: 100%;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+    display: none;
+  }
+  /* Custom Select wrapper */
+  .select {
     position: relative;
-    bottom: 5px;
-}
+    display: flex;
+    width: 30em;
+    height: 3em;
+    border-radius: .25em;
+    overflow: hidden;
+    float: right;
+    margin-right: 2%;
+  }
+  /* Arrow */
+  .select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1em;
+    background-color: #3f3d41;
+    transition: .25s all ease;
+    pointer-events: none;
+    margin-right: 8%;   
+  }
+  /* Transition */
+  .select:hover::after {
+    color: #f39c12;
+  }
