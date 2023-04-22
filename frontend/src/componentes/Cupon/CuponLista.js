@@ -3,10 +3,6 @@ import style from "./Cupon.module.css"
 import * as CuponServer from './CuponServer';
 import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 import CuponItem from "./CuponItem";
-<<<<<<< HEAD
-=======
-
->>>>>>> 39fbf82f9aa16302a66c44ee306531a7ee6b378c
 
 let [cupones, setCupones] = [];
 var conexionBD = false;
