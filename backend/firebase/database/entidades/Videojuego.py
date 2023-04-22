@@ -1,5 +1,5 @@
 class Videojuego:
-    def __init__(self, id = 0, nombre = "", descripcion = "", caratula = "", video = "", precio = 0.0, genero = "", plataforma = "", datosExtra = "", calificacion = 0.0, capturas= []):
+    def __init__(self, id = 0, nombre = "", descripcion = "", caratula = "", video = "", precio = "", genero = "", plataforma = "", datosExtra = "", calificacion = 0.0, capturas = ""):
         self._id = id
         self._nombre = nombre
         self._descripcion = descripcion
@@ -10,8 +10,7 @@ class Videojuego:
         self._plataforma = plataforma
         self._datosExtra = datosExtra
         self._calificacion = calificacion
-        self._capturas= capturas
-        
+        self._capturas = capturas
 
     @property
     def id(self):
@@ -96,9 +95,10 @@ class Videojuego:
     @property
     def capturas(self):
         return self._capturas
-    
+
     @capturas.setter
     def capturas(self, capturas):
-        self._capturas = capturas 
+        self._capturas = capturas
+
     def toString(self):
         return f"Videojuego {self.id}: {self.nombre}, {self.descripcion}, {self.caratula}, {self.video}, {self.precio}, {self.genero}, {self.plataforma}, {self.datosExtra}, {self.calificacion}, {self.capturas}"

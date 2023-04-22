@@ -141,3 +141,11 @@ class Firebase:
                 keyMax = i
 
         return keyMax + 1
+
+    def conversionArrayToDocument(self, array):
+        res = dict()
+
+        for i in range(len(array)):
+            res[i] = array[i]
+
+        return res

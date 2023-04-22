@@ -95,7 +95,7 @@ class VideojuegoV(View):
             )
 
             if v.nombre != "":
-                db.getDB().reference(documento).child(str(v.id)).set({"id": f"{v.id}", "nombre": f"{v.nombre}", "descripcion": f"{v.descripcion}", "caratula": f"{v.caratula}", "video": f"{v.video}", "precio": f"{v.precio}", "genero": f"{v.genero}", "plataforma": f"{v.plataforma}", "datosExtra": f"{v.datosExtra}", "calificacion": f"{v.calificacion}","capturas":f"{v.capturas}"})
+                db.getDB().reference(documento).child(str(v.id)).set({"id": f"{v.id}", "nombre": f"{v.nombre}", "descripcion": f"{v.descripcion}", "caratula": f"{v.caratula}", "video": f"{v.video}", "precio": v.precio, "genero": f"{v.genero}", "plataforma": f"{v.plataforma}", "datosExtra": f"{v.datosExtra}", "calificacion": f"{v.calificacion}", "capturas": db.conversionArrayToDocument(v.capturas)})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
@@ -126,7 +126,7 @@ class VideojuegoV(View):
                     break
 
             if updatekey != "":
-                db.getDB().reference(documento).child(updatekey).update({"id": f"{v.id}", "nombre": f"{v.nombre}", "descripcion": f"{v.descripcion}", "caratula": f"{v.caratula}", "video": f"{v.video}", "precio": f"{v.precio}", "genero": f"{v.genero}", "plataforma": f"{v.plataforma}", "datosExtra": f"{v.datosExtra}", "calificacion": f"{v.calificacion}", "capturas":f"{v.capturas}"})
+                db.getDB().reference(documento).child(updatekey).update({"id": f"{v.id}", "nombre": f"{v.nombre}", "descripcion": f"{v.descripcion}", "caratula": f"{v.caratula}", "video": f"{v.video}", "precio": v.precio, "genero": f"{v.genero}", "plataforma": f"{v.plataforma}", "datosExtra": f"{v.datosExtra}", "calificacion": f"{v.calificacion}", "capturas": db.conversionArrayToDocument(v.capturas)})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    
