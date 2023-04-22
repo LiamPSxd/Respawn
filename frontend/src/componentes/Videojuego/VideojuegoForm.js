@@ -8,7 +8,7 @@ import Comentario from "../Comentario/comentario";
 const VideojuegoForm = () => {
     const params = useParams();
 
-    const initialState = { id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: 0.0, genero: "", plataforma: "", datosExtra: "", calificacion: 0.0, capturas: [] };
+    const initialState = { id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: [], genero: "", plataforma: "", datosExtra: "", calificacion: 0.0, capturas: [] };
     const [videojuego, setVideojuego] = useState(initialState);
 
     // const handleInputChange = (e) => {

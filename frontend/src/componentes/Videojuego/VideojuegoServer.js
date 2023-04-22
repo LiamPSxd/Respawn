@@ -24,11 +24,12 @@ export const updateVideojuego = async (videojuego) => {
             "descripcion": String(videojuego.descripcion),
             "caratula": String(videojuego.caratula),
             "video": String(videojuego.video),
-            "precio": String(videojuego.precio),
+            "precio": videojuego.precio,
             "genero": String(videojuego.genero),
             "plataforma": String(videojuego.plataforma),
             "datosExtra": String(videojuego.datosExtra),
-            "calificacion": String(videojuego.calificacion)
+            "calificacion": String(videojuego.calificacion),
+            "capturas": videojuego.capturas
         })
     });
 };

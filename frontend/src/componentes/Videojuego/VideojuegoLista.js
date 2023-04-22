@@ -71,7 +71,6 @@ export const listaVideojuegos = async (busqueda,idOferta) => {
     }catch(error){
         console.log(error);
     }
-
 };
 
 const getContenido = async () => {

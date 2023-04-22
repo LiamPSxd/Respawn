@@ -31,10 +31,12 @@ export const listaDivisas = async (busqueda) => {
         await data.Divisas.forEach(divisa => {
             if(String(divisa.seleccionado) === "True")
                 if(String(divisa.hora) !== String(new Date().getDate())) updateCurrencies(data.Divisas, divisa.simbolo);
-        })
+        });
 
-        if(busqueda == null) setDivisas(data.Divisas);
-        else setDivisas(recuperarBusqueda(busqueda, data.Divisas));
+        if(busqueda == null) setDivisas(sortArray(data.Divisas));
+        else setDivisas(recuperarBusqueda(busqueda, sortArray(data.Divisas)));
+
+        sortArray(data.Divisas);
     }catch(error){
         console.log(error);
     }
@@ -56,3 +58,24 @@ const updateCurrencies = async (divisas, simbolo) => {
         });
     }
 };
+
+const sortArray = (divisas) => {
+    const nombres = [];
+    const divisasSort = [];
+
+    divisas.forEach(divisa => {
+        nombres.push(divisa.nombre);
+    });
+
+    nombres.sort()
+    .forEach(nombre => {
+        divisas.forEach(divisa => {
+            if(nombre === divisa.nombre){
+                divisasSort.push(divisa);
+                divisas = divisas.filter(d => d.nombre !== nombre);
+            }
+        });
+    });
+
+    return divisasSort;
+}

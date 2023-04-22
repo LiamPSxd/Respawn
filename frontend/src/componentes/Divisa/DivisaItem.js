@@ -21,13 +21,16 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
 
         const dataVideojuegos = await (await VideojuegoServer.getAllVideojuegos()).json();
         await dataVideojuegos.Videojuegos.forEach(async videojuego => {
-            const precio = videojuego.precio.split(" ");
-            const data = await (await DivisaServer.getConversion(precio[1], newDiv.simbolo, precio[0])).json();
+            const data = await (await DivisaServer.getConversion(videojuego.precio.simbolo, newDiv.simbolo, videojuego.precio.valor)).json();
 
-            videojuego.precio = data.conversion_result.toFixed(2) + ` ${newDiv.simbolo}`;
+            videojuego.precio.valor = data.conversion_result.toFixed(2);
+            videojuego.precio.simbolo = newDiv.simbolo;
             await VideojuegoServer.updateVideojuego(videojuego);
 
-            if(dataVideojuegos.Videojuegos.at(-1).id === videojuego.id) listaDivisas();
+            if(dataVideojuegos.Videojuegos.at(-1).id === videojuego.id){
+                listaDivisas();
+                console.log("fin");
+            }
         });
 
         await updateCurrencies(divisas, newDiv.simbolo);
@@ -37,7 +40,7 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
     const verificarCambio = async (simbolo) => {
         const data = (await (await VideojuegoServer.getVideojuego(0)).json()).Videojuegos[0];
 
-        if(data.precio.split(" ")[1] == simbolo){
+        if(data.precio.simbolo === simbolo){
             // setTitulo("Éxito");
             // setContenido("Modena aplicada con éxito");
             console.log("Modena aplicada con éxito");
