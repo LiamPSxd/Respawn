@@ -3,7 +3,6 @@ import style from "./Cupon.module.css"
 import * as CuponServer from './CuponServer';
 import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 import CuponItem from "./CuponItem";
-import ModalCupon from "./ModalCupon";
 
 let [cupones, setCupones] = [];
 var conexionBD = false;
