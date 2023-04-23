@@ -52,7 +52,7 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
 
     return(
         <><div id={style.tarjeta} className="card border-dark">
-            <div className="card-body">
+            <div id={style.cardBody} className="card-body">
                 <h1 id={style.titulo} className="card-title">{divisa.nombre}</h1>
 
                 <div id={style.contenidoTarjeta}>

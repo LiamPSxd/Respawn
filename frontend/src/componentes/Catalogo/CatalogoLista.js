@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
+import CatalogoBanner from "./CatalogoBanner";
 import * as CatalogoServer from "./CatalogoServer";
 import style from "./Catalogo.module.css";
 import { MDBCarousel } from "mdb-react-ui-kit";
-import CatalogoBanner from "./CatalogoBanner";
-
-import Filtro from "../Filtro/Filtro";
-import FiltroV from "../FiltroVariado/FiltroV";
+import FiltroLista from "../Filtro/FiltroLista";
 
 const CatalogoLista = ({ idCatalogo }) => {
     const [catalogos, setCatalogos] = useState([]);
@@ -37,11 +35,7 @@ const CatalogoLista = ({ idCatalogo }) => {
         </div>
 
         <div>
-            <div>
-                <FiltroV />
-            </div>
-
-            <Filtro />
+            <FiltroLista />
 
             <div className="row">
                 {catalogos.map(catalogo => (

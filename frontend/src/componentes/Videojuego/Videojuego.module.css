@@ -1,20 +1,23 @@
 #contenedorTarjetas{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: flex-start;
     text-align: center;
-    padding: 5px;
-    padding-top: 10px;
+    padding: 15px;
+    padding-top: 60px;
 }
 
 #tarjeta{
-    margin: 10px;
+    margin: 8px;
     width: 18rem;
     display: inline-block;
+    border-radius: 1.25em;
+    border-color: #656565;
 }
 
 #imgCard{
     height: 360px;
+    border-radius: 1.25em;
 }
 
 #contenidoTarjeta{
@@ -25,4 +28,9 @@
 
 #titulo{
     font-weight: bold;
+}
+
+#cardBody{
+    margin: 0px;
+    padding-top: 10px;
 }

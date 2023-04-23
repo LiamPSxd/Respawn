@@ -28,7 +28,7 @@ const VideojuegoItem = ({videojuego}) => {
         <><div id={style.tarjeta} className="card">
             <img id={style.imgCard} className="card-img-top" src={videojuego.caratula} alt="caratula" />
 
-            <div className="card-body">    
+            <div id={style.cardBody} className="card-body">    
                 <h1 id={style.titulo} className="card-title">{videojuego.nombre}</h1>
 
                 <div id={style.contenidoTarjeta}>

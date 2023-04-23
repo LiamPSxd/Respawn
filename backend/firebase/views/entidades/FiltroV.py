@@ -25,14 +25,16 @@ class FiltroV(View):
                     if value != None and str(value["id"]) == str(id):
                         filtros.append({
                             "id": value["id"],
-                            "nombre": value["nombre"]
+                            "nombre": value["nombre"],
+                            "contenido": value["contenido"]
                         })
             elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         filtros.append({
                             "id": value["id"],
-                            "nombre": value["nombre"]
+                            "nombre": value["nombre"],
+                            "contenido": value["contenido"]
                         })
             elif ids != "":
                 for key, value in db.getDocumento(documento).items():
@@ -40,7 +42,8 @@ class FiltroV(View):
                         if value != None and str(value["id"]) == str(id):
                             filtros.append({
                                 "id": value["id"],
-                                "nombre": value["nombre"]
+                                "nombre": value["nombre"],
+                                "contenido": value["contenido"]
                             })
 
             if len(filtros) > 0:
@@ -55,11 +58,12 @@ class FiltroV(View):
             jb = json.loads(request.body)
             f = Filtro(
                 db.getUltimateKey(documento),
-                jb["nombre"]
+                jb["nombre"],
+                jb["contenido"]
             )
 
             if f.nombre != "":
-                db.getDB().reference(documento).child(str(f.id)).set({"id": f"{f.id}", "nombre": f"{f.nombre}"})
+                db.getDB().reference(documento).child(str(f.id)).set({"id": f"{f.id}", "nombre": f"{f.nombre}", "contenido": db.conversionArrayToDocument(f.contenido)})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
@@ -71,7 +75,8 @@ class FiltroV(View):
             jb = json.loads(request.body)
             f = Filtro(
                 jb["id"],
-                jb["nombre"]
+                jb["nombre"],
+                jb["contenido"]
             )
             updatekey = ""
 
@@ -81,7 +86,7 @@ class FiltroV(View):
                     break
 
             if updatekey != "":
-                db.getDB().reference(documento).child(updatekey).update({"id": f"{f.id}", "nombre": f"{f.nombre}"})
+                db.getDB().reference(documento).child(updatekey).update({"id": f"{f.id}", "nombre": f"{f.nombre}", "contenido": db.conversionArrayToDocument(f.contenido)})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    

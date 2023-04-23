@@ -7,13 +7,11 @@
 }
 
 #tarjeta{
-    margin: 10px;
+    margin: 8px;
     width: 22rem;
     display: inline-block;
-}
-
-#imgCard{
-    height: 360px;
+    border-radius: 1.25em;
+    border-color: #656565;
 }
 
 #contenidoTarjeta{
@@ -24,4 +22,9 @@
 
 #titulo{
     font-weight: bold;
+}
+
+#cardBody{
+    margin: 0px;
+    padding-top: 10px;
 }

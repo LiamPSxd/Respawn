@@ -1,6 +1,10 @@
 #banner{
+    justify-content: space-around;
     margin: 0 auto;
-    padding-top: 15px;
+    padding: 8px;
     padding-bottom: 20px;
-    width: 1000px;
+}
+
+#item{
+    border-radius: 1em;
 }

@@ -1,0 +1,131 @@
+/* FiltroItem */
+#categoria{
+    float: left;
+    background: linear-gradient(#242325, #3f3d41);
+    color: white;
+    margin-left: 1%;
+    box-shadow: 0 4px 8px 1.5px rgba(0, 0, 0, 5), 0 18px 60px 0 rgba(0, 0, 0, 5);
+    border-radius: 1em;
+}
+
+#text{
+    color: white;
+    margin-top: 10px;
+    margin-left: 18%;
+}
+
+#radLabel{
+    display: flex;
+    align-items: center;
+    border-radius: 100%;
+    padding: 14px 16px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: .3s;
+}
+
+#radLabel:hover,
+#radLabel:focus-within{
+    background: hsla(0, 0%, 80%, .14);
+}
+
+#radInput{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10px;
+    height: 1px;
+    opacity: 0;
+    z-index: -1;
+}
+
+#radDesign{
+    width: 22px;
+    height: 22px;
+    border-radius: 1em;
+    background: linear-gradient(to right bottom, hsl(37, 90%, 51%), hsl(45, 93%, 58%));
+    position: relative;
+}
+
+#radDesign::before{
+    content: "";
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    background: hsl(0, 0%, 90%);
+    transform: scale(1);
+    transition: .3s;
+}
+
+#radInput:checked+#radDesign::before{
+    transform: scale(0);
+}
+
+#radText{
+    color: hsl(0, 0%, 60%);
+    margin-left: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 900;
+    transition: .3s;
+}
+
+#radInput:checked~#radText{
+    color: hsl(0, 0%, 54%);
+}
+
+/* FiltroItemCombo */
+:root{
+    --background-gradient: linear-gradient(30deg, #F8C630 30%, #F8C630);
+    --gray: #3f3d41;
+    --darkgray: #242325;
+}
+
+select{
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+
+    flex: 1;
+    padding: 0 1.7em;
+    color: #fff;
+    background-color: var(--darkgray);
+    background-image: none;
+    cursor: pointer;
+    height: 100%;
+}
+
+select::-ms-expand{
+    display: none;
+}
+
+#select{
+    position: relative;
+    display: flex;
+    width: 30em;
+    height: 3em;
+    border-radius: 1em;
+    overflow: hidden;
+    float: right;
+    margin-right: 0.6%;
+}
+
+#select::after{
+    content: "\25BC";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: #3f3d41;
+    transition: .25s all ease;
+    pointer-events: none;
+}
+
+#select:hover::after{
+    color: #f39c12;
+}

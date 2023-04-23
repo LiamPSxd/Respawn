@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import CountdownTimer from './CoundownTimer'
 import * as OfertaServer from './OfertaServer'
 import OfertaItem from './OfertaItem'
-import Filtro from "../Filtro/Filtro";
+import Filtro from "../Filtro/FiltroLista";
 const Timer = ({ idOferta }) => {
   const [ofertas, setOfertas] = useState([]);
 
