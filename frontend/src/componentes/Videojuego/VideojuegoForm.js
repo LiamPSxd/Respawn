@@ -34,10 +34,10 @@ const VideojuegoForm = () => {
 
     return (
         <>
-            <div class="product-content product-wrap clearfix product-deatil" id="product-content">
-                <div class="row">
-                    <div class="col-md-5 col-sm-12 col-xs-12">
-                        <div class="product-image" id="product-image">
+            <div className="product-content product-wrap clearfix product-deatil" id="product-content">
+                <div className="row">
+                    <div className="col-md-5 col-sm-12 col-xs-12">
+                        <div className="product-image" id="product-image">
                             <div>
                                 <MDBCarousel showControls showIndicators fade >
 
@@ -81,10 +81,10 @@ const VideojuegoForm = () => {
                         </div>
                     </div>
 
-                    <div id="div_general" class="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
+                    <div id="div_general" className="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                         <div>
                         </div>
-                        <h2 class="name">
+                        <h2 className="name">
                             {videojuego.nombre}
                         </h2>
                         <hr/>
@@ -92,14 +92,15 @@ const VideojuegoForm = () => {
                             ${videojuego.precio.valor}
                             <small style={{ fontSize: "12px" }}>*includes tax</small>
                         </h3>
-                        <div class="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                            <a href="carrito" class="btn btn-success btn-lg">Add to cart (${videojuego.precio.valor})</a>
+                        <div className="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
+                            <a href="carrito" className="btn btn-success btn-lg">Add to cart (${videojuego.precio.valor})</a>
                         </div>
                         <div id="contenedor_botones">
-                            <div class="btn-group pull-right">
-                                <button class="btn btn-white btn-default"><i class="fa fa-star"></i> Add to
+                            <div className="btn-group pull-right">
+                                <button className="btn btn-white btn-default"><i className="fa fa-star"></i> Add to
                                     wishlist</button>
-                                <span id="estilos_Modal"><ModalCalificacion /></span>
+                                <span id="estilos_Modal"><ModalCalificacion videojuego={videojuego} /></span>
+                                <h6>{videojuego.calificacion}</h6>
                             </div>
                         </div>
                         <hr />
