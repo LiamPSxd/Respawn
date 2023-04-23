@@ -4,34 +4,3 @@
     padding-bottom: 20px;
     width: 1000px;
 }
-
-#categoria{
-    float:left;
-   /* border: 2px solid black*/;
-    background-color: antiquewhite;
-}
-
-#video{
-    padding: 10;
-}
-
-.text-black{
-    border: 2px solid black
-}
-
-.col{
-    margin-left: 10%;
-}
-
-#filtro{
-    float: right;
-    height: 5px;
-}
-
-#aplicarf{
-    float: right;
-    height: 35px;
-    width: 120px;
-    position: relative;
-    bottom: 5px;
-}
