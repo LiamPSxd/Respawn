@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
+import style from "./Catalogo.module.css";
+import { MDBCarousel } from "mdb-react-ui-kit";
+import CatalogoBanner from "./CatalogoBanner";
+
 import Filtro from "../Filtro/Filtro";
 import FiltroV from "../FiltroVariado/FiltroV";
 
@@ -22,23 +26,28 @@ const CatalogoLista = ({ idCatalogo }) => {
     }, []);
 
     return(
-        <><header>
-            <section id="banner">
-                <img id="banner-img" src="logo2-png" alt=""></img>
-            </section>
-
-            <FiltroV />
-        </header>
-        
-        <br></br>
-        <br></br>
-        
-        <Filtro />
-       
-        <div className="row">
+        <><div id={style.banner}>
             {catalogos.map(catalogo => (
-                <CatalogoItem key={catalogo.id} catalogo={catalogo} />
+                <MDBCarousel key={catalogo.id} showControls showIndicators fade>
+                    {catalogo.banner.map((b, id) => (
+                        <CatalogoBanner key={id+1} id={id+1} banner={b} />
+                    ))}
+                </MDBCarousel>
             ))}
+        </div>
+
+        <div>
+            <div>
+                <FiltroV />
+            </div>
+
+            <Filtro />
+
+            <div className="row">
+                {catalogos.map(catalogo => (
+                    <CatalogoItem key={catalogo.id} catalogo={catalogo} />
+                ))}
+            </div>
         </div></>
     );
 };

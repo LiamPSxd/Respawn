@@ -29,7 +29,6 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
 
             if(dataVideojuegos.Videojuegos.at(-1).id === videojuego.id){
                 listaDivisas();
-                console.log("fin");
             }
         });
 

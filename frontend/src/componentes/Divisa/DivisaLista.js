@@ -43,7 +43,7 @@ export const listaDivisas = async (busqueda) => {
 };
 
 const updateCurrencies = async (divisas, simbolo) => {
-    if(String(simbolo) !== "ADA"){
+    if(String(simbolo) !== "ADA" && String(simbolo) !== "BTC"){
         const dataCurrencies = await (await DivisaServer.getAllCurrencies(simbolo)).json();
 
         Object.keys(dataCurrencies.conversion_rates).map(async key => {
