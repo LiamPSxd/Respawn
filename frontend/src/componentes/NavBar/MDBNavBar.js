@@ -95,15 +95,23 @@ const NavBar = () => {
               </Form>
             </div>
           </MDBNavbarNav>
+          
+          {
+            usuario.correo ? (
+              <>
+                <MDBNavbarLink href='#' className=''>
+                  <img src={IconWishlist} alt="logo" width="40" height="40" />
+                </MDBNavbarLink>
 
-          {/* Botón de perfil de usuario */}
-          <MDBNavbarLink href='#' className=''>
-            <img src={IconWishlist} alt="logo" width="40" height="40" />
-          </MDBNavbarLink>
+                <MDBNavbarLink href='#' className='mx-4 mb-4 mb-lg-0'>
+                  <img src={IconCarrito} alt="logo" width="40" height="40" />
+                </MDBNavbarLink>
 
-          <MDBNavbarLink href='#' className='mx-4 mb-4 mb-lg-0'>
-            <img src={IconCarrito} alt="logo" width="40" height="40" />
-          </MDBNavbarLink>
+              </>
+            ) : (
+              <></>
+            )
+          }
 
           <MDBDropdown>
             <MDBDropdownToggle tag='a' className='nav-link' role='button'>
@@ -114,17 +122,17 @@ const NavBar = () => {
               {
                 usuario.correo ? (
                   <>
-                  <MDBDropdownItem link href='/cupones'>Cupones</MDBDropdownItem>
-                  <MDBDropdownItem link href='/catalogo' onClick={handleLogOut}>Cerrar Sesión</MDBDropdownItem>
+                    <MDBDropdownItem link href='/cupones'>Cupones</MDBDropdownItem>
+                    <MDBDropdownItem link href='/catalogo' onClick={handleLogOut}>Cerrar Sesión</MDBDropdownItem>
                   </>
                 ) : (
                   <>
-                  <MDBDropdownItem link href='/logIn'>Iniciar Sesión</MDBDropdownItem>
-                  <MDBDropdownItem link href='/signUp'>Crear cuenta</MDBDropdownItem>
+                    <MDBDropdownItem link href='/logIn'>Iniciar Sesión</MDBDropdownItem>
+                    <MDBDropdownItem link href='/signUp'>Crear cuenta</MDBDropdownItem>
                   </>
                 )
               }
-              
+
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBCollapse>
