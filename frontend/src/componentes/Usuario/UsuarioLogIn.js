@@ -29,6 +29,7 @@ const UsuarioLogIn = () => {
                     cookies.set("domicilio", data.Usuarios[0].domicilio, {path: "/"});
 
                     history("/catalogo");
+                    window.location.reload();
                 }
             }
         }catch(error){

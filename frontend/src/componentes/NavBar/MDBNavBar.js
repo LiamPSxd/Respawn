@@ -22,15 +22,30 @@ import Button from 'react-bootstrap/Button';
 import { listaVideojuegos } from '../Videojuego/VideojuegoLista';
 import { listaDivisas } from '../Divisa/DivisaLista';
 import { listaCupones } from '../Cupon/CuponLista';
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
+  const history = useNavigate();
+  const cookies = new Cookies();
+  const [usuario] = useState({ id: cookies.get("id"), nombre: cookies.get("nombre"), correo: cookies.get("correo"), contrasenia: cookies.get("contrasenia"), domicilio: cookies.get("domicilio") });
   const [showBasic, setShowBasic] = useState(false);
   const [search, setSearch] = useState("");
+
+  const handleLogOut = async () => {
+    cookies.remove("id");
+    cookies.remove("nombre");
+    cookies.remove("correo");
+    cookies.remove("contrasenia");
+    cookies.remove("domicilio");
+
+    history("/");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    switch(window.location.pathname){
+    switch (window.location.pathname) {
       case "/catalogo":
       case "/xbox":
       case "/playstation":
@@ -48,19 +63,19 @@ const NavBar = () => {
     }
   }
 
-  return(
-    <MDBNavbar expand='lg' light style={{backgroundColor:'#242325'}}>
+  return (
+    <MDBNavbar expand='lg' light style={{ backgroundColor: '#242325' }}>
       <MDBContainer fluid className='justify-content-center'>
         {/* BOTON CON ICONO DE INICIO */}
         <MDBNavbarBrand href='/home'>
           <img src={Logo} alt="logo" width="60" height="50" />
         </MDBNavbarBrand>
 
-        <MDBNavbarToggler aria-controls='navbarSupportedContent' aria-expanded='false' onClick={() => setShowBasic(!showBasic)}>         
+        <MDBNavbarToggler aria-controls='navbarSupportedContent' aria-expanded='false' onClick={() => setShowBasic(!showBasic)}>
           <img src={IconOculto} alt="logo" width="40" height="40" />
         </MDBNavbarToggler>
 
-        <MDBCollapse className= 'justify-content-center' navbar show={showBasic}>
+        <MDBCollapse className='justify-content-center' navbar show={showBasic}>
           <MDBNavbarNav className='justify-content-center'>
             {/* Barra de busqueda react */}
             <div className="d-flex justify-content-center h-100">
@@ -75,18 +90,18 @@ const NavBar = () => {
                     onChange={(e) => setSearch(e.target.value)}
                   />
 
-                  <Button style={{backgroundColor:'#F6F8FF', border:'#F6F8FF'}} type="submit" className="search_icon"><i className="fas fa-search"></i></Button>
+                  <Button style={{ backgroundColor: '#F6F8FF', border: '#F6F8FF' }} type="submit" className="search_icon"><i className="fas fa-search"></i></Button>
                 </div>
               </Form>
             </div>
           </MDBNavbarNav>
-          
+
           {/* Botón de perfil de usuario */}
           <MDBNavbarLink href='#' className=''>
             <img src={IconWishlist} alt="logo" width="40" height="40" />
           </MDBNavbarLink>
 
-          <MDBNavbarLink href='#'className='mx-4 mb-4 mb-lg-0'>
+          <MDBNavbarLink href='#' className='mx-4 mb-4 mb-lg-0'>
             <img src={IconCarrito} alt="logo" width="40" height="40" />
           </MDBNavbarLink>
 
@@ -94,11 +109,22 @@ const NavBar = () => {
             <MDBDropdownToggle tag='a' className='nav-link' role='button'>
               <img src={IconPerfil} alt="logo" width="40" height="40" />
             </MDBDropdownToggle>
-            
+
             <MDBDropdownMenu>
-              <MDBDropdownItem link href='/logIn'>Iniciar Sesión</MDBDropdownItem>
-              <MDBDropdownItem link href='/signUp'>Crear cuenta</MDBDropdownItem>
-              <MDBDropdownItem link href='/cupones'>Cupones</MDBDropdownItem>
+              {
+                usuario.correo ? (
+                  <>
+                  <MDBDropdownItem link href='/cupones'>Cupones</MDBDropdownItem>
+                  <MDBDropdownItem link href='/catalogo' onClick={handleLogOut}>Cerrar Sesión</MDBDropdownItem>
+                  </>
+                ) : (
+                  <>
+                  <MDBDropdownItem link href='/logIn'>Iniciar Sesión</MDBDropdownItem>
+                  <MDBDropdownItem link href='/signUp'>Crear cuenta</MDBDropdownItem>
+                  </>
+                )
+              }
+              
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBCollapse>
@@ -113,11 +139,11 @@ export const recuperarBusqueda = (busqueda, data = []) => {
   let buscado = [];
 
   data.forEach(dato => {
-    if(dato.nombre.toLowerCase().indexOf(busqueda.toLowerCase()) !== -1)
+    if (dato.nombre.toLowerCase().indexOf(busqueda.toLowerCase()) !== -1)
       buscado.push(dato);
   });
 
-  if(buscado.length === 0){
+  if (buscado.length === 0) {
     window.alert("No hay resultados para tu búsqueda");
     buscado = data;
   }
