@@ -22,12 +22,9 @@ import Button from 'react-bootstrap/Button';
 import { listaVideojuegos } from '../Videojuego/VideojuegoLista';
 import { listaDivisas } from '../Divisa/DivisaLista';
 import { listaCupones } from '../Cupon/CuponLista';
-<<<<<<< HEAD
 import { listaOfertas } from '../Oferta/OfertaLista';
-=======
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
->>>>>>> 427c7cfccaf9c52c5eebfe535b6cfaea65949388
 
 const NavBar = () => {
   const history = useNavigate();
