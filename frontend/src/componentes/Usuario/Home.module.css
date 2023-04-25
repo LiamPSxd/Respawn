@@ -5,12 +5,12 @@
 }
 .contenedor{
     text-align: center;
-    padding-top: 20%;
+    padding-top: 15vh;
   
 }
 .user, .registro{
     color: white;
-    padding-top: 8%;
+    padding-top: 10vh;
 }
 .welcome{
     position: relative;
