@@ -22,6 +22,7 @@ import Button from 'react-bootstrap/Button';
 import { listaVideojuegos } from '../Videojuego/VideojuegoLista';
 import { listaDivisas } from '../Divisa/DivisaLista';
 import { listaCupones } from '../Cupon/CuponLista';
+import { listaOfertas } from '../Oferta/OfertaLista';
 
 const NavBar = () => {
   const [showBasic, setShowBasic] = useState(false);
@@ -43,6 +44,9 @@ const NavBar = () => {
         break;
       case "/monedaPeso":
         listaDivisas(search);
+        break;
+      case "/ofertas":
+        listaOfertas(search);
         break;
       default:
     }

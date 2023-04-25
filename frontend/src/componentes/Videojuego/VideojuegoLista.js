@@ -3,13 +3,12 @@ import VideojuegoItem from './VideojuegoItem';
 import style from "./Videojuego.module.css";
 import * as VideojuegoServer from './VideojuegoServer';
 import * as CatalogoVideojuegoServer from '../Catalogo/Relacion/CatalogoVideojuegoServer';
-import * as OfertaVideojuegoServer from '../Ofertas/Relacion/OfertaVideojuegoServer';
 import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 
 let [videojuegos, setVideojuegos] = [];
 let idCatalogo = 0;
 
-const VideojuegoLista = ({ catalogo,idOferta }) => {
+const VideojuegoLista = ({ catalogo }) => {
     [videojuegos, setVideojuegos] = useState([]);
 
     if(catalogo!= null){
@@ -18,7 +17,7 @@ const VideojuegoLista = ({ catalogo,idOferta }) => {
     
 
     useEffect(() => {
-        listaVideojuegos(null, idOferta);
+        listaVideojuegos(null);
         // eslint-disable-next-line
     }, []);
 
@@ -37,34 +36,10 @@ const VideojuegoLista = ({ catalogo,idOferta }) => {
 export default VideojuegoLista;
 
 
-export const listaVideojuegos = async (busqueda,idOferta) => {
+export const listaVideojuegos = async (busqueda) => {
     try{
+        const data = await getContenido();
 
-        let data = "" ; 
-
-        switch (window.location.pathname){
-            case "/catalogo":
-                data = await getContenido();
-               break;
-            case "/xbox":
-                data = await getContenido();
-               break;
-            case "/playstation":
-                data = await getContenido();
-               break;
-            case "/nintendo":
-                data = await getContenido();
-               break;
-            case "/pc":
-               data = await getContenido();
-               break;
-            case "/ofertas":
-                data =  await getOferta(idOferta);
-                break;
-                default: ;
-        }
-        
-        
         if(busqueda == null) setVideojuegos(data.Videojuegos);
         else setVideojuegos(recuperarBusqueda(busqueda, data.Videojuegos));
     }catch(error){
@@ -83,16 +58,3 @@ const getContenido = async () => {
 
     return await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();
 };
-
-const getOferta = async (idOferta) => {
-    const dataOfertaVideojuego = await (await OfertaVideojuegoServer.getOfertaVideojuegosByIdOferta(idOferta)).json();
-    let idVideojuegos = "";
-
-    if(dataOfertaVideojuego != null)
-        await dataOfertaVideojuego.VideojuegoOfertas.forEach(cv => {
-            idVideojuegos += cv.idVideojuego + ",";
-        });
-
-    return await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();
-};
-

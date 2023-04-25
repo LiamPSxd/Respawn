@@ -15,22 +15,3 @@ export const getCatalogoFiltrosByIdFiltro = async (idFiltro) => {
 export const getCatalogoFiltro = async (catalogoFiltro) => {
     return await fetch(`${API_URL}${catalogoFiltro.idCatalogo}/${catalogoFiltro.idFiltro}`);
 };
-
-export const addCatalogoFiltro = async (catalogoFiltro) => {
-    return await fetch(API_URL, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            "idCatalogo": String(catalogoFiltro.idCatalogo),
-            "idFiltro": String(catalogoFiltro.idFiltro)
-        })
-    });
-};
-
-export const deleteCatalogoFiltro = async (catalogoFiltro) => {
-    return await fetch(`${API_URL}${catalogoFiltro.idCatalogo}/${catalogoFiltro.idFiltro}`, {
-        method: "DELETE"
-    });
-};

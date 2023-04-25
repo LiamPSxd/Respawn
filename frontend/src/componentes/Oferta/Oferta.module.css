@@ -1,0 +1,64 @@
+#countdownTimer{
+    width: 600px;
+    height: 100px;
+    border: 2px solid black;
+
+    font-family: "Oswald";
+    font-size: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 26%;
+}
+
+#countdownTimer span{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#twoNumbers{
+    width: 2ch;
+}
+
+#h1{
+    margin-left: 38%;
+    font-family: "Oswald";
+}
+
+#contenedorTarjetas{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 15px;
+    padding-top: 60px;
+}
+
+#tarjeta{
+    margin: 8px;
+    width: 18rem;
+    display: inline-block;
+    border-radius: 1.25em;
+    border-color: #656565;
+}
+
+#imgCard{
+    height: 360px;
+    border-radius: 1.25em;
+}
+
+#contenidoTarjeta{
+    text-align: start;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+#titulo{
+    font-weight: bold;
+}
+
+#cardBody{
+    margin: 0px;
+    padding-top: 10px;
+}
