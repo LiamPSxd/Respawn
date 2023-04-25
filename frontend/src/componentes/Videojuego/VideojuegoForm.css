@@ -1,0 +1,15 @@
+#video{
+    margin-top: 10%;
+    width: 100%;
+    height: 80%;
+}
+
+.long-text{
+    height: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.expanded{
+    height: 15rem;
+}
