@@ -23,7 +23,8 @@ export const addUsuario = async (usuario) => {
             "nombre": String(usuario.nombre).trim(),
             "correo": String(usuario.correo).trim(),
             "contrasenia": String(usuario.contrasenia).trim(),
-            "domicilio": String(usuario.domicilio).trim()
+            "domicilio": String(usuario.domicilio).trim(),
+            "carrito": usuario.carrito
         })
     });
 };
@@ -39,7 +40,8 @@ export const updateUsuario = async (usuario) => {
             "nombre": String(usuario.nombre).trim(),
             "correo": String(usuario.correo).trim(),
             "contrasenia": String(usuario.contrasenia).trim(),
-            "domicilio": String(usuario.domicilio).trim()
+            "domicilio": String(usuario.domicilio).trim(),
+            "carrito": usuario.carrito
         })
     });
 };
