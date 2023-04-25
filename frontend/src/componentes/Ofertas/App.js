@@ -31,14 +31,11 @@ const Timer = ({ idOferta }) => {
 
           <Filtro />
         </div>
-
-<div className="row">
-{ofertas.map(oferta => (
-    <OfertaItem key={oferta.id} idOferta={oferta.id} />
-))}
-
-</div>
-</>
-      );
+        <div className="row">
+            {ofertas.map(oferta => (
+                <OfertaItem key={oferta.id} idOferta={oferta.id} />
+            ))}
+        </div>
+    </>);
 }
 export default Timer;

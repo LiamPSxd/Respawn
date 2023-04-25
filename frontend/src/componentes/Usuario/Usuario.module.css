@@ -1,4 +1,4 @@
-.html {
+/* .html {
     height: 100%;
   }
 .body{
@@ -6,7 +6,7 @@
     padding: 0;
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
-}
+} */
 
 .loginBox{
     position:relative;
@@ -62,7 +62,7 @@
     font-size: 12px;
 } 
 
-.loginBox a:hover{
+/* .loginBox a:hover{
     background: #03e9f4;
     color: #fff;
     border-radius: 5px;
@@ -161,4 +161,4 @@
     transition: .5s;
     margin-top: 40px;
     letter-spacing: 4px;
-}
+} */
