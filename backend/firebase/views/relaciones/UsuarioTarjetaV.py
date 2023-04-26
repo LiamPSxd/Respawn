@@ -22,14 +22,14 @@ class UsuarioTarjetaV(View):
 
             if idUsuario > -1 and idTarjeta > -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idUsuario"]) == idUsuario and str(value["idTarjeta"]) == str(idTarjeta):
+                    if value != None and str(value["idUsuario"]) == str(idUsuario) and str(value["idTarjeta"]) == str(idTarjeta):
                         uts.append({
                             "idUsuario": value["idUsuario"],
                             "idTarjeta": value["idTarjeta"]
                         })
             elif idUsuario > -1 and idTarjeta == -1:
                 for key, value in db.getDocumento(documento).items():
-                    if value != None and str(value["idUsuario"]) == idUsuario:
+                    if value != None and str(value["idUsuario"]) == str(idUsuario):
                         uts.append({
                             "idUsuario": value["idUsuario"],
                             "idTarjeta": value["idTarjeta"]
