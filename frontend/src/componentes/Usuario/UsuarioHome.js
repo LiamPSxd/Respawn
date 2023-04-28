@@ -10,7 +10,7 @@ const UsuarioHome = () => {
 
 
     return (
-        <html className={styles.html}>
+        <div className={styles.html}>
             <>
 
                 <div className={styles.contenedor}>
@@ -38,7 +38,7 @@ const UsuarioHome = () => {
                     <audio src={sonido} autoPlay loop></audio>
                 </div>
             </>
-        </html>
+        </div>
 
     );
 };
