@@ -7,7 +7,7 @@ import styles from "./Sign.module.css";
 const UsuarioSignUp = () => {
     const history = useNavigate();
 
-    const [usuario, setUsuario] = useState({id: 0, nombre: "", correo: "", contrasenia: "", domicilio: ""});
+    const [usuario, setUsuario] = useState({id: 0, nombre: "", correo: "", contrasenia: "", domicilio: "", carrito: []});
 
     const handleInputChange = (e) => {
         setUsuario({ ...usuario, [e.target.name]: e.target.value });
