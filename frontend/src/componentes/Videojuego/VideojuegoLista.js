@@ -8,14 +8,12 @@ import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 let [videojuegos, setVideojuegos] = [];
 let idCatalogo = 0;
 
-const VideojuegoLista = ({ catalogo, idFiltro }) => {
+const VideojuegoLista = ({ catalogo }) => {
     [videojuegos, setVideojuegos] = useState([]);
     [idCatalogo] = useState(catalogo.id);
 
-    console.log(idFiltro);
-
     useEffect(() => {
-        listaVideojuegos(null);
+        listaVideojuegos(null, "-1");
         // eslint-disable-next-line
     }, []);
 
@@ -30,9 +28,9 @@ const VideojuegoLista = ({ catalogo, idFiltro }) => {
 
 export default VideojuegoLista;
 
-export const listaVideojuegos = async (busqueda) => {
+export const listaVideojuegos = async (busqueda, idFiltro) => {
     try{
-        const data = await getContenido();
+        const data = await getContenido(idFiltro);
 
         if(busqueda == null) setVideojuegos(data.Videojuegos);
         else setVideojuegos(recuperarBusqueda(busqueda, data.Videojuegos));
@@ -41,7 +39,7 @@ export const listaVideojuegos = async (busqueda) => {
     }
 };
 
-const getContenido = async () => {
+const getContenido = async (idFiltro) => {
     const dataCatalogoVideojuego = await (await CatalogoVideojuegoServer.getCatalogoVideojuegosByIdCatalogo(idCatalogo)).json();
     let idVideojuegos = "";
 
@@ -50,5 +48,25 @@ const getContenido = async () => {
             idVideojuegos += cv.idVideojuego + ",";
         });
 
-    return await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();
+    var dataVideojuegos = await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();
+
+    if(idFiltro === "-1") return dataVideojuegos;
+    else{
+        const filtro = await (await VideojuegoServer.getVideojuegosByIdFiltro(idFiltro)).json();
+
+        if(filtro.message === "Exitoso"){
+            const data = {"Videojuegos": []};
+
+            filtro.Videojuegos.forEach(videojuego => {
+                dataVideojuegos.Videojuegos.forEach(v => {
+                    if(v.id === videojuego.id) data.Videojuegos.push(v);
+                })
+            })
+
+            return data;
+        }else{
+            window.alert("No hay resultados para este filtro");
+            return dataVideojuegos;
+        }
+    }
 };

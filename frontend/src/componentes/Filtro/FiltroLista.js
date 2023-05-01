@@ -4,11 +4,10 @@ import FiltroItemCombo from "./FiltroItemCombo";
 import * as FiltroServer from "./FiltroServer";
 import * as CatalogoFiltroServer from "../Catalogo/Relacion/CatalogoFiltroServer";
 import style from "./Filtro.module.css";
-import VideojuegoLista from "../Videojuego/VideojuegoLista";
+import VideojuegoLista, { listaVideojuegos } from "../Videojuego/VideojuegoLista";
 
 const FiltroLista = ({ catalogo }) => {
     const [filtros, setFiltros] = useState([]);
-    const [filtro, setFiltro] = useState(-1);
 
     const listaFiltros = async () => {
         try{
@@ -31,17 +30,17 @@ const FiltroLista = ({ catalogo }) => {
         return await (await FiltroServer.getFiltrosByIdFiltros(idFiltros)).json();
     };
 
-    const handleInputChange = async (e) => {
-        // filtros.map(async filtro => {
-        //     if(String(filtro.id) === "0"){
-        //         filtro.contenido.map(async c => {
-        //             if(e.target.value === c) await setFiltro(e.target.value + filtro.id);
-        //         })
-        //     }else if(filtro.nombre === e.target.value) await setFiltro(e.target.value + filtro.id);
-        // });
+    const handleInputChange = (e) => {
+        filtros.map(async filtro => {
+            if(String(filtro.id) === "0"){
+                filtro.contenido.map(async c => {
+                    if(e.target.value === c) idFiltro = `${filtro.id},${c}`;
+                })
+            }else if(filtro.nombre === e.target.value) idFiltro = `${filtro.id},null`;
+        });
 
-        setFiltro(e.target.value);
-    }
+        listaVideojuegos(null, idFiltro);
+    };
 
     useEffect(() => {
         listaFiltros();
@@ -79,9 +78,11 @@ const FiltroLista = ({ catalogo }) => {
         </div>
         
         <div className="card-group">
-            <VideojuegoLista catalogo={catalogo} idFiltro={filtro.id} />
+            <VideojuegoLista catalogo={catalogo} />
         </div></>
     );
 };
 
 export default FiltroLista;
+
+export var idFiltro = "-1";
