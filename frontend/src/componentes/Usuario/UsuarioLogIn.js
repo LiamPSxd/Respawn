@@ -38,7 +38,7 @@ const UsuarioLogIn = () => {
     };
 
     return(
-        <html className={styles.html2}>
+        <div className={styles.html2}>
             <div className={styles.loginBox}>
                 <h2>Login</h2>
 
@@ -52,17 +52,16 @@ const UsuarioLogIn = () => {
                         <label>Contraseña</label>
                         <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} />
                     </div>
-                    <button type="submit" className="btn btn-primary">Iniciar Sesión</button> 
-                    {/*  <a type="submit" onClick >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                        Iniciar Sesión</a> */}
+                    <button type="submit" className={styles.a}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Iniciar Sesión</button> 
+                    
                 </form>
             </div>
-        </html>
+        </div>
     );
 };
 

@@ -4,7 +4,7 @@
 }
 .loginBox{
     position:relative;
-    top: -25vh;
+    top: -42vh;
     left: 50%;
     width: 400px;
     padding: 20px;
@@ -35,7 +35,6 @@
     outline: none;
     background: transparent;
 }
-
 label{
     color: #fff;
 }
@@ -156,8 +155,8 @@ label{
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
-    margin-top: 20px;
+    margin-top: 10px;
     letter-spacing: 4px;
     background-color: #242325;
-    margin-left: 10vh;
+    margin-left: 15vh;
 }
