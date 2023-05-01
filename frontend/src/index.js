@@ -13,7 +13,7 @@ import Cupon from "./componentes/Cupon/CuponLista";
 import SignUp from "./componentes/Usuario/UsuarioSignUp";
 import LogIn  from "./componentes/Usuario/UsuarioLogIn";
 import Home from "./componentes/Usuario/UsuarioHome";
-import Videojuego from "./componentes/Videojuego/VideojuegoForm";
+import Videojuego from "./componentes/Videojuego/VideojuegoDetail";
 import Pago from "./componentes/Pago/PagoForm";
 import Tarjeta from "./componentes/Tarjeta/TarjetaForm";
 import PayPal from "./componentes/PayPal/PayPalForm";

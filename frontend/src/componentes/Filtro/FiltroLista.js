@@ -8,6 +8,7 @@ import VideojuegoLista from "../Videojuego/VideojuegoLista";
 
 const FiltroLista = ({ catalogo }) => {
     const [filtros, setFiltros] = useState([]);
+    const [filtro, setFiltro] = useState(-1);
 
     const listaFiltros = async () => {
         try{
@@ -30,6 +31,18 @@ const FiltroLista = ({ catalogo }) => {
         return await (await FiltroServer.getFiltrosByIdFiltros(idFiltros)).json();
     };
 
+    const handleInputChange = async (e) => {
+        // filtros.map(async filtro => {
+        //     if(String(filtro.id) === "0"){
+        //         filtro.contenido.map(async c => {
+        //             if(e.target.value === c) await setFiltro(e.target.value + filtro.id);
+        //         })
+        //     }else if(filtro.nombre === e.target.value) await setFiltro(e.target.value + filtro.id);
+        // });
+
+        setFiltro(e.target.value);
+    }
+
     useEffect(() => {
         listaFiltros();
         // eslint-disable-next-line
@@ -42,7 +55,7 @@ const FiltroLista = ({ catalogo }) => {
                 <div>
                     <h4 id={style.text}><u>{filtro.nombre}</u></h4>
 
-                    <form>
+                    <form onChange={handleInputChange}>
                         <div>
                             {filtro.contenido.map((c, id) => (
                                 <FiltroItem key={id} contenido={c} />
@@ -55,7 +68,7 @@ const FiltroLista = ({ catalogo }) => {
 
         <div id={style.select}>
             <form>
-                <select defaultValue="Default">
+                <select defaultValue="Default" onChange={handleInputChange}>
                     <option value="Default" disabled>Seleccione un filtro</option>
 
                     {filtros.map(filtro => (
@@ -66,7 +79,7 @@ const FiltroLista = ({ catalogo }) => {
         </div>
         
         <div className="card-group">
-            <VideojuegoLista catalogo={catalogo} />
+            <VideojuegoLista catalogo={catalogo} idFiltro={filtro.id} />
         </div></>
     );
 };

@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import VideojuegoItem from './VideojuegoItem';
-import style from "./Videojuego.module.css";
+import React, { useEffect, useState } from "react";
+import VideojuegoItem from "./VideojuegoItem";
 import * as VideojuegoServer from './VideojuegoServer';
 import * as CatalogoVideojuegoServer from '../Catalogo/Relacion/CatalogoVideojuegoServer';
+import style from "./Videojuego.module.css";
 import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 
 let [videojuegos, setVideojuegos] = [];
 let idCatalogo = 0;
 
-const VideojuegoLista = ({ catalogo }) => {
+const VideojuegoLista = ({ catalogo, idFiltro }) => {
     [videojuegos, setVideojuegos] = useState([]);
+    [idCatalogo] = useState(catalogo.id);
 
-    if(catalogo!= null){
-        [idCatalogo] = useState(catalogo.id);
-    }
-    
+    console.log(idFiltro);
 
     useEffect(() => {
         listaVideojuegos(null);
@@ -22,19 +20,15 @@ const VideojuegoLista = ({ catalogo }) => {
     }, []);
 
     return(
-        <> 
-        <div id={style.contenedorTarjetas}>
+        <><div id={style.contenedorTarjetas}>
             {videojuegos.map(videojuego => (
                 <VideojuegoItem key={videojuego.id} videojuego={videojuego} listaVideojuegos={listaVideojuegos} />
             ))}
-        </div>
-        </>
-    
+        </div></>
     );
 };
 
 export default VideojuegoLista;
-
 
 export const listaVideojuegos = async (busqueda) => {
     try{
