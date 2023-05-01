@@ -119,6 +119,24 @@ class Firebase:
 
         return diccionario
 
+    def getDocumentoOrderByChild(self, entidad, atributo):
+        if self.conexionDB:
+            doc = self.db.reference(entidad).order_by_child(atributo).get()
+
+            if isinstance(doc, dict):
+                return doc
+            else:
+                return self.convertirDiccionario(doc)
+
+    def getDocumentoOrderByChildByValue(self, entidad, atributo, valor):
+        if self.conexionDB:
+            doc = self.db.reference(entidad).order_by_child(atributo).equal_to(valor).get()
+
+            if isinstance(doc, dict):
+                return doc
+            else:
+                return self.convertirDiccionario(doc)
+
     def getDocumentoOrderByKey(self, entidad):
         if self.conexionDB:
             doc = self.db.reference(entidad).order_by_key().get()

@@ -16,59 +16,74 @@ class VideojuegoV(View):
     def dispatch(self, request, *args, **kwargs):
         return super().dispatch(request, *args, **kwargs)
 
-    def get(self, request, id = -1, ids = ""):
+    def addVideojuegos(self, videojuegos, value):
+        videojuegos.append({
+            "id": value["id"],
+            "nombre": value["nombre"],
+            "descripcion": value["descripcion"],
+            "caratula": value["caratula"],
+            "video": value["video"],
+            "precio": value["precio"],
+            "genero": value["genero"],
+            "plataforma": value["plataforma"],
+            "datosExtra": value["datosExtra"],
+            "calificacion": value["calificacion"],
+            "capturas": value["capturas"]
+        })
+
+    def get(self, request, id = -1, ids = "", filtro = ""):
         if db.conexionDB and request.method == "GET":
             videojuegos = list()
 
-            if id > -1 and ids == "":
+            if id > -1 and ids == "" and filtro == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
-                        videojuegos.append({
-                            "id": value["id"],
-                            "nombre": value["nombre"],
-                            "descripcion": value["descripcion"],
-                            "caratula": value["caratula"],
-                            "video": value["video"],
-                            "precio": value["precio"],
-                            "genero": value["genero"],
-                            "plataforma": value["plataforma"],
-                            "datosExtra": value["datosExtra"],
-                            "calificacion": value["calificacion"],
-                            "capturas": value["capturas"]
-                        })
-            elif id == -1 and ids == "":
+                        self.addVideojuegos(videojuegos, value)
+            elif id == -1 and ids == "" and filtro == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
-                        videojuegos.append({
-                            "id": value["id"],
-                            "nombre": value["nombre"],
-                            "descripcion": value["descripcion"],
-                            "caratula": value["caratula"],
-                            "video": value["video"],
-                            "precio": value["precio"],
-                            "genero": value["genero"],
-                            "plataforma": value["plataforma"],
-                            "datosExtra": value["datosExtra"],
-                            "calificacion": value["calificacion"],
-                            "capturas": value["capturas"]
-                        })
-            elif ids != "":
+                        self.addVideojuegos(videojuegos, value)
+            elif id == -1 and ids != "" and filtro == "":
                 for key, value in db.getDocumento(documento).items():
                     for id in ids.split(","):
                         if value != None and str(value["id"]) == str(id):
-                            videojuegos.append({
-                                "id": value["id"],
-                                "nombre": value["nombre"],
-                                "descripcion": value["descripcion"],
-                                "caratula": value["caratula"],
-                                "video": value["video"],
-                                "precio": value["precio"],
-                                "genero": value["genero"],
-                                "plataforma": value["plataforma"],
-                                "datosExtra": value["datosExtra"],
-                                "calificacion": value["calificacion"],
-                                "capturas": value["capturas"]
-                            })
+                            self.addVideojuegos(videojuegos, value)
+            elif filtro != "":
+                match filtro.split(",")[0]:
+                    case "0":
+                        for key, value in db.getDocumentoOrderByChildByValue(documento, "genero", filtro.split(",")[1]).items():
+                            self.addVideojuegos(videojuegos, value)
+                    case "1":
+                        for key, value in db.getDocumentoOrderByChild(documento, "nombre").items():
+                            self.addVideojuegos(videojuegos, value)
+                    case "2":
+                        for key, value in db.getDocumentoOrderByChild(documento, "nombre").items():
+                            self.addVideojuegos(videojuegos, value)
+
+                        videojuegos.reverse()
+                    case "3":
+                        for key, value in db.getDocumentoOrderByChild(documento, "precio/valor").items():
+                            self.addVideojuegos(videojuegos, value)
+
+                        videojuegos.reverse()
+                    case "4":
+                        for key, value in db.getDocumentoOrderByChild(documento, "precio/valor").items():
+                            self.addVideojuegos(videojuegos, value)
+                    case "5":
+                        for key, value in db.getDocumentoOrderByChild(documento, "calificacion").items():
+                            self.addVideojuegos(videojuegos, value)
+
+                        videojuegos.reverse()
+                    case "6":
+                        items = list()
+
+                        for key, value in db.getDocumentoOrderByChildByValue(documento, "precio/valor", 0).items():
+                            items.append(value)
+                        for key, value in db.getDocumentoOrderByChildByValue(documento, "precio/valor", "0").items():
+                            items.append(value)
+
+                        for item in items:
+                            self.addVideojuegos(videojuegos, item)
 
             if len(videojuegos) > 0:
                 return JsonResponse({"message": "Exitoso", f"{documento}": videojuegos})
