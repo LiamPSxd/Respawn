@@ -17,6 +17,7 @@ import Videojuego from "./componentes/Videojuego/VideojuegoForm";
 import Pago from "./componentes/Pago/PagoForm";
 import Tarjeta from "./componentes/Tarjeta/TarjetaForm";
 import PayPal from "./componentes/PayPal/PayPalForm";
+import Carrito from "./componentes/Carrito/Carrito";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -45,6 +46,7 @@ root.render(
       <Route exact path="/signUp" element={<SignUp />} />
       <Route exact path="/logIn" element={<LogIn />} />
       <Route exact path="/home" element={<Home />} />
+      <Route exact path="/carrito" element={<Carrito />} />
     </Routes>
 
   </BrowserRouter>
