@@ -94,10 +94,10 @@ const VideojuegoForm = () => {
         </div>
             <div id="comentarios_Alan">
                 {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
-                <div id="disqus_thread"></div>
                 <Comentario />
                 {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
-            </div></>
+            </div>
+            </>
     );
 };
 
