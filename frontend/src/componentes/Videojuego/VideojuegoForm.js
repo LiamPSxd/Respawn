@@ -6,6 +6,7 @@ import VideojuegoBanner from "./VideojuegoBanner";
 import ModalCalificacion from "../Modal/ModalCalificacion";
 import Comentario from "../Comentario/comentario";
 import './VideojuegoForm.css';
+import CarritoBtn from "./CarritoBtn";
 
 const VideojuegoForm = () => {
 
@@ -68,9 +69,10 @@ const VideojuegoForm = () => {
                         ${videojuego.precio.valor}
                         <small style={{ fontSize: "12px" }}>*includes tax</small>
                     </h3>
-                    <div className="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                        <a href="carrito" className="btn btn-success btn-lg">Add to cart (${videojuego.precio.valor})</a>
-                    </div>
+                    
+                    <CarritoBtn videojuego={videojuego}/>
+
+
                     <div id="contenedor_botones">
                         <div className="btn-group pull-right">
                             <button className="btn btn-white btn-default"><i className="fa fa-star"></i> Add to
