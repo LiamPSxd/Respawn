@@ -20,7 +20,7 @@ const CatalogoLista = ({ idCatalogo }) => {
     }, []);
 
     return(
-        <><div className="row">
+        <><div>
             {catalogos.map(catalogo => (
                 <CatalogoItem key={catalogo.id} catalogo={catalogo} />
             ))}
