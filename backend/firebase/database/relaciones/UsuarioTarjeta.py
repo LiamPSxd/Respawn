@@ -3,16 +3,16 @@ from firebase.database.entidades.Tarjeta import Tarjeta
 
 class UsuarioTarjeta:
     def __init__(self, idUsuario = Usuario.id, idTarjeta = Tarjeta.id):
-        self.idUsuario = idUsuario
+        self._idUsuario = idUsuario
         self._idTarjeta = idTarjeta
 
     @property
     def idUsuario(self):
-        return self.idUsuario
+        return self._idUsuario
 
     @idUsuario.setter
     def idUsuario(self, idUsuario):
-        self.idUsuario = idUsuario
+        self._idUsuario = idUsuario
 
     @property
     def idTarjeta(self):

@@ -1,0 +1,15 @@
+#containerTarjetas{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+#olTarjetas{
+    text-align: center;
+    width: 500px;
+}
+#imagen{
+    width: 100px;
+    height: 90px;
+}

@@ -63,8 +63,7 @@ class UsuarioTarjetaV(View):
                 jb["idUsuario"],
                 jb["idTarjeta"]
             )
-
-            if ut.idUsuario > -1 and ut.idTarjeta > -1:
+            if ut.idUsuario != -1 and ut.idTarjeta != -1:
                 db.getDB().reference(documento).child(f"{ut.idUsuario}{ut.idTarjeta}").set({"idUsuario": f"{ut.idUsuario}", "idTarjeta": f"{ut.idTarjeta}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
