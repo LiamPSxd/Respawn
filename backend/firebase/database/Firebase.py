@@ -163,7 +163,9 @@ class Firebase:
     def conversionArrayToDocument(self, array):
         res = dict()
 
-        for i in range(len(array)):
-            res[i] = array[i]
+        if len(array) > 0:
+            for i in range(len(array)):
+                res[i] = array[i]
+        elif len(array) == 0: res["-1"] = -1
 
         return res
