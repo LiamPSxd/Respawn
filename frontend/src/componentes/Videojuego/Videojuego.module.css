@@ -1,6 +1,6 @@
 #contenedorTarjetas{
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
     text-align: center;
     padding: 15px;

@@ -15,16 +15,11 @@ import LogIn  from "./componentes/Usuario/UsuarioLogIn";
 import Home from "./componentes/Usuario/UsuarioHome";
 import Videojuego from "./componentes/Videojuego/VideojuegoDetail";
 import Pago from "./componentes/Pago/PagoForm";
-<<<<<<< HEAD
-import TarjetaList from "./componentes/Tarjeta/TarjetaList"; 
+import Tarjeta from "./componentes/Tarjeta/TarjetaList";
 import TarjetaForm from "./componentes/Tarjeta/TarjetaForm";
-import PayPalForm from "./componentes/PayPal/PayPalForm";
-=======
-import Tarjeta from "./componentes/Tarjeta/TarjetaForm";
 import PayPal from "./componentes/PayPal/PayPalForm";
 import Carrito from "./componentes/Carrito/Carrito";
 import Ticket from "./componentes/Ticket/Ticket";
->>>>>>> c31e9269360afbc6b0ce97ea59e037c817c227fa
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -48,14 +43,9 @@ root.render(
       <Route exact path="/pc" element={<Catalogo idCatalogo={4} />} />
       <Route exact path="/videojuego/:id" element={<Videojuego />} />
       <Route exact path="/pago/:id" element={<Pago />} />
-<<<<<<< HEAD
-      <Route exact path="/pago/:id/tarjetas" element={<TarjetaList />} />
+      <Route exact path="/pago/:id/tarjetas" element={<Tarjeta />} />
       <Route exact path="/tarjetaForm" element={<TarjetaForm />} />
-      <Route exact path="/pago/:id/paypal" element={<PayPalForm />} />
-=======
-      <Route exact path="/pago/:id/tarjeta" element={<Tarjeta />} />
       <Route exact path="/pago/:id/paypal" element={<PayPal />} />
->>>>>>> c31e9269360afbc6b0ce97ea59e037c817c227fa
       <Route exact path="/signUp" element={<SignUp />} />
       <Route exact path="/logIn" element={<LogIn />} />
       <Route exact path="/home" element={<Home />} />
