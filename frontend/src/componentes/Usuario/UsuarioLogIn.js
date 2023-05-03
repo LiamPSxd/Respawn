@@ -28,7 +28,8 @@ const UsuarioLogIn = () => {
                     cookies.set("contrasenia", usuario.contrasenia, {path: "/"});
                     cookies.set("domicilio", data.Usuarios[0].domicilio, {path: "/"});
 
-                    history("/catalogo");
+                    history("/home");
+                    window.location.reload();
                 }
             }
         }catch(error){
@@ -37,7 +38,7 @@ const UsuarioLogIn = () => {
     };
 
     return(
-        <html className={styles.html}><div className={styles.body}>
+        <div className={styles.html2}>
             <div className={styles.loginBox}>
                 <h2>Login</h2>
 
@@ -51,17 +52,16 @@ const UsuarioLogIn = () => {
                         <label>Contraseña</label>
                         <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} />
                     </div>
-                    <button type="submit" className="btn btn-primary">Iniciar Sesión</button> 
-                    {/*  <a type="submit" onClick >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                        Iniciar Sesión</a> */}
+                    <button type="submit" className={styles.a}>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Iniciar Sesión</button> 
+                    
                 </form>
             </div>
-        </div></html>
+        </div>
     );
 };
 

@@ -2,18 +2,32 @@ import React, { useEffect, useState } from "react";
 import FiltroItem from "./FiltroItem";
 import FiltroItemCombo from "./FiltroItemCombo";
 import * as FiltroServer from "./FiltroServer";
+import * as CatalogoFiltroServer from "../Catalogo/Relacion/CatalogoFiltroServer";
 import style from "./Filtro.module.css";
+import VideojuegoLista from "../Videojuego/VideojuegoLista";
 
-const FiltroLista = () => {
+const FiltroLista = ({ catalogo }) => {
     const [filtros, setFiltros] = useState([]);
 
     const listaFiltros = async () => {
         try{
-            const data = await (await FiltroServer.getAllFiltros()).json();
+            const data = await getContenido();
             setFiltros(data.Filtros);
         }catch(error){
             console.log(error);
         }
+    };
+
+    const getContenido = async () => {
+        const dataCatalogoFiltro = await (await CatalogoFiltroServer.getCatalogoFiltrosByIdCatalogo(catalogo.id)).json();
+        let idFiltros = "";
+    
+        if(dataCatalogoFiltro != null)
+            await dataCatalogoFiltro.CatalogoFiltros.forEach(cf => {
+                idFiltros += cf.idFiltro + ",";
+            });
+    
+        return await (await FiltroServer.getFiltrosByIdFiltros(idFiltros)).json();
     };
 
     useEffect(() => {
@@ -49,6 +63,10 @@ const FiltroLista = () => {
                     ))}
                 </select>
             </form>
+        </div>
+        
+        <div className="card-group">
+            <VideojuegoLista catalogo={catalogo} />
         </div></>
     );
 };

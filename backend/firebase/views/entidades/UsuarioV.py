@@ -28,7 +28,8 @@ class UsuarioV(View):
                             "nombre": value["nombre"],
                             "correo": value["correo"],
                             "contrasenia": value["contrasenia"],
-                            "domicilio": value["domicilio"]
+                            "domicilio": value["domicilio"],
+                            "carrito": value["carrito"]
                         })
             elif id == -1 and ids == "" and correo == "":
                 for key, value in db.getDocumento(documento).items():
@@ -38,7 +39,8 @@ class UsuarioV(View):
                             "nombre": value["nombre"],
                             "correo": value["correo"],
                             "contrasenia": value["contrasenia"],
-                            "domicilio": value["domicilio"]
+                            "domicilio": value["domicilio"],
+                            "carrito": value["carrito"]
                         })
             elif id == -1 and ids != "" and correo == "":
                 for key, value in db.getDocumento(documento).items():
@@ -49,7 +51,8 @@ class UsuarioV(View):
                                 "nombre": value["nombre"],
                                 "correo": value["correo"],
                                 "contrasenia": value["contrasenia"],
-                                "domicilio": value["domicilio"]
+                                "domicilio": value["domicilio"],
+                                "carrito": value["carrito"]
                             })
             elif id == -1 and ids == "" and correo != "":
                 for key, value in db.getDocumento(documento).items():
@@ -59,7 +62,8 @@ class UsuarioV(View):
                             "nombre": value["nombre"],
                             "correo": value["correo"],
                             "contrasenia": value["contrasenia"],
-                            "domicilio": value["domicilio"]
+                            "domicilio": value["domicilio"],
+                            "carrito": value["carrito"]
                         })
 
             if len(usuarios) > 0:
@@ -77,12 +81,13 @@ class UsuarioV(View):
                 jb["nombre"],
                 jb["correo"],
                 jb["contrasenia"],
-                jb["domicilio"]
+                jb["domicilio"],
+                jb["carrito"]
             )
 
             if u.id > -1:
                 if db.user(u):
-                    db.getDB().reference(documento).child(str(u.id)).set({"id": f"{u.id}", "nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}"})
+                    db.getDB().reference(documento).child(str(u.id)).set({"id": f"{u.id}", "nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}", "carrito": db.conversionArrayToDocument(u.carrito)})
                     return JsonResponse(db.mensajeExitoso)
                 else:
                     return JsonResponse(db.mensajeFallido)
@@ -99,7 +104,8 @@ class UsuarioV(View):
                 jb["nombre"],
                 jb["correo"],
                 jb["contrasenia"],
-                jb["domicilio"]
+                jb["domicilio"],
+                jb["carrito"]
             )
             updatekey = ""
 
@@ -110,7 +116,7 @@ class UsuarioV(View):
 
             if updatekey != "":
                 db.user(u, 1)
-                db.getDB().reference(documento).child(updatekey).update({"id": f"{u.id}", "nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}"})
+                db.getDB().reference(documento).child(updatekey).update({"id": f"{u.id}", "nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}", "carrito": db.conversionArrayToDocument(u.carrito)})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    

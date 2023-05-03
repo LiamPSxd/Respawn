@@ -27,18 +27,6 @@
         font-family: "Oswald";
     }
 
-    .card-title{
-       text-align: center;
-    }
-    .card-body{
-       margin-top: 10px;
-    }
-    .card{
-        width: 18rem;
-    }
-    .col{
-        margin-left: 10%;
-    }
 
     #categoria{
        /* border: 2px solid black;*/

@@ -3,7 +3,7 @@ from firebase.database.entidades.Tarjeta import Tarjeta
 
 class UsuarioTarjeta:
     def __init__(self, idUsuario = Usuario.id, idTarjeta = Tarjeta.id):
-        self.idUsuario = idUsuario
+        self._idUsuario = idUsuario
         self._idTarjeta = idTarjeta
 
     @property
