@@ -6,6 +6,8 @@ import * as CatalogoFiltroServer from "../Catalogo/Relacion/CatalogoFiltroServer
 import style from "./Filtro.module.css";
 import VideojuegoLista, { listaVideojuegos } from "../Videojuego/VideojuegoLista";
 
+import Mensaje from "../Mensaje/Mensaje";
+
 const FiltroLista = ({ catalogo }) => {
     const [filtros, setFiltros] = useState([]);
 
@@ -40,6 +42,9 @@ const FiltroLista = ({ catalogo }) => {
         });
 
         listaVideojuegos(null, idFiltro);
+        return(
+            <Mensaje titulo="Mensaje Prueba" contenido="Hola" />
+        )
     };
 
     useEffect(() => {
@@ -79,7 +84,9 @@ const FiltroLista = ({ catalogo }) => {
         
         <div className="card-group">
             <VideojuegoLista catalogo={catalogo} />
-        </div></>
+        </div>
+        
+        <Mensaje /></>
     );
 };
 
