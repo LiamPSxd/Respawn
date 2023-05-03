@@ -11,6 +11,7 @@
     "dayjs": "^1.11.7",
     "disqus-react": "^1.1.5",
     "mdb-react-ui-kit": "^5.1.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-audio-player": "^0.17.0",
     "react-bootstrap": "^2.7.4",

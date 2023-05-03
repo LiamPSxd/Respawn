@@ -107,7 +107,7 @@ const NavBar = () => {
                   <img src={IconWishlist} alt="logo" width="40" height="40" />
                 </MDBNavbarLink>
 
-                <MDBNavbarLink href='#' className='mx-4 mb-4 mb-lg-0'>
+                <MDBNavbarLink href='/carrito' className='mx-4 mb-4 mb-lg-0'>
                   <img src={IconCarrito} alt="logo" width="40" height="40" />
                 </MDBNavbarLink>
 

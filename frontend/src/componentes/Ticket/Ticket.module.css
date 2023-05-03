@@ -1,0 +1,40 @@
+
+  .register {
+    width: 50%;
+    margin: auto;
+    margin-top: 5%;
+  }
+  .ticket {
+    background: #F6F8FF;
+    margin: 0 5%;
+    padding: 5%;
+    box-shadow: 0 0 5px #7b5da6;
+    color: #242325;
+  }
+  .ticket h1 {
+    text-align: center;
+    margin-bottom: 5%;
+  }
+  .ticket table {
+    font-family: monospace;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .ticket td, .ticket th {
+    padding: 1%;
+  }
+  .ticket th {
+    text-align: left;
+  }
+  .ticket td, .ticket .total {
+    text-align: right;
+  }
+  .ticket tfoot th {
+    font-size:larger;
+    border-top: 1px solid #7b5da6;
+  }
+  
+  .entry {
+    padding: 5%;
+    font-size: 14px;
+  }
