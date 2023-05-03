@@ -13,9 +13,10 @@ import Cupon from "./componentes/Cupon/CuponLista";
 import SignUp from "./componentes/Usuario/UsuarioSignUp";
 import LogIn  from "./componentes/Usuario/UsuarioLogIn";
 import Home from "./componentes/Usuario/UsuarioHome";
-import Videojuego from "./componentes/Videojuego/VideojuegoForm";
+import Videojuego from "./componentes/Videojuego/VideojuegoDetail";
 import Pago from "./componentes/Pago/PagoForm";
-import Tarjeta from "./componentes/Tarjeta/TarjetaForm";
+import Tarjeta from "./componentes/Tarjeta/TarjetaList";
+import TarjetaForm from "./componentes/Tarjeta/TarjetaForm";
 import PayPal from "./componentes/PayPal/PayPalForm";
 import Carrito from "./componentes/Carrito/Carrito";
 import Ticket from "./componentes/Ticket/Ticket";
@@ -42,7 +43,8 @@ root.render(
       <Route exact path="/pc" element={<Catalogo idCatalogo={4} />} />
       <Route exact path="/videojuego/:id" element={<Videojuego />} />
       <Route exact path="/pago/:id" element={<Pago />} />
-      <Route exact path="/pago/:id/tarjeta" element={<Tarjeta />} />
+      <Route exact path="/pago/:id/tarjetas" element={<Tarjeta />} />
+      <Route exact path="/tarjetaForm" element={<TarjetaForm />} />
       <Route exact path="/pago/:id/paypal" element={<PayPal />} />
       <Route exact path="/signUp" element={<SignUp />} />
       <Route exact path="/logIn" element={<LogIn />} />

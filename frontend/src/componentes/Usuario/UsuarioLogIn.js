@@ -29,7 +29,6 @@ const UsuarioLogIn = () => {
                     cookies.set("domicilio", data.Usuarios[0].domicilio, {path: "/"});
 
                     history("/home");
-                    window.location.reload();
                 }
             }
         }catch(error){
@@ -38,7 +37,7 @@ const UsuarioLogIn = () => {
     };
 
     return(
-        <div className={styles.html2}>
+        <><div className={styles.html2}>
             <div className={styles.loginBox}>
                 <h2>Login</h2>
 
@@ -52,16 +51,16 @@ const UsuarioLogIn = () => {
                         <label>Contraseña</label>
                         <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} />
                     </div>
+
                     <button type="submit" className={styles.a}>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         Iniciar Sesión</button> 
-                    
                 </form>
             </div>
-        </div>
+        </div></>
     );
 };
 

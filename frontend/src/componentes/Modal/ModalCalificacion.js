@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useState } from 'react';
 import * as Icon from 'react-bootstrap-icons';
 import * as VideojuegoServer from '../Videojuego/VideojuegoServer';
 import { useNavigate} from "react-router-dom";
 
-
-const ModalCalificacion = ({videojuego }) => {
-
+const ModalCalificacion = ({ videojuego }) => {
   const history = useNavigate();
+
   const [show, setShow] = useState(false);
   const [score, setScore] = useState(0)
-
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -71,4 +68,3 @@ const ModalCalificacion = ({videojuego }) => {
 }
 
 export default ModalCalificacion;
-

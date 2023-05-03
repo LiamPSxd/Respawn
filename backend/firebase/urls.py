@@ -78,7 +78,6 @@ urlpatterns = [
     path('filtros/', FiltroV.as_view(), name = 'allFiltros'),
     path('filtros/<int:id>', FiltroV.as_view(), name = 'oneFiltro'),
     path('filtros/<ids>', FiltroV.as_view(), name = 'someFiltros'),
-    path('filtros/<int:id>/videojuegos', FiltroV.as_view(), name = 'someVideojuegos'),
 
     path('mensajes/', MensajeV.as_view(), name = 'allMensajes'),
     path('mensajes/<int:tipo>', MensajeV.as_view(), name = 'oneMensaje'),
@@ -177,6 +176,7 @@ urlpatterns = [
     path('videojuegos/', VideojuegoV.as_view(), name = 'allVideojuegos'),
     path('videojuegos/<int:id>', VideojuegoV.as_view(), name = 'oneVideojuego'),
     path('videojuegos/<ids>', VideojuegoV.as_view(), name = 'someVideojuegos'),
+    path('videojuegos//<filtro>', VideojuegoV.as_view(), name = 'someVideojuegos'),
 
     path('wishlists/', WishListV.as_view(), name = 'allWishLists'),
     path('wishlists/<int:id>', WishListV.as_view(), name = 'oneWishList'),

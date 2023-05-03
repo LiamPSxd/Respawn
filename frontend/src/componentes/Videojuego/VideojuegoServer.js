@@ -8,6 +8,10 @@ export const getVideojuegosByIdVideojuegos = async (idVideojuegos) => {
     return await fetch(`${API_URL}${idVideojuegos}`);
 };
 
+export const getVideojuegosByIdFiltro = async (idFiltro) => {
+    return await fetch(`${API_URL}/${idFiltro}`);
+};
+
 export const getVideojuego = async (idVideojuego) => {
     return await fetch(`${API_URL}${idVideojuego}`);
 };

@@ -23,12 +23,15 @@ import { listaVideojuegos } from '../Videojuego/VideojuegoLista';
 import { listaDivisas } from '../Divisa/DivisaLista';
 import { listaCupones } from '../Cupon/CuponLista';
 import { listaOfertas } from '../Oferta/OfertaLista';
+import { idFiltro } from '../Filtro/FiltroLista';
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const history = useNavigate();
+
   const cookies = new Cookies();
+
   const [usuario] = useState({ id: cookies.get("id"), nombre: cookies.get("nombre"), correo: cookies.get("correo"), contrasenia: cookies.get("contrasenia"), domicilio: cookies.get("domicilio") });
   const [showBasic, setShowBasic] = useState(false);
   const [search, setSearch] = useState("");
@@ -46,13 +49,13 @@ const NavBar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    switch (window.location.pathname) {
+    switch(window.location.pathname){
       case "/catalogo":
       case "/xbox":
       case "/playstation":
       case "/nintendo":
       case "/pc":
-        listaVideojuegos(search);
+        listaVideojuegos(search, idFiltro);
         break;
       case "/cupones":
         listaCupones(search);
@@ -67,7 +70,7 @@ const NavBar = () => {
     }
   }
 
-  return (
+  return(
     <MDBNavbar expand='lg' light style={{ backgroundColor: '#242325' }}>
       <MDBContainer fluid className='justify-content-center'>
         {/* BOTON CON ICONO DE INICIO */}
@@ -136,7 +139,6 @@ const NavBar = () => {
                   </>
                 )
               }
-
             </MDBDropdownMenu>
           </MDBDropdown>
         </MDBCollapse>
@@ -151,11 +153,11 @@ export const recuperarBusqueda = (busqueda, data = []) => {
   let buscado = [];
 
   data.forEach(dato => {
-    if (dato.nombre.toLowerCase().indexOf(busqueda.toLowerCase()) !== -1)
+    if(dato.nombre.toLowerCase().indexOf(busqueda.toLowerCase()) !== -1)
       buscado.push(dato);
   });
 
-  if (buscado.length === 0) {
+  if(buscado.length === 0){
     window.alert("No hay resultados para tu búsqueda");
     buscado = data;
   }

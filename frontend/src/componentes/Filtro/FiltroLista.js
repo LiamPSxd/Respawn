@@ -4,7 +4,9 @@ import FiltroItemCombo from "./FiltroItemCombo";
 import * as FiltroServer from "./FiltroServer";
 import * as CatalogoFiltroServer from "../Catalogo/Relacion/CatalogoFiltroServer";
 import style from "./Filtro.module.css";
-import VideojuegoLista from "../Videojuego/VideojuegoLista";
+import VideojuegoLista, { listaVideojuegos } from "../Videojuego/VideojuegoLista";
+
+import Mensaje from "../Mensaje/Mensaje";
 
 const FiltroLista = ({ catalogo }) => {
     const [filtros, setFiltros] = useState([]);
@@ -30,6 +32,21 @@ const FiltroLista = ({ catalogo }) => {
         return await (await FiltroServer.getFiltrosByIdFiltros(idFiltros)).json();
     };
 
+    const handleInputChange = (e) => {
+        filtros.map(async filtro => {
+            if(String(filtro.id) === "0"){
+                filtro.contenido.map(async c => {
+                    if(e.target.value === c) idFiltro = `${filtro.id},${c}`;
+                })
+            }else if(filtro.nombre === e.target.value) idFiltro = `${filtro.id},null`;
+        });
+
+        listaVideojuegos(null, idFiltro);
+        return(
+            <Mensaje titulo="Mensaje Prueba" contenido="Hola" />
+        )
+    };
+
     useEffect(() => {
         listaFiltros();
         // eslint-disable-next-line
@@ -42,7 +59,7 @@ const FiltroLista = ({ catalogo }) => {
                 <div>
                     <h4 id={style.text}><u>{filtro.nombre}</u></h4>
 
-                    <form>
+                    <form onChange={handleInputChange}>
                         <div>
                             {filtro.contenido.map((c, id) => (
                                 <FiltroItem key={id} contenido={c} />
@@ -55,7 +72,7 @@ const FiltroLista = ({ catalogo }) => {
 
         <div id={style.select}>
             <form>
-                <select defaultValue="Default">
+                <select defaultValue="Default" onChange={handleInputChange}>
                     <option value="Default" disabled>Seleccione un filtro</option>
 
                     {filtros.map(filtro => (
@@ -67,8 +84,12 @@ const FiltroLista = ({ catalogo }) => {
         
         <div className="card-group">
             <VideojuegoLista catalogo={catalogo} />
-        </div></>
+        </div>
+        
+        <Mensaje /></>
     );
 };
 
 export default FiltroLista;
+
+export var idFiltro = "-1";
