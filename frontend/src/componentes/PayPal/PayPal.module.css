@@ -1,0 +1,15 @@
+#idContainer{
+    margin-top: 5px;
+    text-align: center;
+    width: 500px;
+    box-shadow: -1px 15px 30px -12px black;
+    padding: 10px;
+}
+#idImg{
+    width: 80px;
+}
+#idCol{
+    margin-top: 10px;
+    margin-right: 10%;
+    text-align: left;
+}

@@ -38,13 +38,15 @@ const Pago = () =>{
     };
 
     function calcIva(videojuegoPrecio) {
-        return videojuegoPrecio*0.16
+        return parseFloat(videojuegoPrecio*0.16).toFixed(2);
     }
     function calcIvaCompleto(iva, simbolo) {
         return iva + " " + simbolo
     }
     function calcTotal(videojuegoPrecio, iva) {
-        return videojuegoPrecio + iva
+        const precio = parseFloat(videojuegoPrecio);
+        const aIva = parseFloat(iva)
+        return (precio+aIva).toFixed(2)
     }
     function calcTotalCompleto(total, simbolo) {
         return total + " " + simbolo
@@ -164,11 +166,11 @@ const Pago = () =>{
                     <h3 className="iva">IVA</h3>
                     <p>${calcIvaCompleto(calcIva(videojuego.precio.valor), videojuego.precio.simbolo)}</p>
                     <h3>Total</h3>
-                    <p id="pTotal">${calcTotalCompleto(calcTotal(videojuego.precio.valor, calcIva(videojuego.precio.valor)), videojuego.precio.simbolo)}{}</p>
+                    <p id="pTotal">${calcTotalCompleto(calcTotal(videojuego.precio.valor, calcIva(videojuego.precio.valor)), videojuego.precio.simbolo)}</p>
                 </div>
                 <p>Seleccione un método de pago</p>
                 <div style={{display:"flex", justifyContent:"space-evenly"}}>
-                    <button type="button" className="btn-primary" onClick={()=>history(`/pago/${params.id}/tarjeta`)}>Tarjeta</button>
+                    <button type="button" className="btn-primary" onClick={()=>history(`/pago/${params.id}/tarjetas`)}>Tarjeta</button>
                     <button type="button" className="btn-primary" onClick={()=>history(`/pago/${params.id}/paypal`)}>PayPal</button>
                 </div>
             </div>

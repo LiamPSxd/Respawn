@@ -64,7 +64,7 @@ class UsuarioPayPalV(View):
                 jb["idPayPal"]
             )
 
-            if up.idUsuario > -1 and up.idPayPal > -1:
+            if up.idUsuario != -1 and up.idPayPal != -1:
                 db.getDB().reference(documento).child(f"{up.idUsuario}{up.idPayPal}").set({"idUsuario": f"{up.idUsuario}", "idPayPal": f"{up.idPayPal}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
