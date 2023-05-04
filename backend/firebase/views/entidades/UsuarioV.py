@@ -87,7 +87,7 @@ class UsuarioV(View):
 
             if u.id > -1:
                 if db.user(u):
-                    db.getDB().reference(documento).child(str(u.id)).set({"id": f"{u.id}", "nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}", "carrito": db.conversionArrayToDocument(u.carrito)})
+                    db.getDB().reference(documento).child(str(u.id)).set({"id": f"{u.id}", "nombre": f"{u.nombre}", "correo": f"{u.correo}", "contrasenia": f"{u.contrasenia}", "domicilio": f"{u.domicilio}", "carrito": u.carrito})
                     return JsonResponse(db.mensajeExitoso)
                 else:
                     return JsonResponse(db.mensajeFallido)
