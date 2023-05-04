@@ -1,51 +1,11 @@
 .html{
     height: 100vh;
-    background-color: #242325;
-}
-.contenedor{
+    background-color: white;
     text-align: center;
-    padding-top: 15vh;
-  
+    padding-top: 30vh;
 }
-.user, .registro{
-    color: white;
-    padding-top: 10vh;
-}
-.contenedor2{
-    margin-left: -60vh;
-}
-.contenedor3{
-   padding-left: 60vh;
-   margin-top: -23vh;
-}
-.welcome{
-    position: relative;
-    letter-spacing: 8px;
-    color: #0e3742;
-    text-transform: uppercase;
-    width: 100%;
-    -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
-    line-height: 0.703m;
-    outline: none;
-    animation: animate 5s linear infinite;
-    padding-bottom: 2%;
-}
-
-@keyframes animate {
-    0%,18%,20%,50.1%,60%,65.1%,80%,90.1%,92%{
-        color: #3e285a;
-    }
-    18.1%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%{
-        color: #fff;
-        text-shadow: 0 0 10px #7D5BA6,
-        0 0 20px #7D5BA6,
-        0 0 40px #7D5BA6,
-        0 0 80px #7D5BA6,
-        0 0 160px #7D5BA6;
-    }
-}
-
 .link{
+    background:#f3eac8;
     position: relative;
     display: inline-block;
     padding: 15px 30px;
