@@ -32,7 +32,7 @@ const CarritoBtn = ({ videojuego }) => {
 
     const boton = () => {
         getUsuario();
-        setAux(usuario.carrito.)
+        setAux(usuario.carrito)
         document.getElementById("qwerty").innerHTML=aux +"k"
         
     }

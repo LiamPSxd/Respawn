@@ -20,6 +20,7 @@ import TarjetaForm from "./componentes/Tarjeta/TarjetaForm";
 import PayPal from "./componentes/PayPal/PayPalForm";
 import Carrito from "./componentes/Carrito/Carrito";
 import Ticket from "./componentes/Ticket/Ticket";
+import Inicio from "./componentes/Inicio/Inicio";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -34,6 +35,7 @@ root.render(
 
     <Routes>
       <Route exact path="/monedaPeso" element={<Divisa />} />
+      <Route exact path="/" element={<Inicio/>} />
       <Route exact path="/ofertas" element={<Oferta />} />
       <Route exact path="/cupones" element={<Cupon />} />
       <Route exact path="/catalogo" element={<Catalogo idCatalogo={0} />} />
