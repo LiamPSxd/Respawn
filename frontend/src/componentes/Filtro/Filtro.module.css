@@ -110,7 +110,8 @@ select::-ms-expand{
     border-radius: 1em;
     overflow: hidden;
     float: right;
-    margin-right: 0.6%;
+    margin-right: 2%;
+    margin-left: 60%;
 }
 
 #select::after{

@@ -10,6 +10,7 @@ import Mensaje from "../Mensaje/Mensaje";
 
 const FiltroLista = ({ catalogo }) => {
     const [filtros, setFiltros] = useState([]);
+    const [showMensaje, setShowMensaje] = useState(false);
 
     const listaFiltros = async () => {
         try{
@@ -42,9 +43,7 @@ const FiltroLista = ({ catalogo }) => {
         });
 
         listaVideojuegos(null, idFiltro);
-        return(
-            <Mensaje titulo="Mensaje Prueba" contenido="Hola" />
-        )
+        setShowMensaje(true);
     };
 
     useEffect(() => {
@@ -69,24 +68,24 @@ const FiltroLista = ({ catalogo }) => {
                 </div>
             </aside>
         ))}
-
-        <div id={style.select}>
-            <form>
-                <select defaultValue="Default" onChange={handleInputChange}>
-                    <option value="Default" disabled>Seleccione un filtro</option>
-
-                    {filtros.map(filtro => (
-                        <FiltroItemCombo key={filtro.id} filtro={filtro} />
-                    ))}
-                </select>
-            </form>
-        </div>
         
         <div className="card-group">
+            <div id={style.select}>
+                <form>
+                    <select defaultValue="Default" onChange={handleInputChange}>
+                        <option value="Default" disabled>Seleccione un filtro</option>
+
+                        {filtros.map(filtro => (
+                            <FiltroItemCombo key={filtro.id} filtro={filtro} />
+                        ))}
+                    </select>
+                </form>
+            </div>
+
             <VideojuegoLista catalogo={catalogo} />
         </div>
         
-        <Mensaje /></>
+        {showMensaje && <Mensaje titulo={"Prueba"} contenido={"Hola"} />}</>
     );
 };
 

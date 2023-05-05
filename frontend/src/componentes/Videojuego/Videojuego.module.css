@@ -1,10 +1,10 @@
 #contenedorTarjetas{
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: space-between;
     text-align: center;
     padding: 15px;
-    padding-top: 60px;
+    padding-top: 30px;
 }
 
 #tarjeta{
