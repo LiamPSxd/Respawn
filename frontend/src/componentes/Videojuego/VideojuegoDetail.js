@@ -5,6 +5,7 @@ import ModalCalificacion from "../Modal/ModalCalificacion";
 import * as VideojuegoServer from "./VideojuegoServer";
 import { MDBCarousel } from "mdb-react-ui-kit";
 import style from "./Videojuego.module.css";
+import CarritoBtn from "./CarritoBtn";
 
 const VideojuegoDetail = () => {
     const history = useNavigate();
@@ -64,8 +65,7 @@ const VideojuegoDetail = () => {
                     </h2>
 
                     <div className="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                        <button className="btn btn-success btn-lg" onClick={() => history("/carrito")}>Añadir al Carrito</button>
-
+                        <CarritoBtn videojuego={videojuego}/>
                         <div className="btn-group pull-right">
                             <button className="btn btn-white btn-default"><i className="fa fa-star"></i> Añadir a la WishList</button>
                             <span id="estilos_Modal">

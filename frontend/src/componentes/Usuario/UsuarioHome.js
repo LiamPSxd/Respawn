@@ -1,46 +1,44 @@
 import React, { useState } from "react";
 import styles from "./Home.module.css";
 import Cookies from "universal-cookie";
-import sonido from './sonido.mp3'
+
 
 const UsuarioHome = () => {
     const cookies = new Cookies();
 
     const [usuario] = useState({ id: cookies.get("id"), nombre: cookies.get("nombre"), correo: cookies.get("correo"), contrasenia: cookies.get("contrasenia"), domicilio: cookies.get("domicilio") });
-
+    console.log(usuario.id);
+    if(usuario.id === undefined){
     return(
+        
         <><div className={styles.html}>
-            <div className={styles.contenedor}>
-                <h1 className={styles.welcome}>¡Bienvenid@ a Respawn!</h1>
-
-                <h3 className={styles.user}><b>{usuario.nombre}</b></h3>
-
-                <div className={styles.contenedor2}>
-                    <h4 className={styles.registro}>Si aun no te registras</h4>
-
-                    <a href="/signUp" className={styles.link}>
+            <h3> <b>Aun no estas loggeado</b></h3>
+            <h4>¿Quieres iniciar sesion?</h4>
+            <a href="/login" className={styles.link}>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         click aquí</a>
-                </div>
-
-                <div className={styles.contenedor3}>
-                    <h4 className={styles.registro}>Si ya tienes cuenta</h4>
-
-                    <a href="/login" className={styles.link}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        click aquí</a>
-                </div>
-
-                <audio src={sonido} autoPlay loop></audio>
             </div>
-        </div></>
+        </>
+       
+        
     );
+}else{
+    return(
+        
+        <><div className={styles.html}>
+            <h3>Nombre de usuario: <b>{usuario.nombre}</b></h3>
+            <h3>Correo utilizado: <b>{usuario.correo}</b></h3>
+            <h3>Domicilio: <b>{usuario.domicilio}</b></h3>
+            </div>
+        </>
+       
+        
+    );
+}
 };
+
 
 export default UsuarioHome;
