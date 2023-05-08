@@ -28,7 +28,7 @@ const UsuarioLogIn = () => {
                     cookies.set("contrasenia", usuario.contrasenia, {path: "/"});
                     cookies.set("domicilio", data.Usuarios[0].domicilio, {path: "/"});
 
-                    history("/home");
+                    history("/catalogo");
                 }
             }
         }catch(error){
@@ -43,13 +43,13 @@ const UsuarioLogIn = () => {
 
                 <form onSubmit={handleSubmit}>
                     <div className={styles.userBox}>
-                        <label>Correo</label>
-                        <input type="email" name="correo" required onChange={handleInputChange} />
+                        <label className={styles.label}>Correo</label>
+                        <input type="email" name="correo" required onChange={handleInputChange} className={styles.input}/>
                     </div>
 
                     <div className={styles.userBox}>
-                        <label>Contraseña</label>
-                        <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} />
+                        <label className={styles.label}>Contraseña</label>
+                        <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} className={styles.input}/>
                     </div>
 
                     <button type="submit" className={styles.a}>
