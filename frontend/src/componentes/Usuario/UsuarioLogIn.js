@@ -28,7 +28,8 @@ const UsuarioLogIn = () => {
                     cookies.set("contrasenia", usuario.contrasenia, {path: "/"});
                     cookies.set("domicilio", data.Usuarios[0].domicilio, {path: "/"});
 
-                    history("/catalogo");
+                    history("/home");
+                    window.location.reload();
                 }
             }
         }catch(error){
