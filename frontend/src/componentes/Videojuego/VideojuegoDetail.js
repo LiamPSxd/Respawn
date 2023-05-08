@@ -6,12 +6,14 @@ import * as VideojuegoServer from "./VideojuegoServer";
 import { MDBCarousel } from "mdb-react-ui-kit";
 import style from "./Videojuego.module.css";
 import CarritoBtn from "./CarritoBtn";
+import Comentario from "../Comentario/comentario";
 
 const VideojuegoDetail = () => {
     const history = useNavigate();
     const params = useParams();
 
-    const [collapse, setCollapse] = useState(false);
+    const [ReadMore, setReadMore] = useState(false);
+    const linkName = ReadMore ? 'Ver Menos <<' : 'Ver Mas >>'
 
     const initialState = { id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: [], genero: "", plataforma: "", datosExtra: "", calificacion: 0.0, capturas: [] };
     const [videojuego, setVideojuego] = useState(initialState);
@@ -26,8 +28,11 @@ const VideojuegoDetail = () => {
         }
     };
 
+    const extra =<p align="justify" id={style.extracontent}>{videojuego.datosExtra}</p>
+
     useEffect(() => {
         if(params.id) getVideojuego(params.id);
+        console.log(params.id)
         // eslint-disable-next-line
     }, []);
 
@@ -77,23 +82,23 @@ const VideojuegoDetail = () => {
                     <hr />
 
                     <div id="descripcion">
-                        <div className={`${style.longText} ${collapse ? style.expanded : ""}`}>
+                        <div >
                             <p align="center"><strong>Descripcion del producto:</strong></p>
                             <p align="justify">
-                                {videojuego.descripcion} <button className="btn transparent btn-light" onClick={() => setCollapse(prev => !prev)}>{collapse ? "Ver menos" : "Ver más"}</button>
+                                {videojuego.descripcion} <button className="btn transparent btn-light" onClick={() => { setReadMore(!ReadMore) }}>{linkName}</button>
+                                {ReadMore && extra}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div></>
-
-        // <div id="comentarios_Alan">
-        //     {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
-        //     <div id="disqus_thread"></div>
-        //     <Comentario />
-        //     {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
-        // </div>
+        </div>
+         <div id="comentarios_Alan">
+             {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
+             <Comentario/>
+             {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
+         </div>
+         </>
     );
 };
 

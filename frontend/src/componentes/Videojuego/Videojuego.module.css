@@ -54,3 +54,13 @@
 #expanded{
     height: 15rem;
 }
+#readmorelink{
+    color: blueviolet;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  #extracontent{
+    color: cornflowerblue;
+    font-weight: 500;
+  }
