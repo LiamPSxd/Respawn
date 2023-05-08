@@ -17,7 +17,7 @@
 #radLabel{
     display: flex;
     align-items: center;
-    border-radius: 100%;
+    border-radius: 100px;
     padding: 14px 16px;
     margin: 10px 0;
     cursor: pointer;
@@ -110,7 +110,8 @@ select::-ms-expand{
     border-radius: 1em;
     overflow: hidden;
     float: right;
-    margin-right: 0.6%;
+    margin-right: 2%;
+    margin-left: 60%;
 }
 
 #select::after{

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Cookies from "universal-cookie";
+import React from "react";
 import styles from './Ticket.module.css'
 
 const Ticket = () => {

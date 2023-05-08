@@ -27,7 +27,7 @@ export const addUsuario = async (usuario) => {
             "carrito": usuario.carrito
         })
     });
-};
+}; 
 
 export const updateUsuario = async (usuario) => {
     return await fetch(`${API_URL}${usuario.correo}`, {
