@@ -1,10 +1,10 @@
 .html2{
-    height: 100vh;
+    height: 200%;
     background: linear-gradient(#242325, #3f3d41);
 }
 .loginBox{
-    position:relative;
-    top: -25vh;
+    position:absolute;
+    top: 1%;
     left: 50%;
     width: 400px;
     padding: 20px;
@@ -34,6 +34,9 @@
     border-bottom: 1px solid #fff;
     outline: none;
     background: transparent;
+}
+label{
+    color: #fff;
 }
 
 
@@ -142,8 +145,8 @@
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
-    margin-top: 20px;
+    margin-top: 10px;
     letter-spacing: 4px;
     background-color: #242325;
-    margin-left: 10vh;
+    margin-left: 15vh;
 }

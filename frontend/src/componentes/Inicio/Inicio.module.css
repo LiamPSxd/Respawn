@@ -11,12 +11,20 @@
     color: white;
     padding-top: 10vh;
 }
+
 .contenedor2{
-    margin-left: -60vh;
+    padding-right: 10%;
+    margin-left: -15%;
 }
 .contenedor3{
-   padding-left: 60vh;
-   margin-top: -25vh;
+    padding-left: 20%;
+    margin-right: 30%;
+}
+
+.contenedores{
+    display: flex;
+    -webkit-padding-start: 35%;
+    margin-top: 5%;
 }
 .welcome{
     position: relative;

@@ -15,7 +15,7 @@ const UsuarioLogIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         try{
             if(usuario.correo != null){
                 const data = await (await UsuarioServer.getUsuarioByCorreo(usuario.correo)).json();
@@ -34,6 +34,7 @@ const UsuarioLogIn = () => {
             }
         }catch(error){
             console.log(error);
+            
         }
     };
 

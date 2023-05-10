@@ -3,8 +3,8 @@
     background: linear-gradient(#242325, #3f3d41);
 }
 .loginBox{
-    position:relative;
-    top: -42vh;
+    position:absolute;
+    top: -25%;
     left: 50%;
     width: 400px;
     padding: 20px;
@@ -35,11 +35,10 @@
     outline: none;
     background: transparent;
 }
-label{
+
+.label{
     color: #fff;
 }
-
-
 /* .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
   top: -20px;
@@ -145,8 +144,8 @@ label{
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
-    margin-top: 10px;
+    margin-top: 20px;
     letter-spacing: 4px;
     background-color: #242325;
-    margin-left: 15vh;
+    margin-left: 10vh;
 }
