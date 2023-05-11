@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import style from "./Catalogo.module.css";
 import CatalogoBanner from "./CatalogoBanner";
 import { MDBCarousel } from "mdb-react-ui-kit";
@@ -20,4 +20,4 @@ const CatalogoItem = ({ catalogo }) => {
     );
 };
 
-export default CatalogoItem;
+export default memo(CatalogoItem);

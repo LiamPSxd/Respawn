@@ -17,7 +17,7 @@ const VideojuegoLista = ({ catalogo }) => {
         // eslint-disable-next-line
     }, []);
 
-    return(
+    return( 
         <><div id={style.contenedorTarjetas}>
             {videojuegos.map(videojuego => (
                 <VideojuegoItem key={videojuego.id} videojuego={videojuego} listaVideojuegos={listaVideojuegos} />

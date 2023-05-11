@@ -5,7 +5,6 @@ class Usuario:
         self._correo = correo
         self._contrasenia = contrasenia
         self._domicilio = domicilio
-        self._carrito = carrito
 
     @property
     def id(self):
@@ -47,13 +46,5 @@ class Usuario:
     def domicilio(self, domicilio):
         self._domicilio = domicilio
 
-    @property
-    def carrito(self):
-        return self._carrito
-    
-    @carrito.setter
-    def carrito(self, carrito):
-        self._carrito = carrito
-
     def toString(self):
-        return f"Usuario {self.id}: {self.nombre}, {self.correo}, {self.contrasenia}, {self.domicilio}, {self.carrito}"
+        return f"Usuario {self.id}: {self.nombre}, {self.correo}, {self.contrasenia}, {self.domicilio}"

@@ -18,7 +18,6 @@ import Pago from "./componentes/Pago/PagoForm";
 import Tarjeta from "./componentes/Tarjeta/TarjetaList";
 import TarjetaForm from "./componentes/Tarjeta/TarjetaForm";
 import PayPal from "./componentes/PayPal/PayPalForm";
-import Carrito from "./componentes/Carrito/Carrito";
 import Ticket from "./componentes/Ticket/Ticket";
 import Inicio from "./componentes/Inicio/Inicio";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -51,10 +50,8 @@ root.render(
       <Route exact path="/signUp" element={<SignUp />} />
       <Route exact path="/logIn" element={<LogIn />} />
       <Route exact path="/home" element={<Home />} />
-      <Route exact path="/carrito" element={<Carrito />} />
       <Route exact path="/ticket" element={<Ticket />} />
     </Routes>
-
   </BrowserRouter>
 );
 

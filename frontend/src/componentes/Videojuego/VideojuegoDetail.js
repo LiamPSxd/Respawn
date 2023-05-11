@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import VideojuegoBanner from "./VideojuegoBanner";
 import ModalCalificacion from "../Modal/ModalCalificacion";
 import * as VideojuegoServer from "./VideojuegoServer";
 import { MDBCarousel } from "mdb-react-ui-kit";
 import style from "./Videojuego.module.css";
-import CarritoBtn from "./CarritoBtn";
 import Comentario from "../Comentario/comentario";
 
 const VideojuegoDetail = () => {
@@ -70,7 +69,6 @@ const VideojuegoDetail = () => {
                     </h2>
 
                     <div className="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                        <CarritoBtn videojuego={videojuego}/>
                         <div className="btn-group pull-right">
                             <button className="btn btn-white btn-default"><i className="fa fa-star"></i> Añadir a la WishList</button>
                             <span id="estilos_Modal">
@@ -102,4 +100,4 @@ const VideojuegoDetail = () => {
     );
 };
 
-export default VideojuegoDetail;
+export default memo(VideojuegoDetail);
