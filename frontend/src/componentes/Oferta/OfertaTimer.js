@@ -25,13 +25,13 @@ const OfertaTimer = ({ countdownTimestampMs }) => {
     return(
         <><div id={style.countdownTimer}>
             <span>{remainingTime.days}</span>
-            <span>days</span>
+            <span>dias</span>
             <span id={style.twoNumbers}>{remainingTime.hours}</span>
-            <span>hours</span>
-            <span id={style.twoNumbers}>{remainingTime.minutes}</span>
-            <span>minutes</span>
+            <span>horas</span> 
+            <br/><span id={style.twoNumbers}>{remainingTime.minutes}</span> 
+            <span>minutos</span>
             <span id={style.twoNumbers}>{remainingTime.seconds}</span>
-            <span>seconds</span>
+            <span>segundos</span>
         </div></>
     );
 };

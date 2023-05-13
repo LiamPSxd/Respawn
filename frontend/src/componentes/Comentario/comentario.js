@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { DiscussionEmbed } from "disqus-react";
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import React, { useEffect, useState } from "react";
