@@ -34,7 +34,7 @@ const UsuarioLogIn = () => {
             }
         }catch(error){
             console.log(error);
-            
+            alert("Correo o contraseña incorrectas");
         }
     };
 
