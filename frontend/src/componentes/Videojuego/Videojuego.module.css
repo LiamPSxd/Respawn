@@ -1,18 +1,28 @@
+#general{
+    color: white;
+}
+
 #contenedorTarjetas{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     text-align: center;
-    padding: 15px;
+    padding: 30px;
     padding-top: 30px;
+    color: white;
 }
 
 #tarjeta{
-    margin: 8px;
-    width: 18rem;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 20rem;
     display: inline-block;
-    border-radius: 1.25em;
-    border-color: #656565;
+    border-color: white;
+    background-color: #72020b;
+    border-radius: 25px;
+    box-shadow: 1px 1px 20px 4px rgba(0, 0, 0, 5);
     position: relative;
 }
 
@@ -22,7 +32,8 @@
 
 #imgCard{
     height: 360px;
-    border-radius: 1.25em;
+    border-top-left-radius: 25px;
+    border-top-right-radius:25px;
     position: relative;
 }
 
@@ -39,6 +50,12 @@
     padding-bottom: 20px;
 }
 
+#botonDetalles{
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
+    border: 1px solid #72020b
+}
+
 #titulo{
     font-weight: bold;
 }
@@ -49,13 +66,16 @@
 }
 
 #item{
-    border-radius: 1em;
+    border-radius: 25px;
+    height: 20em;
+    margin-top: 1%;
 }
 
 #video{
     margin-top: 10%;
     width: 100%;
-    height: 80%;
+    height: 100%;
+    border-radius: 0px;
 }
 
 #longText{
@@ -67,3 +87,50 @@
 #expanded{
     height: 15rem;
 }
+#readmorelink{
+    color: blueviolet;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  #extracontent{
+    color: cornflowerblue;
+    font-weight: 500;
+  }
+
+  #btn{
+    border: 1px solid white;
+    background-color: white;
+    color: #72020b;
+    margin: 1%;
+  }
+
+  #btnComprar{
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
+    border: 1px solid #d12f28;
+    color: white;
+  }
+
+  #btn:hover{
+    border: 2px solid #72020b;
+    font-weight: bolder;
+  }
+
+  #btnModal{
+    background: #F8C630;
+    border: 1px solid #F8C630
+  }
+
+  #divBotones{
+    background: #ac2520;
+    padding: 3% 3% ;
+    vertical-align: middle;
+  }
+
+  #hr {
+    margin: 0;
+    padding: 0;
+  }
+  
+  

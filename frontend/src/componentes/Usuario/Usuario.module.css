@@ -1,10 +1,11 @@
 .html2{
-    height: 100vh;
-    background: linear-gradient(#242325, #3f3d41);
+    height: 85vh;
+    background: rgb(209, 47, 40);
+    background: radial-gradient(circle, rgba(209, 47, 40, 1) 15%, rgba(71, 16, 14, 1) 100%);
 }
 .loginBox{
-    position:relative;
-    top: -25vh;
+    position:absolute;
+    top: 1%;
     left: 50%;
     width: 400px;
     padding: 20px;
@@ -24,7 +25,7 @@
     position: relative;
 }
 
-.loginBox .userBox input{
+.loginBox .userBox .input{
     width: 100%;
     padding: 10px 0;
     font-size: 16px;
@@ -35,29 +36,18 @@
     outline: none;
     background: transparent;
 }
-
 label{
     color: #fff;
 }
 
-.loginBox .userBox .label{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 10px 0;
-    font-size: 16px;
-    color: #fff;
-    pointer-events: none;
-    transition: .5s;
-}
 
-.login-box .user-box input:focus ~ label,
+/* .login-box .user-box input:focus ~ label,
 .login-box .user-box input:valid ~ label {
   top: -20px;
   left: 0;
   color: #03e9f4;
   font-size: 12px;
-}
+} */
 
 .loginBox .a:hover{
     background: #7D5BA6;
@@ -156,8 +146,8 @@ label{
     text-transform: uppercase;
     overflow: hidden;
     transition: .5s;
-    margin-top: 20px;
+    margin-top: 10px;
     letter-spacing: 4px;
     background-color: #242325;
-    margin-left: 10vh;
+    margin-left: 15vh;
 }

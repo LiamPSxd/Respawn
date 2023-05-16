@@ -1,11 +1,11 @@
 #banner{
     justify-content: space-around;
-    margin: 0 auto;
-    padding: 20px;
-    padding-top: 10px;
+    /* padding: 20px;
+    padding-top: 10px; */
     padding-bottom: 20px;
+    height: 30vh;
 }
 
 #item{
-    border-radius: 1em;
+    height: 30vh;
 }

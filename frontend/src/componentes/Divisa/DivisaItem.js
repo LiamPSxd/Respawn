@@ -2,11 +2,15 @@ import React from "react";
 import * as DivisaServer from "./DivisaServer";
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import style from "./Divisa.module.css";
+import { useEffect } from "react";
+import { useState } from "react";
 // import Mensaje from '../Mensaje/Mensaje';
 
 const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
     // const [titulo, setTitulo] = useState(null);
     // const [contenido, setContenido] = useState(null);
+
+    const [fontSize, setFontSize] = useState(0);
 
     const handleCambioDivisa = async (newDiv) => {
         await divisas.forEach(async oldDiv => {
@@ -50,10 +54,34 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
         }
     };
 
+    const handleTitulo = () => {
+        const titulo = divisa.nombre.length;
+
+        switch(titulo !== null){
+            case titulo <= 8:
+                setFontSize(2.75);
+                break;
+            case titulo > 8 && titulo <= 16:
+                setFontSize(2.4);
+                break;
+            case titulo > 16 && titulo < 24:
+                setFontSize(2.05);
+                break;
+            default:
+                setFontSize(1.7);
+        }
+    };
+
+    useEffect(() => {
+        handleTitulo();
+        // eslint-disable-next-line
+    }, []);
+
+
     return(
-        <><div id={style.tarjeta} className="card border-dark">
+        <><div id={style.tarjeta} className="card">
             <div id={style.cardBody} className="card-body">
-                <h1 id={style.titulo} className="card-title">{divisa.nombre}</h1>
+                <h1 id={style.titulo} style={{fontSize: fontSize + "em"}} className="card-title">{divisa.nombre}</h1>
 
                 <div id={style.contenidoTarjeta}>
                     <h4 className="card-text text-muted">{divisa.pais}</h4>
@@ -62,9 +90,9 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
 
                 <div className="card-footer bg-transparent">
                     {divisa.seleccionado === "True" ? (
-                        <button className="btn btn-success my-2" disabled>Seleccionado</button>
+                        <button id={style.boton} className="btn btn-success my-2" disabled>Seleccionado</button>
                     ) : (
-                        <button onClick={() => handleCambioDivisa(divisa)} className="btn btn-primary my-2">Seleccionar</button>
+                        <button id={style.boton} onClick={() => handleCambioDivisa(divisa)} className="btn btn-primary my-2">Seleccionar</button>
                     )}
                 </div>
 

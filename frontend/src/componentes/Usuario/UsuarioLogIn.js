@@ -15,7 +15,7 @@ const UsuarioLogIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
         try{
             if(usuario.correo != null){
                 const data = await (await UsuarioServer.getUsuarioByCorreo(usuario.correo)).json();
@@ -29,10 +29,12 @@ const UsuarioLogIn = () => {
                     cookies.set("domicilio", data.Usuarios[0].domicilio, {path: "/"});
 
                     history("/home");
+                    window.location.reload();
                 }
             }
         }catch(error){
             console.log(error);
+            alert("Correo o contraseña incorrectas");
         }
     };
 
@@ -43,13 +45,13 @@ const UsuarioLogIn = () => {
 
                 <form onSubmit={handleSubmit}>
                     <div className={styles.userBox}>
-                        <label>Correo</label>
-                        <input type="email" name="correo" required onChange={handleInputChange} />
+                        <label className={styles.label}>Correo</label>
+                        <input type="email" name="correo" required onChange={handleInputChange} className={styles.input}/>
                     </div>
 
                     <div className={styles.userBox}>
-                        <label>Contraseña</label>
-                        <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} />
+                        <label className={styles.label}>Contraseña</label>
+                        <input type="password" name="contrasenia" id="password" required onChange={handleInputChange} className={styles.input}/>
                     </div>
 
                     <button type="submit" className={styles.a}>

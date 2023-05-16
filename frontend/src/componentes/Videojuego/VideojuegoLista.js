@@ -32,7 +32,7 @@ const VideojuegoLista = ({ catalogo }) => {
         // eslint-disable-next-line
     }, []);
 
-    return(
+    return( 
         <><div id={style.contenedorTarjetas}>
             {videojuegos.map(videojuego => (
                 <VideojuegoItem key={videojuego.id} videojuego={videojuego} wishList={wishList} />
@@ -50,7 +50,7 @@ export const listaVideojuegos = async (busqueda, idFiltro) => {
         if(busqueda == null) setVideojuegos(data.Videojuegos);
         else setVideojuegos(recuperarBusqueda(busqueda, data.Videojuegos));
     }catch(error){
-        console.log(error);
+        window.alert("Error al realizar la búsqueda, por favor inténtalo más tarde")
     }
 };
 

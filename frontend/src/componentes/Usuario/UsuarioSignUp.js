@@ -133,23 +133,23 @@ const UsuarioSignUp = () => {
 
                 <form onSubmit={handleSubmit}>
                     <div className={styles.userBox}>
-                        <label>Nombre</label>
-                        <input type="text"  name="nombre"  onChange={handleInputChange}  minLength="5" maxLength="20" autoFocus required />
+                        <label className={styles.label}>Nombre</label>
+                        <input type="text"  name="nombre"  onChange={handleInputChange}  minLength="5" maxLength="20" autoFocus required className={styles.input} />
                     </div>
 
                     <div className={styles.userBox}>
-                        <label>Correo</label>
-                        <input type="email" name="correo" onChange={handleInputChange}  minLength="5" maxLength="70" autoFocus required />
+                        <label className={styles.label}>Correo</label>
+                        <input type="email" name="correo" onChange={handleInputChange}  minLength="5" maxLength="70" autoFocus required className={styles.input}/>
                     </div>
 
                     <div className={styles.userBox}>
-                        <label>Contraseña</label>
-                        <input type="password" name="contrasenia"  onChange={handleInputChange}  minLength="6" maxLength="20" autoFocus required />
+                        <label className={styles.label}>Contraseña</label>
+                        <input type="password" name="contrasenia"  onChange={handleInputChange}  minLength="6" maxLength="20" autoFocus required className={styles.input}/>
                     </div>
 
                     <div className={styles.userBox}>
-                        <label>Domicilio</label>
-                        <input type="text" name="domicilio"  onChange={handleInputChange}  minLength="5" maxLength="150" autoFocus required />
+                        <label className={styles.label}>Domicilio</label>
+                        <input type="text" name="domicilio"  onChange={handleInputChange}  minLength="5" maxLength="150" autoFocus required className={styles.input}/>
                     </div>
 
                     <button type="submit" className={styles.a}>

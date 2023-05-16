@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
-import ModalVideojuego from "../Modal/ModalVideojuego";
+import ModalVideojuego from "../Videojuego/ModalVideojuego";
 
 const CatalogoLista = ({ idCatalogo }) => {
     const [catalogos, setCatalogos] = useState([]);

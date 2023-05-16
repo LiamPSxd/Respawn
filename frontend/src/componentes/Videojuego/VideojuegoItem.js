@@ -107,7 +107,7 @@ const VideojuegoItem = ({ videojuego, wishList }) => {
                     <h4 className="card-text"><strong>Genero </strong>{videojuego.genero}</h4>
                 </div>
 
-                <button className="btn btn-success my-2" onClick={() => history(`/videojuego/${videojuego.id}`)}><strong>Más Detalles</strong></button>
+                <button id={style.botonDetalles} className="btn btn-success my-2" onClick={() => history(`/videojuego/${videojuego.id}`)}><strong>Más Detalles</strong></button>
             </div>
         </div>
         
