@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import style from "./Cupon.module.css"
-import * as CuponServer from './CuponServer';
-import { recuperarBusqueda } from "../NavBar/MDBNavBar";
 import CuponItem from "./CuponItem";
+import { recuperarBusqueda } from "../NavBar/MDBNavBar";
+import * as CuponServer from './CuponServer';
+import style from "./Cupon.module.css"
 
 let [cupones, setCupones] = [];
-var conexionBD = false;
 
 const CuponLista = () => {
     [cupones, setCupones] = useState([]);
@@ -33,11 +32,10 @@ export default CuponLista;
 export const listaCupones = async (busqueda) => {
     try{
         const data = await (await CuponServer.getCupones()).json();
+
         if(busqueda == null) setCupones(data.Cupones);
         else setCupones(recuperarBusqueda(busqueda, data.Cupones));
-        conexionBD = true;
     }catch(error){
-        console.log(conexionBD);
         console.log(error);
     }
 };

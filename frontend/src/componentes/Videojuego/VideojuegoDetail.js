@@ -5,13 +5,27 @@ import ModalCalificacion from "../Modal/ModalCalificacion";
 import * as VideojuegoServer from "./VideojuegoServer";
 import { MDBCarousel } from "mdb-react-ui-kit";
 import style from "./Videojuego.module.css";
-import CarritoBtn from "./CarritoBtn";
+import Cookies from "universal-cookie";
+import Mensaje from "../Mensaje/Mensaje";
 
 const VideojuegoDetail = () => {
     const history = useNavigate();
     const params = useParams();
+    const cookies = new Cookies();
 
     const [collapse, setCollapse] = useState(false);
+
+    const [showMensaje, setShowMensaje] = useState(false);
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [iniciarSesion, setIniciarSesion] = useState(false);
+
+    const mostrarMensaje = (title, content, sesion) => {
+        setTitulo(title);
+        setContenido(content);
+        setIniciarSesion(sesion);
+        setShowMensaje(!showMensaje);
+    };
 
     const initialState = { id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: [], genero: "", plataforma: "", datosExtra: "", calificacion: 0.0, capturas: [] };
     const [videojuego, setVideojuego] = useState(initialState);
@@ -24,6 +38,13 @@ const VideojuegoDetail = () => {
         }catch(error){
             console.log(error);
         }
+    };
+
+    const validarSesion = () => {
+        if(cookies.get("id")){
+            cookies.set("videojuegoId", `${videojuego.id}`, {path: "/"});
+            history("/pago");
+        }else mostrarMensaje("Advertencia", "Necesitas tener una cuenta para continuar, ¿Desea iniciar sesión ahora?", true);
     };
 
     useEffect(() => {
@@ -65,13 +86,16 @@ const VideojuegoDetail = () => {
                     </h2>
 
                     <div className="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                        <CarritoBtn videojuego={videojuego}/>
                         <div className="btn-group pull-right">
-                            <button className="btn btn-white btn-default"><i className="fa fa-star"></i> Añadir a la WishList</button>
-                            <span id="estilos_Modal">
-                                <ModalCalificacion videojuego={videojuego} />
-                            </span>
-                            <h5>{videojuego.calificacion}</h5>
+                            <button className="btn btn-success" onClick={() => validarSesion()}>Comprar</button>
+
+                            {cookies.get("id") ? (
+                                <><span id="estilos_Modal">
+                                    <ModalCalificacion videojuego={videojuego} />
+                                </span>
+
+                                <h5>{videojuego.calificacion}</h5></>
+                            ) : null}
                         </div>
                     </div>
                     <hr />
@@ -86,7 +110,9 @@ const VideojuegoDetail = () => {
                     </div>
                 </div>
             </div>
-        </div></>
+        </div>
+        
+        <Mensaje show={showMensaje} close={mostrarMensaje} title={titulo} status={iniciarSesion}>{contenido}</Mensaje></>
 
         // <div id="comentarios_Alan">
         //     {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}

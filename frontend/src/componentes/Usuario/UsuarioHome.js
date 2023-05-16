@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import styles from "./Home.module.css";
 import Cookies from "universal-cookie";
 
-
 const UsuarioHome = () => {
     const cookies = new Cookies();
 
     const [usuario] = useState({ id: cookies.get("id"), nombre: cookies.get("nombre"), correo: cookies.get("correo"), contrasenia: cookies.get("contrasenia"), domicilio: cookies.get("domicilio") });
-    console.log(usuario.id);
+
     if(usuario.id === undefined){
     return(
         
@@ -39,6 +38,5 @@ const UsuarioHome = () => {
     );
 }
 };
-
 
 export default UsuarioHome;

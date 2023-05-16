@@ -23,6 +23,7 @@ import { listaVideojuegos } from '../Videojuego/VideojuegoLista';
 import { listaDivisas } from '../Divisa/DivisaLista';
 import { listaCupones } from '../Cupon/CuponLista';
 import { listaOfertas } from '../Oferta/OfertaLista';
+import { getVideojuegos, wishListId } from '../WishList/WishListItem';
 import { idFiltro } from '../Filtro/FiltroLista';
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
@@ -42,6 +43,7 @@ const NavBar = () => {
     cookies.remove("correo");
     cookies.remove("contrasenia");
     cookies.remove("domicilio");
+    cookies.remove("videojuegoId");
 
     history("/");
   };
@@ -65,6 +67,9 @@ const NavBar = () => {
         break;
       case "/ofertas":
         listaOfertas(search);
+        break;
+      case "/wishlist":
+        getVideojuegos(search, wishListId);
         break;
       default:
     }
@@ -106,7 +111,7 @@ const NavBar = () => {
           {
             usuario.correo ? (
               <>
-                <MDBNavbarLink href='#' className=''>
+                <MDBNavbarLink href='/wishlist' className=''>
                   <img src={IconWishlist} alt="logo" width="40" height="40" />
                 </MDBNavbarLink>
 

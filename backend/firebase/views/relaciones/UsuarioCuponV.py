@@ -9,7 +9,7 @@ from firebase.database.relaciones.UsuarioCupon import UsuarioCupon
 import json
 
 db = Firebase()
-documento = "UsuarioCupon"
+documento = "UsuarioCupones"
 
 class UsuarioCuponV(View):
     @method_decorator(csrf_exempt)
@@ -69,7 +69,7 @@ class UsuarioCuponV(View):
                 jb["cantidad"]
             )
 
-            if uc.idUsuario > -1 and uc.idCupon > -1:
+            if uc.idUsuario != -1 and uc.idCupon != -1:
                 db.getDB().reference(documento).child(f"{uc.idUsuario}{uc.idCupon}").set({"idUsuario": f"{uc.idUsuario}", "idCupon": f"{uc.idCupon}", "cantidad": f"{uc.cantidad}"})
                 return JsonResponse(db.mensajeExitoso)
             else:

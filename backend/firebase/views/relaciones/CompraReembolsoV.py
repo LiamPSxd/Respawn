@@ -64,7 +64,7 @@ class CompraReembolsoV(View):
                 jb["idReembolso"]
             )
 
-            if cr.idCompra > -1 and cr.idReembolso > -1:
+            if cr.idCompra != -1 and cr.idReembolso != -1:
                 db.getDB().reference(documento).child(f"{cr.idCompra}{cr.idReembolso}").set({"idCompra": f"{cr.idCompra}", "idReembolso": f"{cr.idReembolso}"})
                 return JsonResponse(db.mensajeExitoso)
             else:

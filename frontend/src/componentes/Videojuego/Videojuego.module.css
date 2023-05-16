@@ -1,7 +1,7 @@
 #contenedorTarjetas{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     padding: 15px;
     padding-top: 30px;
@@ -13,11 +13,24 @@
     display: inline-block;
     border-radius: 1.25em;
     border-color: #656565;
+    position: relative;
+}
+
+#tarjeta:hover #wishlist{
+    visibility: visible;
 }
 
 #imgCard{
     height: 360px;
     border-radius: 1.25em;
+    position: relative;
+}
+
+#wishlist{
+    position: absolute;
+    left: 82%;
+    z-index: 1;
+    visibility: hidden;
 }
 
 #contenidoTarjeta{

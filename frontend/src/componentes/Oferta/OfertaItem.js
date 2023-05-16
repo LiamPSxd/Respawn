@@ -22,9 +22,9 @@ const OfertaItem = ({ oferta }) => {
         const dataVideojuegoOferta = await (await VideojuegoOfertaServer.getVideojuegoOfertaByIdOferta(oferta.id)).json();
         let idVideojuegos = "";
 
-        if(dataVideojuegoOferta != null)
+        if(dataVideojuegoOferta.message === "Exitoso")
             await dataVideojuegoOferta.VideojuegoOfertas.forEach(vo => {
-                idVideojuegos += vo.idVideojuego + ",";
+                idVideojuegos += `${vo.idVideojuego},`;
             });
 
         return await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();

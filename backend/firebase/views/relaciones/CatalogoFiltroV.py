@@ -64,7 +64,7 @@ class CatalogoFiltroV(View):
                 jb["idFiltro"]
             )
 
-            if cf.idCatalogo > -1 and cf.idFiltro > -1:
+            if cf.idCatalogo != -1 and cf.idFiltro != -1:
                 db.getDB().reference(documento).child(f"{cf.idCatalogo}{cf.idFiltro}").set({"idCatalogo": f"{cf.idCatalogo}", "idFiltro": f"{cf.idFiltro}"})
                 return JsonResponse(db.mensajeExitoso)
             else:

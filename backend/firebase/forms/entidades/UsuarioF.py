@@ -6,4 +6,3 @@ class UsuarioF(forms.Form):
     _correo = forms.CharField(max_length = 70, required = True)
     _contrasenia = forms.CharField(max_length = 20, required = True)
     _domicilio = forms.CharField(max_length = 150, required = True)
-    _carrito = forms.IntegerField(required = True)

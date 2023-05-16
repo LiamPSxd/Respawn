@@ -6,11 +6,8 @@ import * as CatalogoFiltroServer from "../Catalogo/Relacion/CatalogoFiltroServer
 import style from "./Filtro.module.css";
 import VideojuegoLista, { listaVideojuegos } from "../Videojuego/VideojuegoLista";
 
-import Mensaje from "../Mensaje/Mensaje";
-
 const FiltroLista = ({ catalogo }) => {
     const [filtros, setFiltros] = useState([]);
-    const [showMensaje, setShowMensaje] = useState(false);
 
     const listaFiltros = async () => {
         try{
@@ -25,11 +22,11 @@ const FiltroLista = ({ catalogo }) => {
         const dataCatalogoFiltro = await (await CatalogoFiltroServer.getCatalogoFiltrosByIdCatalogo(catalogo.id)).json();
         let idFiltros = "";
     
-        if(dataCatalogoFiltro != null)
+        if(dataCatalogoFiltro.message === "Exitoso")
             await dataCatalogoFiltro.CatalogoFiltros.forEach(cf => {
-                idFiltros += cf.idFiltro + ",";
+                idFiltros += `${cf.idFiltro},`;
             });
-    
+
         return await (await FiltroServer.getFiltrosByIdFiltros(idFiltros)).json();
     };
 
@@ -43,7 +40,6 @@ const FiltroLista = ({ catalogo }) => {
         });
 
         listaVideojuegos(null, idFiltro);
-        setShowMensaje(true);
     };
 
     useEffect(() => {
@@ -68,7 +64,7 @@ const FiltroLista = ({ catalogo }) => {
                 </div>
             </aside>
         ))}
-        
+
         <div className="card-group">
             <div id={style.select}>
                 <form>
@@ -83,9 +79,7 @@ const FiltroLista = ({ catalogo }) => {
             </div>
 
             <VideojuegoLista catalogo={catalogo} />
-        </div>
-        
-        {showMensaje && <Mensaje titulo={"Prueba"} contenido={"Hola"} />}</>
+        </div></>
     );
 };
 

@@ -64,7 +64,7 @@ class UsuarioComentarioV(View):
                 jb["idComentario"]
             )
 
-            if uc.idUsuario > -1 and uc.idComentario > -1:
+            if uc.idUsuario != -1 and uc.idComentario != -1:
                 db.getDB().reference(documento).child(f"{uc.idUsuario}{uc.idComentario}").set({"idUsuario": f"{uc.idUsuario}", "idComentario": f"{uc.idComentario}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
