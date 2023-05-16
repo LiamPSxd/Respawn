@@ -9,7 +9,7 @@ const CatalogoBanner = ({ id, banner }) => {
             className="w-100 d-block"
             itemId={id}
             src={banner}
-            height="300vh"
+            
         /></>
     );
 };

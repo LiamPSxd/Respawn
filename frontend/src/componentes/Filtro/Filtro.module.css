@@ -1,20 +1,21 @@
 /* FiltroItem */
-#categoria{
+#categoria {
     float: left;
-    background: linear-gradient(#242325, #3f3d41);
     color: white;
+    width: 150px;
     margin-left: 1%;
-    box-shadow: 0 4px 8px 1.5px rgba(0, 0, 0, 5), 0 18px 60px 0 rgba(0, 0, 0, 5);
+    margin-top: 2%;
+    box-shadow: 3px 3px 15px 2px rgba(0, 0, 0, 5), 0 18px 60px 0 rgba(0, 0, 0, 5);
     border-radius: 1em;
 }
 
-#text{
+#text {
     color: white;
     text-align: center;
     margin-top: 10px;
 }
 
-#radLabel{
+#radLabel {
     display: flex;
     align-items: center;
     border-radius: 100px;
@@ -25,11 +26,11 @@
 }
 
 #radLabel:hover,
-#radLabel:focus-within{
+#radLabel:focus-within {
     background: hsla(0, 0%, 80%, .14);
 }
 
-#radInput{
+#radInput {
     position: absolute;
     left: 0;
     top: 0;
@@ -39,15 +40,15 @@
     z-index: -1;
 }
 
-#radDesign{
+#radDesign {
     width: 22px;
     height: 22px;
     border-radius: 1em;
-    background: linear-gradient(to right bottom, hsl(37, 90%, 51%), hsl(45, 93%, 58%));
+    background: linear-gradient(to right bottom, #16b70b, hsl(45, 93%, 58%));
     position: relative;
 }
 
-#radDesign::before{
+#radDesign::before {
     content: "";
     display: inline-block;
     width: inherit;
@@ -58,75 +59,85 @@
     transition: .3s;
 }
 
-#radInput:checked+#radDesign::before{
+#radInput:checked+#radDesign::before {
     transform: scale(0);
 }
 
-#radText{
-    color: hsl(0, 0%, 60%);
+#radText {
     margin-left: 14px;
     letter-spacing: 3px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 10px;
+    color: white;
     font-weight: 900;
     transition: .3s;
 }
 
-#radInput:checked~#radText{
+#radInput:checked~#radText {
     color: hsl(0, 0%, 54%);
 }
 
 /* FiltroItemCombo */
-:root{
-    --background-gradient: linear-gradient(30deg, #F8C630 30%, #F8C630);
+:root {
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);
     --gray: #3f3d41;
     --darkgray: #242325;
 }
 
-select{
+select {
     appearance: none;
     outline: 0;
-    border: 0;
     box-shadow: none;
-
     flex: 1;
-    padding: 0 1.7em;
-    color: #fff;
-    background-color: var(--darkgray);
+    padding: 0 1.7em 0 4%;
+    color: #72020b;
+    font-weight: bolder;
+    border: 2px;
+    border-radius: 30px;
+    background-color: white;
+    border-style: solid;
+    border-color: white;
     background-image: none;
     cursor: pointer;
     height: 100%;
+    width: 50vw;
+    
 }
 
-select::-ms-expand{
+select::-ms-expand {
     display: none;
 }
 
-#select{
+#select {
+    margin-top: 1%;
     position: relative;
     display: flex;
-    width: 30em;
+    width: 50vw;
     height: 3em;
+    color: #72020b;
     border-radius: 1em;
     overflow: hidden;
     float: right;
     margin-right: 2%;
-    margin-left: 60%;
+    font-weight: bolder;
+    border-radius: 30px;
+    background-color: white;
+    margin-left: 10vw;
 }
 
-#select::after{
+#select::after {
     content: "\25BC";
     position: absolute;
     top: 0;
+    height: 10px;
     right: 0;
     bottom: 0;
     padding: 1em;
-    border-radius: 1em;
-    background-color: #3f3d41;
+    border-radius: 30px;
     transition: .25s all ease;
     pointer-events: none;
 }
 
-#select:hover::after{
-    color: #f39c12;
+#select:hover::after {
+    color: #16b70b;
 }

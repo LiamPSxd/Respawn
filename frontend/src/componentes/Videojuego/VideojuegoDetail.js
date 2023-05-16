@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import VideojuegoBanner from "./VideojuegoBanner";
-import ModalCalificacion from "../Modal/ModalCalificacion";
+import ModalCalificacion from "./ModalCalificacion";
 import * as VideojuegoServer from "./VideojuegoServer";
 import { MDBCarousel } from "mdb-react-ui-kit";
 import style from "./Videojuego.module.css";
@@ -18,66 +18,73 @@ const VideojuegoDetail = () => {
     const [videojuego, setVideojuego] = useState(initialState);
 
     const getVideojuego = async (idVideojuego) => {
-        try{
+        try {
             const data = await (await VideojuegoServer.getVideojuego(idVideojuego)).json();
             const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
             setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
-        }catch(error){
+        } catch (error) {
             console.log(error);
         }
     };
 
-    const extra =<p align="justify" id={style.extracontent}>{videojuego.datosExtra}</p>
+    const extra = <p align="justify" id={style.extracontent}>{videojuego.datosExtra}</p>
 
     useEffect(() => {
-        if(params.id) getVideojuego(params.id);
+        if (params.id) getVideojuego(params.id);
         console.log(params.id)
         // eslint-disable-next-line
     }, []);
 
-    return(
+    return (
         <><div className="product-content product-wrap clearfix product-deatil" id="product-content">
-            <div className="row">
+            <div className="row" id={style.general}>
                 <div className="col-md-5 col-sm-12 col-xs-12">
                     <div className="product-image" id="product-image">
-                        <div>
+                        
                             {Object.keys(videojuego.capturas).filter(k => String(k) === "0")
-                            .map(k => (
-                                <MDBCarousel key={videojuego.capturas[k]} showControls showIndicators fade>
-                                    <VideojuegoBanner key={k+1} id={k} caratula={videojuego.caratula} />
+                                .map(k => (
+                                    <MDBCarousel key={videojuego.capturas[k]} showControls showIndicators fade>
+                                        <VideojuegoBanner key={k + 1} id={k} caratula={videojuego.caratula} />
 
-                                    {videojuego.capturas.map((captura, id) => (
-                                        <VideojuegoBanner key={id+2} id={id+1} caratula={videojuego.caratula} captura={captura} />
-                                    ))}
-                                </MDBCarousel>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div id={style.video}>
-                        <span><iframe id={style.item} width="100%" height="80%" align="center" src={videojuego.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen={true} allowtransparency="true"></iframe></span>
+                                        {videojuego.capturas.map((captura, id) => (
+                                            <VideojuegoBanner key={id + 2} id={id + 1} caratula={videojuego.caratula} captura={captura} />
+                                        ))}
+                                    </MDBCarousel>
+                                ))}                        
+                            <span><iframe id={style.item} width="100%" height="80%" align="center" src={videojuego.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen={true} allowtransparency="true"></iframe></span>
                     </div>
                 </div>
 
                 <div id="div_general" className="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
                     <h1 className="name"><strong>{videojuego.nombre}</strong></h1>
-                    <hr />
+                    <h5>Calificacion: <strong>{videojuego.calificacion} ★</strong></h5>
+                    <hr id={style.hr} />
 
-                    <h2 id="price_container">
-                        {videojuego.precio.valor} {videojuego.precio.simbolo}
-                        <small style={{ fontSize: "12px" }}><strong>*No incluye IVA</strong></small>
-                    </h2>
+                    <div id={style.divBotones}>
+                        <p id="price_container">
+                            {videojuego.precio.valor} {videojuego.precio.simbolo}
+                            <small style={{ fontSize: "12px" }}><strong>*No incluye IVA</strong></small>
+                        </p>
+                        <button className="btn" id={style.btn}> Comprar $</button>
+                        <button className="btn" id={style.btn}> WishList ❤</button>
+                        <ModalCalificacion videojuego={videojuego} />
+                    </div>
 
-                    <div className="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
+                    {/* <div className="col-sm-6 col-md-6 col-lg-6" id="contenedor_botones">
+                        <div>
+                        </div>
                         <div className="btn-group pull-right">
+                            <p id="price_container">
+                                {videojuego.precio.valor} {videojuego.precio.simbolo}
+                                <small style={{ fontSize: "12px" }}><strong>*No incluye IVA</strong></small>
+                            </p>
                             <button className="btn btn-white btn-default"><i className="fa fa-star"></i> Añadir a la WishList</button>
                             <span id="estilos_Modal">
                                 <ModalCalificacion videojuego={videojuego} />
                             </span>
-                            <h5>{videojuego.calificacion}</h5>
                         </div>
-                    </div>
-                    <hr />
+                    </div> */}
+                    <hr id={style.hr} />
 
                     <div id="descripcion">
                         <div >
@@ -91,12 +98,12 @@ const VideojuegoDetail = () => {
                 </div>
             </div>
         </div>
-         <div id="comentarios_Alan">
-             {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
-             <Comentario/>
-             {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
-         </div>
-         </>
+            <div id="comentarios_Alan">
+                {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
+                <Comentario />
+                {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
+            </div>
+        </>
     );
 };
 

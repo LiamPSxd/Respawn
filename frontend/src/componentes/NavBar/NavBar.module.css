@@ -1,0 +1,23 @@
+#links {
+    color: #FFFFFF;
+    height: "6vh";
+    margin-top: 2vh;
+    margin-bottom: 1vh;
+}
+
+#navbar{
+    background: #d12f28;
+  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #d12f28, #72020b);
+  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #d12f28, #72020b);
+
+}
+
+/* #searchDiv {
+    background-color: #51b92f; 
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    border-left: 2px solid white;
+} */

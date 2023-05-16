@@ -16,7 +16,7 @@ const OfertaLista = () => {
     }, []);
 
     return(
-        <><div>
+        <><div id={style.divP}>
             <h1 id={style.h1}>Tiempo restante:</h1>
 
             <OfertaTimer countdownTimestampMs={1704067200000} />

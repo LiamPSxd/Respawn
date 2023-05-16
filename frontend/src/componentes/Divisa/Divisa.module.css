@@ -4,18 +4,22 @@
     justify-content: space-evenly;
     text-align: center;
     padding: 10px;
+    
 }
 
 #tarjeta{
     margin: 8px;
     width: 22rem;
     display: inline-block;
-    border-radius: 1.25em;
-    border-color: #656565;
+    border-radius: 25px;
+    color: white;
+    border-color: white;
+    background-color: #72020b;
+    box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 5);
 }
 
 #contenidoTarjeta{
-    text-align: start;
+    text-align: center;
     padding-top: 5px;
     padding-bottom: 20px;
 }
@@ -27,4 +31,10 @@
 #cardBody{
     margin: 0px;
     padding-top: 10px;
+}
+
+#boton{
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
+    border: 1px solid #72020b
 }

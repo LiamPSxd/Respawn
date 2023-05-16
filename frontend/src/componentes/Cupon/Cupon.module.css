@@ -1,5 +1,6 @@
 #cabecera{
     margin-top: 20px;
+    color: white;
     text-align: center;
 }
 
@@ -8,14 +9,24 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     text-align: center;
+    color: white;
 }
 
 #tarjeta{
-    margin: 20px;
+    color: white;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
     width: 18rem;
     display: inline-block;
+    border-color: white;
+    background-color: #72020b;
+    border-radius: 25px;
+    box-shadow: 1px 1px 20px 4px rgba(0, 0, 0, 5);
 }
 
 #imgCard{
+    margin: 1%;
     height: 200px;
 }

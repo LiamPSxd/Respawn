@@ -10,12 +10,13 @@ import {
 
   MDBCollapse,
 } from 'mdb-react-ui-kit';
+import style from "./NavBar.module.css"
 
 const NavBar2 = () => {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
-    <MDBNavbar expand='lg' dark bgColor='dark'>
+    <MDBNavbar expand='sm' light style={{ backgroundColor: '#72020b', padding: "3vh 3vh"}}>
       <MDBContainer fluid>
         <MDBNavbarToggler
           aria-controls='navbarSupportedContent'
@@ -29,31 +30,31 @@ const NavBar2 = () => {
         <MDBCollapse navbar show={showBasic}>
           <MDBNavbarNav className='mr-auto mb-2 mx-lg-0'>
             <MDBNavbarItem>
-              <MDBNavbarLink href='/catalogo'>Catálogo</MDBNavbarLink>
+              <MDBNavbarLink id={style.links} href='/catalogo'>Catálogo</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/ofertas'>Ofertas</MDBNavbarLink>
+              <MDBNavbarLink id={style.links} href='/ofertas'>Ofertas</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/xbox'>Xbox</MDBNavbarLink>
+              <MDBNavbarLink id={style.links} href='/xbox'>Xbox</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/playstation'>PlayStation</MDBNavbarLink>
+              <MDBNavbarLink id={style.links} href='/playstation'>PlayStation</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/nintendo'>Nintendo</MDBNavbarLink>
+              <MDBNavbarLink id={style.links} href='/nintendo'>Nintendo</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/pc'>PC</MDBNavbarLink>
+              <MDBNavbarLink id={style.links} href='/pc'>PC</MDBNavbarLink>
             </MDBNavbarItem>
 
             <MDBNavbarItem>
-              <MDBNavbarLink href='/monedaPeso' style={{align: "right"}}>Moneda/Peso</MDBNavbarLink>
+              <MDBNavbarLink id={style.links} href='/monedaPeso' style={{ align: "right" }}>Moneda</MDBNavbarLink>
             </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Logo from './media/logo2.png';
+import Logo from './media/iconW.png';
 import IconPerfil from './media/iconperfil2.svg';
 import IconOculto from './media/menusoculto.png';
-import IconCarrito from './media/iconocarrito.svg';
 import IconWishlist from './media/wishlist.svg';
 import {
   MDBContainer,
@@ -26,6 +25,7 @@ import { listaOfertas } from '../Oferta/OfertaLista';
 import { idFiltro } from '../Filtro/FiltroLista';
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
+import style from "./NavBar.module.css"
 
 const NavBar = () => {
   const history = useNavigate();
@@ -37,41 +37,50 @@ const NavBar = () => {
   const [search, setSearch] = useState("");
 
   const handleLogOut = async () => {
-    cookies.remove("id");
-    cookies.remove("nombre");
-    cookies.remove("correo");
-    cookies.remove("contrasenia");
-    cookies.remove("domicilio");
 
-    history("/");
+    if (window.confirm("¿Seguro que quieres cerrar sesión?")) {
+
+      cookies.remove("id");
+      cookies.remove("nombre");
+      cookies.remove("correo");
+      cookies.remove("contrasenia");
+      cookies.remove("domicilio");
+
+      history("/");
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    switch(window.location.pathname){
-      case "/catalogo":
-      case "/xbox":
-      case "/playstation":
-      case "/nintendo":
-      case "/pc":
-        listaVideojuegos(search, idFiltro);
-        break;
-      case "/cupones":
-        listaCupones(search);
-        break;
-      case "/monedaPeso":
-        listaDivisas(search);
-        break;
-      case "/ofertas":
-        listaOfertas(search);
-        break;
-      default:
+    if (search == "") {
+      window.alert("Búsqueda vacía")
+    } else {
+
+      switch (window.location.pathname) {
+        case "/catalogo":
+        case "/xbox":
+        case "/playstation":
+        case "/nintendo":
+        case "/pc":
+          listaVideojuegos(search, idFiltro);
+          break;
+        case "/cupones":
+          listaCupones(search);
+          break;
+        case "/monedaPeso":
+          listaDivisas(search);
+          break;
+        case "/ofertas":
+          listaOfertas(search);
+          break;
+        default:
+      }
     }
   }
 
-  return(
-    <MDBNavbar expand='lg' light style={{ backgroundColor: '#242325' }}>
+  return (
+    <MDBNavbar expand='sm' light id={style.navbar}>
       <MDBContainer fluid className='justify-content-center'>
         {/* BOTON CON ICONO DE INICIO */}
         <MDBNavbarBrand href='/home'>
@@ -82,13 +91,14 @@ const NavBar = () => {
           <img src={IconOculto} alt="logo" width="40" height="40" />
         </MDBNavbarToggler>
 
-        <MDBCollapse className='justify-content-center' navbar show={showBasic}>
+        <MDBCollapse className='justify-content-center ' navbar show={showBasic}>
           <MDBNavbarNav className='justify-content-center'>
             {/* Barra de busqueda react */}
-            <div className="d-flex justify-content-center h-100">
+            <div className="d-flex justify-content-center h-100 ">
               <Form onSubmit={handleSubmit}>
-                <div className="searchbar">
+                <div className="searchbar" id={style.searchDiv}>
                   <input
+
                     className="search_input mw-25"
                     type="search"
                     name=""
@@ -102,15 +112,15 @@ const NavBar = () => {
               </Form>
             </div>
           </MDBNavbarNav>
-          
+
           {
             usuario.correo ? (
               <>
-                <MDBNavbarLink href='#' className=''>
+                <MDBNavbarLink href='#' className="d-flex justify-content-center mt-2">
                   <img src={IconWishlist} alt="logo" width="40" height="40" />
                 </MDBNavbarLink>
 
-                
+
 
               </>
             ) : (
@@ -118,7 +128,7 @@ const NavBar = () => {
             )
           }
 
-          <MDBDropdown>
+          <MDBDropdown className='d-flex justify-content-center mt-2'>
             <MDBDropdownToggle tag='a' className='nav-link' role='button'>
               <img src={IconPerfil} alt="logo" width="40" height="40" />
             </MDBDropdownToggle>
@@ -151,11 +161,11 @@ export const recuperarBusqueda = (busqueda, data = []) => {
   let buscado = [];
 
   data.forEach(dato => {
-    if(dato.nombre.toLowerCase().indexOf(busqueda.toLowerCase()) !== -1)
+    if (dato.nombre.toLowerCase().indexOf(busqueda.toLowerCase()) !== -1)
       buscado.push(dato);
   });
 
-  if(buscado.length === 0){
+  if (buscado.length === 0) {
     window.alert("No hay resultados para tu búsqueda");
     buscado = data;
   }

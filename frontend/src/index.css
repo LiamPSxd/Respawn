@@ -1,14 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;1,300&display=swap');
+
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+  font-family: 'Nunito', sans-serif;
+
+  /* background: rgb(209, 47, 40);
+    background: radial-gradient(circle, rgba(209, 47, 40, 1) 15%, rgba(71, 16, 14, 1) 100%); */
+
+  background: #d12f28;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #d12f28, #b32b23);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #d12f28, #b32b23);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  /* background: rgb(92, 119, 255);
+  background: -moz-radial-gradient(circle, rgb(92, 119, 255) 0%, rgb(177, 94, 108) 100%);
+  background: -webkit-radial-gradient(circle, rgba(92, 119, 255,1) 0%, rgba(177, 94, 108) 100%);
+  background: radial-gradient(circle, rgba(92, 119, 255,1) 0%, rgba(177, 94, 108) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3f5efb",endColorstr="#fc466b",GradientType=1); */
 }
 
 code {
@@ -19,14 +35,18 @@ code {
 .searchbar {
   margin-bottom: auto;
   margin-top: auto;
-  height: 60px;
-  background-color: #353b48;
+  height: 50px;
+  background-color: #ffffff;
   border-radius: 30px;
   padding: 10px;
+  border: 2px;
+  border-style: solid;
+  border-color: white;
 }
 
 .search_input {
-  color: white;
+  color: #b60b17;
+  border-radius: 30px;
   border: 0;
   outline: 0;
   background: none;
@@ -38,25 +58,25 @@ code {
 
 .searchbar:hover>.search_input {
   padding: 0 10px;
-  width: 200px;
-  caret-color: red;
+  width: 300px;
+  caret-color: #b60b17;
   transition: width 0.4s linear;
 }
 
 .searchbar:hover>.search_icon {
   background: white;
-  color: #7d5ba6;
+  color: #b60b17;
 }
 
 .search_icon {
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   float: right;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: #242325;
+  color: #b60b17;
   text-decoration: none;
 }
 
@@ -112,8 +132,15 @@ input[type="radio"]:checked~.iconStar {
 
 #price_container {
   font-size: 24px;
-  margin: 0;
-  font-weight: 300;
+  margin: 1%;
+  padding: 0;
+  display: inline-flex;
+}
+
+#btnWishList{
+  border: 1px solid white;
+  background-color: #d12f28;
+  color: white;
 }
 
 #div_general {
