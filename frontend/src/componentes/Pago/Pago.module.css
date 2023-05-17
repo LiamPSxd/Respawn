@@ -4,6 +4,8 @@
     justify-content: space-around;
     text-align: center;
     margin-top: 50px;
+    color: white;
+    height: 75vh;
 }
 
 #item{
@@ -19,14 +21,27 @@
 
 #cantidad{
     margin-top: 2%;
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
 }
 
 #containerContent{
     max-width: 354px;
 }
 
+#btn{
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
+    border: 1px solid #d12f28;
+    color: white;
+}
+
 .img{
     width: 338px;
     height: 414px;
     border-radius: 1.5rem;
+}
+
+#link{
+    color: #54aa00;
 }

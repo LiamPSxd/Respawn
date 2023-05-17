@@ -21,18 +21,18 @@ const UsuarioSignUp = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try{
+        try {
             let ban = false;
 
             const usuarios = await (await UsuarioServer.getAllUsuarios()).json();
             usuarios.Usuarios.forEach(u => {
-                if(u.correo === usuario.correo) ban = true;
+                if (u.correo === usuario.correo) ban = true;
             });
 
-            if(!ban){
+            if (!ban) {
                 const data = await (await UsuarioServer.addUsuario(usuario)).json();
 
-                if(data.message === "Exitoso"){
+                if (data.message === "Exitoso") {
                     let dataUsuario = null;
                     const cookies = new Cookies();
 
@@ -42,16 +42,16 @@ const UsuarioSignUp = () => {
                     await addWishList();
                     await addCupon();
 
-                    cookies.set("id", `${dataUsuario.Usuarios[0].id}`, {path: "/"});
-                    cookies.set("nombre", dataUsuario.Usuarios[0].nombre, {path: "/"});
-                    cookies.set("correo", usuario.correo, {path: "/"});
-                    cookies.set("contrasenia", usuario.contrasenia, {path: "/"});
-                    cookies.set("domicilio", dataUsuario.Usuarios[0].domicilio, {path: "/"});
+                    cookies.set("id", `${dataUsuario.Usuarios[0].id}`, { path: "/" });
+                    cookies.set("nombre", dataUsuario.Usuarios[0].nombre, { path: "/" });
+                    cookies.set("correo", usuario.correo, { path: "/" });
+                    cookies.set("contrasenia", usuario.contrasenia, { path: "/" });
+                    cookies.set("domicilio", dataUsuario.Usuarios[0].domicilio, { path: "/" });
 
                     history("/home");
-                }else console.log("Problema al crear la cuenta");
-            }else console.log("Correo ya en uso");
-        }catch(error){
+                } else console.log("Problema al crear la cuenta");
+            } else console.log("Correo ya en uso");
+        } catch (error) {
             console.log(error);
         }
     };
@@ -59,14 +59,14 @@ const UsuarioSignUp = () => {
     const addWishList = async () => {
         const data = await (await WishListServer.addWishList("0")).json();
 
-        if(data.message === "Exitoso"){
+        if (data.message === "Exitoso") {
             const dataWishLists = await (await WishListServer.getAllWishLists()).json();
             let idWishList = "";
 
             dataWishLists.WishLists.forEach(async wishList => {
                 const uw = await (await UsuarioWishListServer.getUsuarioWishListByIdWishList(wishList.id)).json();
 
-                if(uw.message !== "Exitoso") idWishList = wishList.id
+                if (uw.message !== "Exitoso") idWishList = wishList.id
             })
 
             setUsuarioWishList(usuario.id, idWishList);
@@ -75,8 +75,8 @@ const UsuarioSignUp = () => {
     };
 
     const addCupon = async () => {
-        for(let i=0; i<4; i++){
-            switch(i){
+        for (let i = 0; i < 4; i++) {
+            switch (i) {
                 case 0:
                     setUsuarioCupon(usuario.id, i, 1);
                     break;
@@ -97,12 +97,12 @@ const UsuarioSignUp = () => {
         }
     };
 
-    return(
+    return (
         // <html>
         //     <div className={styles.loginbox}>
         //     <h2>Registro</h2>
         //     <form onSubmit={handleSubmit}>
-            
+
         //         <div className={styles.userBox}>
         //             <label >Nombre</label>
         //             <input type="text" name="nombre" placeholder="username" onChange={handleInputChange}  minLength="5" maxLength="20" autoFocus required />
@@ -134,30 +134,32 @@ const UsuarioSignUp = () => {
                 <form onSubmit={handleSubmit}>
                     <div className={styles.userBox}>
                         <label className={styles.label}>Nombre</label>
-                        <input type="text"  name="nombre"  onChange={handleInputChange}  minLength="5" maxLength="20" autoFocus required className={styles.input} />
+                        <input type="text" name="nombre" onChange={handleInputChange} minLength="5" maxLength="20" autoFocus required className={styles.input} />
                     </div>
 
                     <div className={styles.userBox}>
                         <label className={styles.label}>Correo</label>
-                        <input type="email" name="correo" onChange={handleInputChange}  minLength="5" maxLength="70" autoFocus required className={styles.input}/>
+                        <input type="email" name="correo" onChange={handleInputChange} minLength="5" maxLength="70" autoFocus required className={styles.input} />
                     </div>
 
                     <div className={styles.userBox}>
                         <label className={styles.label}>Contraseña</label>
-                        <input type="password" name="contrasenia"  onChange={handleInputChange}  minLength="6" maxLength="20" autoFocus required className={styles.input}/>
+                        <input type="password" name="contrasenia" onChange={handleInputChange} minLength="6" maxLength="20" autoFocus required className={styles.input} />
                     </div>
 
                     <div className={styles.userBox}>
                         <label className={styles.label}>Domicilio</label>
-                        <input type="text" name="domicilio"  onChange={handleInputChange}  minLength="5" maxLength="150" autoFocus required className={styles.input}/>
+                        <input type="text" name="domicilio" onChange={handleInputChange} minLength="5" maxLength="150" autoFocus required className={styles.input} />
                     </div>
-
-                    <button type="submit" className={styles.a}>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        Registarse</button> 
+                    <div style={{ textAlign: "center" }}>
+                        <button type="submit" id={styles.a} className="btn">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            Registrarse
+                        </button>
+                    </div>
                 </form>
             </div>
         </div></>
