@@ -24,6 +24,7 @@ const FiltroLista = ({ catalogo }) => {
     
         if(dataCatalogoFiltro.message === "Exitoso")
             await dataCatalogoFiltro.CatalogoFiltros.forEach(cf => {
+                console.log(cf.idFiltro)
                 idFiltros += `${cf.idFiltro},`;
             });
 
@@ -37,6 +38,8 @@ const FiltroLista = ({ catalogo }) => {
                     if(e.target.value === c) idFiltro = `${filtro.id},${c}`;
                 })
             }else if(filtro.nombre === e.target.value) idFiltro = `${filtro.id},null`;
+
+            console.log(idFiltro)
         });
 
         listaVideojuegos(null, idFiltro);
