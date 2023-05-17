@@ -8,8 +8,8 @@ const CatalogoItem = ({ catalogo }) => {
     return(
         <><div id={style.banner}>
             <MDBCarousel key={catalogo.id} showControls showIndicators fade>
-                {catalogo.banner.map((b, id) => (
-                    <CatalogoBanner id={style.item} key={id+1} id={id+1} banner={b} />
+                {catalogo.banner.map((b, iden) => (
+                    <CatalogoBanner id={style.item} key={iden+1} identificador={iden+1} banner={b} />
                 ))}
             </MDBCarousel>
         </div>
