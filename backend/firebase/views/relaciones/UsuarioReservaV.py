@@ -64,7 +64,7 @@ class UsuarioReservaV(View):
                 jb["idReserva"]
             )
 
-            if ur.idUsuario > -1 and ur.idReserva > -1:
+            if ur.idUsuario != -1 and ur.idReserva != -1:
                 db.getDB().reference(documento).child(f"{ur.idUsuario}{ur.idReserva}").set({"idUsuario": f"{ur.idUsuario}", "idReserva": f"{ur.idReserva}"})
                 return JsonResponse(db.mensajeExitoso)
             else:

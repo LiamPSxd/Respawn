@@ -64,7 +64,7 @@ class VideojuegoCompraV(View):
                 jb["idCompra"]
             )
 
-            if vc.idVideojuego > -1 and vc.idCompra > -1:
+            if vc.idVideojuego != -1 and vc.idCompra != -1:
                 db.getDB().reference(documento).child(f"{vc.idVideojuego}{vc.idCompra}").set({"idVideojuego": f"{vc.idVideojuego}", "idCompra": f"{vc.idCompra}"})
                 return JsonResponse(db.mensajeExitoso)
             else:

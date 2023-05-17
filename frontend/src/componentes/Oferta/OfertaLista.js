@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import OfertaTimer from "./OfertaTimer";
 import OfertaItem from "./OfertaItem";
 import * as OfertaServer from "./OfertaServer";
 import style from "./Oferta.module.css";
@@ -16,10 +15,8 @@ const OfertaLista = () => {
     }, []);
 
     return(
-        <><div>
-            <h1 id={style.h1}>Tiempo restante:</h1>
-
-            <OfertaTimer countdownTimestampMs={1704067200000} />
+        <><div id={style.countdownTimer}>
+            <h1 id={style.h1}>Nuestras Ofertas:</h1>
         </div>
         
         <div id={style.contenedorTarjetas}>

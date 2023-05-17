@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import style from "./Catalogo.module.css";
 import CatalogoBanner from "./CatalogoBanner";
 import { MDBCarousel } from "mdb-react-ui-kit";
@@ -9,7 +9,7 @@ const CatalogoItem = ({ catalogo }) => {
         <><div id={style.banner}>
             <MDBCarousel key={catalogo.id} showControls showIndicators fade>
                 {catalogo.banner.map((b, id) => (
-                    <CatalogoBanner key={id+1} id={id+1} banner={b} />
+                    <CatalogoBanner id={style.item} key={id+1} id={id+1} banner={b} />
                 ))}
             </MDBCarousel>
         </div>
@@ -20,4 +20,4 @@ const CatalogoItem = ({ catalogo }) => {
     );
 };
 
-export default CatalogoItem;
+export default memo(CatalogoItem);

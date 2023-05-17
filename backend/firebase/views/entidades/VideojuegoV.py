@@ -31,19 +31,23 @@ class VideojuegoV(View):
             "capturas": value["capturas"]
         })
 
-    def get(self, request, id = -1, ids = "", filtro = ""):
+    def get(self, request, id = -1, ids = "", filtro = "", cantidad = ""):
         if db.conexionDB and request.method == "GET":
             videojuegos = list()
 
-            if id > -1 and ids == "" and filtro == "":
+            if id == -1 and ids == "" and filtro == "" and cantidad != "":
+                videojuegos.append({
+                    "cantidad": len(db.getDocumento(documento).items())
+                })
+            elif id > -1 and ids == "" and filtro == "" and cantidad == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None and str(value["id"]) == str(id):
                         self.addVideojuegos(videojuegos, value)
-            elif id == -1 and ids == "" and filtro == "":
+            elif id == -1 and ids == "" and filtro == "" and cantidad == "":
                 for key, value in db.getDocumento(documento).items():
                     if value != None:
                         self.addVideojuegos(videojuegos, value)
-            elif id == -1 and ids != "" and filtro == "":
+            elif id == -1 and ids != "" and filtro == "" and cantidad == "":
                 for key, value in db.getDocumento(documento).items():
                     for id in ids.split(","):
                         if value != None and str(value["id"]) == str(id):

@@ -176,11 +176,12 @@ urlpatterns = [
     path('videojuegos/', VideojuegoV.as_view(), name = 'allVideojuegos'),
     path('videojuegos/<int:id>', VideojuegoV.as_view(), name = 'oneVideojuego'),
     path('videojuegos/<ids>', VideojuegoV.as_view(), name = 'someVideojuegos'),
+    path('videojuegos/<cantidad>/', VideojuegoV.as_view(), name = 'someVideojuegos'),
     path('videojuegos//<filtro>', VideojuegoV.as_view(), name = 'someVideojuegos'),
 
     path('wishlists/', WishListV.as_view(), name = 'allWishLists'),
     path('wishlists/<int:id>', WishListV.as_view(), name = 'oneWishList'),
-    path('wishlists/<ids>', VideojuegoV.as_view(), name = 'someWishList'),
+    path('wishlists/<ids>', WishListV.as_view(), name = 'someWishList'),
 
     path('wishlistVideojuegos/', WishListVideojuegoV.as_view(), name = 'allWVs'),
     path('wishlistVideojuegos/<int:idWishList>', WishListVideojuegoV.as_view(), name = 'oneWV'),

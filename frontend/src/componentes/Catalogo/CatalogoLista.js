@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import CatalogoItem from "./CatalogoItem";
 import * as CatalogoServer from "./CatalogoServer";
+import ModalVideojuego from "../Videojuego/ModalVideojuego";
 
 const CatalogoLista = ({ idCatalogo }) => {
     const [catalogos, setCatalogos] = useState([]);
+
+    const [showVideojuego, setShowVideojuego] = useState(true);
 
     const listaCatalogos = async () => {
         try{
@@ -13,6 +16,8 @@ const CatalogoLista = ({ idCatalogo }) => {
             console.log(error);
         }
     };
+
+    const mostrarVideojuegoAleatorio = () => setShowVideojuego(!showVideojuego);
 
     useEffect(() => {
         listaCatalogos();
@@ -24,7 +29,11 @@ const CatalogoLista = ({ idCatalogo }) => {
             {catalogos.map(catalogo => (
                 <CatalogoItem key={catalogo.id} catalogo={catalogo} />
             ))}
-        </div></>
+        </div>
+
+        {parseInt(idCatalogo) === 0 ? (
+            <ModalVideojuego show={showVideojuego} close={mostrarVideojuegoAleatorio} />
+        ) : null}</>
     );
 };
 

@@ -64,7 +64,7 @@ class UsuarioWishListV(View):
                 jb["idWishList"]
             )
 
-            if uw.idUsuario > -1 and uw.idWishList > -1:
+            if uw.idUsuario != -1 and uw.idWishList != -1:
                 db.getDB().reference(documento).child(f"{uw.idUsuario}{uw.idWishList}").set({"idUsuario": f"{uw.idUsuario}", "idWishList": f"{uw.idWishList}"})
                 return JsonResponse(db.mensajeExitoso)
             else:

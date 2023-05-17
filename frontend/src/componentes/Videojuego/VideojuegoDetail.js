@@ -1,105 +1,121 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import VideojuegoBanner from "./VideojuegoBanner";
-import ModalCalificacion from "../Modal/ModalCalificacion";
+import ModalCalificacion from "./ModalCalificacion";
 import * as VideojuegoServer from "./VideojuegoServer";
 import { MDBCarousel } from "mdb-react-ui-kit";
 import style from "./Videojuego.module.css";
-import CarritoBtn from "./CarritoBtn";
+import Cookies from "universal-cookie";
+import Mensaje from "../Mensaje/Mensaje";
 import Comentario from "../Comentario/comentario";
 
 const VideojuegoDetail = () => {
     const history = useNavigate();
     const params = useParams();
+    const cookies = new Cookies();
 
     const [ReadMore, setReadMore] = useState(false);
     const linkName = ReadMore ? 'Ver Menos <<' : 'Ver Mas >>'
+
+    const [showMensaje, setShowMensaje] = useState(false);
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [iniciarSesion, setIniciarSesion] = useState(false);
+
+    const mostrarMensaje = (title, content, sesion) => {
+        setTitulo(title);
+        setContenido(content);
+        setIniciarSesion(sesion);
+        setShowMensaje(!showMensaje);
+    };
 
     const initialState = { id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: [], genero: "", plataforma: "", datosExtra: "", calificacion: 0.0, capturas: [] };
     const [videojuego, setVideojuego] = useState(initialState);
 
     const getVideojuego = async (idVideojuego) => {
-        try{
+        try {
             const data = await (await VideojuegoServer.getVideojuego(idVideojuego)).json();
             const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
             setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
-        }catch(error){
+        } catch (error) {
             console.log(error);
         }
     };
 
-    const extra =<p align="justify" id={style.extracontent}>{videojuego.datosExtra}</p>
+    const validarSesion = () => {
+        if (cookies.get("id")) {
+            cookies.set("videojuegoId", `${videojuego.id}`, { path: "/" });
+            history("/pago");
+        } else mostrarMensaje("Advertencia", "Necesitas tener una cuenta para continuar, ¿Desea iniciar sesión ahora?", true);
+    };
+    const extra = <p align="justify" id={style.extracontent}>{videojuego.datosExtra}</p>
 
     useEffect(() => {
-        if(params.id) getVideojuego(params.id);
+        if (params.id) getVideojuego(params.id);
         console.log(params.id)
         // eslint-disable-next-line
     }, []);
 
-    return(
-        <><div className="product-content product-wrap clearfix product-deatil" id="product-content">
-            <div className="row">
-                <div className="col-md-5 col-sm-12 col-xs-12">
-                    <div className="product-image" id="product-image">
-                        <div>
+    return (
+        <>
+            <div className="product-content product-wrap clearfix product-deatil" id="product-content">
+                <div className="row" id={style.general}>
+                    <div className="col-md-5 col-sm-12 col-xs-12">
+                        <div className="product-image" id="product-image">
                             {Object.keys(videojuego.capturas).filter(k => String(k) === "0")
-                            .map(k => (
-                                <MDBCarousel key={videojuego.capturas[k]} showControls showIndicators fade>
-                                    <VideojuegoBanner key={k+1} id={k} caratula={videojuego.caratula} />
+                                .map(k => (
+                                    <MDBCarousel key={videojuego.capturas[k]} showControls showIndicators fade>
+                                        <VideojuegoBanner key={k + 1} id={k} caratula={videojuego.caratula} />
 
-                                    {videojuego.capturas.map((captura, id) => (
-                                        <VideojuegoBanner key={id+2} id={id+1} caratula={videojuego.caratula} captura={captura} />
-                                    ))}
-                                </MDBCarousel>
-                            ))}
+                                        {videojuego.capturas.map((captura, id) => (
+                                            <VideojuegoBanner key={id + 2} id={id + 1} caratula={videojuego.caratula} captura={captura} />
+                                        ))}
+                                    </MDBCarousel>
+                                ))}
+                            <span><iframe id={style.item} width="100%" height="80%" align="center" src={videojuego.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen={true} allowtransparency="true"></iframe></span>
                         </div>
                     </div>
 
-                    <div id={style.video}>
-                        <span><iframe id={style.item} width="100%" height="80%" align="center" src={videojuego.video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen={true} allowtransparency="true"></iframe></span>
-                    </div>
-                </div>
+                    <div id="div_general" className="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
+                        <h1 className="name"><strong>{videojuego.nombre}</strong></h1>
+                        <h5>Calificacion: <strong>{videojuego.calificacion} ★</strong></h5>
+                        <hr id={style.hr} />
 
-                <div id="div_general" className="col-md-6 col-md-offset-1 col-sm-12 col-xs-12">
-                    <h1 className="name"><strong>{videojuego.nombre}</strong></h1>
-                    <hr />
-
-                    <h2 id="price_container">
-                        {videojuego.precio.valor} {videojuego.precio.simbolo}
-                        <small style={{ fontSize: "12px" }}><strong>*No incluye IVA</strong></small>
-                    </h2>
-
-                    <div className="col-sm-12 col-md-6 col-lg-6" id="contenedor_botones">
-                        <CarritoBtn videojuego={videojuego}/>
-                        <div className="btn-group pull-right">
-                            <button className="btn btn-white btn-default"><i className="fa fa-star"></i> Añadir a la WishList</button>
-                            <span id="estilos_Modal">
-                                <ModalCalificacion videojuego={videojuego} />
-                            </span>
-                            <h5>{videojuego.calificacion}</h5>
-                        </div>
-                    </div>
-                    <hr />
-
-                    <div id="descripcion">
-                        <div >
-                            <p align="center"><strong>Descripcion del producto:</strong></p>
-                            <p align="justify">
-                                {videojuego.descripcion} <button className="btn transparent btn-light" onClick={() => { setReadMore(!ReadMore) }}>{linkName}</button>
-                                {ReadMore && extra}
+                        <div id={style.divBotones}>
+                            <p id="price_container">
+                                {videojuego.precio.valor} {videojuego.precio.simbolo}
+                                <small style={{ fontSize: "12px" }}><strong>*No incluye IVA</strong></small>
                             </p>
+                            <button className="btn" id={style.btn} onClick={() => validarSesion()}> Comprar $</button>
+
+                            {cookies.get("id") ? (
+                                <><button className="btn" id={style.btn}> WishList ❤</button>
+                                    <ModalCalificacion videojuego={videojuego} /></>
+                            ) : null}
+                        </div>
+
+                        <hr id={style.hr} />
+
+                        <div id="descripcion">
+                            <div>
+                                <p align="center"><strong>Descripcion del producto:</strong></p>
+                                <p align="justify">
+                                    {videojuego.descripcion} <button className="btn transparent btn-light" onClick={() => { setReadMore(!ReadMore) }}>{linkName}</button>
+                                    {ReadMore && extra}
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-         <div id="comentarios_Alan">
-             {/*----------------- NO MOVER IMPORTANTE ------------------------------*/}
-             <Comentario/>
-             {/*--------------  NO TOCAR SI NO ME SACAN DEL EQUIPO -------------------- */}
-         </div>
-         </>
+
+            <Mensaje show={showMensaje} close={mostrarMensaje} title={titulo} status={iniciarSesion}>{contenido}</Mensaje>
+
+            <div id="comentarios_Alan">
+                <Comentario />
+            </div>
+        </>
     );
 };
 
-export default VideojuegoDetail;
+export default memo(VideojuegoDetail);

@@ -1,6 +1,7 @@
 .html2{
-    height: 200%;
-    background: linear-gradient(#242325, #3f3d41);
+    height: 85vh;
+    background: rgb(209, 47, 40);
+    background: radial-gradient(circle, rgba(209, 47, 40, 1) 15%, rgba(71, 16, 14, 1) 100%);
 }
 .loginBox{
     position:absolute;

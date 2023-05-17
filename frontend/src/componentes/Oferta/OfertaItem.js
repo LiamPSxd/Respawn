@@ -22,9 +22,9 @@ const OfertaItem = ({ oferta }) => {
         const dataVideojuegoOferta = await (await VideojuegoOfertaServer.getVideojuegoOfertaByIdOferta(oferta.id)).json();
         let idVideojuegos = "";
 
-        if(dataVideojuegoOferta != null)
+        if(dataVideojuegoOferta.message === "Exitoso")
             await dataVideojuegoOferta.VideojuegoOfertas.forEach(vo => {
-                idVideojuegos += vo.idVideojuego + ",";
+                idVideojuegos += `${vo.idVideojuego},`;
             });
 
         return await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();
@@ -44,13 +44,12 @@ const OfertaItem = ({ oferta }) => {
                     <h1 id={style.titulo} className="card-title">{videojuego.nombre}</h1>
 
                     <div id={style.contenidoTarjeta}>
-                        <h5 className="card-text" ><strong>Antes </strong>{videojuego.precio.valor} {videojuego.precio.simbolo}</h5>
-                        <h4 className="card-text" ><strong>Descuento </strong>{oferta.descuento * 100}%</h4>
-                        <h4 className="card-text" ><strong>Ahora </strong>{videojuego.precio.valor * oferta.descuento} {videojuego.precio.simbolo}</h4>
-                        <OfertaTimer countdownTimestampMs={oferta.tiempo} />
+                        <h5 className="card-text" ><strong>Antes: </strong><strike>{videojuego.precio.valor} {videojuego.precio.simbolo}</strike></h5>
+                        <h4 className="card-text" ><strong>Descuento: </strong>{oferta.descuento * 100}%</h4>
+                        <h4 className="card-text" ><strong>Ahora: </strong>{videojuego.precio.valor - (videojuego.precio.valor * oferta.descuento)} {videojuego.precio.simbolo}</h4>
+                        <h4 className="card-text"><strong>Tiempo restante: </strong></h4><OfertaTimer countdownTimestampMs={oferta.tiempo}/>
                     </div>
-
-                    <button className="btn btn-success my-2" onClick={() => history(`/videojuego/${videojuego.id}`)}><strong>Más Detalles</strong></button>
+                    <button id={style.botonDetalles} className="btn btn-success my-2" onClick={() => history(`/videojuego/${videojuego.id}`)}><strong>Más Detalles</strong></button>
                 </div>
             </div>
         ))}</>

@@ -16,6 +16,10 @@ export const getVideojuego = async (idVideojuego) => {
     return await fetch(`${API_URL}${idVideojuego}`);
 };
 
+export const getVideojuegosCantidad = async () => {
+    return await fetch(`${API_URL}cantidad/`);
+};
+
 export const updateVideojuego = async (videojuego) => {
     return await fetch(`${API_URL}${videojuego.id}`, {
         method: "PUT",

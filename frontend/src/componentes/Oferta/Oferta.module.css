@@ -1,17 +1,19 @@
-#countdownTimer{
+/* #countdownTimer{
     width: 600px;
     height: 100px;
-    border: 2px solid black;
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
 
-    font-family: "Oswald";
-    font-size: 30px;
+    font-size: 28px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 26%;
-}
+    margin-left: 27%;
 
+}
+*/
 #countdownTimer span{
     margin-left: 5px;
     margin-right: 5px;
@@ -20,32 +22,45 @@
 #twoNumbers{
     width: 2ch;
 }
+#countdownTimer{
+    font-family: "Arial";
+    font-size: 20px;
+
+} 
 
 #h1{
-    margin-left: 38%;
-    font-family: "Oswald";
+    text-align: center;
+    color: white;
+    margin-top: 1%;
 }
 
 #contenedorTarjetas{
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
     text-align: center;
-    padding: 15px;
-    padding-top: 60px;
+    padding: 30px;
+    padding-top: 30px;
+    color: white;
 }
 
 #tarjeta{
-    margin: 8px;
-    width: 18rem;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 20rem;
     display: inline-block;
-    border-radius: 1.25em;
-    border-color: #656565;
+    border-color: white;
+    background-color: #72020b;
+    border-radius: 25px;
+    box-shadow: 1px 1px 20px 4px rgba(0, 0, 0, 5);
 }
 
 #imgCard{
     height: 360px;
-    border-radius: 1.25em;
+    border-top-left-radius: 25px;
+    border-top-right-radius:25px;
 }
 
 #contenidoTarjeta{
@@ -61,4 +76,10 @@
 #cardBody{
     margin: 0px;
     padding-top: 10px;
+}
+
+#botonDetalles{
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
+    border: 1px solid #72020b
 }

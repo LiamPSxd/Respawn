@@ -64,7 +64,7 @@ class WishListVideojuegoV(View):
                 jb["idVideojuego"]
             )
 
-            if wv.idWishList > -1 and wv.idVideojuego > -1:
+            if wv.idWishList != -1 and wv.idVideojuego != -1:
                 db.getDB().reference(documento).child(f"{wv.idWishList}{wv.idVideojuego}").set({"idWishList": f"{wv.idWishList}", "idVideojuego": f"{wv.idVideojuego}"})
                 return JsonResponse(db.mensajeExitoso)
             else:
