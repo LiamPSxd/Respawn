@@ -39,8 +39,7 @@ const UsuarioLogIn = () => {
 
             }
         } catch (error) {
-            console.log(error);
-
+            alert("No es posible iniciar sesión ahora, intente más tarde");
         }
     };
 
