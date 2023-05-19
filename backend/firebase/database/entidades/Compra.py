@@ -1,5 +1,5 @@
 class Compra:
-    def __init__(self, id = 0, fecha = "", hora = "", iva = .16, descuento = 0.0, monto = 0.0, metodo = "", descripcion = ""):
+    def __init__(self, id = 0, fecha = "", hora = "", iva = .16, descuento = 0.0, monto = 0.0, metodo = "", descripcion = "", idUsuario: "", idVideojuego):
         self._id = id
         self._fecha = fecha
         self._hora = hora
@@ -8,6 +8,8 @@ class Compra:
         self._monto = monto
         self._metodo = metodo
         self._descripcion = descripcion
+        self._idUsuario = usuario.id
+        self._idVideojuego = videojuego.id
 
     @property
     def id(self):
