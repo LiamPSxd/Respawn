@@ -65,10 +65,10 @@ const VideojuegoDetail = () => {
                             {Object.keys(videojuego.capturas).filter(k => String(k) === "0")
                                 .map(k => (
                                     <MDBCarousel key={videojuego.capturas[k]} showControls showIndicators fade>
-                                        <VideojuegoBanner key={k+1} identificador={k} caratula={videojuego.caratula} />
+                                        <VideojuegoBanner key={k + 1} id={k} caratula={videojuego.caratula} />
 
-                                        {videojuego.capturas.map((captura, iden) => (
-                                            <VideojuegoBanner key={iden+2} identificador={iden+1} caratula={videojuego.caratula} captura={captura} />
+                                        {videojuego.capturas.map((captura, id) => (
+                                            <VideojuegoBanner key={id + 2} id={id + 1} caratula={videojuego.caratula} captura={captura} />
                                         ))}
                                     </MDBCarousel>
                                 ))}
@@ -84,13 +84,12 @@ const VideojuegoDetail = () => {
                         <div id={style.divBotones}>
                             <p id="price_container">
                                 {videojuego.precio.valor} {videojuego.precio.simbolo}
-                                <small style={{ fontSize: "12px" }}><strong>*No incluye IVA</strong></small>
                             </p>
                             <button className="btn" id={style.btn} onClick={() => validarSesion()}> Comprar $</button>
 
                             {cookies.get("id") ? (
                                 <><button className="btn" id={style.btn}> WishList ❤</button>
-                                <ModalCalificacion videojuego={videojuego} /></>
+                                    <ModalCalificacion videojuego={videojuego} /></>
                             ) : null}
                         </div>
 

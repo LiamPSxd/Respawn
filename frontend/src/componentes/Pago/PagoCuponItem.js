@@ -80,7 +80,7 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
                 </div>
 
                 <small>
-                    <span id={style.cantidad} className="badge bg-primary rounded-pill">{cantidad}</span>
+                    <span id={style.cantidad} className="badge rounded-pill">{cantidad}</span>
                 </small>
             </div>
         </button></>

@@ -54,7 +54,7 @@ const NavBar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (search === "") {
+    if (search == "") {
       window.alert("Búsqueda vacía")
     } else {
 
@@ -103,7 +103,6 @@ const NavBar = () => {
               <Form onSubmit={handleSubmit}>
                 <div className="searchbar" id={style.searchDiv}>
                   <input
-
                     className="search_input mw-25"
                     type="search"
                     name=""

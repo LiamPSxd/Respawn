@@ -52,7 +52,7 @@ const PayPalForm = () =>{
                         </div>
                         <div className="text-center" style={{marginTop:"20px", width:"100%"}}>
                             <Link id={Style.idLink}to="https://www.paypal.com/mx/webapps/mpp/account-selection" target="_blank">¿No tienes una cuenta? Crea una aquí</Link>
-                            <button style={{marginTop:"20px"}} type="submit" className="btn btn-primary">Iniciar Sesión</button>
+                            <button id={Style.btn} type="submit" className="btn">Iniciar Sesión</button>
                         </div>
                     </form>
                 {/* </div>

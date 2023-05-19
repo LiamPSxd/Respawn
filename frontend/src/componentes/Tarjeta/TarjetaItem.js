@@ -1,17 +1,30 @@
-import React from "react";
+import React, { memo, useEffect } from "react";
 import Style from "./Tarjeta.module.css"
 import tarjetaImg from "./resource/Tarjeta.png"
-const TarjetaItem = ({tarjeta}) =>{
-    return(
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
+const TarjetaItem = ({ tarjeta }) => {
+    const history = useNavigate();
+
+    const clickTarjeta = async () => {
+        const cookies = new Cookies();
+        cookies.set("idTarjeta",tarjeta.id,{ path: "/pago/tarjeta" });
+        cookies.set("metodo","1",{ path: "/pago/tarjeta" });
+        history("/confirmaPago")
+    }
+    useEffect(() => {
+        // eslint-disable-next-line
+    }, []);
+    return (
         <>
-        <li className="list-group-item d-flex justify-content-between list-group-item-action">
-            <div className="ms-0 me-auto">
-                <div className="fw-bold">Tarjeta de {tarjeta.tipo}</div>
-                <p>Fecha de caducidad: {tarjeta.fechaCaducidad}</p>
-            </div>
-            <img src={tarjetaImg} id={Style.imagen} alt="imagen tarjeta"></img>
-        </li>
-        </>  
+            <li onClick={clickTarjeta} className="list-group-item d-flex justify-content-between list-group-item-action">
+                <div className="ms-0 me-auto">
+                    <div className="fw-bold">Tarjeta de {tarjeta.tipo}</div>
+                    <p>Fecha de caducidad: {tarjeta.fechaCaducidad}</p>
+                </div>
+                <img src={tarjetaImg} id={Style.imagen} alt="imagen tarjeta"></img>
+            </li>
+        </>
     );
 }
-export default TarjetaItem;
+export default memo(TarjetaItem);

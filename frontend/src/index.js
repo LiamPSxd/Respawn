@@ -23,6 +23,7 @@ import Inicio from "./componentes/Inicio/Inicio";
 import WishList from "./componentes/WishList/WishListLista";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+import CompraItem from "./componentes/Compra/CompraItem";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -53,6 +54,7 @@ root.render(
       <Route exact path="/home" element={<Home />} />
       <Route exact path="/ticket" element={<Ticket />} />
       <Route exact path="/wishlist" element={<WishList />} />
+      <Route exact path="/confirmaPago" element={<CompraItem />} />
     </Routes>
   </BrowserRouter>
 );

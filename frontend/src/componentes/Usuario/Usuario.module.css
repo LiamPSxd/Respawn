@@ -40,33 +40,25 @@ label{
     color: #fff;
 }
 
-
-/* .login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #03e9f4;
-  font-size: 12px;
-} */
-
-.loginBox .a:hover{
-    background: #7D5BA6;
+.loginBox #a:hover{
+    --background-gradient: linear-gradient(30deg, #F8C630 30%, #54aa00);
+    background: var(--background-gradient);
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #7D5BA6, 0 0 25px #7D5BA6, 0 0 50px #7D5BA6, 0 0 100px #7D5BA6;
+    box-shadow: 0 0 12px #54aa00, 0 0 24px #54aa00, 0 0 36px #54aa00;
 }
 
-.loginBox .a span{
+.loginBox #a span{
     position: absolute;
     display: block;
 }
 
-.loginBox .a span:nth-child(1){
+.loginBox #a span:nth-child(1){
     top: 0;
     left: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #7D5BA6);
+    background: linear-gradient(90deg, transparent, #54aa00);
     animation: btn-anim1 1s linear infinite;
 }
 
@@ -79,12 +71,12 @@ label{
     }
 }
 
-.loginBox .a span:nth-child(2){
+.loginBox #a span:nth-child(2){
     top: -100;
     right: 0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(180deg, transparent, #7D5BA6);
+    background: linear-gradient(180deg, transparent, #54aa00);
     animation: btn-anim2 1s linear infinite;
     animation-delay: .25s;
 }
@@ -98,12 +90,12 @@ label{
     }
 }
 
-.loginBox .a span:nth-child(3){
+.loginBox #a span:nth-child(3){
     bottom: 0;
     right: -100%;
     width: 100%;
     height: 2px;
-    background: linear-gradient(270deg, transparent, #7D5BA6);
+    background: linear-gradient(270deg, transparent, #54aa00);
     animation: btn-anim3 1s linear infinite;
     animation-delay: .5s;
 }
@@ -117,12 +109,12 @@ label{
     }
 }
 
-.loginBox .a span:nth-child(4){
+.loginBox #a span:nth-child(4){
     bottom: -100%;
     left: -0;
     width: 2px;
     height: 100%;
-    background: linear-gradient(90deg, transparent, #7D5BA6);
+    background: linear-gradient(90deg, transparent, #54aa00);
     animation: btn-anim4 1s linear infinite;
     animation-delay: .75s;
 }
@@ -136,11 +128,11 @@ label{
     }
 }
 
-.loginBox form .a{
+.loginBox form #a{
     position: relative;
     display: inline-block;
     padding: 10px 20px;
-    color: #7D5BA6;
+    color: white;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -148,6 +140,8 @@ label{
     transition: .5s;
     margin-top: 10px;
     letter-spacing: 4px;
-    background-color: #242325;
-    margin-left: 15vh;
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);
+    background: var(--background-gradient);
+    text-align: center;
+
 }
