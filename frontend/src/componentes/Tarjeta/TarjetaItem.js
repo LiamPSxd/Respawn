@@ -7,7 +7,6 @@ const TarjetaItem = ({ tarjeta }) => {
     const history = useNavigate();
 
     const clickTarjeta = async () => {
-        console.log(tarjeta.id)
         const cookies = new Cookies();
         cookies.set("idTarjeta",tarjeta.id,{ path: "/pago/tarjeta" });
         cookies.set("metodo","1",{ path: "/pago/tarjeta" });

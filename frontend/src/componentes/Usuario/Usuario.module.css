@@ -40,15 +40,6 @@ label{
     color: #fff;
 }
 
-
-/* .login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #03e9f4;
-  font-size: 12px;
-} */
-
 .loginBox #a:hover{
     --background-gradient: linear-gradient(30deg, #F8C630 30%, #54aa00);
     background: var(--background-gradient);

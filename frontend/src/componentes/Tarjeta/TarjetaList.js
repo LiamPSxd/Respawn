@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {memo, useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import Style from "./Tarjeta.module.css"
 import TarjetaItem from "./TarjetaItem";
@@ -53,4 +53,4 @@ const TarjetaList = () =>{
         </>
     );
 }
-export default TarjetaList;
+export default memo(TarjetaList);
