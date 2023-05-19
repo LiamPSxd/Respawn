@@ -4,13 +4,20 @@ import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import style from "./Divisa.module.css";
 import { useEffect } from "react";
 import { useState } from "react";
-// import Mensaje from '../Mensaje/Mensaje';
+import Mensaje from '../Mensaje/Mensaje';
 
 const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
-    // const [titulo, setTitulo] = useState(null);
-    // const [contenido, setContenido] = useState(null);
+    const [showMensaje, setShowMensaje] = useState(false);
+    const [titulo, setTitulo] = useState(null);
+    const [contenido, setContenido] = useState(null);
 
     const [fontSize, setFontSize] = useState(0);
+
+    const mostrarMensaje = (title, content) => {
+        setTitulo(title);
+        setContenido(content)
+        setShowMensaje(!showMensaje);
+    }
 
     const handleCambioDivisa = async (newDiv) => {
         await divisas.forEach(async oldDiv => {
@@ -43,15 +50,10 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
     const verificarCambio = async (simbolo) => {
         const data = (await (await VideojuegoServer.getVideojuego(0)).json()).Videojuegos[0];
 
-        if(data.precio.simbolo === simbolo){
-            // setTitulo("Éxito");
-            // setContenido("Modena aplicada con éxito");
-            console.log("Modena aplicada con éxito");
-        }else{
-            // setTitulo("No se aplicó la divisa en el sistema");
-            // setContenido("Moneda no aplicada correctamente. Por favor, intente más tarde");
-            console.log("Moneda no aplicada correctamente. Por favor, intente más tarde");
-        }
+        if(data.precio.simbolo)
+            mostrarMensaje("Éxito", "Moneda aplicada con éxito");
+        else
+            mostrarMensaje("No se aplicó la divisa en el sistema", "Moneda no aplicada correctamente. Por favor, intente más tarde");
     };
 
     const handleTitulo = () => {
@@ -77,11 +79,10 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
         // eslint-disable-next-line
     }, []);
 
-
     return(
         <><div id={style.tarjeta} className="card">
             <div id={style.cardBody} className="card-body">
-                <h1 id={style.titulo} style={{fontSize: fontSize + "em"}} className="card-title">{divisa.nombre}</h1>
+                <h1 id={style.titulo} style={{fontSize: `${fontSize}em`}} className="card-title">{divisa.nombre}</h1>
 
                 <div id={style.contenidoTarjeta}>
                     <h4 className="card-text text-muted">{divisa.pais}</h4>
@@ -95,10 +96,10 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
                         <button id={style.boton} onClick={() => handleCambioDivisa(divisa)} className="btn btn-primary my-2">Seleccionar</button>
                     )}
                 </div>
-
-                {/* <Mensaje titulo={titulo} contenido={contenido} estado={false} /> */}
             </div>
-        </div></>
+        </div>
+        
+        <Mensaje show={showMensaje} close={mostrarMensaje} title={titulo} status={false}>{contenido}</Mensaje></>
     );
 };
 
