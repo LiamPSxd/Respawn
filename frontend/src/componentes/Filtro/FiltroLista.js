@@ -24,7 +24,6 @@ const FiltroLista = ({ catalogo }) => {
     
         if(dataCatalogoFiltro.message === "Exitoso")
             await dataCatalogoFiltro.CatalogoFiltros.forEach(cf => {
-                console.log(cf.idFiltro)
                 idFiltros += `${cf.idFiltro},`;
             });
 

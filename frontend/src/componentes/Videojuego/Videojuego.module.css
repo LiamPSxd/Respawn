@@ -1,136 +1,153 @@
-#general{
-    color: white;
+#general {
+  color: white;
 }
 
-#contenedorTarjetas{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:left;
-    text-align: center;
-    padding: 30px;
-    padding-top: 30px;
-    color: white;
+#contenedorTarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  text-align: center;
+  padding: 30px;
+  padding-top: 30px;
+  color: white;
 }
 
-#tarjeta{
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-left: 15px;
-    margin-right: 15px;
-    width: 20rem;
-    display: inline-block;
-    border-color: white;
-    background-color: #72020b;
-    border-radius: 25px;
-    box-shadow: 1px 1px 20px 4px rgba(0, 0, 0, 5);
-    position: relative;
+#tarjeta {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 20rem;
+  display: inline-block;
+  border-color: white;
+  background-color: #72020b;
+  border-radius: 25px;
+  box-shadow: 1px 1px 20px 4px rgba(0, 0, 0, 5);
+  position: relative;
 }
 
-#tarjeta:hover #wishlist{
-    visibility: visible;
+#tarjeta:hover #wishlist {
+  visibility: visible;
 }
 
-#imgCard{
-    height: 360px;
-    border-top-left-radius: 25px;
-    border-top-right-radius:25px;
-    position: relative;
+#imgCard {
+  height: 360px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  position: relative;
 }
 
-#wishlist{
-    position: absolute;
-    left: 82%;
-    z-index: 1;
-    visibility: hidden;
+#wishlist {
+  position: absolute;
+  left: 82%;
+  z-index: 1;
+  visibility: hidden;
 }
 
-#contenidoTarjeta{
-    text-align: start;
-    padding-top: 5px;
-    padding-bottom: 20px;
+#contenidoTarjeta {
+  text-align: start;
+  padding-top: 5px;
+  padding-bottom: 20px;
 }
 
-#botonDetalles{
-    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
-    background: var(--background-gradient);
-    border: 1px solid #72020b
+#botonDetalles {
+  --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);
+  ;
+  background: var(--background-gradient);
+  border: 1px solid #72020b
 }
 
-#titulo{
-    font-weight: bold;
+#titulo {
+  font-weight: bold;
 }
 
-#cardBody{
-    margin: 0px;
-    padding-top: 10px;
+#cardBody {
+  margin: 0px;
+  padding-top: 10px;
 }
 
-#item{
-    border-radius: 25px;
-    height: 20em;
-    margin-top: 1%;
+#item {
+  border-radius: 25px;
+  height: 20em;
+  margin-top: 1%;
 }
 
-#video{
-    margin-top: 10%;
-    width: 100%;
-    height: 100%;
-    border-radius: 0px;
+#video {
+  margin-top: 10%;
+  width: 100%;
+  height: 100%;
+  border-radius: 0px;
 }
 
-#longText{
-    height: 0;
-    overflow: hidden;
-    display: inline-block;
+#longText {
+  height: 0;
+  overflow: hidden;
+  display: inline-block;
 }
 
-#expanded{
-    height: 15rem;
+#expanded {
+  height: 15rem;
 }
-#readmorelink{
-    color: blueviolet;
-    text-decoration: underline;
-    letter-spacing: 1px;
-    cursor: pointer;
-  }
-  #extracontent{
-    color: cornflowerblue;
-    font-weight: 500;
-  }
 
-  #btn{
-    border: 1px solid white;
-    background-color: white;
-    color: #72020b;
-    margin: 1%;
-  }
+#readmorelink {
+  color: blueviolet;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
 
-  #btnComprar{
-    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
-    background: var(--background-gradient);
-    border: 1px solid #d12f28;
-    color: white;
-  }
+#extracontent {
+  color: cornflowerblue;
+  font-weight: 500;
+}
 
-  #btn:hover{
-    border: 2px solid #72020b;
-    font-weight: bolder;
-  }
+.btn {
+  border: 1px solid white;
+  background-color: white;
+  color: #72020b;
+  margin: 1%;
+  position: relative;
+  padding: 10px;
+  display: inline-block;
+  overflow: hidden;
+  transition: .5s;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+}
 
-  #btnModal{
-    background: #F8C630;
-    border: 1px solid #F8C630
-  }
+#btnComprar {
+  --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);
+  ;
+  background: var(--background-gradient);
+  border: 1px solid #d12f28;
+  color: white;
+}
 
-  #divBotones{
-    background: #ac2520;
-    padding: 3% 3% ;
-    vertical-align: middle;
-  }
+.btn:hover {
+  border: 2px solid #72020b;
+  font-weight: bolder;
+}
 
-  #hr {
-    margin: 0;
-    padding: 0;
-  }
-  
-  
+#btnModal {
+  background: #F8C630;
+  border: 1px solid #F8C630
+}
+
+#divBotones {
+  background: #ac2520;
+  padding: 3% 3%;
+  vertical-align: middle;
+}
+
+#hr {
+  margin: 0;
+  padding: 0;
+}

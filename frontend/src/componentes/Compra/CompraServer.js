@@ -27,6 +27,14 @@ export const addCompra = async (Compra) => {
             "monto": String(Compra.monto),
             "metodo": String(Compra.metodo),
             "descripcion": String(Compra.descripcion),
+            "idUsuario": String(Compra.idUsuario),
+            "idVideojuego": String(Compra.idVideojuego)
         })
+    });
+};
+
+export const deleteCompra= async (idCompra) => {
+    return await fetch(`${API_URL}${idCompra}`, {
+        method: "DELETE"
     });
 };

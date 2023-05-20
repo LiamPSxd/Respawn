@@ -8,11 +8,13 @@ import style from "./Videojuego.module.css";
 import Cookies from "universal-cookie";
 import Mensaje from "../Mensaje/Mensaje";
 import Comentario from "../Comentario/comentario";
+import * as CompraServer from "../Compra/CompraServer";
 
 const VideojuegoDetail = () => {
     const history = useNavigate();
     const params = useParams();
     const cookies = new Cookies();
+    var idUsuario = cookies.get("id");
 
     const [ReadMore, setReadMore] = useState(false);
     const linkName = ReadMore ? 'Ver Menos <<' : 'Ver Mas >>'
@@ -32,6 +34,19 @@ const VideojuegoDetail = () => {
     const initialState = { id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: [], genero: "", plataforma: "", datosExtra: "", calificacion: 0.0, capturas: [] };
     const [videojuego, setVideojuego] = useState(initialState);
 
+    const getAllCompras = async (idVideojuego) => {
+        try {
+            const data = await (await CompraServer.getAllCompras()).json();
+            data.Compras.forEach(compra => {
+                if(compra.idUsuario===idUsuario && compra.idVideojuego===idVideojuego){
+                    document.getElementById("btnCR").textContent= "Reembolsar $"
+                }
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const getVideojuego = async (idVideojuego) => {
         try {
             const data = await (await VideojuegoServer.getVideojuego(idVideojuego)).json();
@@ -43,16 +58,22 @@ const VideojuegoDetail = () => {
     };
 
     const validarSesion = () => {
-        if (cookies.get("id")) {
+        if(document.getElementById("btnCR").textContent==="Comprar $"){
+            if (cookies.get("id")) {
+                cookies.set("videojuegoId", `${videojuego.id}`, { path: "/" });
+                history("/pago");
+            } else mostrarMensaje("Advertencia", "Necesitas tener una cuenta para continuar, ¿Desea iniciar sesión ahora?", true);
+        }else{
             cookies.set("videojuegoId", `${videojuego.id}`, { path: "/" });
-            history("/pago");
-        } else mostrarMensaje("Advertencia", "Necesitas tener una cuenta para continuar, ¿Desea iniciar sesión ahora?", true);
+            history("/reembolso");
+        }
     };
     const extra = <p align="justify" id={style.extracontent}>{videojuego.datosExtra}</p>
 
     useEffect(() => {
+        cookies.set("videojuegoId", `${videojuego.id}`, { path: "/" });
         if (params.id) getVideojuego(params.id);
-        console.log(params.id)
+        getAllCompras(params.id)
         // eslint-disable-next-line
     }, []);
 
@@ -85,10 +106,12 @@ const VideojuegoDetail = () => {
                             <p id="price_container">
                                 {videojuego.precio.valor} {videojuego.precio.simbolo}
                             </p>
-                            <button className="btn" id={style.btn} onClick={() => validarSesion()}> Comprar $</button>
+                            
+                            <button className={style.btn} id="btnCR" onClick={() => validarSesion()}>Comprar $</button>
+                            
 
                             {cookies.get("id") ? (
-                                <><button className="btn" id={style.btn}> WishList ❤</button>
+                                <><button className={style.btn}> WishList ❤</button>
                                     <ModalCalificacion videojuego={videojuego} /></>
                             ) : null}
                         </div>

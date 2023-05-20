@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { DiscussionEmbed } from "disqus-react";
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import React, { useEffect, useState } from "react";
+import { memo } from "react";
 
 const Comentario = ({ idcomentario }) => {
   const params = useParams();
@@ -20,7 +21,6 @@ const Comentario = ({ idcomentario }) => {
 
   useEffect(() => {
     if (params.id) getVideojuego(params.id);
-    console.log(videojuego.id)
     // eslint-disable-next-line
   }, []);
   const identifier = `videojuego-${params.id}`;
@@ -39,4 +39,4 @@ const Comentario = ({ idcomentario }) => {
     </div>
   )
 }
-export default Comentario;
+export default memo(Comentario);

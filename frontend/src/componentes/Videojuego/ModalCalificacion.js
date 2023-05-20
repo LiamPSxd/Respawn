@@ -36,9 +36,9 @@ const ModalCalificacion = ({ videojuego }) => {
 
   return (
     <>
-      <Button variant="primary" id={style.btn} onClick={handleShow}>
+      <button className={style.btn} onClick={handleShow}>
         Calificar  ★ 
-      </Button>
+      </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

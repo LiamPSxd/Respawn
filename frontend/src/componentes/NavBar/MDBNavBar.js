@@ -54,7 +54,7 @@ const NavBar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (search == "") {
+    if (search === "") {
       window.alert("Búsqueda vacía")
     } else {
 
