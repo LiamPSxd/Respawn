@@ -44,11 +44,11 @@ const Pago = () => {
         }
     };
 
-    const calcIva = () => parseFloat(videojuego.precio.valor * 0.16).toFixed(2);
+    const calcIva = () => parseFloat(parseFloat(videojuego.precio.valor) * 0.16).toFixed(2);
 
     const calcIvaCompleto = () => `${calcIva()} ${videojuego.precio.simbolo}`;
 
-    const calcTotal = () => parseFloat(videojuego.precio.valor + parseFloat(calcIva())).toFixed(2);
+    const calcTotal = () => parseFloat(parseFloat(videojuego.precio.valor) + parseFloat(calcIva())).toFixed(2);
 
     const calcTotalCompleto = () => `${calcTotal()} ${videojuego.precio.simbolo}`;
 
@@ -73,7 +73,7 @@ const Pago = () => {
                     <h3 className="iva">IVA</h3>
                     <p><strong>{calcIvaCompleto()}</strong></p>
                     <h3>Total</h3>
-                    <p id="pTotal"><strong>{calcTotalCompleto()}</strong></p>
+                    <p><strong id="pTotal">{calcTotalCompleto()}</strong></p>
                 </div>
 
                 <p>Seleccione un método de pago</p>
