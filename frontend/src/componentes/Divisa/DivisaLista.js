@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DivisaItem from "./DivisaItem";
 import * as DivisaServer from "./DivisaServer";
 import { recuperarBusqueda } from "../NavBar/MDBNavBar";
+import Mensaje from "../Mensaje/Mensaje";
 import style from "./Divisa.module.css";
 
 let [divisas, setDivisas] = [];
@@ -9,8 +10,18 @@ let [divisas, setDivisas] = [];
 const DivisaLista = () => {
     [divisas, setDivisas] = useState([]);
 
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [showMensaje, setShowMensaje] = useState(false);
+
+    const mostrarMensaje = (title, content) => {
+        setTitulo(title);
+        setContenido(content);
+        setShowMensaje(!showMensaje);
+    };
+
     useEffect(() => {
-        listaDivisas(null);
+        if(!listaDivisas(null)) mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         // eslint-disable-next-line
     }, []);
 
@@ -19,7 +30,9 @@ const DivisaLista = () => {
             {divisas.map(divisa => (
                 <DivisaItem key={divisa.id} divisa={divisa} listaDivisas={listaDivisas} divisas={divisas} updateCurrencies={updateCurrencies} />
             ))}
-        </div></>
+        </div>
+
+        <Mensaje show={showMensaje} close={mostrarMensaje} title={titulo} status={false}>{contenido}</Mensaje></>
     );
 };
 
@@ -37,6 +50,9 @@ export const listaDivisas = async (busqueda) => {
         else setDivisas(recuperarBusqueda(busqueda, sortArray(data.Divisas)));
 
         sortArray(data.Divisas);
+
+        if(data.message === "Exitoso") return true;
+        else return false;
     }catch(error){
         console.log(error);
     }

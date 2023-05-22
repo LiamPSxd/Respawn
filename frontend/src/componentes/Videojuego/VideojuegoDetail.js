@@ -59,7 +59,7 @@ const VideojuegoDetail = () => {
 
     const validarSesion = () => {
         if(document.getElementById("btnCR").textContent==="Comprar $"){
-            if (cookies.get("id")) {
+            if(cookies.get("id")){
                 cookies.set("videojuegoId", `${videojuego.id}`, { path: "/" });
                 history("/pago");
             } else mostrarMensaje("Advertencia", "Necesitas tener una cuenta para continuar, ¿Desea iniciar sesión ahora?", true);
@@ -112,7 +112,7 @@ const VideojuegoDetail = () => {
 
                             {cookies.get("id") ? (
                                 <><button className={style.btn}> WishList ❤</button>
-                                    <ModalCalificacion videojuego={videojuego} /></>
+                                <ModalCalificacion videojuego={videojuego} /></>
                             ) : null}
                         </div>
 

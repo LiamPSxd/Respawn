@@ -3,15 +3,28 @@ import WishListItem from "./WishListItem";
 import * as WishListServer from "./WishListServer";
 import * as UsuarioWishListServer from "../Usuario/Relacion/UsuarioWishListServer";
 import Cookies from "universal-cookie";
+import Mensaje from "../Mensaje/Mensaje";
 
 const WishListLista = () => {
     const [wishLists, setWishLists] = useState([]);
     const cookies = new Cookies();
 
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [showMensaje, setShowMensaje] = useState(false);
+
+    const mostrarMensaje = (title, content) => {
+        setTitulo(title);
+        setContenido(content);
+        setShowMensaje(!showMensaje);
+    };
+
     const listaWishList = async () => {
         try{
             const data = await getContenido();
-            setWishLists(data.WishLists);
+
+            if(data.message === "Exitoso") setWishLists(data.WishLists);
+            else mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }catch(error){
             console.log(error);
         }
@@ -41,7 +54,9 @@ const WishListLista = () => {
                     <WishListItem key={wishList.id} wishlist={wishList} />
                 ))}
             </div>
-        </div></>
+        </div>
+        
+        <Mensaje show={showMensaje} close={mostrarMensaje} title={titulo} status={false}>{contenido}</Mensaje></>
     );
 };
 
