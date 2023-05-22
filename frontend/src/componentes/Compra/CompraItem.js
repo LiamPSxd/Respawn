@@ -69,7 +69,7 @@ const CompraItem = () => {
                     document.getElementById("btnConfirmar").style.visibility = "hidden";
                     document.getElementById("btnTicket").style.visibility = "visible";
                     tarjeta.saldo=tarjeta.saldo-videojuego.precio.valor;
-                    //const data= await (await TarjetaServer.updateTarjeta(tarjeta)).json();
+                    const data= await (await TarjetaServer.updateTarjeta(tarjeta)).json();
                     console.log(data);
                 } catch (error) {
                     console.log(error);
