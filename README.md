@@ -15,4 +15,4 @@ Pérez Sulvarán Liam Ibrahim- ICONIX MASTER
 Vásquez Lozano Brandon
 
 
-Lean el README de cada carpeta (Backend y Frontend)"# GraphQL" 
+Lean el README de cada carpeta (Backend y Frontend)
