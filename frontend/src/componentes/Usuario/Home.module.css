@@ -9,7 +9,6 @@
 
 .link {
     --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);
-    ;
     background: var(--background-gradient);
     position: relative;
     display: inline-block;
@@ -26,7 +25,6 @@
     color: white;
     text-decoration: none;
     --background-gradient: linear-gradient(30deg, #F8C630 30%, #54aa00);
-    ;
     background: var(--background-gradient);
     box-shadow: 0 0 12px #54aa00, 0 0 24px #54aa00, 0 0 36px #54aa00;
 }

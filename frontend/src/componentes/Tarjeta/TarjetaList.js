@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from "react";
+import React, {memo, useEffect, useState } from "react";
 import {Link} from "react-router-dom";
 import Style from "./Tarjeta.module.css"
 import TarjetaItem from "./TarjetaItem";
@@ -21,9 +21,8 @@ const TarjetaList = () =>{
         }else{
             return false
         }
-        
     }
-    console.log(getContenido())
+    
     const listaTarjetas = async () =>{
         try {
             const res = await TarjetaServer.getTarjetasById(await getContenido());
@@ -42,16 +41,16 @@ const TarjetaList = () =>{
     return(
         <>
         <div className="list-group" id={Style.containerTarjetas}>
-            <h4>Mis Tarjetas</h4>
+            <h4><strong>Mis Tarjetas</strong></h4>
             <p>Selecciona una tarjeta para continuar</p>
             <ol className="list-group" id={Style.olTarjetas}>
                     {tarjetas.map((tarjeta)=>(
                         <TarjetaItem key={tarjeta.id} tarjeta={tarjeta}/>
                     ))}
             </ol>
-            <Link to="/tarjetaForm">Agregar Tarjeta</Link>
+            <Link to="/tarjetaForm" id={Style.link}>Agregar Tarjeta</Link>
         </div>
         </>
     );
 }
-export default TarjetaList;
+export default memo(TarjetaList);

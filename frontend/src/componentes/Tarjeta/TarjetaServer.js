@@ -42,3 +42,21 @@ export const addUsuarioTarjeta = async (idUsuario, idTarjeta) =>{
 export const getUsuarioTarjetasById = async (idUsuario) =>{
     return await fetch(`${API_URL_RELACION}${idUsuario}`)
 }
+
+export const updateTarjeta = async (tarjeta) => {
+    return await fetch(`${API_URL}${tarjeta.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "id": String(tarjeta.id).trim(),
+            "saldo": parseFloat(tarjeta.saldo),
+            "tipo": String(tarjeta.tipo).trim(),
+            "pan": String(tarjeta.pan).trim(),
+            "fechaCaducidad": String(tarjeta.fechaCaducidad).trim(),
+            "cvv": parseInt(tarjeta.cvv),
+            "titular": String(tarjeta.titular).trim(),
+        })
+    });
+};

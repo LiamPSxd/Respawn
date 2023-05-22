@@ -1,14 +1,20 @@
 
+  .general{
+    height: 75vh;
+  }
+  
   .register {
     width: 50%;
     margin: auto;
     margin-top: 5%;
+    text-align: center;
+
   }
   .ticket {
     background: #F6F8FF;
     margin: 0 5%;
     padding: 5%;
-    box-shadow: 0 0 5px #7b5da6;
+    box-shadow: 0 0 5px #54aa00;
     color: #242325;
   }
   .ticket h1 {
@@ -31,10 +37,31 @@
   }
   .ticket tfoot th {
     font-size:larger;
-    border-top: 1px solid #7b5da6;
+    border-top: 1px solid #54aa00;
   }
   
   .entry {
     padding: 5%;
     font-size: 14px;
   }
+
+  #btn{
+    margin-top: 2%;
+    position: relative;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+    overflow: hidden;
+    transition: .5s;
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);
+    background: var(--background-gradient);
+    
+  }
+
+  #btn:hover{
+    --background-gradient: linear-gradient(30deg, #F8C630 30%, #54aa00);
+    background: var(--background-gradient);
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 12px #54aa00, 0 0 24px #54aa00, 0 0 36px #54aa00;
+}

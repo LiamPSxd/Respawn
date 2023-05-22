@@ -1,5 +1,5 @@
 class Compra:
-    def __init__(self, id = 0, fecha = "", hora = "", iva = .16, descuento = 0.0, monto = 0.0, metodo = "", descripcion = ""):
+    def __init__(self, id = 0, fecha = "", hora = "", iva = .16, descuento = 0.0, monto = 0.0, metodo = "", descripcion = "", idUsuario = "", idVideojuego = ""):
         self._id = id
         self._fecha = fecha
         self._hora = hora
@@ -8,6 +8,8 @@ class Compra:
         self._monto = monto
         self._metodo = metodo
         self._descripcion = descripcion
+        self._idUsuario = idUsuario
+        self._idVideojuego = idVideojuego
 
     @property
     def id(self):
@@ -72,6 +74,22 @@ class Compra:
     @descripcion.setter
     def descripcion(self, descripcion):
         self._descripcion = descripcion
+
+    @property
+    def idUsuario(self):
+        return self._idUsuario
+
+    @idUsuario.setter
+    def idUsuario(self, idUsuario):
+        self._idUsuario = idUsuario
+
+    @property
+    def idVideojuego(self):
+        return self._idVideojuego
+
+    @idVideojuego.setter
+    def idVideojuego(self, idVideojuego):
+        self._idVideojuego = idVideojuego
 
     def generarTicket(self):
         return f"Ticket {self.id}: {self.fecha}, {self.hora}, {self.iva}, {self.descuento}, {self.monto}, {self.metodo}, {self.descripcion}"

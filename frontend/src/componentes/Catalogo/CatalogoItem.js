@@ -9,7 +9,7 @@ const CatalogoItem = ({ catalogo }) => {
         <><div id={style.banner}>
             <MDBCarousel key={catalogo.id} showControls showIndicators fade>
                 {catalogo.banner.map((b, id) => (
-                    <CatalogoBanner id={style.item} key={id+1} id={id+1} banner={b} />
+                    <CatalogoBanner className={style.item} key={id+1} id={id+1} banner={b} />
                 ))}
             </MDBCarousel>
         </div>

@@ -37,6 +37,8 @@ const FiltroLista = ({ catalogo }) => {
                     if(e.target.value === c) idFiltro = `${filtro.id},${c}`;
                 })
             }else if(filtro.nombre === e.target.value) idFiltro = `${filtro.id},null`;
+
+            console.log(idFiltro)
         });
 
         listaVideojuegos(null, idFiltro);

@@ -21,6 +21,8 @@ import PayPal from "./componentes/PayPal/PayPalForm";
 import Ticket from "./componentes/Ticket/Ticket";
 import Inicio from "./componentes/Inicio/Inicio";
 import WishList from "./componentes/WishList/WishListLista";
+import Reembolso from "./componentes/Reembolso/Reembolso"
+import CompraItem from "./componentes/Compra/CompraItem";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -53,6 +55,8 @@ root.render(
       <Route exact path="/home" element={<Home />} />
       <Route exact path="/ticket" element={<Ticket />} />
       <Route exact path="/wishlist" element={<WishList />} />
+      <Route exact path="/confirmaPago" element={<CompraItem />} />
+      <Route exact path="/reembolso" element={<Reembolso />} />
     </Routes>
   </BrowserRouter>
 );

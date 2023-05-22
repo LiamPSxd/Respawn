@@ -31,7 +31,9 @@ class CompraV(View):
                             "descuento": value["descuento"],
                             "monto": value["monto"],
                             "metodo": value["metodo"],
-                            "descripcion": value["descripcion"]
+                            "descripcion": value["descripcion"],
+                            "idUsuario": value["idUsuario"],
+                            "idVideojuego": value["idVideojuego"]
                         })
             elif id == -1 and ids == "":
                 for key, value in db.getDocumento(documento).items():
@@ -44,7 +46,9 @@ class CompraV(View):
                             "descuento": value["descuento"],
                             "monto": value["monto"],
                             "metodo": value["metodo"],
-                            "descripcion": value["descripcion"]
+                            "descripcion": value["descripcion"],
+                            "idUsuario": value["idUsuario"],
+                            "idVideojuego": value["idVideojuego"]
                         })
             elif ids != "":
                 for key, value in db.getDocumento(documento).items():
@@ -58,7 +62,9 @@ class CompraV(View):
                                 "descuento": value["descuento"],
                                 "monto": value["monto"],
                                 "metodo": value["metodo"],
-                                "descripcion": value["descripcion"]
+                                "descripcion": value["descripcion"],
+                                "idUsuario": value["idUsuario"],
+                                "idVideojuego": value["idVideojuego"]
                             })
 
             if len(compras) > 0:
@@ -79,11 +85,13 @@ class CompraV(View):
                 jb["descuento"],
                 jb["monto"],
                 jb["metodo"],
-                jb["descripcion"]
+                jb["descripcion"],
+                jb["idUsuario"],
+                jb["idVideojuego"]
             )
 
             if c.fecha != "":
-                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "fecha": f"{c.fecha}", "hora": f"{c.hora}", "iva": f"{c.iva}", "descuento": f"{c.descuento}", "monto": f"{c.monto}", "metodo": f"{c.metodo}", "descripcion": f"{c.descripcion}"})
+                db.getDB().reference(documento).child(str(c.id)).set({"id": f"{c.id}", "fecha": f"{c.fecha}", "hora": f"{c.hora}", "iva": f"{c.iva}", "descuento": f"{c.descuento}", "monto": f"{c.monto}", "metodo": f"{c.metodo}", "descripcion": f"{c.descripcion}", "idUsuario": c.idUsuario, "idVideojuego": c.idVideojuego})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)
@@ -101,7 +109,9 @@ class CompraV(View):
                 jb["descuento"],
                 jb["monto"],
                 jb["metodo"],
-                jb["descripcion"]
+                jb["descripcion"],
+                jb["idUsuario"],
+                jb["idVideojuego"]
             )
             updatekey = ""
 
@@ -111,7 +121,7 @@ class CompraV(View):
                     break
 
             if updatekey != "":
-                db.getDB().reference(documento).child(updatekey).update({"id": f"{c.id}", "fecha": f"{c.fecha}", "hora": f"{c.hora}", "iva": f"{c.iva}", "descuento": f"{c.descuento}", "monto": f"{c.monto}", "metodo": f"{c.metodo}", "descripcion": f"{c.descripcion}"})
+                db.getDB().reference(documento).child(updatekey).update({"id": f"{c.id}", "fecha": f"{c.fecha}", "hora": f"{c.hora}", "iva": f"{c.iva}", "descuento": f"{c.descuento}", "monto": f"{c.monto}", "metodo": f"{c.metodo}", "descripcion": f"{c.descripcion}", "idUsuario": c.idUsuario, "idVideojuego": c.idVideojuego})
                 return JsonResponse(db.mensajeExitoso)
             else:
                 return JsonResponse(db.mensajeFallido)    

@@ -4,6 +4,8 @@
     justify-content: space-around;
     text-align: center;
     margin-top: 50px;
+    color: white;
+    height: 75vh;
 }
 
 #item{
@@ -17,16 +19,42 @@
     justify-content: center;
 }
 
-#cantidad{
+.cantidad{
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    color: white;
+
+    border-radius: var(--bs-border-radius-pill)!important;
+
     margin-top: 2%;
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
 }
 
 #containerContent{
     max-width: 354px;
 }
 
+#btn{
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
+    border: 1px solid #d12f28;
+    color: white;
+}
+
 .img{
     width: 338px;
     height: 414px;
     border-radius: 1.5rem;
+}
+
+#link{
+    color: #54aa00;
 }

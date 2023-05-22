@@ -4,6 +4,8 @@
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    color: white;
+    height: 75vh;
 }
 #olTarjetas{
     text-align: center;
@@ -12,4 +14,15 @@
 #imagen{
     width: 100px;
     height: 90px;
+}
+
+#btn{
+    --background-gradient: linear-gradient(30deg, #54aa00 30%, #F8C630);;
+    background: var(--background-gradient);
+    border: 1px solid #d12f28;
+    color: white;
+}
+
+#link{
+    color: #54aa00;
 }

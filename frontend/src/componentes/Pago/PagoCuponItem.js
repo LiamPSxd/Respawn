@@ -10,7 +10,7 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
             case 1:
                 return "disabled";
             case 3:
-                if(precio.valor > 1000 && cantidad > 0) return "";
+                if(precio.valor >= 1000 && cantidad > 0) return "";
                 else return "disabled";
             default:
                 return "";
@@ -20,8 +20,8 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
     const aplicarCupon = () => {
         const pTotal = document.getElementById("pTotal");
 
-        if(pTotal.innerHTML.split(" ")[0] === calcIva()){
-            const cant = document.getElementById(style.cantidad);
+        if(parseFloat(pTotal.innerHTML.split(" ")[0]) == parseFloat(calcIva())){
+            const cant = document.getElementById(`cantidad${cupon.id}`);
             let totalPrecio = calcIva();
 
             switch(cupon.id){
@@ -38,7 +38,7 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
 
             cant.innerHTML = cantidad -= 1;
             addDeshacer();
-            actualizarPrecio(totalPrecio);
+            actualizarPrecio(totalPrecio.toFixed(2));
         }
     };
 
@@ -51,7 +51,7 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
 
     const addDeshacer = () => {
         const container = document.getElementById("cupones");
-        const cant = document.getElementById(style.cantidad);
+        const cant = document.getElementById(`cantidad${cupon.id}`);
 
         const button = document.createElement("button");
         button.type = "button";
@@ -80,7 +80,7 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
                 </div>
 
                 <small>
-                    <span id={style.cantidad} className="badge bg-primary rounded-pill">{cantidad}</span>
+                    <span id={`cantidad${cupon.id}`} className={style.cantidad}>{cantidad}</span>
                 </small>
             </div>
         </button></>

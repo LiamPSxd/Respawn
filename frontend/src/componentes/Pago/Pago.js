@@ -16,12 +16,12 @@ const Pago = () => {
     const [usuarioCupones, setUsuarioCupones] = useState([]);
 
     const listaCupones = async () => {
-        try{
+        try {
             const data = await (await CuponServer.getCupones()).json();
             setCupones(data.Cupones);
 
             await getCantidad();
-        }catch(error){
+        } catch (error) {
             console.log(error);
         }
     };
@@ -29,26 +29,26 @@ const Pago = () => {
     const getCantidad = async () => {
         const dataUsuarioCupon = await (await UsuarioCuponServer.getUsuarioCuponByIdUsuario(cookies.get("id"))).json();
 
-        if(dataUsuarioCupon.message === "Exitoso")
+        if (dataUsuarioCupon.message === "Exitoso")
             setUsuarioCupones(dataUsuarioCupon.UsuarioCupones);
     };
 
     const getVideojuego = async () => {
-        try{
+        try {
             const data = await (await VideojuegoServer.getVideojuego(cookies.get("videojuegoId"))).json();
 
             const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
             setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
-        }catch(error){
+        } catch (error) {
             console.log(error);
         }
     };
 
-    const calcIva = () => parseFloat(videojuego.precio.valor * 0.16).toFixed(2);
+    const calcIva = () => parseFloat(parseFloat(videojuego.precio.valor) * 0.16).toFixed(2);
 
     const calcIvaCompleto = () => `${calcIva()} ${videojuego.precio.simbolo}`;
 
-    const calcTotal = () => parseFloat(videojuego.precio.valor + parseFloat(calcIva())).toFixed(2);
+    const calcTotal = () => parseFloat(parseFloat(videojuego.precio.valor) + parseFloat(calcIva())).toFixed(2);
 
     const calcTotalCompleto = () => `${calcTotal()} ${videojuego.precio.simbolo}`;
 
@@ -57,8 +57,8 @@ const Pago = () => {
         getVideojuego();
         // eslint-disable-next-line
     }, []);
-    
-    return(
+
+    return (
         <><div className={style.container}>
             <div className={style.containerImg}>
                 <img src={videojuego.caratula} alt="caratula" className={style.img}></img>
@@ -69,18 +69,18 @@ const Pago = () => {
 
                 <div className="containerCosts">
                     <h3 className="header3">Precio</h3>
-                    <p>{`${videojuego.precio.valor} ${videojuego.precio.simbolo}`}</p>
+                    <p><strong>{`${videojuego.precio.valor} ${videojuego.precio.simbolo}`}</strong></p>
                     <h3 className="iva">IVA</h3>
-                    <p>{calcIvaCompleto()}</p>
+                    <p><strong>{calcIvaCompleto()}</strong></p>
                     <h3>Total</h3>
-                    <p id="pTotal">{calcTotalCompleto()}</p>
+                    <p><strong id="pTotal">{calcTotalCompleto()}</strong></p>
                 </div>
 
                 <p>Seleccione un método de pago</p>
 
-                <div style={{display:"flex", justifyContent:"space-evenly"}}>
-                    <button type="button" className="btn-primary" onClick={()=>history(`/pago/tarjeta`)}>Tarjeta</button>
-                    <button type="button" className="btn-primary" onClick={()=>history(`/pago/paypal`)}>PayPal</button>
+                <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+                    <button type="button" className="btn" id={style.btn} onClick={() => history(`/pago/tarjeta`)}>Tarjeta</button>
+                    <button type="button" className="btn" id={style.btn} onClick={() => history(`/pago/paypal`)}>PayPal</button>
                 </div>
             </div>
 
@@ -91,7 +91,7 @@ const Pago = () => {
                     <PagoCuponLista cupones={cupones} cantidades={usuarioCupones} precio={videojuego.precio} />
                 </div>
 
-                <Link to="/cupones">Ver más información</Link>
+                <Link to="/cupones" id={style.link}>Ver más información</Link>
             </div>
         </div></>
     );

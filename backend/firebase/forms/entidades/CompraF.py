@@ -10,3 +10,5 @@ class CompraF(forms.Form):
     _monto = forms.FloatField(required = True)
     _metodo = forms.CharField(max_length = 10, required = True)
     _descripcion = forms.CharField(max_length = 250, required = True)
+    _idUsuario = forms.IntegerField(required = True)
+    _idVideojuego = forms.IntegerField(required = True)
