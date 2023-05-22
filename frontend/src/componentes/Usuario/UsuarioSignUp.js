@@ -42,6 +42,12 @@ const UsuarioSignUp = () => {
                     await addWishList();
                     await addCupon();
 
+                    cookies.remove("id");
+                    cookies.remove("nombre");
+                    cookies.remove("correo");
+                    cookies.remove("contrasenia");
+                    cookies.remove("domicilio");
+                    
                     cookies.set("id", `${dataUsuario.Usuarios[0].id}`, { path: "/" });
                     cookies.set("nombre", dataUsuario.Usuarios[0].nombre, { path: "/" });
                     cookies.set("correo", usuario.correo, { path: "/" });

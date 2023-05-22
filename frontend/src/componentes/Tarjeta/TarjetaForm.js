@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import * as TarjetaServer from "./TarjetaServer"
 import Cookies from "universal-cookie";
-<<<<<<< HEAD
-import { useNavigate } from "react-router-dom";
-const TarjetaForm = () =>{
-    const history = useNavigate();
-=======
+import { useNavigate } from "react-router-dom";    
 import style from "./Tarjeta.module.css"
 
 const TarjetaForm = () => {
->>>>>>> 8a8c94d7d59c4a8c5f6fb2fa34721ba29035f82d
+    const history = useNavigate();
     const cookies = new Cookies();
     let idUsuario = cookies.get("id")
     const initialState = {
