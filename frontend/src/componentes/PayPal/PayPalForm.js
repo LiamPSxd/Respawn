@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import * as PayPalServer from "./PayPalServer"
 import Cookies from "universal-cookie";
 import Style from "./PayPal.module.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const PayPalForm = () =>{
+    const history = useNavigate();
     const cookies = new Cookies();
     let idUsuario = cookies.get("id")
     const initialState ={
@@ -26,6 +27,7 @@ const PayPalForm = () =>{
                     await PayPalServer.addUsuarioPayPal(idUsuario, element.id)
                 }
             });
+            history('/pago')
         } catch (error) {
             console.log(error)
         }
@@ -44,7 +46,7 @@ const PayPalForm = () =>{
                     <form onSubmit={handleSubmit} id={Style.idCol}>
                         <div className="mb-3">
                             <label className="form-label">Correo Electrónico</label>
-                            <input id="iCorreo" onChange={handleInputChange} type="email" className="form-control" name="correo" placeholder="Correo eléctronico o número de celular"/>
+                            <input id="iCorreo" onChange={handleInputChange} type="email" className="form-control" name="correo" placeholder="Correo eléctronico"/>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Contraseña</label>

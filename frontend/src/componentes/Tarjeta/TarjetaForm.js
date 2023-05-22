@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import * as TarjetaServer from "./TarjetaServer"
 import Cookies from "universal-cookie";
-
+import { useNavigate } from "react-router-dom";
 const TarjetaForm = () =>{
+    const history = useNavigate();
     const cookies = new Cookies();
     let idUsuario = cookies.get("id")
     const initialState = {
@@ -33,6 +34,7 @@ const TarjetaForm = () =>{
                     await TarjetaServer.addUsuarioTarjeta(idUsuario,element.id);
                 }
             });
+            history('/pago/tarjeta')
         } catch (error) {
             console.log(error);
         }
