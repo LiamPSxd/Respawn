@@ -16,16 +16,16 @@ export const getUsuarioCupon = async (usuarioCupon) => {
     return await fetch(`${API_URL}${usuarioCupon.idUsuario}/${usuarioCupon.idCupon}`);
 };
 
-export const addUsuarioCupon = async (usuarioCupon) => {
+export const addUsuarioCupon = async (idUsuario, idCupon, cantidad) => {
     return await fetch(API_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "idUsuario": String(usuarioCupon.idUsuario).trim(),
-            "idCupon": String(usuarioCupon.idCupon).trim(),
-            "cantidad": String(usuarioCupon.cantidad)
+            "idUsuario": String(idUsuario).trim(),
+            "idCupon": String(idCupon).trim(),
+            "cantidad": String(cantidad)
         })
     });
 };

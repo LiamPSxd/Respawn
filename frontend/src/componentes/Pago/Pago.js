@@ -6,14 +6,25 @@ import * as UsuarioCuponServer from "../Usuario/Relacion/UsuarioCuponServer";
 import Cookies from "universal-cookie";
 import style from "./Pago.module.css";
 import PagoCuponLista from "./PagoCuponLista";
+import Mensaje from "../Mensaje/Mensaje";
 
 const Pago = () => {
     const history = useNavigate();
     const cookies = new Cookies();
 
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [showMensaje, setShowMensaje] = useState(false);
+
     const [videojuego, setVideojuego] = useState({ id: 0, nombre: "", descripcion: "", caratula: "", video: "", precio: [], genero: "", plataforma: "", datosExtra: "", calificacion: 0, capturas: [] });
     const [cupones, setCupones] = useState([]);
     const [usuarioCupones, setUsuarioCupones] = useState([]);
+
+    const mostrarMensaje = (title, content) => {
+        setTitulo(title);
+        setContenido(content);
+        setShowMensaje(!showMensaje);
+    };
 
     const listaCupones = async () => {
         try {
@@ -37,8 +48,10 @@ const Pago = () => {
         try {
             const data = await (await VideojuegoServer.getVideojuego(cookies.get("videojuegoId"))).json();
 
-            const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
+            if(data.message === "Exitoso"){
+                const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
             setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
+            }else mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         } catch (error) {
             console.log(error);
         }
@@ -93,7 +106,9 @@ const Pago = () => {
 
                 <Link to="/cupones" id={style.link}>Ver más información</Link>
             </div>
-        </div></>
+        </div>
+        
+        <Mensaje show={showMensaje} close={mostrarMensaje} title={titulo} status={false}>{contenido}</Mensaje></>
     );
 };
 

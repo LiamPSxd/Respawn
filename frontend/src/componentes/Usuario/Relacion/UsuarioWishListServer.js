@@ -16,15 +16,15 @@ export const getUsuarioWishList = async (usuarioWishList) => {
     return await fetch(`${API_URL}${usuarioWishList.idUsuario}/${usuarioWishList.idWishList}`);
 };
 
-export const addUsuarioWishList = async (usuarioWishList) => {
+export const addUsuarioWishList = async (idUsuario, idWishList) => {
     return await fetch(API_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "idUsuario": String(usuarioWishList.idUsuario).trim(),
-            "idWishList": String(usuarioWishList.idWishList).trim()
+            "idUsuario": String(idUsuario).trim(),
+            "idWishList": String(idWishList).trim()
         })
     });
 };

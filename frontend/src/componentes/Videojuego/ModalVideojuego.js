@@ -4,12 +4,23 @@ import ReactDom from "react-dom";
 import style from "../Mensaje/Mensaje.module.scss";
 import buttonClose from "../Mensaje/media/close.svg";
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
+import Mensaje from "../Mensaje/Mensaje";
 
 const ModalVideojuego = ({ show, close }) => {
     const history = useNavigate();
 
     const [videojuego, setVideojuego] = useState([]);
     const [fontSize, setFontSize] = useState(0);
+
+    const [titulo, setTitulo] = useState("");
+    const [contenido, setContenido] = useState("");
+    const [showMensaje, setShowMensaje] = useState(false);
+
+    const mostrarMensaje = (title, content) => {
+        setTitulo(title);
+        setContenido(content);
+        setShowMensaje(!showMensaje);
+    };
 
     const handleTitulo = (nombre) => {
         const titulo = nombre.length;
@@ -40,9 +51,11 @@ const ModalVideojuego = ({ show, close }) => {
     const getVideojuegoAleatorio = async () => {
         try{
             const data = await (await VideojuegoServer.getVideojuego(await getNumberRandom())).json();
-            await setVideojuego(data.Videojuegos[0]);
 
-            handleTitulo(data.Videojuegos[0].nombre);
+            if(data.message === "Exitoso"){
+                await setVideojuego(data.Videojuegos[0]);
+                handleTitulo(data.Videojuegos[0].nombre);
+            }else mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }catch(error){
             console.log(error);
         }
@@ -72,7 +85,9 @@ const ModalVideojuego = ({ show, close }) => {
                     <button className={style.modalCerrar} onClick={() => close()}>No me interesa</button>
                 </footer>
             </div>
-        </div></>,
+        </div>
+
+        <Mensaje show={showMensaje} close={mostrarMensaje} title={titulo} status={false}>{contenido}</Mensaje></>,
         document.getElementById("mensaje")
     );
 };

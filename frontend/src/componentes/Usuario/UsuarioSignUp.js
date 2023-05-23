@@ -11,8 +11,6 @@ const UsuarioSignUp = () => {
     const history = useNavigate();
 
     const [usuario, setUsuario] = useState({ id: 0, nombre: "", correo: "", contrasenia: "", domicilio: "", carrito: [] });
-    const [usuarioWishList, setUsuarioWishList] = useState({ idUsuario: 0, idWishList: 0 });
-    const [usuarioCupon, setUsuarioCupon] = useState({ idUsuario: 0, idCupon: 0, cantidad: 0 });
 
     const handleInputChange = (e) => {
         setUsuario({ ...usuario, [e.target.name]: e.target.value });
@@ -37,10 +35,13 @@ const UsuarioSignUp = () => {
                     const cookies = new Cookies();
 
                     await (await UsuarioServer.getAllUsuarios()).json().then(u => {
-                        dataUsuario = u;
+                        u.Usuarios.map( us =>
+                            dataUsuario = us
+                        );
                     });
-                    await addWishList();
-                    await addCupon();
+
+                    await addWishList(dataUsuario.id);
+                    await addCupon(dataUsuario.id);
 
                     cookies.remove("id");
                     cookies.remove("nombre");
@@ -48,11 +49,11 @@ const UsuarioSignUp = () => {
                     cookies.remove("contrasenia");
                     cookies.remove("domicilio");
                     
-                    cookies.set("id", `${dataUsuario.Usuarios[0].id}`, { path: "/" });
-                    cookies.set("nombre", dataUsuario.Usuarios[0].nombre, { path: "/" });
+                    cookies.set("id", `${dataUsuario.id}`, { path: "/" });
+                    cookies.set("nombre", dataUsuario.nombre, { path: "/" });
                     cookies.set("correo", usuario.correo, { path: "/" });
                     cookies.set("contrasenia", usuario.contrasenia, { path: "/" });
-                    cookies.set("domicilio", dataUsuario.Usuarios[0].domicilio, { path: "/" });
+                    cookies.set("domicilio", dataUsuario.domicilio, { path: "/" });
 
                     history("/home");
                 } else console.log("Problema al crear la cuenta");
@@ -62,77 +63,44 @@ const UsuarioSignUp = () => {
         }
     };
 
-    const addWishList = async () => {
+    const addWishList = async (idUsuario) => {
         const data = await (await WishListServer.addWishList("0")).json();
 
         if (data.message === "Exitoso") {
             const dataWishLists = await (await WishListServer.getAllWishLists()).json();
-            let idWishList = "";
 
-            dataWishLists.WishLists.forEach(async wishList => {
+            await dataWishLists.WishLists.forEach(async wishList => {
                 const uw = await (await UsuarioWishListServer.getUsuarioWishListByIdWishList(wishList.id)).json();
 
-                if (uw.message !== "Exitoso") idWishList = wishList.id
-            })
-
-            setUsuarioWishList(usuario.id, idWishList);
-            await UsuarioWishListServer.addUsuarioWishList(usuarioWishList);
+                if(uw.message !== "Exitoso"){
+                    await UsuarioWishListServer.addUsuarioWishList(idUsuario, wishList.id);
+                }
+            });
         }
     };
 
-    const addCupon = async () => {
+    const addCupon = async (idUsuario) => {
         for (let i = 0; i < 4; i++) {
-            switch (i) {
+            switch(i){
                 case 0:
-                    setUsuarioCupon(usuario.id, i, 1);
+                    await (await UsuarioCuponServer.addUsuarioCupon(idUsuario, i, 1)).json();
                     break;
                 case 1:
-                    setUsuarioCupon(usuario.id, i, 0);
+                    await (await UsuarioCuponServer.addUsuarioCupon(idUsuario, i, 0)).json();
                     break;
                 case 2:
-                    setUsuarioCupon(usuario.id, i, 3);
+                    await (await UsuarioCuponServer.addUsuarioCupon(idUsuario, i, 3)).json();
                     break;
                 case 3:
-                    setUsuarioCupon(usuario.id, i, 5);
+                    await (await UsuarioCuponServer.addUsuarioCupon(idUsuario, i, 5)).json();
                     break;
                 default:
                     break;
             }
-
-            await (await UsuarioCuponServer.addUsuarioCupon(usuarioCupon)).json();
         }
     };
 
     return (
-        // <html>
-        //     <div className={styles.loginbox}>
-        //     <h2>Registro</h2>
-        //     <form onSubmit={handleSubmit}>
-
-        //         <div className={styles.userBox}>
-        //             <label >Nombre</label>
-        //             <input type="text" name="nombre" placeholder="username" onChange={handleInputChange}  minLength="5" maxLength="20" autoFocus required />
-        //         </div>
-
-        //         <div className={styles.userBox}>
-        //             <label >Correo Electrónico</label>
-        //             <input type="email" name="correo" placeholder="youremail@company.ltd" onChange={handleInputChange}  minLength="5" maxLength="70" autoFocus required />
-        //         </div>
-
-        //         <div className={styles.userBox}>
-        //             <label >Contraseña</label>
-        //             <input type="password" name="contrasenia" placeholder="*****" onChange={handleInputChange}  minLength="6" maxLength="20" autoFocus required />
-        //         </div>
-
-        //         <div className={styles.userBox}>
-        //             <label >Domicilio</label>
-        //             <input type="text" name="domicilio" placeholder="address" onChange={handleInputChange}  minLength="5" maxLength="150" autoFocus required />
-        //         </div>
-
-        //         <button type="submit" className="btn btn-primary">Iniciar Sesión</button> 
-        //     </form>
-        // </div>
-        // </html>
         <><div className={styles.html2}>
             <div className={styles.loginBox}>
                 <h2>Registro</h2>
