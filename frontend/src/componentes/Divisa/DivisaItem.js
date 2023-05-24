@@ -44,10 +44,10 @@ const DivisaItem = ({ divisa, listaDivisas, divisas, updateCurrencies }) => {
         });
 
         await updateCurrencies(divisas, newDiv.simbolo);
-        await verificarCambio(divisa.simbolo);
+        await verificarCambio();
     };
 
-    const verificarCambio = async (simbolo) => {
+    const verificarCambio = async () => {
         const data = (await (await VideojuegoServer.getVideojuego(0)).json()).Videojuegos[0];
 
         if(data.precio.simbolo)

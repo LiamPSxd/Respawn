@@ -33,15 +33,16 @@ const Pago = () => {
 
             await getCantidad();
         } catch (error) {
-            console.log(error);
+            mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }
     };
 
     const getCantidad = async () => {
         const dataUsuarioCupon = await (await UsuarioCuponServer.getUsuarioCuponByIdUsuario(cookies.get("id"))).json();
 
-        if (dataUsuarioCupon.message === "Exitoso")
+        if(dataUsuarioCupon.message === "Exitoso")
             setUsuarioCupones(dataUsuarioCupon.UsuarioCupones);
+        else mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
     };
 
     const getVideojuego = async () => {
@@ -50,10 +51,10 @@ const Pago = () => {
 
             if(data.message === "Exitoso"){
                 const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
-            setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
-            }else mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
+                setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
+            }
         } catch (error) {
-            console.log(error);
+            mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }
     };
 

@@ -41,6 +41,7 @@ const NavBar = () => {
 
     if (window.confirm("¿Seguro que quieres cerrar sesión?")) {
 
+      cookies.set("id", null, { path: "/" });
       cookies.remove("id");
       cookies.remove("nombre");
       cookies.remove("correo");
