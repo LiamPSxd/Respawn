@@ -8,7 +8,6 @@ import * as TarjetaServer from "../Tarjeta/TarjetaServer"
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
 import { memo } from "react";
 
-
 const CompraItem = () => {
     const history = useNavigate();
     const cookies = new Cookies();
@@ -56,7 +55,7 @@ const CompraItem = () => {
 
     const procesarCompra = async () => {
         if(compra.id===0){
-            if (cvvC == tarjeta.cvv) {
+            if (cvvC === tarjeta.cvv) {
                 try {
                     compra.idVideojuego = idVideojuego;
                     compra.idUsuario = idUsuario;
