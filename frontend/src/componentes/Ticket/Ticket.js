@@ -23,7 +23,7 @@ const Ticket = () => {
                 }
             });
         } catch (error) {
-            console.log(error);
+            window.alert("No se puede generar un ticket ahora mismo")
         }
     };
 
