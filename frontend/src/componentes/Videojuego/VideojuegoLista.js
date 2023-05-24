@@ -50,7 +50,7 @@ export const listaVideojuegos = async (busqueda, idFiltro) => {
         if(busqueda == null) setVideojuegos(data.Videojuegos);
         else setVideojuegos(recuperarBusqueda(busqueda, data.Videojuegos));
     }catch(error){
-        window.alert("Error al realizar la búsqueda, por favor inténtalo más tarde")
+        window.alert("Error al realizar la búsqueda, por favor inténtalo más tarde");
     }
 };
 
@@ -65,23 +65,25 @@ const getContenido = async (idFiltro) => {
 
     let dataVideojuegos = await (await VideojuegoServer.getVideojuegosByIdVideojuegos(idVideojuegos)).json();
 
-    if(idFiltro === "-1") return dataVideojuegos;
-    else{
-        const filtro = await (await VideojuegoServer.getVideojuegosByIdFiltro(idFiltro)).json();
+    if(dataVideojuegos.message === "Exitoso"){
+        if(idFiltro === "-1") return dataVideojuegos;
+        else{
+            const filtro = await (await VideojuegoServer.getVideojuegosByIdFiltro(idFiltro)).json();
 
-        if(filtro.message === "Exitoso"){
-            const data = {"Videojuegos": []};
+            if(filtro.message === "Exitoso"){
+                const data = {"Videojuegos": []};
 
-            filtro.Videojuegos.forEach(videojuego => {
-                dataVideojuegos.Videojuegos.forEach(v => {
-                    if(v.id === videojuego.id) data.Videojuegos.push(v);
+                filtro.Videojuegos.forEach(videojuego => {
+                    dataVideojuegos.Videojuegos.forEach(v => {
+                        if(v.id === videojuego.id) data.Videojuegos.push(v);
+                    });
                 });
-            });
 
-            return data;
-        }else{
-            window.alert("No hay resultados para este filtro");
-            return dataVideojuegos;
+                return data;
+            }else{
+                window.alert("No hay resultados para este filtro");
+                return dataVideojuegos;
+            }
         }
-    }
+    }else window.alert("Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
 };
