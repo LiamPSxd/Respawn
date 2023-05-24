@@ -44,9 +44,13 @@ const TarjetaList = () =>{
             <h4><strong>Mis Tarjetas</strong></h4>
             <p>Selecciona una tarjeta para continuar</p>
             <ol className="list-group" id={Style.olTarjetas}>
-                    {tarjetas.map((tarjeta)=>(
-                        <TarjetaItem key={tarjeta.id} tarjeta={tarjeta}/>
-                    ))}
+                    {tarjetas != null ? (
+                        tarjetas.map((tarjeta)=>(
+                            <TarjetaItem key={tarjeta.id} tarjeta={tarjeta}/>
+                        ))
+                    ):(
+                        <h1>No exiten trajetas guardadas</h1>
+                    )}
             </ol>
             <Link to="/tarjetaForm" id={Style.link}>Agregar Tarjeta</Link>
         </div>

@@ -1,7 +1,9 @@
 import React from "react";
 import style from "./Pago.module.css";
+import Cookies from "universal-cookie";
 
 const PagoCuponItem = ({ cupon, cantidad, precio }) => {
+    const cookies = new Cookies();
     const setDisable = () => {
         switch(cupon.id){
             case 0:
@@ -19,17 +21,23 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
 
     const aplicarCupon = () => {
         const pTotal = document.getElementById("pTotal");
+        var descuento = 0.0
 
         if(parseFloat(pTotal.innerHTML.split(" ")[0]) === parseFloat(calcIva())){
             const cant = document.getElementById(`cantidad${cupon.id}`);
             let totalPrecio = calcIva();
-
             switch(cupon.id){
                 case 0:
                     totalPrecio -= calcIva() * 0.15;
+                    descuento = precio.valor * 0.16
+                    cookies.set("dCupon",descuento)
+                    console.log(cookies.get("dCupon"))
                     break;
                 case 3:
                     totalPrecio -= calcIva() * 0.05;
+                    descuento = precio.valor * 0.05
+                    cookies.set("dCupon",descuento)
+                    console.log(cookies.get("dCupon"))
                     break;
                 default:
                     console.log(cupon.nombre);
@@ -64,6 +72,8 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
 
             actualizarPrecio(calcIva());
             container.removeChild(document.getElementById("btnDeshacer"));
+            cookies.set("dCupon",0.0)
+            console.log(cookies.get("dCupon"))
         }
 
         container.appendChild(button);
@@ -75,7 +85,7 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
 
             <div className="d-flex gap-2 w-100 justify-content-between">
                 <div id={style.containerCupon}>
-                    <h6 className="mb-0"><strong>{cupon.nombre}</strong></h6>
+                    <h6 className="mb-0" id={style.tituloCupon}>{cupon.nombre}</h6>
                     <p className="mb-0 opacity-75">Descripción</p>
                 </div>
 
