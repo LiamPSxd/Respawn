@@ -37,7 +37,7 @@ const OfertaItem = ({ oferta }) => {
 
     return(
         <>{videojuegos.map(videojuego => (
-            <div id={style.tarjeta} className="card">
+            <div key={videojuego.id} id={style.tarjeta} className="card">
                 <img id={style.imgCard} className="card-img-top" src={videojuego.caratula} alt="caratula" />
 
                 <div id={style.cardBody} className="card-body">    
