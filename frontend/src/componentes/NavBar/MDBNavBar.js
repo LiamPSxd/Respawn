@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from './media/iconW.png';
+import Logo from './media/logorespawn.svg';
 import IconPerfil from './media/iconperfil2.svg';
 import IconOculto from './media/menusoculto.png';
 import IconWishlist from './media/wishlist.svg';
@@ -89,7 +89,7 @@ const NavBar = () => {
       <MDBContainer fluid className='justify-content-center'>
         {/* BOTON CON ICONO DE INICIO */}
         <MDBNavbarBrand href='/home'>
-          <img src={Logo} alt="logo" width="60" height="50" />
+          <img src={Logo} alt="logo" width="80" height="80" />
         </MDBNavbarBrand>
 
         <MDBNavbarToggler aria-controls='navbarSupportedContent' aria-expanded='false' onClick={() => setShowBasic(!showBasic)}>
