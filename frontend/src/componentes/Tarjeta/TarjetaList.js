@@ -9,7 +9,6 @@ const TarjetaList = () =>{
     const [tarjetas, setTarjetas] = useState([]);
     const cookies = new Cookies();
     let idUsuario = cookies.get("id")
-    
     const getContenido = async () =>{
         var idTarjetas = "";
         const dataUsuarioTarjetas = await (await TarjetaServer.getUsuarioTarjetasById(idUsuario)).json();
@@ -49,7 +48,7 @@ const TarjetaList = () =>{
                             <TarjetaItem key={tarjeta.id} tarjeta={tarjeta}/>
                         ))
                     ):(
-                        <h1>No exiten trajetas guardadas</h1>
+                        <h1>No exiten tarjetas guardadas</h1>
                     )}
             </ol>
             <Link to="/tarjetaForm" id={Style.link}>Agregar Tarjeta</Link>

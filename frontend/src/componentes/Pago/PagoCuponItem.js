@@ -4,6 +4,9 @@ import Cookies from "universal-cookie";
 
 const PagoCuponItem = ({ cupon, cantidad, precio }) => {
     const cookies = new Cookies();
+    cookies.set("idCupon",null)
+    cookies.set("cantidadCupon",null)
+    cookies.set("dCupon",0.0)
     const setDisable = () => {
         switch(cupon.id){
             case 0:
@@ -27,16 +30,18 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
             let totalPrecio = calcIva();
             switch(cupon.id){
                 case 0:
-                    totalPrecio -= calcIva() * 0.15;
-                    descuento = precio.valor * 0.16
+                    descuento = totalPrecio * 0.15
+                    cookies.set("idCupon",cupon.id)
+                    cookies.set("cantidadCupon",cantidad-1)
                     cookies.set("dCupon",descuento)
-                    console.log(cookies.get("dCupon"))
+                    totalPrecio -= calcIva() * 0.15;
                     break;
                 case 3:
-                    totalPrecio -= calcIva() * 0.05;
-                    descuento = precio.valor * 0.05
+                    descuento = totalPrecio * 0.05
+                    cookies.set("idCupon",cupon.id)
+                    cookies.set("cantidadCupon",cantidad-1)
                     cookies.set("dCupon",descuento)
-                    console.log(cookies.get("dCupon"))
+                    totalPrecio -= calcIva() * 0.05;
                     break;
                 default:
                     console.log(cupon.nombre);
@@ -72,7 +77,8 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
             actualizarPrecio(calcIva());
             container.removeChild(document.getElementById("btnDeshacer"));
             cookies.set("dCupon",0.0)
-            console.log(cookies.get("dCupon"))
+            cookies.set("idCupon",null)
+            cookies.set("cantidadCupon",null)
         }
 
         container.appendChild(button);

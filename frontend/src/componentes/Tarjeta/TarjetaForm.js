@@ -39,6 +39,7 @@ const TarjetaForm = () => {
             history('/pago/tarjeta')
         } catch (error) {
             console.log(error);
+            window.alert("Error en la conexión a la Base de Datos, intentalo más tarde")
         }
     }
     return (
@@ -47,14 +48,14 @@ const TarjetaForm = () => {
                 <h1 className="text-center" style={{color:"white"}} >Compra con Tarjeta</h1>
                 <div className="row">
                     <div className="col" style={{ marginTop: "70px" }}>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="needs-validation">
                             <div className="mb-3">
                                 <label className="form-label">Nombre del titular</label>
-                                <input id="nTitular" type="text" className="form-control" name="titular" placeholder="Introduce el nombre del titular de la tarjeta" onChange={handleInputChange} />
+                                <input id="nTitular" type="text" className="form-control" name="titular" placeholder="Introduce el nombre del titular de la tarjeta" onChange={handleInputChange} required/>
                             </div>
                             <div className="mb-3">
                                 <label className="form-label">Número de tarjeta</label>
-                                <input id="nTarjeta" type="number" className="form-control" name="pan" placeholder="Introduce el número de la tarjeta" onChange={handleInputChange} />
+                                <input id="nTarjeta" type="number" className="form-control" name="pan" placeholder="Introduce el número de la tarjeta" onChange={handleInputChange} required/>
                             </div>
                             <div className="row">
                                 <div className="col">
@@ -74,11 +75,11 @@ const TarjetaForm = () => {
                                 </div>
                                 <div className="col ml-0">
                                     <label className="form-label">Fecha de vencimiento</label>
-                                    <input id="iFechaVencimiento" type="month" className="form-control" name="fechaCaducidad" style={{ width: "225px" }} onChange={handleInputChange} />
+                                    <input id="iFechaVencimiento" type="month" className="form-control" name="fechaCaducidad" style={{ width: "225px" }} onChange={handleInputChange} required/>
                                 </div>
                                 <div className="col ml-0 mr-5">
                                     <label className="form-label">CVV</label>
-                                    <input id="iCVV" type="password" className="form-control" name="cvv" placeholder="Introduce el CVV" onChange={handleInputChange} />
+                                    <input id="iCVV" type="password" className="form-control" name="cvv" placeholder="Introduce el CVV" onChange={handleInputChange} required/>
                                 </div>
                             </div>
                             <div className="text-center" style={{ display: "flex", justifyContent: "space-evenly", marginTop: "50px" }}>

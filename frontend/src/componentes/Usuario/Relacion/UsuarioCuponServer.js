@@ -29,3 +29,17 @@ export const addUsuarioCupon = async (idUsuario, idCupon, cantidad) => {
         })
     });
 };
+
+export const updateUsuarioCupon = async (idUsuario, idCupon, cantidad) => {
+    return await fetch(`${API_URL}${idUsuario}/${idCupon}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "idUsuario": String(idUsuario).trim(),
+            "idCupon": String(idCupon).trim(),
+            "cantidad": String(cantidad)
+        })
+    });
+};

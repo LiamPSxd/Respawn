@@ -6,6 +6,7 @@ import style from "./Compra.module.css";
 import * as CompraServer from "./CompraServer";
 import * as TarjetaServer from "../Tarjeta/TarjetaServer"
 import * as VideojuegoServer from "../Videojuego/VideojuegoServer";
+import * as UsuarioCuponServer from "../Usuario/Relacion/UsuarioCuponServer"
 import { memo } from "react";
 
 
@@ -63,12 +64,17 @@ const CompraItem = () => {
                     compra.fecha = moment().format('L');
                     compra.hora = moment().format('LT');
                     compra.metodo = idTarjeta;
-                    compra.monto = videojuego.precio.valor + videojuego.precio.simbolo;
+                    var iva = parseFloat(videojuego.precio.valor * 0.16)
+                    var auxMonto = parseFloat(videojuego.precio.valor) - cookies.get("dCupon") + iva
+                    compra.monto = auxMonto.toFixed(2) + videojuego.precio.simbolo;
                     compra.descripcion = videojuego.nombre;
                     await (await CompraServer.addCompra(compra)).json();
                     document.getElementById("btnConfirmar").style.visibility = "hidden";
                     document.getElementById("btnTicket").style.visibility = "visible";
                     tarjeta.saldo=tarjeta.saldo-videojuego.precio.valor;
+                    if(cookies.get("idCupon") != null){
+                        await (await UsuarioCuponServer.updateUsuarioCupon(cookies.get("id"),cookies.get("idCupon"),cookies.get("cantidadCupon"))).json()    
+                    }
                     const data= await (await TarjetaServer.updateTarjeta(tarjeta)).json();
                     console.log(data);
                 } catch (error) {

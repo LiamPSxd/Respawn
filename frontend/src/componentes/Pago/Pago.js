@@ -11,7 +11,6 @@ import Mensaje from "../Mensaje/Mensaje";
 const Pago = () => {
     const history = useNavigate();
     const cookies = new Cookies();
-
     const [titulo, setTitulo] = useState("");
     const [contenido, setContenido] = useState("");
     const [showMensaje, setShowMensaje] = useState(false);
@@ -70,7 +69,7 @@ const Pago = () => {
         getVideojuego();
         // eslint-disable-next-line
     }, []);
-
+    
     return (
         <><div className={style.container}>
             <div className={style.containerImg}>

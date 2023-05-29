@@ -43,14 +43,14 @@ const PayPalForm = () =>{
             <p>Ingrese su dirección de correo eléctronico y su contraseña para continuar</p>
             {/* <div className="row">
                 <div className="col">  */}
-                    <form onSubmit={handleSubmit} id={Style.idCol}>
+                    <form onSubmit={handleSubmit} id={Style.idCol} className="needs-validation">
                         <div className="mb-3">
                             <label className="form-label">Correo Electrónico</label>
-                            <input id="iCorreo" onChange={handleInputChange} type="email" className="form-control" name="correo" placeholder="Correo eléctronico"/>
+                            <input id="iCorreo" onChange={handleInputChange} type="email" className="form-control" name="correo" placeholder="Correo eléctronico" required/>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Contraseña</label>
-                            <input id="iContrasenia" onChange={handleInputChange} type="password" className="form-control" name="contrasenia" placeholder="Introduce la contraseña"/>
+                            <input id="iContrasenia" onChange={handleInputChange} type="password" className="form-control" name="contrasenia" placeholder="Introduce la contraseña" required/>
                         </div>
                         <div className="text-center" style={{marginTop:"20px", width:"100%"}}>
                             <Link id={Style.idLink}to="https://www.paypal.com/mx/webapps/mpp/account-selection" target="_blank">¿No tienes una cuenta? Crea una aquí</Link>
