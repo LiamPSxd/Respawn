@@ -20,7 +20,7 @@ const OfertaTimer = ({ countdownTimestampMs }) => {
         }, 1000);
 
         return () => clearInterval(intervalId);
-    }, []);
+    }, [countdownTimestampMs]);
 
     return(
         <><div id={style.countdownTimer}>

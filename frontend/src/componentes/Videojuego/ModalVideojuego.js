@@ -52,12 +52,10 @@ const ModalVideojuego = ({ show, close }) => {
         try{
             const data = await (await VideojuegoServer.getVideojuego(await getNumberRandom())).json();
 
-            if(data.message === "Exitoso"){
-                await setVideojuego(data.Videojuegos[0]);
-                handleTitulo(data.Videojuegos[0].nombre);
-            }else mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
+            await setVideojuego(data.Videojuegos[0]);
+            handleTitulo(data.Videojuegos[0].nombre);
         }catch(error){
-            console.log(error);
+            mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }
     };
 

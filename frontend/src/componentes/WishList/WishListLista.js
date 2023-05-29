@@ -26,7 +26,7 @@ const WishListLista = () => {
             if(data.message === "Exitoso") setWishLists(data.WishLists);
             else mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }catch(error){
-            console.log(error);
+            mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }
     };
     

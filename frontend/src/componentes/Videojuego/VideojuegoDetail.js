@@ -48,21 +48,21 @@ const VideojuegoDetail = () => {
     };
 
     const getVideojuego = async (idVideojuego) => {
-        try {
+        try{
             const data = await (await VideojuegoServer.getVideojuego(idVideojuego)).json();
             const { id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas } = data.Videojuegos[0];
             setVideojuego({ id, nombre, descripcion, caratula, video, precio, genero, plataforma, datosExtra, calificacion, capturas });
-        } catch (error) {
-            console.log(error);
+        }catch(error){
+            mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }
     };
 
     const validarSesion = () => {
-        if(document.getElementById("btnCR").textContent==="Comprar $"){
+        if(document.getElementById("btnCR").textContent === "Comprar $"){
             if(cookies.get("id")){
                 cookies.set("videojuegoId", `${videojuego.id}`, { path: "/" });
                 history("/pago");
-            } else mostrarMensaje("Advertencia", "Necesitas tener una cuenta para continuar, ¿Desea iniciar sesión ahora?", true);
+            }else mostrarMensaje("Advertencia", "Necesitas tener una cuenta para continuar, ¿Desea iniciar sesión ahora?", true);
         }else{
             cookies.set("videojuegoId", `${videojuego.id}`, { path: "/" });
             history("/reembolso");

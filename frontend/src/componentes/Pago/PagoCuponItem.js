@@ -25,7 +25,8 @@ const PagoCuponItem = ({ cupon, cantidad, precio }) => {
     const aplicarCupon = () => {
         const pTotal = document.getElementById("pTotal");
         var descuento = 0.0
-        if(parseFloat(pTotal.innerHTML.split(" ")[0]) == parseFloat(calcIva())){
+
+        if(parseFloat(pTotal.innerHTML.split(" ")[0]) === parseFloat(calcIva())){
             const cant = document.getElementById(`cantidad${cupon.id}`);
             let totalPrecio = calcIva();
             switch(cupon.id){

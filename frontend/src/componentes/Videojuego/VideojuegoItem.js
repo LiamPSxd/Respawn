@@ -50,31 +50,36 @@ const VideojuegoItem = ({ videojuego, wishList }) => {
 
             if(data.message === "Exitoso") setCorazon(!corazon);
         }catch(error){
-            console.log(error);
+            mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
         }
     };
 
     const addVideojuegoToWishList = async () => {
-        try{
-            switch(!corazon){
-                case true:
+        switch(!corazon){
+            case true:
+                try{
                     const add = await (await WishListVideojuegoServer.addWishListVideojuego(wishList.idWishList, videojuego.id)).json();
 
                     if(add.message === "Exitoso") mostrarMensaje("Éxito", "Videojuego agregado exitosamente a su WishList");
                     else mostrarMensaje("Error", "No se pudo agregar el Videojuego a su WishList. Por favor, intente más tarde");
-                    break;
-                case false:
+                }catch(error){
+                    mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
+                }
+                
+                break;
+            case false:
+                try{
                     const del = await (await WishListVideojuegoServer.deleteWishListVideojuego(wishList.idWishList, videojuego.id)).json();
 
                     if(del.message === "Exitoso") mostrarMensaje("Éxito", "Videojuego eliminado exitosamente de su WishList");
                     else mostrarMensaje("Error", "No se pudo eliminar el Videojuego de su WishList. Por favor, intente más tarde");
-                    break;
-                default:
-                    mostrarMensaje("Videojuego", `${videojuego.nombre}`);
-                    break;
-            }
-        }catch(error){
-            console.log(error);
+                }catch(error){
+                    mostrarMensaje("Error", "Se perdió la conexión con la Base de Datos. Por favor, intente más tarde");
+                }
+                break;
+            default:
+                mostrarMensaje("Videojuego", `${videojuego.nombre}`);
+                break;
         }
     };
 
